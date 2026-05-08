@@ -1,0 +1,5 @@
+metric,value
+n_docs,24135.0
+vocab_size,4381.0
+n_topics,10.0
+perplexity,2029.7647419922594

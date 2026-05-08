@@ -1,16 +1,34 @@
 """步骤 A：读 Excel、合并类别、去重、统一评论表。"""
 from __future__ import annotations
 
+import os
+from pathlib import Path
+
 import numpy as np
 import pandas as pd
 
-from phase1.config import XLSX
+from phase1.config import POST_CATEGORY_BY_POST_CSV, XLSX
 
 
-def load_raw_frames() -> tuple[pd.DataFrame, pd.DataFrame]:
-    """读取两个 sheet，返回 (主表, 计数/类别表)。"""
-    main = pd.read_excel(XLSX, sheet_name="小红书帖子数据")
-    counts = pd.read_excel(XLSX, sheet_name="导出计数_帖子id")
+def resolve_data_xlsx(xlsx: Path | str | None = None) -> Path:
+    """
+    解析数据 Excel 路径，优先级：显式参数 > 环境变量 ROBOTIC_FAILURE_XLSX > 项目根下默认文件名。
+    """
+    if xlsx is not None:
+        return Path(xlsx).expanduser().resolve()
+    env = os.environ.get("ROBOTIC_FAILURE_XLSX")
+    if env:
+        return Path(env).expanduser().resolve()
+    return Path(XLSX).expanduser().resolve()
+
+
+def load_raw_frames(xlsx: Path | str | None = None) -> tuple[pd.DataFrame, pd.DataFrame]:
+    """读取两个 sheet，返回 (主表, 计数/类别表)。xlsx 缺省则从环境变量或 config.XLSX 推断。"""
+    path = resolve_data_xlsx(xlsx)
+    if not path.is_file():
+        raise FileNotFoundError(f"找不到 Excel 数据文件: {path}")
+    main = pd.read_excel(path, sheet_name="小红书帖子数据")
+    counts = pd.read_excel(path, sheet_name="导出计数_帖子id")
     ren = {}
     if "类别" in counts.columns:
         ren["类别"] = "post_category"
@@ -31,6 +49,81 @@ def merge_post_category(main: pd.DataFrame, counts: pd.DataFrame) -> pd.DataFram
     df = main.merge(counts[["帖子id", "post_category"]], on="帖子id", how="left")
     df["post_category"] = df["post_category"].fillna("unknown")
     return df
+
+
+def normalize_post_id(pid) -> str | None:
+    """把 Excel/CSV 里的帖子 id 规整成稳定字符串键，便于字典匹配。"""
+    if pid is None or pd.isna(pid):
+        return None
+    if isinstance(pid, (np.integer, np.floating)):
+        x = float(pid)
+        if np.isnan(x):
+            return None
+        if x == int(x):
+            return str(int(x))
+        return str(pid).strip()
+    if isinstance(pid, float):
+        if pid == int(pid):
+            return str(int(pid))
+        return str(pid).strip()
+    if isinstance(pid, int):
+        return str(pid)
+    s = str(pid).strip()
+    if s.endswith(".0") and s[:-2].replace("-", "").isdigit():
+        s = s[:-2]
+    return s if s else None
+
+
+def _read_post_id_category_csv(path: Path) -> dict[str, str]:
+    if not path.is_file():
+        return {}
+    tab = pd.read_csv(path, encoding="utf-8-sig")
+    if tab.empty or tab.shape[1] < 2:
+        return {}
+    cols = list(tab.columns)
+    id_col = "帖子id" if "帖子id" in cols else cols[0]
+    cat_col = "类别" if "类别" in cols else cols[1]
+    out: dict[str, str] = {}
+    for _, row in tab.iterrows():
+        key = normalize_post_id(row[id_col])
+        if key is None:
+            continue
+        if pd.isna(row[cat_col]):
+            continue
+        val = str(row[cat_col]).strip()
+        if not val or val.startswith("#"):
+            continue
+        out[key] = val
+    return out
+
+
+def apply_post_category_by_post(
+    df: pd.DataFrame,
+    *,
+    overrides: dict[str | int, str] | None = None,
+    csv_path: Path | str | None = None,
+) -> pd.DataFrame:
+    """
+    用「帖子 id → 类别」表覆盖 `post_category`。未出现在表中的帖子保留 `merge_post_category` 的结果。
+
+    默认读 `config/post_category_by_post.csv`（列为 `帖子id`,`类别`；列名也可换成前两列）。
+    若在代码里传入 `overrides`，会与 CSV 合并（同 id 以 overrides 为准）。
+    """
+    out = df.copy()
+    if "帖子id" not in out.columns or "post_category" not in out.columns:
+        return out
+    path = Path(csv_path) if csv_path is not None else POST_CATEGORY_BY_POST_CSV
+    assign: dict[str, str] = _read_post_id_category_csv(path)
+    if overrides:
+        for k, v in overrides.items():
+            nk = normalize_post_id(k)
+            if nk and v:
+                assign[nk] = str(v).strip()
+    if not assign:
+        return out
+    new_cats = out["帖子id"].map(lambda p: assign.get(normalize_post_id(p)))
+    out["post_category"] = new_cats.fillna(out["post_category"])
+    return out
 
 
 def coerce_engagement(df: pd.DataFrame) -> pd.DataFrame:

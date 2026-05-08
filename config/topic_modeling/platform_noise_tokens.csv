@@ -1,0 +1,17 @@
+token,category,keep_in_topic,notes
+@,platform,false,艾特符号
+[,punct,false,方括号左
+],punct,false,方括号右
+_,punct,false,下划线残片
+.,punct,false,英文句号
+。,punct,false,中文句号
+，,punct,false,中文逗号
+？,punct,false,问号
+！,punct,false,感叹号
+（,punct,false,左括号
+）,punct,false,右括号
+R,platform,false,小红书表情尾标
+momo,account,false,常见账号噪音
+F1,platform,false,平台标签残片
+doge,emoji,false,表情文字
+🥕,emoji,false,emoji
