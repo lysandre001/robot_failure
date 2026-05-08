@@ -1,0 +1,9 @@
+.venv/
+.matplotlib_cache/
+__pycache__/
+*.pyc
+.DS_Store
+.ipynb_checkpoints/
+
+# 原始平台数据不入库（见 STRUCTURE.md）
+小红书帖子数据.xlsx
