@@ -1,3 +1,7 @@
+# 注：此模块属于 lexicon 探索阶段产物。
+# - 新主题建模流程（phase1/topic_modeling.py）不依赖。
+# - 关键词筛选工具（phase1/keyword_filter.py）只复用 ROLE_PATTERNS / 词典 CSV，不调用 apply_lexicons。
+# - 如需把 lexicon 当判别器使用，先做 IRR 验证。
 """步骤 B：从评论文本抽取词典命中、玩梗特征、共现与 n-gram。"""
 from __future__ import annotations
 

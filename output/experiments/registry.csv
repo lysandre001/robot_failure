@@ -1,2 +1,2 @@
 run_id,date,task,hypothesis,input_data,method,key_params,output_dir,status,decision
-2026-05-09_relation_detect_v1_lexicon,2026-05-09,relation_detection_v1,关系范畴可形成稳定且可解释分布,/Users/yilin/project/2604-robotic_failure_research/output/phase1/data/clean_comments_unified.csv,lexicon_baseline+topic_link,"{""topic_k"": 12, ""seed"": 42}",/Users/yilin/project/2604-robotic_failure_research/output/experiments/2026-05-09_relation_detect_v1_lexicon,done,keep_as_v1_baseline
+2026-05-09_topic_full_corpus_bge_base,2026-05-10,topic_full_corpus,,,BAAI/bge-base-zh-v1.5,,"/Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-09_topic_full_corpus_bge_base",active,main

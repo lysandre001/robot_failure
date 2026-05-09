@@ -7,3 +7,6 @@ __pycache__/
 
 # 原始平台数据不入库（见 STRUCTURE.md）
 小红书帖子数据.xlsx
+
+# 主题建模的句向量缓存（可重生成；体积大不入库）
+output/experiments/**/embeddings.npy

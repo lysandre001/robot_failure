@@ -9,7 +9,7 @@ from typing import Any
 
 from phase1.config import OUT, ROOT
 from phase1.pipeline import run_phase1_pipeline
-from phase1.relation_detection import RelationExperimentConfig, run_relation_v1_experiment
+from phase1._archived.relation_detection import RelationExperimentConfig, run_relation_v1_experiment
 
 
 def resolve_clean_comments_unified_csv() -> Path:

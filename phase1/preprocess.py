@@ -1,7 +1,9 @@
 """步骤 A：读 Excel、合并类别、去重、统一评论表。"""
 from __future__ import annotations
 
+import json
 import os
+from collections import Counter
 from pathlib import Path
 
 import numpy as np
@@ -276,6 +278,8 @@ def filter_valid_comments(
     min_chars: int = 0,
     drop_empty_content: bool = True,
     drop_repeated_single_char: bool = False,
+    content_rules_path: Path | str | None = None,
+    content_filter_report_path: Path | str | None = None,
 ) -> pd.DataFrame:
     """
     对统一评论表进行有效性过滤。
@@ -290,6 +294,11 @@ def filter_valid_comments(
         是否去掉空内容。
     drop_repeated_single_char
         是否去掉“全字相同重复”的文本（如 哈哈哈哈 / 啊啊啊啊）。
+        若传入 ``content_rules_path``，则该项被忽略（重复片段由 JSON 中 repeated_fragment 控制）。
+    content_rules_path
+        ``config/topic_modeling/comment_content_filter.json`` 等；启用纯 emoji / 仅 @ / 重复短片段等规则。
+    content_filter_report_path
+        若给定，将本次规则命中统计写入 JSON（仅在与 content_rules_path 同时启用时有效）。
     """
     out = u.copy()
     if "content" not in out.columns:
@@ -303,7 +312,25 @@ def filter_valid_comments(
         out = out[out["char_len"] > 0]
     if min_chars > 0:
         out = out[out["char_len"] >= int(min_chars)]
-    if drop_repeated_single_char:
+    if content_rules_path is not None:
+        from phase1.comment_content_filter import classify_comment_noise, load_comment_filter_rules
+
+        rules = load_comment_filter_rules(Path(content_rules_path))
+        reasons = [classify_comment_noise(t, rules) for t in out["content"]]
+        if content_filter_report_path is not None:
+            ctr = Counter(r for r in reasons if r is not None)
+            rep = {
+                "content_rules_path": str(Path(content_rules_path).resolve()),
+                "n_after_basic_filters": int(len(out)),
+                "n_dropped_by_content_rules": int(sum(1 for r in reasons if r is not None)),
+                "by_reason": dict(ctr.most_common()),
+            }
+            rp = Path(content_filter_report_path)
+            rp.parent.mkdir(parents=True, exist_ok=True)
+            with open(rp, "w", encoding="utf-8") as f:
+                json.dump(rep, f, ensure_ascii=False, indent=2)
+        out = out[[r is None for r in reasons]]
+    elif drop_repeated_single_char:
         out = out[~out["content"].map(_is_repeated_single_char)]
 
     return out.reset_index(drop=True)

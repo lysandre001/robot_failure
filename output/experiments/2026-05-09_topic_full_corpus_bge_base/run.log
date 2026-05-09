@@ -1,0 +1,31 @@
+=== Topic modeling run ===
+{
+  "n_raw": 31245,
+  "n_shared": 18832,
+  "coverage": 0.6027204352696431,
+  "excluded_empty_or_too_short": 0,
+  "excluded_pure_emoji": 0,
+  "excluded_only_at_mentions": 4718,
+  "excluded_repeated_fragment": 162,
+  "excluded_pure_noise_row": 2,
+  "excluded_effective_tokens_lt_min": 7344,
+  "excluded_duplicate_text": 187
+}
+[LDA k=5] perplexity=1369.25 docs=18832
+[NMF k=5] reconstruction_err=133.0299 docs=18832
+[LDA k=7] perplexity=1407.48 docs=18832
+[NMF k=7] reconstruction_err=132.2961 docs=18832
+[LDA k=10] perplexity=1471.51 docs=18832
+[NMF k=10] reconstruction_err=131.4262 docs=18832
+[LDA k=12] perplexity=1504.72 docs=18832
+[NMF k=12] reconstruction_err=130.9022 docs=18832
+[BERTopic] importing optional deps…
+[BERTopic] SentenceTransformer('BAAI/bge-base-zh-v1.5', device='cpu') …
+[BERTopic] 已从本地 HuggingFace 缓存加载嵌入模型。
+[BERTopic] loaded embeddings from /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-09_topic_full_corpus_bge_base/embeddings.npy
+[BERTopic HDBSCAN mcs=100] topics~=20 outlier_rate=0.313
+[BERTopic HDBSCAN mcs=200] topics~=2 outlier_rate=0.036
+[BERTopic HDBSCAN mcs=400] topics~=2 outlier_rate=0.045
+[BERTopic KMeans k=5] done.
+[BERTopic KMeans k=7] done.
+[BERTopic KMeans k=10] done.

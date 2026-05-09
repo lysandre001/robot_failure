@@ -1,0 +1,59 @@
+{
+  "out_name": "smoke_lexicon_species",
+  "input_csv": "/Users/yilin/Desktop/project/robot_failure/output/phase1/data/clean_comments_unified.csv",
+  "match_mode": "substring",
+  "n_input": 31245,
+  "n_hits": 747,
+  "keywords_meta": [
+    {
+      "kw": "碳基",
+      "src": "lexicon_category",
+      "cat": "species_competition"
+    },
+    {
+      "kw": "碳基生物",
+      "src": "lexicon_category",
+      "cat": "species_competition"
+    },
+    {
+      "kw": "人类",
+      "src": "lexicon_category",
+      "cat": "species_competition"
+    },
+    {
+      "kw": "统治地球",
+      "src": "lexicon_category",
+      "cat": "species_competition"
+    },
+    {
+      "kw": "造反",
+      "src": "lexicon_category",
+      "cat": "species_competition"
+    },
+    {
+      "kw": "追不上",
+      "src": "lexicon_category",
+      "cat": "species_competition"
+    },
+    {
+      "kw": "跑不过",
+      "src": "lexicon_category",
+      "cat": "species_competition"
+    },
+    {
+      "kw": "取代",
+      "src": "lexicon_category",
+      "cat": "species_competition"
+    },
+    {
+      "kw": "灭绝",
+      "src": "lexicon_category",
+      "cat": "species_competition"
+    },
+    {
+      "kw": "威胁",
+      "src": "lexicon_category",
+      "cat": "species_competition"
+    }
+  ]
+}

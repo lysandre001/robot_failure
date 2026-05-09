@@ -1,0 +1,19 @@
+{
+  "out_name": "smoke_jieba_token",
+  "input_csv": "/Users/yilin/Desktop/project/robot_failure/output/phase1/data/clean_comments_unified.csv",
+  "match_mode": "jieba_token",
+  "n_input": 31245,
+  "n_hits": 121,
+  "keywords_meta": [
+    {
+      "kw": "替代",
+      "src": "manual_keywords",
+      "cat": ""
+    },
+    {
+      "kw": "失业",
+      "src": "manual_keywords",
+      "cat": ""
+    }
+  ]
+}

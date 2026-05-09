@@ -1,0 +1,13 @@
+{
+  "rules_file": "/Users/yilin/Desktop/project/robot_failure/config/topic_modeling/comment_content_filter.json",
+  "input_csv": "/Users/yilin/Desktop/project/robot_failure/output/phase1/data/clean_comments_unified_before_filter.csv",
+  "dropped_csv": "/Users/yilin/Desktop/project/robot_failure/output/phase1/comment_content_filter_dropped.csv",
+  "n_input": 36392,
+  "n_kept": 29445,
+  "n_dropped": 6947,
+  "by_reason": {
+    "only_at_mentions": 5994,
+    "repeated_fragment": 951,
+    "pure_emoji": 2
+  }
+}

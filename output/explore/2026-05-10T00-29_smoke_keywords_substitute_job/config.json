@@ -1,0 +1,19 @@
+{
+  "out_name": "smoke_keywords_substitute_job",
+  "input_csv": "/Users/yilin/Desktop/project/robot_failure/output/phase1/data/clean_comments_unified.csv",
+  "match_mode": "substring",
+  "n_input": 31245,
+  "n_hits": 125,
+  "keywords_meta": [
+    {
+      "kw": "替代",
+      "src": "manual_keywords",
+      "cat": ""
+    },
+    {
+      "kw": "失业",
+      "src": "manual_keywords",
+      "cat": ""
+    }
+  ]
+}

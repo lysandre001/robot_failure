@@ -1,3 +1,7 @@
+# 注：此模块属于 lexicon 探索阶段产物。
+# - 新主题建模流程（phase1/topic_modeling.py）不依赖。
+# - 关键词筛选工具（phase1/keyword_filter.py）不调用本模块。
+# - 如需把 lexicon 当判别器使用，先做 IRR 验证。
 """步骤 C：汇总统计、制图、主题聚类。"""
 from __future__ import annotations
 

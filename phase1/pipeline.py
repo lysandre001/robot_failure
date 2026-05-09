@@ -15,6 +15,7 @@ from phase1.analysis import (
 from phase1.config import OUT, configure_matplotlib
 from phase1.features import apply_lexicons
 from phase1.topic_lda import export_lda_result, run_lda
+from phase1.comment_content_filter import COMMENT_CONTENT_FILTER_JSON
 from phase1.preprocess import (
     apply_post_category_by_post,
     build_level1,
@@ -43,7 +44,10 @@ def run_phase1_pipeline(
     lda_tokenizer: str = "jieba",
     min_chars: int = 0,
     drop_repeated_single_char: bool = False,
+    apply_comment_content_rules: bool = True,
+    content_rules_path: Path | str | None = None,
     verbose: bool = True,
+    legacy_lexicon_features: bool = False,
 ) -> dict:
     """
     执行完整第一阶段。返回关键 DataFrame 供 Notebook 继续分析。
@@ -59,7 +63,7 @@ def run_phase1_pipeline(
     - unified_before_filter (统一长表过滤前)
     - unified (统一长表过滤后)
     - l1_filtered, l2_filtered (过滤后按层级拆分)
-    - enriched
+    - enriched：若 legacy_lexicon_features=True 则为 enriched；否则与 unified 相同引用
     """
     configure_matplotlib()
     ensure_dirs()
@@ -74,11 +78,19 @@ def run_phase1_pipeline(
     l1 = coerce_engagement(build_level1(merged))
     l2 = coerce_engagement(build_level2(merged))
     unified_before_filter = coerce_engagement(unified_comments(l1, l2))
+    rules_path: Path | str | None = None
+    if apply_comment_content_rules:
+        rules_path = content_rules_path or (
+            COMMENT_CONTENT_FILTER_JSON if COMMENT_CONTENT_FILTER_JSON.is_file() else None
+        )
+    report_path = (OUT / "comment_content_filter_report.json") if rules_path else None
     unified = filter_valid_comments(
         unified_before_filter,
         min_chars=min_chars,
         drop_empty_content=True,
         drop_repeated_single_char=drop_repeated_single_char,
+        content_rules_path=rules_path,
+        content_filter_report_path=report_path,
     )
     l1_filtered = unified[unified["comment_level"] == 1].copy()
     l2_filtered = unified[unified["comment_level"] == 2].copy()
@@ -107,18 +119,23 @@ def run_phase1_pipeline(
         print("4/8 互动结构…", flush=True)
     interaction_map(l1)
 
-    if verbose:
-        print("5/8 词典特征…", flush=True)
-    enriched = apply_lexicons(unified)
-    if write_csv:
-        enriched.to_csv(OUT / "comments_enriched.csv", index=False)
+    enriched = unified
+    if legacy_lexicon_features:
+        if verbose:
+            print("5/8 词典特征（legacy）…", flush=True)
+        enriched = apply_lexicons(unified)
+        if write_csv:
+            enriched.to_csv(OUT / "comments_enriched.csv", index=False)
 
-    if verbose:
-        print("6/8 角色/拟人/玩梗/边界…", flush=True)
-    role_aggregate(enriched)
-    personhood_outputs(enriched)
-    meme_outputs(enriched)
-    boundary_outputs(enriched)
+        if verbose:
+            print("6/8 角色/拟人/玩梗/边界（legacy）…", flush=True)
+        role_aggregate(enriched)
+        personhood_outputs(enriched)
+        meme_outputs(enriched)
+        boundary_outputs(enriched)
+    else:
+        if verbose:
+            print("5/8 跳过 lexicon 特征（默认）。使用 --legacy-lexicon-features 启用。\n", flush=True)
 
     if run_topics:
         if verbose:
@@ -141,8 +158,9 @@ def run_phase1_pipeline(
 
     if verbose:
         print("9/9 报告…", flush=True)
-    build_phase1_summary(enriched, l1)
-    write_codebook_suggestions(enriched, l1)
+    report_df = enriched if legacy_lexicon_features else unified
+    build_phase1_summary(report_df, l1)
+    write_codebook_suggestions(report_df, l1)
 
     if verbose:
         print("完成。输出目录:", OUT, flush=True)
@@ -197,7 +215,23 @@ def main() -> None:
     parser.add_argument(
         "--drop-repeated-single-char",
         action="store_true",
-        help="去掉由同一字符重复组成的评论（如 哈哈哈哈 / 啊啊啊啊）",
+        help="去掉由同一字符重复组成的评论（如 哈哈哈哈 / 啊啊啊啊）；若已启用 comment_content_filter.json 则忽略",
+    )
+    parser.add_argument(
+        "--no-comment-content-rules",
+        action="store_true",
+        help="不应用 config/topic_modeling/comment_content_filter.json",
+    )
+    parser.add_argument(
+        "--content-rules",
+        type=str,
+        default=None,
+        help="评论噪音规则 JSON 路径（默认 config/topic_modeling/comment_content_filter.json）",
+    )
+    parser.add_argument(
+        "--legacy-lexicon-features",
+        action="store_true",
+        help="启用旧版 lexicon 特征与 role_aggregate 等输出（默认关闭）",
     )
     args = parser.parse_args()
     run_phase1_pipeline(
@@ -207,4 +241,7 @@ def main() -> None:
         lda_tokenizer=args.lda_tokenizer,
         min_chars=args.min_chars,
         drop_repeated_single_char=args.drop_repeated_single_char,
+        apply_comment_content_rules=not args.no_comment_content_rules,
+        content_rules_path=args.content_rules,
+        legacy_lexicon_features=args.legacy_lexicon_features,
     )

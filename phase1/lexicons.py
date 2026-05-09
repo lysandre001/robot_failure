@@ -1,3 +1,5 @@
+# 注：探索性词典；新主题建模流程（phase1/topic_modeling.py）不依赖。
+# keyword_filter.py 可选用词典 CSV；ROLE_PATTERNS 可作 preset。
 """探索性词典（第二阶段 codebook 须人工迭代）。"""
 from __future__ import annotations
 

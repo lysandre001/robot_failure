@@ -342,6 +342,19 @@ Haraway (2003) 的"伴侣物种"（Companion Species）概念提供了整个跷�
 
 **影响范围**：摘要、研究问题（一）、理论框架（二）、分析逻辑（2.4）、预期贡献（五）均已同步修订。
 
+### 2026-05-09 / 2026-05-10 — Phase1 主题建模流水线清理与全量语料 LDA vs BERTopic（bge-base）
+
+**背景**：旧流程中存在 lexicon 子集预过滤、词典误作标准答案、以及多版 BERTopic/LDA 实验混杂；需单一「可分析语料」上的透明对比。
+
+**决定**：
+
+- 清理 lexicon-dependent 实验产物与过时脚本；`relation_detection` **归档**至 `phase1/_archived/`；默认 **pipeline 不再运行** lexicon 衍生特征（仅 `--legacy-lexicon-features` 时启用）。
+- 新主入口 **`phase1/topic_modeling.py`**：基于 `comment_content_filter.json` + `post_category_by_post.csv` 构造 **shared analyzable corpus**，在同一批评论上运行 **LDA（CountVectorizer）+ NMF（TF-IDF），K∈{5,7,10,12}**；**BERTopic** 路线为 **HDBSCAN（min_cluster_size 100/200/400）+ KMeans（5/7/10）**，句向量默认 **BAAI/bge-base-zh-v1.5**。
+- 探索性 **关键词筛选** 独立为 **`phase1/keyword_filter.py`**，输出至 **`output/explore/<timestamp>_<name>/`**，不进正式实验目录。
+- 本轮正式实验 **`run_id=2026-05-09_topic_full_corpus_bge_base`**，见 `output/experiments/2026-05-09_topic_full_corpus_bge_base/`（含 `comparison.md`、`config.json`、`run.log`），并登记 **`output/experiments/registry.csv`**。
+
+**工程备忘**：无稳定外网时优先使用本地 HuggingFace 缓存加载句向量模型；`config.json` 快照需避免裸 `Path` 序列化；详见 `phase1/RUNBOOK.md`。
+
 ---
 
 ## 附录 A：历史帖子类型学（修订前，仅供对照）
@@ -370,3 +383,23 @@ Haraway (2003) 的"伴侣物种"（Companion Species）概念提供了整个跷�
 | 模式分析 | 交叉比较、可视化、统计检验 | 第5–7周 |
 | 质性深读 | 典型评论片段的细读与理论对话 | 第6–8周 |
 | 论文写作 | 初稿撰写 | 第7–10周 |
+
+---
+
+## 附录 C：根目录 `will` 合并留档（早期表述）
+
+以下片段来自修订前根目录 `will` 笔记，已与正文「关系重构 + 二维矩阵」框架并存档对照；**操作化与抽样以正文及「当前生效」为准**。
+
+### C.1 早期核心研究问题（Mind Perception 为轴时）
+
+- 当机器人以竞技者身份出现在公共事件中时，观众产生了怎样的情感和认知反应？
+- 机器人的成功与失败如何不同地塑造了观众的体验？
+- 这些反应揭示了怎样的人机关系想象与文化逻辑？
+
+### C.2 事件类型 × 心智维度 × 话语预期（简表）
+
+| 事件类型 | 被激活的心智维度 | 预期的情感与话语反应 |
+|----------|------------------|----------------------|
+| 机器人成功（强壮-独立 / 超越） | 高 Agency | 敬畏、焦虑、竞争叙事、身份威胁协商 |
+| 机器人失败（脆弱-独立 / 受助） | 高 Experience 投射 | 共情、保护欲、萌化、失态效应 |
+| 机器人可爱（可爱-无害） | 高 Experience + 低 Agency | 喜爱、亲近、「宠物化」/「婴儿化」框定 |
