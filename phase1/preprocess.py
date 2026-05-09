@@ -257,3 +257,53 @@ def unified_comments(l1: pd.DataFrame, l2: pd.DataFrame) -> pd.DataFrame:
     u["content"] = u["content"].map(normalize_text)
     u["char_len"] = u["content"].str.len()
     return u
+
+
+def _is_repeated_single_char(text: str) -> bool:
+    """
+    判断文本是否由同一个字符重复组成（忽略空白）。
+    例如：哈哈哈哈、啊啊啊啊、111111。
+    """
+    t = "".join(str(text).split())
+    if not t:
+        return False
+    return len(set(t)) == 1
+
+
+def filter_valid_comments(
+    u: pd.DataFrame,
+    *,
+    min_chars: int = 0,
+    drop_empty_content: bool = True,
+    drop_repeated_single_char: bool = False,
+) -> pd.DataFrame:
+    """
+    对统一评论表进行有效性过滤。
+
+    Parameters
+    ----------
+    u
+        `unified_comments()` 产出的统一评论表。
+    min_chars
+        最小字符长度阈值（基于 `char_len`，含等号）。
+    drop_empty_content
+        是否去掉空内容。
+    drop_repeated_single_char
+        是否去掉“全字相同重复”的文本（如 哈哈哈哈 / 啊啊啊啊）。
+    """
+    out = u.copy()
+    if "content" not in out.columns:
+        return out
+
+    out["content"] = out["content"].map(normalize_text)
+    if "char_len" not in out.columns:
+        out["char_len"] = out["content"].str.len()
+
+    if drop_empty_content:
+        out = out[out["char_len"] > 0]
+    if min_chars > 0:
+        out = out[out["char_len"] >= int(min_chars)]
+    if drop_repeated_single_char:
+        out = out[~out["content"].map(_is_repeated_single_char)]
+
+    return out.reset_index(drop=True)

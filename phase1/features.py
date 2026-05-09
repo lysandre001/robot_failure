@@ -4,10 +4,14 @@ from __future__ import annotations
 import re
 from collections import Counter
 
-import jieba
 import pandas as pd
 
 from phase1.lexicons import BOUNDARY, EMOJI_RE, PERSONHOOD, ROLE_PATTERNS, XHS_BRACKET
+
+try:
+    import jieba  # type: ignore
+except ImportError:  # pragma: no cover
+    jieba = None
 
 
 def count_hits(text: str, terms: list[str]) -> int:
@@ -65,7 +69,11 @@ def cooccur_tokens(
 ) -> dict[str, list[tuple[str, int]]]:
     out: dict[str, Counter[str]] = {a: Counter() for a in anchors}
     for text in texts:
-        toks = list(jieba.cut(text))
+        if jieba is not None:
+            toks = list(jieba.cut(text))
+        else:
+            # 无 jieba 时的兜底分词（字符级），仅用于保持流程可运行
+            toks = [ch for ch in str(text) if not ch.isspace()]
         if not toks:
             continue
         for i, w in enumerate(toks):

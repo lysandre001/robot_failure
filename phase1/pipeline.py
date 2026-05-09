@@ -20,6 +20,7 @@ from phase1.preprocess import (
     build_level1,
     build_level2,
     coerce_engagement,
+    filter_valid_comments,
     load_raw_frames,
     merge_post_category,
     unified_comments,
@@ -40,6 +41,8 @@ def run_phase1_pipeline(
     run_lda_topics: bool = False,
     lda_topics_k: int = 10,
     lda_tokenizer: str = "jieba",
+    min_chars: int = 0,
+    drop_repeated_single_char: bool = False,
     verbose: bool = True,
 ) -> dict:
     """
@@ -50,7 +53,13 @@ def run_phase1_pipeline(
 
     Returns
     -------
-    dict with keys: main_df, merged, l1, l2, unified, enriched
+    dict with keys:
+    - main_df, merged
+    - l1, l2 (去重后未过滤)
+    - unified_before_filter (统一长表过滤前)
+    - unified (统一长表过滤后)
+    - l1_filtered, l2_filtered (过滤后按层级拆分)
+    - enriched
     """
     configure_matplotlib()
     ensure_dirs()
@@ -64,12 +73,31 @@ def run_phase1_pipeline(
         print("2/8 构建一级/二级/统一表…", flush=True)
     l1 = coerce_engagement(build_level1(merged))
     l2 = coerce_engagement(build_level2(merged))
-    unified = coerce_engagement(unified_comments(l1, l2))
+    unified_before_filter = coerce_engagement(unified_comments(l1, l2))
+    unified = filter_valid_comments(
+        unified_before_filter,
+        min_chars=min_chars,
+        drop_empty_content=True,
+        drop_repeated_single_char=drop_repeated_single_char,
+    )
+    l1_filtered = unified[unified["comment_level"] == 1].copy()
+    l2_filtered = unified[unified["comment_level"] == 2].copy()
 
     if write_csv:
+        # 输出契约（最小可用）：
+        # 1) clean_l1_comments.csv / clean_l2_comments.csv：去重后未过滤
+        # 2) clean_comments_unified_before_filter.csv：统一表过滤前
+        # 3) clean_comments_unified.csv：统一表过滤后
+        # 4) clean_l1_comments_filtered.csv / clean_l2_comments_filtered.csv：过滤后按层级拆分
+        # 兼容既有文件名：保留去重后的原始一级/二级表（未过滤）
         l1.to_csv(OUT / "clean_l1_comments.csv", index=False)
         l2.to_csv(OUT / "clean_l2_comments.csv", index=False)
+        # 过滤前后统一表
+        unified_before_filter.to_csv(OUT / "clean_comments_unified_before_filter.csv", index=False)
         unified.to_csv(OUT / "clean_comments_unified.csv", index=False)
+        # 过滤后按层级拆分，避免误把未过滤 l1/l2 当成最终清洗结果
+        l1_filtered.to_csv(OUT / "clean_l1_comments_filtered.csv", index=False)
+        l2_filtered.to_csv(OUT / "clean_l2_comments_filtered.csv", index=False)
 
     if verbose:
         print("3/8 数据质量…", flush=True)
@@ -124,7 +152,10 @@ def run_phase1_pipeline(
         "merged": merged,
         "l1": l1,
         "l2": l2,
+        "unified_before_filter": unified_before_filter,
         "unified": unified,
+        "l1_filtered": l1_filtered,
+        "l2_filtered": l2_filtered,
         "enriched": enriched,
     }
 
@@ -157,10 +188,23 @@ def main() -> None:
         choices=["jieba", "pkuseg", "char_bigram"],
         help="LDA 中文分词器",
     )
+    parser.add_argument(
+        "--min-chars",
+        type=int,
+        default=0,
+        help="统一评论最小字符长度阈值（默认不过滤）",
+    )
+    parser.add_argument(
+        "--drop-repeated-single-char",
+        action="store_true",
+        help="去掉由同一字符重复组成的评论（如 哈哈哈哈 / 啊啊啊啊）",
+    )
     args = parser.parse_args()
     run_phase1_pipeline(
         xlsx=args.xlsx,
         run_lda_topics=args.run_lda_topics,
         lda_topics_k=args.lda_topics_k,
         lda_tokenizer=args.lda_tokenizer,
+        min_chars=args.min_chars,
+        drop_repeated_single_char=args.drop_repeated_single_char,
     )

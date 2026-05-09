@@ -4,7 +4,6 @@ from __future__ import annotations
 import json
 from collections import defaultdict
 
-import jieba
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -13,6 +12,11 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 
 from phase1.config import FIG, OUT
 from phase1.features import cooccur_tokens, top_ngrams_char
+
+try:
+    import jieba  # type: ignore
+except ImportError:  # pragma: no cover
+    jieba = None
 
 
 def ensure_dirs() -> None:
@@ -133,7 +137,11 @@ def topic_clusters(comments: list[str], categories: list[str], top_n: int = 8000
         max_df=0.55,
         analyzer=lambda s: s.split(),
     )
-    cut_texts = [" ".join(jieba.cut(t)) for t in texts]
+    if jieba is not None:
+        cut_texts = [" ".join(jieba.cut(t)) for t in texts]
+    else:
+        # 无 jieba 时降级为字符级切分，仅保证流程可运行
+        cut_texts = [" ".join(ch for ch in str(t) if not ch.isspace()) for t in texts]
     X = vec.fit_transform(cut_texts)
     kmini = min(10, max(3, len(texts) // 200))
     km = MiniBatchKMeans(n_clusters=kmini, random_state=42, batch_size=256)

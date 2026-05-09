@@ -1,0 +1,4 @@
+method,n_docs_used,k_topics,quality_metric,quality_value,note
+tfidf_kmeans,12000,12,silhouette_cosine,0.04875866887346845,higher is better
+lda_char_bigram,12000,12,perplexity,1418.603589331605,lower is better (not directly comparable to silhouette)
+tfidf_nmf,12000,12,silhouette_cosine,0.0641808453707467,higher is better
