@@ -1,6 +1,6 @@
 {
   "run_id": "2026-05-09_topic_full_corpus_bge_base",
-  "generated_at": "2026-05-10T00:29:14",
+  "generated_at": "2026-05-10T11:03:14",
   "input_csv": "/Users/yilin/Desktop/project/robot_failure/output/phase1/data/clean_comments_unified.csv",
   "input_csv_sha256": "b5034591c5ed04319d39f78db46ef8f748910141048243fac82c59e6363959b4",
   "n_shared": 18832,
@@ -25,15 +25,28 @@
     "C5_low_memory": true,
     "C6_outlier_strategy": "reduce_outliers(strategy='c-tf-idf') + KMeans backup",
     "C7_min_topic_size_sensitivity": [
+      30,
+      50,
+      80,
       100,
-      200,
-      400
+      200
     ],
     "C8_model_used": "BAAI/bge-base-zh-v1.5",
     "C10_raw_text_to_encoder": true,
     "POS_main_pipeline": false,
     "content_filter_config": "/Users/yilin/Desktop/project/robot_failure/config/topic_modeling/comment_content_filter.json",
-    "post_category_source": "/Users/yilin/Desktop/project/robot_failure/config/post_category_by_post.csv"
+    "post_category_source": "/Users/yilin/Desktop/project/robot_failure/config/post_category_by_post.csv",
+    "representation_model": [
+      "KeyBERTInspired",
+      "MMR(0.3)"
+    ],
+    "umap_precomputed_shared": true,
+    "bert_model_saved": true,
+    "stability_seeds": [
+      42,
+      7,
+      2026
+    ]
   },
   "config": {
     "run_id": "2026-05-09_topic_full_corpus_bge_base",
@@ -55,12 +68,22 @@
       10
     ],
     "bert_hdbscan_min_cluster_sizes": [
+      30,
+      50,
+      80,
       100,
-      200,
-      400
+      200
     ],
     "bert_hdbscan_min_samples": null,
     "bert_reduce_outliers": true,
+    "use_keybert_inspired": true,
+    "mmr_diversity": 0.3,
+    "stability_seeds": [
+      42,
+      7,
+      2026
+    ],
+    "auto_reduce_kmeans_k7": false,
     "min_clean_chars": 4,
     "min_effective_tokens": 2,
     "random_seed": 42,
@@ -78,20 +101,61 @@
   "bertopic_meta": {
     "bertopic_runs": [
       {
+        "mcs": 30,
+        "n_topics_approx": 97,
+        "outlier_rate_topic_raw": 0.40409940526762955,
+        "silhouette": 0.6198558807373047,
+        "dbcv": 0.3123694220943185,
+        "mean_ari": 1.0,
+        "model_saved": true
+      },
+      {
+        "mcs": 50,
+        "n_topics_approx": 58,
+        "outlier_rate_topic_raw": 0.4750424808836024,
+        "silhouette": 0.6501154899597168,
+        "dbcv": 0.2813585110825711,
+        "mean_ari": 1.0,
+        "model_saved": true
+      },
+      {
+        "mcs": 80,
+        "n_topics_approx": 29,
+        "outlier_rate_topic_raw": 0.44562446898895497,
+        "silhouette": 0.5834208130836487,
+        "dbcv": 0.25381562637570565,
+        "mean_ari": 1.0,
+        "model_saved": true
+      },
+      {
         "mcs": 100,
         "n_topics_approx": 20,
-        "outlier_rate_topic_raw": 0.31276550552251486
+        "outlier_rate_topic_raw": 0.31276550552251486,
+        "silhouette": 0.35364383459091187,
+        "dbcv": 0.10461947786004662,
+        "mean_ari": 1.0,
+        "model_saved": true
       },
       {
         "mcs": 200,
         "n_topics_approx": 2,
-        "outlier_rate_topic_raw": 0.036161852166525066
-      },
-      {
-        "mcs": 400,
-        "n_topics_approx": 2,
-        "outlier_rate_topic_raw": 0.04540144435004248
+        "outlier_rate_topic_raw": 0.036161852166525066,
+        "silhouette": 0.43751755356788635,
+        "dbcv": 0.2912967347755394,
+        "mean_ari": 1.0,
+        "model_saved": true
       }
+    ],
+    "quality_summary_csv": "a_bertopic_quality.csv",
+    "umap_precomputed_shared": true,
+    "representation_model": [
+      "KeyBERTInspired",
+      "MMR(0.3)"
+    ],
+    "stability_seeds": [
+      42,
+      7,
+      2026
     ]
   }
 }

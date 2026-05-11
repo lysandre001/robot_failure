@@ -1,0 +1,1857 @@
+Building prefix dict from the default dictionary ...
+Loading model from cache /var/folders/48/4v16qfs97_73kyhq5v4ttq000000gn/T/jieba.cache
+Loading model cost 0.204 seconds.
+Prefix dict has been built successfully.
+[WARN] 2138 comments lack robot_status_group
+=== Topic modeling stratum=失败 ===
+{
+  "n_raw": 31245,
+  "n_shared": 18832,
+  "coverage": 0.6027204352696431,
+  "n_missing_robot_status_group": 2138,
+  "excluded_empty_or_too_short": 0,
+  "excluded_pure_emoji": 0,
+  "excluded_only_at_mentions": 4718,
+  "excluded_repeated_fragment": 162,
+  "excluded_pure_noise_row": 2,
+  "excluded_effective_tokens_lt_min": 7344,
+  "excluded_duplicate_text": 187,
+  "stratum": "失败",
+  "n_shared_stratum": 1568,
+  "n_posts_stratum": 3,
+  "adaptive_lda_k": [
+    5,
+    7,
+    10,
+    12
+  ],
+  "adaptive_bert_kmeans_k": [
+    5,
+    7,
+    10
+  ],
+  "adaptive_hdbscan_mcs": [
+    30,
+    50,
+    80,
+    100,
+    200
+  ],
+  "adaptive_lda_min_df": 5,
+  "adaptive_nmf_min_df": 3
+}
+[LDA k=5] perplexity=212.11 docs=1568
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:547: RuntimeWarning: divide by zero encountered in matmul
+  U = Q @ Uhat
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:547: RuntimeWarning: overflow encountered in matmul
+  U = Q @ Uhat
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:547: RuntimeWarning: invalid value encountered in matmul
+  U = Q @ Uhat
+[NMF k=5] reconstruction_err=35.2412 docs=1568
+[LDA k=7] perplexity=233.71 docs=1568
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:547: RuntimeWarning: divide by zero encountered in matmul
+  U = Q @ Uhat
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:547: RuntimeWarning: overflow encountered in matmul
+  U = Q @ Uhat
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:547: RuntimeWarning: invalid value encountered in matmul
+  U = Q @ Uhat
+[NMF k=7] reconstruction_err=34.7781 docs=1568
+[LDA k=10] perplexity=234.45 docs=1568
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:547: RuntimeWarning: divide by zero encountered in matmul
+  U = Q @ Uhat
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:547: RuntimeWarning: overflow encountered in matmul
+  U = Q @ Uhat
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:547: RuntimeWarning: invalid value encountered in matmul
+  U = Q @ Uhat
+[NMF k=10] reconstruction_err=34.2074 docs=1568
+[LDA k=12] perplexity=239.58 docs=1568
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:547: RuntimeWarning: divide by zero encountered in matmul
+  U = Q @ Uhat
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:547: RuntimeWarning: overflow encountered in matmul
+  U = Q @ Uhat
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:547: RuntimeWarning: invalid value encountered in matmul
+  U = Q @ Uhat
+[NMF k=12] reconstruction_err=33.8861 docs=1568
+[BERTopic] importing optional deps…
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+[BERTopic] SentenceTransformer('BAAI/bge-base-zh-v1.5', device='cpu') …
+[BERTopic] 已从本地 HuggingFace 缓存加载嵌入模型。
+[BERTopic] encoding 1568 docs …
+Batches:   0%|          | 0/25 [00:00<?, ?it/s]Batches:   4%|▍         | 1/25 [00:06<02:29,  6.21s/it]Batches:   8%|▊         | 2/25 [00:06<01:06,  2.88s/it]Batches:  12%|█▏        | 3/25 [00:07<00:38,  1.76s/it]Batches:  16%|█▌        | 4/25 [00:07<00:25,  1.21s/it]Batches:  20%|██        | 5/25 [00:07<00:17,  1.13it/s]Batches:  24%|██▍       | 6/25 [00:08<00:13,  1.45it/s]Batches:  28%|██▊       | 7/25 [00:08<00:09,  1.81it/s]Batches:  32%|███▏      | 8/25 [00:08<00:07,  2.17it/s]Batches:  36%|███▌      | 9/25 [00:08<00:06,  2.55it/s]Batches:  40%|████      | 10/25 [00:09<00:05,  2.92it/s]Batches:  44%|████▍     | 11/25 [00:09<00:04,  3.28it/s]Batches:  48%|████▊     | 12/25 [00:09<00:03,  3.63it/s]Batches:  52%|█████▏    | 13/25 [00:09<00:03,  3.95it/s]Batches:  56%|█████▌    | 14/25 [00:09<00:02,  4.31it/s]Batches:  60%|██████    | 15/25 [00:10<00:02,  4.61it/s]Batches:  64%|██████▍   | 16/25 [00:10<00:01,  4.84it/s]Batches:  68%|██████▊   | 17/25 [00:10<00:01,  5.12it/s]Batches:  72%|███████▏  | 18/25 [00:10<00:01,  5.44it/s]Batches:  76%|███████▌  | 19/25 [00:10<00:01,  5.66it/s]Batches:  80%|████████  | 20/25 [00:10<00:00,  5.97it/s]Batches:  84%|████████▍ | 21/25 [00:11<00:00,  6.35it/s]Batches:  88%|████████▊ | 22/25 [00:11<00:00,  6.80it/s]Batches:  92%|█████████▏| 23/25 [00:11<00:00,  7.32it/s]Batches:  96%|█████████▌| 24/25 [00:11<00:00,  7.85it/s]Batches: 100%|██████████| 25/25 [00:11<00:00,  2.16it/s]
+[BERTopic] saved /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-10_topic_stratified_robot_status/strata/失败/embeddings.npy
+[BERTopic] UMAP fit_transform once (n_neighbors=15, n_docs=1568)…
+[BERTopic] umap_reduced.npy saved, shape=(1568, 5)
+[BERTopic] representation_model = [KeyBERTInspired, MMR(div=0.3)]
+2026-05-10 23:18:22,732 - BERTopic - Dimensionality - Fitting the dimensionality reduction algorithm
+2026-05-10 23:18:22,732 - BERTopic - Dimensionality - Completed ✓
+2026-05-10 23:18:22,732 - BERTopic - Cluster - Start clustering the reduced embeddings
+2026-05-10 23:18:22,752 - BERTopic - Cluster - Completed ✓
+2026-05-10 23:18:22,753 - BERTopic - Representation - Fine-tuning topics using representation models.
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+2026-05-10 23:18:23,498 - BERTopic - Representation - Completed ✓
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+2026-05-10 23:18:23,864 - BERTopic - WARNING: You are saving a BERTopic model without explicitly defining an embedding model.If you are using a sentence-transformers model or a HuggingFace model supportedby sentence-transformers, please save the model by using a pointer towards that model.For example, `save_embedding_model='sentence-transformers/all-mpnet-base-v2'`
+[BERTopic HDBSCAN mcs=30] model saved to /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-10_topic_stratified_robot_status/strata/失败/bert_hdbscan_mcs30/model (safetensors).
+[BERTopic HDBSCAN mcs=30] topics~=2 outlier_rate=0.052 sil=0.244 dbcv=0.529 mean_ari=1.000
+2026-05-10 23:18:23,868 - BERTopic - Dimensionality - Fitting the dimensionality reduction algorithm
+2026-05-10 23:18:23,868 - BERTopic - Dimensionality - Completed ✓
+2026-05-10 23:18:23,868 - BERTopic - Cluster - Start clustering the reduced embeddings
+2026-05-10 23:18:23,892 - BERTopic - Cluster - Completed ✓
+2026-05-10 23:18:23,893 - BERTopic - Representation - Fine-tuning topics using representation models.
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+2026-05-10 23:18:24,602 - BERTopic - Representation - Completed ✓
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+2026-05-10 23:18:25,006 - BERTopic - WARNING: You are saving a BERTopic model without explicitly defining an embedding model.If you are using a sentence-transformers model or a HuggingFace model supportedby sentence-transformers, please save the model by using a pointer towards that model.For example, `save_embedding_model='sentence-transformers/all-mpnet-base-v2'`
+[BERTopic HDBSCAN mcs=50] model saved to /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-10_topic_stratified_robot_status/strata/失败/bert_hdbscan_mcs50/model (safetensors).
+[BERTopic HDBSCAN mcs=50] topics~=2 outlier_rate=0.148 sil=0.249 dbcv=0.485 mean_ari=1.000
+2026-05-10 23:18:25,009 - BERTopic - Dimensionality - Fitting the dimensionality reduction algorithm
+2026-05-10 23:18:25,009 - BERTopic - Dimensionality - Completed ✓
+2026-05-10 23:18:25,009 - BERTopic - Cluster - Start clustering the reduced embeddings
+2026-05-10 23:18:25,040 - BERTopic - Cluster - Completed ✓
+2026-05-10 23:18:25,041 - BERTopic - Representation - Fine-tuning topics using representation models.
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+2026-05-10 23:18:25,750 - BERTopic - Representation - Completed ✓
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+2026-05-10 23:18:26,196 - BERTopic - WARNING: You are saving a BERTopic model without explicitly defining an embedding model.If you are using a sentence-transformers model or a HuggingFace model supportedby sentence-transformers, please save the model by using a pointer towards that model.For example, `save_embedding_model='sentence-transformers/all-mpnet-base-v2'`
+[BERTopic HDBSCAN mcs=80] model saved to /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-10_topic_stratified_robot_status/strata/失败/bert_hdbscan_mcs80/model (safetensors).
+[BERTopic HDBSCAN mcs=80] topics~=2 outlier_rate=0.232 sil=0.260 dbcv=0.449 mean_ari=1.000
+2026-05-10 23:18:26,199 - BERTopic - Dimensionality - Fitting the dimensionality reduction algorithm
+2026-05-10 23:18:26,199 - BERTopic - Dimensionality - Completed ✓
+2026-05-10 23:18:26,199 - BERTopic - Cluster - Start clustering the reduced embeddings
+2026-05-10 23:18:26,233 - BERTopic - Cluster - Completed ✓
+2026-05-10 23:18:26,233 - BERTopic - Representation - Fine-tuning topics using representation models.
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+2026-05-10 23:18:28,483 - BERTopic - Representation - Completed ✓
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+2026-05-10 23:18:29,005 - BERTopic - WARNING: You are saving a BERTopic model without explicitly defining an embedding model.If you are using a sentence-transformers model or a HuggingFace model supportedby sentence-transformers, please save the model by using a pointer towards that model.For example, `save_embedding_model='sentence-transformers/all-mpnet-base-v2'`
+[BERTopic HDBSCAN mcs=100] model saved to /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-10_topic_stratified_robot_status/strata/失败/bert_hdbscan_mcs100/model (safetensors).
+[BERTopic HDBSCAN mcs=100] topics~=2 outlier_rate=0.632 sil=0.668 dbcv=0.107 mean_ari=1.000
+2026-05-10 23:18:29,008 - BERTopic - Dimensionality - Fitting the dimensionality reduction algorithm
+2026-05-10 23:18:29,008 - BERTopic - Dimensionality - Completed ✓
+2026-05-10 23:18:29,008 - BERTopic - Cluster - Start clustering the reduced embeddings
+2026-05-10 23:18:29,062 - BERTopic - Cluster - Completed ✓
+2026-05-10 23:18:29,063 - BERTopic - Representation - Fine-tuning topics using representation models.
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+2026-05-10 23:18:29,411 - BERTopic - Representation - Completed ✓
+[WARN] reduce_outliers failed: Found array with 0 sample(s) (shape=(0, 2916)) while a minimum of 1 is required by check_pairwise_arrays.
+2026-05-10 23:18:29,961 - BERTopic - WARNING: You are saving a BERTopic model without explicitly defining an embedding model.If you are using a sentence-transformers model or a HuggingFace model supportedby sentence-transformers, please save the model by using a pointer towards that model.For example, `save_embedding_model='sentence-transformers/all-mpnet-base-v2'`
+[BERTopic HDBSCAN mcs=200] model saved to /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-10_topic_stratified_robot_status/strata/失败/bert_hdbscan_mcs200/model (safetensors).
+[BERTopic HDBSCAN mcs=200] topics~=0 outlier_rate=1.000 sil=nan dbcv=0.000 mean_ari=1.000
+2026-05-10 23:18:29,964 - BERTopic - Dimensionality - Fitting the dimensionality reduction algorithm
+2026-05-10 23:18:29,964 - BERTopic - Dimensionality - Completed ✓
+2026-05-10 23:18:29,964 - BERTopic - Cluster - Start clustering the reduced embeddings
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+2026-05-10 23:18:30,118 - BERTopic - Cluster - Completed ✓
+2026-05-10 23:18:30,119 - BERTopic - Representation - Fine-tuning topics using representation models.
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+2026-05-10 23:18:31,604 - BERTopic - Representation - Completed ✓
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+2026-05-10 23:18:32,015 - BERTopic - WARNING: You are saving a BERTopic model without explicitly defining an embedding model.If you are using a sentence-transformers model or a HuggingFace model supportedby sentence-transformers, please save the model by using a pointer towards that model.For example, `save_embedding_model='sentence-transformers/all-mpnet-base-v2'`
+[BERTopic KMeans k=5] model saved to /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-10_topic_stratified_robot_status/strata/失败/bert_kmeans_k5/model (safetensors).
+[BERTopic KMeans k=5] sil=0.403 mean_ari=1.000 largest_share=0.270 model_saved=True
+2026-05-10 23:18:32,019 - BERTopic - Dimensionality - Fitting the dimensionality reduction algorithm
+2026-05-10 23:18:32,019 - BERTopic - Dimensionality - Completed ✓
+2026-05-10 23:18:32,019 - BERTopic - Cluster - Start clustering the reduced embeddings
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+2026-05-10 23:18:32,044 - BERTopic - Cluster - Completed ✓
+2026-05-10 23:18:32,046 - BERTopic - Representation - Fine-tuning topics using representation models.
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+2026-05-10 23:18:36,993 - BERTopic - Representation - Completed ✓
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+2026-05-10 23:18:37,509 - BERTopic - WARNING: You are saving a BERTopic model without explicitly defining an embedding model.If you are using a sentence-transformers model or a HuggingFace model supportedby sentence-transformers, please save the model by using a pointer towards that model.For example, `save_embedding_model='sentence-transformers/all-mpnet-base-v2'`
+[BERTopic KMeans k=7] model saved to /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-10_topic_stratified_robot_status/strata/失败/bert_kmeans_k7/model (safetensors).
+[BERTopic KMeans k=7] sil=0.400 mean_ari=0.994 largest_share=0.223 model_saved=True
+2026-05-10 23:18:37,513 - BERTopic - Dimensionality - Fitting the dimensionality reduction algorithm
+2026-05-10 23:18:37,513 - BERTopic - Dimensionality - Completed ✓
+2026-05-10 23:18:37,513 - BERTopic - Cluster - Start clustering the reduced embeddings
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+2026-05-10 23:18:37,554 - BERTopic - Cluster - Completed ✓
+2026-05-10 23:18:37,555 - BERTopic - Representation - Fine-tuning topics using representation models.
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+2026-05-10 23:18:42,505 - BERTopic - Representation - Completed ✓
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+2026-05-10 23:18:42,987 - BERTopic - WARNING: You are saving a BERTopic model without explicitly defining an embedding model.If you are using a sentence-transformers model or a HuggingFace model supportedby sentence-transformers, please save the model by using a pointer towards that model.For example, `save_embedding_model='sentence-transformers/all-mpnet-base-v2'`
+[BERTopic KMeans k=10] model saved to /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-10_topic_stratified_robot_status/strata/失败/bert_kmeans_k10/model (safetensors).
+[BERTopic KMeans k=10] sil=0.409 mean_ari=0.838 largest_share=0.192 model_saved=True
+=== Topic modeling stratum=弱势 ===
+{
+  "n_raw": 31245,
+  "n_shared": 18832,
+  "coverage": 0.6027204352696431,
+  "n_missing_robot_status_group": 2138,
+  "excluded_empty_or_too_short": 0,
+  "excluded_pure_emoji": 0,
+  "excluded_only_at_mentions": 4718,
+  "excluded_repeated_fragment": 162,
+  "excluded_pure_noise_row": 2,
+  "excluded_effective_tokens_lt_min": 7344,
+  "excluded_duplicate_text": 187,
+  "stratum": "弱势",
+  "n_shared_stratum": 1490,
+  "n_posts_stratum": 4,
+  "adaptive_lda_k": [
+    5,
+    7,
+    10,
+    12
+  ],
+  "adaptive_bert_kmeans_k": [
+    5,
+    7,
+    10
+  ],
+  "adaptive_hdbscan_mcs": [
+    30,
+    50,
+    80,
+    100,
+    200
+  ],
+  "adaptive_lda_min_df": 5,
+  "adaptive_nmf_min_df": 3
+}
+[LDA k=5] perplexity=252.59 docs=1490
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:547: RuntimeWarning: divide by zero encountered in matmul
+  U = Q @ Uhat
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:547: RuntimeWarning: overflow encountered in matmul
+  U = Q @ Uhat
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:547: RuntimeWarning: invalid value encountered in matmul
+  U = Q @ Uhat
+[NMF k=5] reconstruction_err=34.4771 docs=1490
+[LDA k=7] perplexity=270.99 docs=1490
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:547: RuntimeWarning: divide by zero encountered in matmul
+  U = Q @ Uhat
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:547: RuntimeWarning: overflow encountered in matmul
+  U = Q @ Uhat
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:547: RuntimeWarning: invalid value encountered in matmul
+  U = Q @ Uhat
+[NMF k=7] reconstruction_err=34.0326 docs=1490
+[LDA k=10] perplexity=273.70 docs=1490
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:547: RuntimeWarning: divide by zero encountered in matmul
+  U = Q @ Uhat
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:547: RuntimeWarning: overflow encountered in matmul
+  U = Q @ Uhat
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:547: RuntimeWarning: invalid value encountered in matmul
+  U = Q @ Uhat
+[NMF k=10] reconstruction_err=33.4442 docs=1490
+[LDA k=12] perplexity=269.21 docs=1490
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:547: RuntimeWarning: divide by zero encountered in matmul
+  U = Q @ Uhat
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:547: RuntimeWarning: overflow encountered in matmul
+  U = Q @ Uhat
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:547: RuntimeWarning: invalid value encountered in matmul
+  U = Q @ Uhat
+[NMF k=12] reconstruction_err=33.0759 docs=1490
+[BERTopic] importing optional deps…
+[BERTopic] SentenceTransformer('BAAI/bge-base-zh-v1.5', device='cpu') …
+[BERTopic] 已从本地 HuggingFace 缓存加载嵌入模型。
+[BERTopic] encoding 1490 docs …
+Batches:   0%|          | 0/24 [00:00<?, ?it/s]Batches:   4%|▍         | 1/24 [00:02<00:54,  2.38s/it]Batches:   8%|▊         | 2/24 [00:02<00:29,  1.32s/it]Batches:  12%|█▎        | 3/24 [00:03<00:19,  1.09it/s]Batches:  17%|█▋        | 4/24 [00:03<00:14,  1.42it/s]Batches:  21%|██        | 5/24 [00:04<00:10,  1.75it/s]Batches:  25%|██▌       | 6/24 [00:04<00:08,  2.10it/s]Batches:  29%|██▉       | 7/24 [00:04<00:06,  2.43it/s]Batches:  33%|███▎      | 8/24 [00:04<00:05,  2.75it/s]Batches:  38%|███▊      | 9/24 [00:05<00:04,  3.01it/s]Batches:  42%|████▏     | 10/24 [00:05<00:04,  3.30it/s]Batches:  46%|████▌     | 11/24 [00:05<00:03,  3.55it/s]Batches:  50%|█████     | 12/24 [00:05<00:03,  3.84it/s]Batches:  54%|█████▍    | 13/24 [00:06<00:02,  4.15it/s]Batches:  58%|█████▊    | 14/24 [00:06<00:02,  4.46it/s]Batches:  62%|██████▎   | 15/24 [00:06<00:01,  4.74it/s]Batches:  67%|██████▋   | 16/24 [00:06<00:01,  4.95it/s]Batches:  71%|███████   | 17/24 [00:06<00:01,  5.18it/s]Batches:  75%|███████▌  | 18/24 [00:06<00:01,  5.50it/s]Batches:  79%|███████▉  | 19/24 [00:07<00:00,  5.89it/s]Batches:  83%|████████▎ | 20/24 [00:07<00:00,  6.30it/s]Batches:  88%|████████▊ | 21/24 [00:07<00:00,  6.63it/s]Batches:  92%|█████████▏| 22/24 [00:07<00:00,  7.07it/s]Batches: 100%|██████████| 24/24 [00:07<00:00,  9.48it/s]Batches: 100%|██████████| 24/24 [00:07<00:00,  3.15it/s]
+[BERTopic] saved /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-10_topic_stratified_robot_status/strata/弱势/embeddings.npy
+[BERTopic] UMAP fit_transform once (n_neighbors=15, n_docs=1490)…
+[BERTopic] umap_reduced.npy saved, shape=(1490, 5)
+[BERTopic] representation_model = [KeyBERTInspired, MMR(div=0.3)]
+2026-05-10 23:18:58,753 - BERTopic - Dimensionality - Fitting the dimensionality reduction algorithm
+2026-05-10 23:18:58,753 - BERTopic - Dimensionality - Completed ✓
+2026-05-10 23:18:58,753 - BERTopic - Cluster - Start clustering the reduced embeddings
+2026-05-10 23:18:58,771 - BERTopic - Cluster - Completed ✓
+2026-05-10 23:18:58,771 - BERTopic - Representation - Fine-tuning topics using representation models.
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+2026-05-10 23:19:01,415 - BERTopic - Representation - Completed ✓
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+2026-05-10 23:19:01,929 - BERTopic - WARNING: You are saving a BERTopic model without explicitly defining an embedding model.If you are using a sentence-transformers model or a HuggingFace model supportedby sentence-transformers, please save the model by using a pointer towards that model.For example, `save_embedding_model='sentence-transformers/all-mpnet-base-v2'`
+[BERTopic HDBSCAN mcs=30] model saved to /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-10_topic_stratified_robot_status/strata/弱势/bert_hdbscan_mcs30/model (safetensors).
+[BERTopic HDBSCAN mcs=30] topics~=13 outlier_rate=0.310 sil=0.657 dbcv=0.387 mean_ari=1.000
+2026-05-10 23:19:01,933 - BERTopic - Dimensionality - Fitting the dimensionality reduction algorithm
+2026-05-10 23:19:01,933 - BERTopic - Dimensionality - Completed ✓
+2026-05-10 23:19:01,933 - BERTopic - Cluster - Start clustering the reduced embeddings
+2026-05-10 23:19:01,954 - BERTopic - Cluster - Completed ✓
+2026-05-10 23:19:01,955 - BERTopic - Representation - Fine-tuning topics using representation models.
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+2026-05-10 23:19:02,791 - BERTopic - Representation - Completed ✓
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+2026-05-10 23:19:03,204 - BERTopic - WARNING: You are saving a BERTopic model without explicitly defining an embedding model.If you are using a sentence-transformers model or a HuggingFace model supportedby sentence-transformers, please save the model by using a pointer towards that model.For example, `save_embedding_model='sentence-transformers/all-mpnet-base-v2'`
+[BERTopic HDBSCAN mcs=50] model saved to /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-10_topic_stratified_robot_status/strata/弱势/bert_hdbscan_mcs50/model (safetensors).
+[BERTopic HDBSCAN mcs=50] topics~=2 outlier_rate=0.188 sil=0.463 dbcv=0.382 mean_ari=1.000
+2026-05-10 23:19:03,207 - BERTopic - Dimensionality - Fitting the dimensionality reduction algorithm
+2026-05-10 23:19:03,207 - BERTopic - Dimensionality - Completed ✓
+2026-05-10 23:19:03,207 - BERTopic - Cluster - Start clustering the reduced embeddings
+2026-05-10 23:19:03,235 - BERTopic - Cluster - Completed ✓
+2026-05-10 23:19:03,236 - BERTopic - Representation - Fine-tuning topics using representation models.
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+2026-05-10 23:19:04,124 - BERTopic - Representation - Completed ✓
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+2026-05-10 23:19:04,609 - BERTopic - WARNING: You are saving a BERTopic model without explicitly defining an embedding model.If you are using a sentence-transformers model or a HuggingFace model supportedby sentence-transformers, please save the model by using a pointer towards that model.For example, `save_embedding_model='sentence-transformers/all-mpnet-base-v2'`
+[BERTopic HDBSCAN mcs=80] model saved to /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-10_topic_stratified_robot_status/strata/弱势/bert_hdbscan_mcs80/model (safetensors).
+[BERTopic HDBSCAN mcs=80] topics~=3 outlier_rate=0.427 sil=0.586 dbcv=0.221 mean_ari=1.000
+2026-05-10 23:19:04,613 - BERTopic - Dimensionality - Fitting the dimensionality reduction algorithm
+2026-05-10 23:19:04,614 - BERTopic - Dimensionality - Completed ✓
+2026-05-10 23:19:04,614 - BERTopic - Cluster - Start clustering the reduced embeddings
+2026-05-10 23:19:04,646 - BERTopic - Cluster - Completed ✓
+2026-05-10 23:19:04,647 - BERTopic - Representation - Fine-tuning topics using representation models.
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+2026-05-10 23:19:05,492 - BERTopic - Representation - Completed ✓
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+2026-05-10 23:19:05,947 - BERTopic - WARNING: You are saving a BERTopic model without explicitly defining an embedding model.If you are using a sentence-transformers model or a HuggingFace model supportedby sentence-transformers, please save the model by using a pointer towards that model.For example, `save_embedding_model='sentence-transformers/all-mpnet-base-v2'`
+[BERTopic HDBSCAN mcs=100] model saved to /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-10_topic_stratified_robot_status/strata/弱势/bert_hdbscan_mcs100/model (safetensors).
+[BERTopic HDBSCAN mcs=100] topics~=2 outlier_rate=0.332 sil=0.548 dbcv=0.385 mean_ari=1.000
+2026-05-10 23:19:05,951 - BERTopic - Dimensionality - Fitting the dimensionality reduction algorithm
+2026-05-10 23:19:05,951 - BERTopic - Dimensionality - Completed ✓
+2026-05-10 23:19:05,951 - BERTopic - Cluster - Start clustering the reduced embeddings
+2026-05-10 23:19:06,000 - BERTopic - Cluster - Completed ✓
+2026-05-10 23:19:06,001 - BERTopic - Representation - Fine-tuning topics using representation models.
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+2026-05-10 23:19:06,840 - BERTopic - Representation - Completed ✓
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+2026-05-10 23:19:07,343 - BERTopic - WARNING: You are saving a BERTopic model without explicitly defining an embedding model.If you are using a sentence-transformers model or a HuggingFace model supportedby sentence-transformers, please save the model by using a pointer towards that model.For example, `save_embedding_model='sentence-transformers/all-mpnet-base-v2'`
+[BERTopic HDBSCAN mcs=200] model saved to /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-10_topic_stratified_robot_status/strata/弱势/bert_hdbscan_mcs200/model (safetensors).
+[BERTopic HDBSCAN mcs=200] topics~=2 outlier_rate=0.444 sil=0.606 dbcv=0.268 mean_ari=1.000
+2026-05-10 23:19:07,346 - BERTopic - Dimensionality - Fitting the dimensionality reduction algorithm
+2026-05-10 23:19:07,346 - BERTopic - Dimensionality - Completed ✓
+2026-05-10 23:19:07,346 - BERTopic - Cluster - Start clustering the reduced embeddings
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+2026-05-10 23:19:07,366 - BERTopic - Cluster - Completed ✓
+2026-05-10 23:19:07,367 - BERTopic - Representation - Fine-tuning topics using representation models.
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+2026-05-10 23:19:08,638 - BERTopic - Representation - Completed ✓
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+2026-05-10 23:19:08,992 - BERTopic - WARNING: You are saving a BERTopic model without explicitly defining an embedding model.If you are using a sentence-transformers model or a HuggingFace model supportedby sentence-transformers, please save the model by using a pointer towards that model.For example, `save_embedding_model='sentence-transformers/all-mpnet-base-v2'`
+[BERTopic KMeans k=5] model saved to /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-10_topic_stratified_robot_status/strata/弱势/bert_kmeans_k5/model (safetensors).
+[BERTopic KMeans k=5] sil=0.422 mean_ari=0.998 largest_share=0.348 model_saved=True
+2026-05-10 23:19:08,995 - BERTopic - Dimensionality - Fitting the dimensionality reduction algorithm
+2026-05-10 23:19:08,995 - BERTopic - Dimensionality - Completed ✓
+2026-05-10 23:19:08,995 - BERTopic - Cluster - Start clustering the reduced embeddings
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+2026-05-10 23:19:09,018 - BERTopic - Cluster - Completed ✓
+2026-05-10 23:19:09,019 - BERTopic - Representation - Fine-tuning topics using representation models.
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+2026-05-10 23:19:10,711 - BERTopic - Representation - Completed ✓
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+2026-05-10 23:19:11,122 - BERTopic - WARNING: You are saving a BERTopic model without explicitly defining an embedding model.If you are using a sentence-transformers model or a HuggingFace model supportedby sentence-transformers, please save the model by using a pointer towards that model.For example, `save_embedding_model='sentence-transformers/all-mpnet-base-v2'`
+[BERTopic KMeans k=7] model saved to /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-10_topic_stratified_robot_status/strata/弱势/bert_kmeans_k7/model (safetensors).
+[BERTopic KMeans k=7] sil=0.450 mean_ari=1.000 largest_share=0.216 model_saved=True
+2026-05-10 23:19:11,125 - BERTopic - Dimensionality - Fitting the dimensionality reduction algorithm
+2026-05-10 23:19:11,125 - BERTopic - Dimensionality - Completed ✓
+2026-05-10 23:19:11,125 - BERTopic - Cluster - Start clustering the reduced embeddings
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+2026-05-10 23:19:11,150 - BERTopic - Cluster - Completed ✓
+2026-05-10 23:19:11,151 - BERTopic - Representation - Fine-tuning topics using representation models.
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+2026-05-10 23:19:13,677 - BERTopic - Representation - Completed ✓
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+2026-05-10 23:19:14,120 - BERTopic - WARNING: You are saving a BERTopic model without explicitly defining an embedding model.If you are using a sentence-transformers model or a HuggingFace model supportedby sentence-transformers, please save the model by using a pointer towards that model.For example, `save_embedding_model='sentence-transformers/all-mpnet-base-v2'`
+[BERTopic KMeans k=10] model saved to /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-10_topic_stratified_robot_status/strata/弱势/bert_kmeans_k10/model (safetensors).
+[BERTopic KMeans k=10] sil=0.473 mean_ari=0.881 largest_share=0.189 model_saved=True
+=== Topic modeling stratum=中性 ===
+{
+  "n_raw": 31245,
+  "n_shared": 18832,
+  "coverage": 0.6027204352696431,
+  "n_missing_robot_status_group": 2138,
+  "excluded_empty_or_too_short": 0,
+  "excluded_pure_emoji": 0,
+  "excluded_only_at_mentions": 4718,
+  "excluded_repeated_fragment": 162,
+  "excluded_pure_noise_row": 2,
+  "excluded_effective_tokens_lt_min": 7344,
+  "excluded_duplicate_text": 187,
+  "stratum": "中性",
+  "n_shared_stratum": 1503,
+  "n_posts_stratum": 3,
+  "adaptive_lda_k": [
+    5,
+    7,
+    10,
+    12
+  ],
+  "adaptive_bert_kmeans_k": [
+    5,
+    7,
+    10
+  ],
+  "adaptive_hdbscan_mcs": [
+    30,
+    50,
+    80,
+    100,
+    200
+  ],
+  "adaptive_lda_min_df": 5,
+  "adaptive_nmf_min_df": 3
+}
+[LDA k=5] perplexity=188.32 docs=1503
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:547: RuntimeWarning: divide by zero encountered in matmul
+  U = Q @ Uhat
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:547: RuntimeWarning: overflow encountered in matmul
+  U = Q @ Uhat
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:547: RuntimeWarning: invalid value encountered in matmul
+  U = Q @ Uhat
+[NMF k=5] reconstruction_err=34.3094 docs=1503
+[LDA k=7] perplexity=207.22 docs=1503
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:547: RuntimeWarning: divide by zero encountered in matmul
+  U = Q @ Uhat
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:547: RuntimeWarning: overflow encountered in matmul
+  U = Q @ Uhat
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:547: RuntimeWarning: invalid value encountered in matmul
+  U = Q @ Uhat
+[NMF k=7] reconstruction_err=33.7659 docs=1503
+[LDA k=10] perplexity=202.97 docs=1503
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:547: RuntimeWarning: divide by zero encountered in matmul
+  U = Q @ Uhat
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:547: RuntimeWarning: overflow encountered in matmul
+  U = Q @ Uhat
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:547: RuntimeWarning: invalid value encountered in matmul
+  U = Q @ Uhat
+[NMF k=10] reconstruction_err=32.9711 docs=1503
+[LDA k=12] perplexity=211.37 docs=1503
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:547: RuntimeWarning: divide by zero encountered in matmul
+  U = Q @ Uhat
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:547: RuntimeWarning: overflow encountered in matmul
+  U = Q @ Uhat
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:547: RuntimeWarning: invalid value encountered in matmul
+  U = Q @ Uhat
+[NMF k=12] reconstruction_err=32.5107 docs=1503
+[BERTopic] importing optional deps…
+[BERTopic] SentenceTransformer('BAAI/bge-base-zh-v1.5', device='cpu') …
+[BERTopic] 已从本地 HuggingFace 缓存加载嵌入模型。
+[BERTopic] encoding 1503 docs …
+Batches:   0%|          | 0/24 [00:00<?, ?it/s]Batches:   4%|▍         | 1/24 [00:01<00:43,  1.87s/it]Batches:   8%|▊         | 2/24 [00:02<00:24,  1.09s/it]Batches:  12%|█▎        | 3/24 [00:02<00:16,  1.27it/s]Batches:  17%|█▋        | 4/24 [00:03<00:12,  1.56it/s]Batches:  21%|██        | 5/24 [00:03<00:10,  1.89it/s]Batches:  25%|██▌       | 6/24 [00:03<00:08,  2.20it/s]Batches:  29%|██▉       | 7/24 [00:04<00:06,  2.51it/s]Batches:  33%|███▎      | 8/24 [00:04<00:05,  2.81it/s]Batches:  38%|███▊      | 9/24 [00:04<00:04,  3.09it/s]Batches:  42%|████▏     | 10/24 [00:04<00:04,  3.36it/s]Batches:  46%|████▌     | 11/24 [00:05<00:03,  3.53it/s]Batches:  50%|█████     | 12/24 [00:05<00:03,  3.80it/s]Batches:  54%|█████▍    | 13/24 [00:05<00:02,  4.05it/s]Batches:  58%|█████▊    | 14/24 [00:05<00:02,  4.31it/s]Batches:  62%|██████▎   | 15/24 [00:05<00:01,  4.60it/s]Batches:  67%|██████▋   | 16/24 [00:06<00:01,  4.82it/s]Batches:  71%|███████   | 17/24 [00:06<00:01,  5.12it/s]Batches:  75%|███████▌  | 18/24 [00:06<00:01,  5.47it/s]Batches:  79%|███████▉  | 19/24 [00:06<00:00,  5.72it/s]Batches:  83%|████████▎ | 20/24 [00:06<00:00,  6.05it/s]Batches:  88%|████████▊ | 21/24 [00:06<00:00,  6.43it/s]Batches:  92%|█████████▏| 22/24 [00:07<00:00,  6.87it/s]Batches:  96%|█████████▌| 23/24 [00:07<00:00,  7.42it/s]Batches: 100%|██████████| 24/24 [00:07<00:00,  3.33it/s]
+[BERTopic] saved /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-10_topic_stratified_robot_status/strata/中性/embeddings.npy
+[BERTopic] UMAP fit_transform once (n_neighbors=15, n_docs=1503)…
+[BERTopic] umap_reduced.npy saved, shape=(1503, 5)
+[BERTopic] representation_model = [KeyBERTInspired, MMR(div=0.3)]
+2026-05-10 23:19:29,499 - BERTopic - Dimensionality - Fitting the dimensionality reduction algorithm
+2026-05-10 23:19:29,499 - BERTopic - Dimensionality - Completed ✓
+2026-05-10 23:19:29,499 - BERTopic - Cluster - Start clustering the reduced embeddings
+2026-05-10 23:19:29,516 - BERTopic - Cluster - Completed ✓
+2026-05-10 23:19:29,517 - BERTopic - Representation - Fine-tuning topics using representation models.
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+2026-05-10 23:19:30,170 - BERTopic - Representation - Completed ✓
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+2026-05-10 23:19:30,517 - BERTopic - WARNING: You are saving a BERTopic model without explicitly defining an embedding model.If you are using a sentence-transformers model or a HuggingFace model supportedby sentence-transformers, please save the model by using a pointer towards that model.For example, `save_embedding_model='sentence-transformers/all-mpnet-base-v2'`
+[BERTopic HDBSCAN mcs=30] model saved to /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-10_topic_stratified_robot_status/strata/中性/bert_hdbscan_mcs30/model (safetensors).
+[BERTopic HDBSCAN mcs=30] topics~=2 outlier_rate=0.029 sil=0.569 dbcv=0.394 mean_ari=1.000
+2026-05-10 23:19:30,520 - BERTopic - Dimensionality - Fitting the dimensionality reduction algorithm
+2026-05-10 23:19:30,520 - BERTopic - Dimensionality - Completed ✓
+2026-05-10 23:19:30,520 - BERTopic - Cluster - Start clustering the reduced embeddings
+2026-05-10 23:19:30,541 - BERTopic - Cluster - Completed ✓
+2026-05-10 23:19:30,542 - BERTopic - Representation - Fine-tuning topics using representation models.
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+2026-05-10 23:19:31,223 - BERTopic - Representation - Completed ✓
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+2026-05-10 23:19:31,572 - BERTopic - WARNING: You are saving a BERTopic model without explicitly defining an embedding model.If you are using a sentence-transformers model or a HuggingFace model supportedby sentence-transformers, please save the model by using a pointer towards that model.For example, `save_embedding_model='sentence-transformers/all-mpnet-base-v2'`
+[BERTopic HDBSCAN mcs=50] model saved to /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-10_topic_stratified_robot_status/strata/中性/bert_hdbscan_mcs50/model (safetensors).
+[BERTopic HDBSCAN mcs=50] topics~=2 outlier_rate=0.015 sil=0.558 dbcv=0.384 mean_ari=1.000
+2026-05-10 23:19:31,575 - BERTopic - Dimensionality - Fitting the dimensionality reduction algorithm
+2026-05-10 23:19:31,575 - BERTopic - Dimensionality - Completed ✓
+2026-05-10 23:19:31,575 - BERTopic - Cluster - Start clustering the reduced embeddings
+2026-05-10 23:19:31,602 - BERTopic - Cluster - Completed ✓
+2026-05-10 23:19:31,603 - BERTopic - Representation - Fine-tuning topics using representation models.
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+2026-05-10 23:19:32,260 - BERTopic - Representation - Completed ✓
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+2026-05-10 23:19:32,615 - BERTopic - WARNING: You are saving a BERTopic model without explicitly defining an embedding model.If you are using a sentence-transformers model or a HuggingFace model supportedby sentence-transformers, please save the model by using a pointer towards that model.For example, `save_embedding_model='sentence-transformers/all-mpnet-base-v2'`
+[BERTopic HDBSCAN mcs=80] model saved to /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-10_topic_stratified_robot_status/strata/中性/bert_hdbscan_mcs80/model (safetensors).
+[BERTopic HDBSCAN mcs=80] topics~=2 outlier_rate=0.024 sil=0.563 dbcv=0.400 mean_ari=1.000
+2026-05-10 23:19:32,618 - BERTopic - Dimensionality - Fitting the dimensionality reduction algorithm
+2026-05-10 23:19:32,618 - BERTopic - Dimensionality - Completed ✓
+2026-05-10 23:19:32,618 - BERTopic - Cluster - Start clustering the reduced embeddings
+2026-05-10 23:19:32,648 - BERTopic - Cluster - Completed ✓
+2026-05-10 23:19:32,649 - BERTopic - Representation - Fine-tuning topics using representation models.
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+2026-05-10 23:19:33,326 - BERTopic - Representation - Completed ✓
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+2026-05-10 23:19:33,690 - BERTopic - WARNING: You are saving a BERTopic model without explicitly defining an embedding model.If you are using a sentence-transformers model or a HuggingFace model supportedby sentence-transformers, please save the model by using a pointer towards that model.For example, `save_embedding_model='sentence-transformers/all-mpnet-base-v2'`
+[BERTopic HDBSCAN mcs=100] model saved to /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-10_topic_stratified_robot_status/strata/中性/bert_hdbscan_mcs100/model (safetensors).
+[BERTopic HDBSCAN mcs=100] topics~=2 outlier_rate=0.031 sil=0.566 dbcv=0.456 mean_ari=1.000
+2026-05-10 23:19:33,693 - BERTopic - Dimensionality - Fitting the dimensionality reduction algorithm
+2026-05-10 23:19:33,693 - BERTopic - Dimensionality - Completed ✓
+2026-05-10 23:19:33,693 - BERTopic - Cluster - Start clustering the reduced embeddings
+2026-05-10 23:19:33,740 - BERTopic - Cluster - Completed ✓
+2026-05-10 23:19:33,741 - BERTopic - Representation - Fine-tuning topics using representation models.
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+2026-05-10 23:19:34,508 - BERTopic - Representation - Completed ✓
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+2026-05-10 23:19:34,936 - BERTopic - WARNING: You are saving a BERTopic model without explicitly defining an embedding model.If you are using a sentence-transformers model or a HuggingFace model supportedby sentence-transformers, please save the model by using a pointer towards that model.For example, `save_embedding_model='sentence-transformers/all-mpnet-base-v2'`
+[BERTopic HDBSCAN mcs=200] model saved to /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-10_topic_stratified_robot_status/strata/中性/bert_hdbscan_mcs200/model (safetensors).
+[BERTopic HDBSCAN mcs=200] topics~=2 outlier_rate=0.138 sil=0.637 dbcv=0.504 mean_ari=1.000
+2026-05-10 23:19:34,939 - BERTopic - Dimensionality - Fitting the dimensionality reduction algorithm
+2026-05-10 23:19:34,939 - BERTopic - Dimensionality - Completed ✓
+2026-05-10 23:19:34,939 - BERTopic - Cluster - Start clustering the reduced embeddings
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+2026-05-10 23:19:34,961 - BERTopic - Cluster - Completed ✓
+2026-05-10 23:19:34,962 - BERTopic - Representation - Fine-tuning topics using representation models.
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+2026-05-10 23:19:36,094 - BERTopic - Representation - Completed ✓
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+2026-05-10 23:19:36,463 - BERTopic - WARNING: You are saving a BERTopic model without explicitly defining an embedding model.If you are using a sentence-transformers model or a HuggingFace model supportedby sentence-transformers, please save the model by using a pointer towards that model.For example, `save_embedding_model='sentence-transformers/all-mpnet-base-v2'`
+[BERTopic KMeans k=5] model saved to /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-10_topic_stratified_robot_status/strata/中性/bert_kmeans_k5/model (safetensors).
+[BERTopic KMeans k=5] sil=0.425 mean_ari=1.000 largest_share=0.257 model_saved=True
+2026-05-10 23:19:36,466 - BERTopic - Dimensionality - Fitting the dimensionality reduction algorithm
+2026-05-10 23:19:36,466 - BERTopic - Dimensionality - Completed ✓
+2026-05-10 23:19:36,466 - BERTopic - Cluster - Start clustering the reduced embeddings
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+2026-05-10 23:19:36,491 - BERTopic - Cluster - Completed ✓
+2026-05-10 23:19:36,492 - BERTopic - Representation - Fine-tuning topics using representation models.
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+2026-05-10 23:19:38,017 - BERTopic - Representation - Completed ✓
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+2026-05-10 23:19:38,441 - BERTopic - WARNING: You are saving a BERTopic model without explicitly defining an embedding model.If you are using a sentence-transformers model or a HuggingFace model supportedby sentence-transformers, please save the model by using a pointer towards that model.For example, `save_embedding_model='sentence-transformers/all-mpnet-base-v2'`
+[BERTopic KMeans k=7] model saved to /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-10_topic_stratified_robot_status/strata/中性/bert_kmeans_k7/model (safetensors).
+[BERTopic KMeans k=7] sil=0.363 mean_ari=0.759 largest_share=0.239 model_saved=True
+2026-05-10 23:19:38,446 - BERTopic - Dimensionality - Fitting the dimensionality reduction algorithm
+2026-05-10 23:19:38,446 - BERTopic - Dimensionality - Completed ✓
+2026-05-10 23:19:38,446 - BERTopic - Cluster - Start clustering the reduced embeddings
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+2026-05-10 23:19:38,477 - BERTopic - Cluster - Completed ✓
+2026-05-10 23:19:38,478 - BERTopic - Representation - Fine-tuning topics using representation models.
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+2026-05-10 23:19:40,570 - BERTopic - Representation - Completed ✓
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+2026-05-10 23:19:41,023 - BERTopic - WARNING: You are saving a BERTopic model without explicitly defining an embedding model.If you are using a sentence-transformers model or a HuggingFace model supportedby sentence-transformers, please save the model by using a pointer towards that model.For example, `save_embedding_model='sentence-transformers/all-mpnet-base-v2'`
+[BERTopic KMeans k=10] model saved to /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-10_topic_stratified_robot_status/strata/中性/bert_kmeans_k10/model (safetensors).
+[BERTopic KMeans k=10] sil=0.396 mean_ari=0.889 largest_share=0.196 model_saved=True
+=== Topic modeling stratum=强势成功 ===
+{
+  "n_raw": 31245,
+  "n_shared": 18832,
+  "coverage": 0.6027204352696431,
+  "n_missing_robot_status_group": 2138,
+  "excluded_empty_or_too_short": 0,
+  "excluded_pure_emoji": 0,
+  "excluded_only_at_mentions": 4718,
+  "excluded_repeated_fragment": 162,
+  "excluded_pure_noise_row": 2,
+  "excluded_effective_tokens_lt_min": 7344,
+  "excluded_duplicate_text": 187,
+  "stratum": "强势成功",
+  "n_shared_stratum": 12133,
+  "n_posts_stratum": 5,
+  "adaptive_lda_k": [
+    5,
+    7,
+    10,
+    12
+  ],
+  "adaptive_bert_kmeans_k": [
+    5,
+    7,
+    10
+  ],
+  "adaptive_hdbscan_mcs": [
+    30,
+    50,
+    80,
+    100,
+    200
+  ],
+  "adaptive_lda_min_df": 5,
+  "adaptive_nmf_min_df": 3
+}
+[LDA k=5] perplexity=1030.20 docs=12133
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:547: RuntimeWarning: divide by zero encountered in matmul
+  U = Q @ Uhat
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:547: RuntimeWarning: overflow encountered in matmul
+  U = Q @ Uhat
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:547: RuntimeWarning: invalid value encountered in matmul
+  U = Q @ Uhat
+[NMF k=5] reconstruction_err=106.3648 docs=12133
+[LDA k=7] perplexity=1089.59 docs=12133
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:547: RuntimeWarning: divide by zero encountered in matmul
+  U = Q @ Uhat
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:547: RuntimeWarning: overflow encountered in matmul
+  U = Q @ Uhat
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:547: RuntimeWarning: invalid value encountered in matmul
+  U = Q @ Uhat
+[NMF k=7] reconstruction_err=105.6872 docs=12133
+[LDA k=10] perplexity=1119.88 docs=12133
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:547: RuntimeWarning: divide by zero encountered in matmul
+  U = Q @ Uhat
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:547: RuntimeWarning: overflow encountered in matmul
+  U = Q @ Uhat
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:547: RuntimeWarning: invalid value encountered in matmul
+  U = Q @ Uhat
+[NMF k=10] reconstruction_err=104.8161 docs=12133
+[LDA k=12] perplexity=1156.62 docs=12133
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:547: RuntimeWarning: divide by zero encountered in matmul
+  U = Q @ Uhat
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:547: RuntimeWarning: overflow encountered in matmul
+  U = Q @ Uhat
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:547: RuntimeWarning: invalid value encountered in matmul
+  U = Q @ Uhat
+[NMF k=12] reconstruction_err=104.3082 docs=12133
+[BERTopic] importing optional deps…
+[BERTopic] SentenceTransformer('BAAI/bge-base-zh-v1.5', device='cpu') …
+[BERTopic] 已从本地 HuggingFace 缓存加载嵌入模型。
+[BERTopic] encoding 12133 docs …
+Batches:   0%|          | 0/190 [00:00<?, ?it/s]Batches:   1%|          | 1/190 [00:06<20:36,  6.54s/it]Batches:   1%|          | 2/190 [00:07<10:52,  3.47s/it]Batches:   2%|▏         | 3/190 [00:08<07:21,  2.36s/it]Batches:   2%|▏         | 4/190 [00:09<05:31,  1.78s/it]Batches:   3%|▎         | 5/190 [00:10<04:25,  1.44s/it]Batches:   3%|▎         | 6/190 [00:11<03:42,  1.21s/it]Batches:   4%|▎         | 7/190 [00:12<03:10,  1.04s/it]Batches:   4%|▍         | 8/190 [00:12<02:48,  1.08it/s]Batches:   5%|▍         | 9/190 [00:13<02:33,  1.18it/s]Batches:   5%|▌         | 10/190 [00:14<02:19,  1.29it/s]Batches:   6%|▌         | 11/190 [00:14<02:08,  1.39it/s]Batches:   6%|▋         | 12/190 [00:15<01:59,  1.49it/s]Batches:   7%|▋         | 13/190 [00:15<01:52,  1.58it/s]Batches:   7%|▋         | 14/190 [00:16<01:46,  1.65it/s]Batches:   8%|▊         | 15/190 [00:16<01:41,  1.72it/s]Batches:   8%|▊         | 16/190 [00:17<01:37,  1.79it/s]Batches:   9%|▉         | 17/190 [00:17<01:32,  1.86it/s]Batches:   9%|▉         | 18/190 [00:18<01:29,  1.92it/s]Batches:  10%|█         | 19/190 [00:18<01:26,  1.98it/s]Batches:  11%|█         | 20/190 [00:19<01:23,  2.04it/s]Batches:  11%|█         | 21/190 [00:19<01:20,  2.09it/s]Batches:  12%|█▏        | 22/190 [00:20<01:18,  2.14it/s]Batches:  12%|█▏        | 23/190 [00:20<01:16,  2.18it/s]Batches:  13%|█▎        | 24/190 [00:21<01:17,  2.16it/s]Batches:  13%|█▎        | 25/190 [00:21<01:15,  2.20it/s]Batches:  14%|█▎        | 26/190 [00:21<01:12,  2.26it/s]Batches:  14%|█▍        | 27/190 [00:22<01:10,  2.30it/s]Batches:  15%|█▍        | 28/190 [00:22<01:18,  2.08it/s]Batches:  15%|█▌        | 29/190 [00:23<01:15,  2.13it/s]Batches:  16%|█▌        | 30/190 [00:23<01:13,  2.17it/s]Batches:  16%|█▋        | 31/190 [00:24<01:09,  2.28it/s]Batches:  17%|█▋        | 32/190 [00:24<01:08,  2.32it/s]Batches:  17%|█▋        | 33/190 [00:24<01:04,  2.43it/s]Batches:  18%|█▊        | 34/190 [00:25<01:02,  2.51it/s]Batches:  18%|█▊        | 35/190 [00:25<01:00,  2.56it/s]Batches:  19%|█▉        | 36/190 [00:26<00:58,  2.63it/s]Batches:  19%|█▉        | 37/190 [00:26<00:59,  2.59it/s]Batches:  20%|██        | 38/190 [00:26<00:56,  2.67it/s]Batches:  21%|██        | 39/190 [00:27<00:55,  2.71it/s]Batches:  21%|██        | 40/190 [00:27<00:58,  2.57it/s]Batches:  22%|██▏       | 41/190 [00:27<00:55,  2.68it/s]Batches:  22%|██▏       | 42/190 [00:28<00:53,  2.76it/s]Batches:  23%|██▎       | 43/190 [00:28<00:52,  2.83it/s]Batches:  23%|██▎       | 44/190 [00:28<00:50,  2.91it/s]Batches:  24%|██▎       | 45/190 [00:29<00:49,  2.93it/s]Batches:  24%|██▍       | 46/190 [00:29<00:49,  2.93it/s]Batches:  25%|██▍       | 47/190 [00:29<00:48,  2.97it/s]Batches:  25%|██▌       | 48/190 [00:30<00:46,  3.04it/s]Batches:  26%|██▌       | 49/190 [00:30<00:45,  3.09it/s]Batches:  26%|██▋       | 50/190 [00:30<00:44,  3.13it/s]Batches:  27%|██▋       | 51/190 [00:31<00:43,  3.19it/s]Batches:  27%|██▋       | 52/190 [00:31<00:42,  3.24it/s]Batches:  28%|██▊       | 53/190 [00:31<00:42,  3.26it/s]Batches:  28%|██▊       | 54/190 [00:32<00:41,  3.28it/s]Batches:  29%|██▉       | 55/190 [00:32<00:40,  3.31it/s]Batches:  29%|██▉       | 56/190 [00:32<00:39,  3.35it/s]Batches:  30%|███       | 57/190 [00:32<00:41,  3.21it/s]Batches:  31%|███       | 58/190 [00:33<00:40,  3.29it/s]Batches:  31%|███       | 59/190 [00:33<00:38,  3.38it/s]Batches:  32%|███▏      | 60/190 [00:33<00:37,  3.45it/s]Batches:  32%|███▏      | 61/190 [00:34<00:36,  3.50it/s]Batches:  33%|███▎      | 62/190 [00:34<00:36,  3.54it/s]Batches:  33%|███▎      | 63/190 [00:34<00:35,  3.57it/s]Batches:  34%|███▎      | 64/190 [00:34<00:34,  3.64it/s]Batches:  34%|███▍      | 65/190 [00:35<00:33,  3.68it/s]Batches:  35%|███▍      | 66/190 [00:35<00:33,  3.72it/s]Batches:  35%|███▌      | 67/190 [00:35<00:32,  3.74it/s]Batches:  36%|███▌      | 68/190 [00:35<00:32,  3.76it/s]Batches:  36%|███▋      | 69/190 [00:36<00:31,  3.82it/s]Batches:  37%|███▋      | 70/190 [00:36<00:31,  3.87it/s]Batches:  37%|███▋      | 71/190 [00:36<00:30,  3.88it/s]Batches:  38%|███▊      | 72/190 [00:36<00:30,  3.91it/s]Batches:  38%|███▊      | 73/190 [00:37<00:29,  3.93it/s]Batches:  39%|███▉      | 74/190 [00:37<00:29,  4.00it/s]Batches:  39%|███▉      | 75/190 [00:37<00:29,  3.96it/s]Batches:  40%|████      | 76/190 [00:37<00:28,  4.01it/s]Batches:  41%|████      | 77/190 [00:38<00:28,  4.03it/s]Batches:  41%|████      | 78/190 [00:38<00:27,  4.06it/s]Batches:  42%|████▏     | 79/190 [00:38<00:29,  3.82it/s]Batches:  42%|████▏     | 80/190 [00:38<00:28,  3.90it/s]Batches:  43%|████▎     | 81/190 [00:39<00:27,  4.02it/s]Batches:  43%|████▎     | 82/190 [00:39<00:26,  4.11it/s]Batches:  44%|████▎     | 83/190 [00:39<00:25,  4.17it/s]Batches:  44%|████▍     | 84/190 [00:39<00:25,  4.21it/s]Batches:  45%|████▍     | 85/190 [00:40<00:24,  4.25it/s]Batches:  45%|████▌     | 86/190 [00:40<00:24,  4.27it/s]Batches:  46%|████▌     | 87/190 [00:40<00:23,  4.35it/s]Batches:  46%|████▋     | 88/190 [00:40<00:23,  4.30it/s]Batches:  47%|████▋     | 89/190 [00:41<00:23,  4.35it/s]Batches:  47%|████▋     | 90/190 [00:41<00:22,  4.41it/s]Batches:  48%|████▊     | 91/190 [00:41<00:22,  4.46it/s]Batches:  48%|████▊     | 92/190 [00:41<00:21,  4.46it/s]Batches:  49%|████▉     | 93/190 [00:41<00:21,  4.49it/s]Batches:  49%|████▉     | 94/190 [00:42<00:22,  4.36it/s]Batches:  50%|█████     | 95/190 [00:42<00:22,  4.30it/s]Batches:  51%|█████     | 96/190 [00:42<00:21,  4.42it/s]Batches:  51%|█████     | 97/190 [00:42<00:20,  4.51it/s]Batches:  52%|█████▏    | 98/190 [00:43<00:20,  4.39it/s]Batches:  52%|█████▏    | 99/190 [00:43<00:20,  4.46it/s]Batches:  53%|█████▎    | 100/190 [00:43<00:19,  4.51it/s]Batches:  53%|█████▎    | 101/190 [00:43<00:19,  4.57it/s]Batches:  54%|█████▎    | 102/190 [00:43<00:18,  4.70it/s]Batches:  54%|█████▍    | 103/190 [00:44<00:18,  4.77it/s]Batches:  55%|█████▍    | 104/190 [00:44<00:17,  4.84it/s]Batches:  55%|█████▌    | 105/190 [00:44<00:17,  4.87it/s]Batches:  56%|█████▌    | 106/190 [00:44<00:17,  4.92it/s]Batches:  56%|█████▋    | 107/190 [00:44<00:16,  4.95it/s]Batches:  57%|█████▋    | 108/190 [00:45<00:16,  4.97it/s]Batches:  57%|█████▋    | 109/190 [00:45<00:16,  4.92it/s]Batches:  58%|█████▊    | 110/190 [00:45<00:16,  4.93it/s]Batches:  58%|█████▊    | 111/190 [00:45<00:16,  4.65it/s]Batches:  59%|█████▉    | 112/190 [00:45<00:16,  4.74it/s]Batches:  59%|█████▉    | 113/190 [00:46<00:16,  4.77it/s]Batches:  60%|██████    | 114/190 [00:46<00:15,  4.88it/s]Batches:  61%|██████    | 115/190 [00:46<00:15,  4.85it/s]Batches:  61%|██████    | 116/190 [00:46<00:14,  4.99it/s]Batches:  62%|██████▏   | 117/190 [00:46<00:14,  5.10it/s]Batches:  62%|██████▏   | 118/190 [00:47<00:14,  5.08it/s]Batches:  63%|██████▎   | 119/190 [00:47<00:13,  5.17it/s]Batches:  63%|██████▎   | 120/190 [00:47<00:13,  5.26it/s]Batches:  64%|██████▎   | 121/190 [00:47<00:12,  5.34it/s]Batches:  64%|██████▍   | 122/190 [00:47<00:12,  5.36it/s]Batches:  65%|██████▍   | 123/190 [00:48<00:12,  5.38it/s]Batches:  65%|██████▌   | 124/190 [00:48<00:12,  5.42it/s]Batches:  66%|██████▌   | 125/190 [00:48<00:11,  5.43it/s]Batches:  66%|██████▋   | 126/190 [00:48<00:11,  5.45it/s]Batches:  67%|██████▋   | 127/190 [00:48<00:11,  5.43it/s]Batches:  67%|██████▋   | 128/190 [00:48<00:11,  5.39it/s]Batches:  68%|██████▊   | 129/190 [00:49<00:11,  5.53it/s]Batches:  68%|██████▊   | 130/190 [00:49<00:10,  5.64it/s]Batches:  69%|██████▉   | 131/190 [00:49<00:10,  5.71it/s]Batches:  69%|██████▉   | 132/190 [00:49<00:10,  5.77it/s]Batches:  70%|███████   | 133/190 [00:49<00:09,  5.80it/s]Batches:  71%|███████   | 134/190 [00:50<00:09,  5.84it/s]Batches:  71%|███████   | 135/190 [00:50<00:09,  5.85it/s]Batches:  72%|███████▏  | 136/190 [00:50<00:09,  5.85it/s]Batches:  72%|███████▏  | 137/190 [00:50<00:09,  5.86it/s]Batches:  73%|███████▎  | 138/190 [00:50<00:08,  5.84it/s]Batches:  73%|███████▎  | 139/190 [00:50<00:08,  5.88it/s]Batches:  74%|███████▎  | 140/190 [00:51<00:08,  5.99it/s]Batches:  74%|███████▍  | 141/190 [00:51<00:08,  6.10it/s]Batches:  75%|███████▍  | 142/190 [00:51<00:08,  5.59it/s]Batches:  75%|███████▌  | 143/190 [00:51<00:08,  5.30it/s]Batches:  76%|███████▌  | 144/190 [00:51<00:08,  5.46it/s]Batches:  76%|███████▋  | 145/190 [00:51<00:08,  5.61it/s]Batches:  77%|███████▋  | 146/190 [00:52<00:07,  5.72it/s]Batches:  77%|███████▋  | 147/190 [00:52<00:07,  5.88it/s]Batches:  78%|███████▊  | 148/190 [00:52<00:06,  6.03it/s]Batches:  78%|███████▊  | 149/190 [00:52<00:06,  6.27it/s]Batches:  79%|███████▉  | 150/190 [00:52<00:06,  6.47it/s]Batches:  79%|███████▉  | 151/190 [00:52<00:05,  6.57it/s]Batches:  80%|████████  | 152/190 [00:52<00:05,  6.65it/s]Batches:  81%|████████  | 153/190 [00:53<00:05,  6.68it/s]Batches:  81%|████████  | 154/190 [00:53<00:05,  6.28it/s]Batches:  82%|████████▏ | 155/190 [00:53<00:05,  6.26it/s]Batches:  82%|████████▏ | 156/190 [00:53<00:05,  6.04it/s]Batches:  83%|████████▎ | 157/190 [00:53<00:05,  6.19it/s]Batches:  83%|████████▎ | 158/190 [00:53<00:05,  6.31it/s]Batches:  84%|████████▎ | 159/190 [00:54<00:04,  6.62it/s]Batches:  84%|████████▍ | 160/190 [00:54<00:04,  6.85it/s]Batches:  85%|████████▍ | 161/190 [00:54<00:04,  7.02it/s]Batches:  85%|████████▌ | 162/190 [00:54<00:04,  6.86it/s]Batches:  86%|████████▌ | 163/190 [00:54<00:03,  6.86it/s]Batches:  86%|████████▋ | 164/190 [00:54<00:03,  6.87it/s]Batches:  87%|████████▋ | 165/190 [00:54<00:03,  6.89it/s]Batches:  87%|████████▋ | 166/190 [00:55<00:03,  6.64it/s]Batches:  88%|████████▊ | 167/190 [00:55<00:03,  6.95it/s]Batches:  88%|████████▊ | 168/190 [00:55<00:03,  7.14it/s]Batches:  89%|████████▉ | 169/190 [00:55<00:02,  7.17it/s]Batches:  89%|████████▉ | 170/190 [00:55<00:02,  7.08it/s]Batches:  90%|█████████ | 171/190 [00:55<00:02,  7.24it/s]Batches:  91%|█████████ | 172/190 [00:55<00:02,  7.47it/s]Batches:  91%|█████████ | 173/190 [00:56<00:02,  7.70it/s]Batches:  92%|█████████▏| 174/190 [00:56<00:02,  7.85it/s]Batches:  92%|█████████▏| 175/190 [00:56<00:01,  8.20it/s]Batches:  93%|█████████▎| 176/190 [00:56<00:01,  8.46it/s]Batches:  93%|█████████▎| 177/190 [00:56<00:01,  8.66it/s]Batches:  94%|█████████▎| 178/190 [00:56<00:01,  8.82it/s]Batches:  94%|█████████▍| 179/190 [00:56<00:01,  8.93it/s]Batches:  95%|█████████▍| 180/190 [00:56<00:01,  8.98it/s]Batches:  95%|█████████▌| 181/190 [00:56<00:01,  7.78it/s]Batches:  96%|█████████▋| 183/190 [00:57<00:00,  8.77it/s]Batches:  97%|█████████▋| 185/190 [00:57<00:00,  9.31it/s]Batches:  98%|█████████▊| 187/190 [00:57<00:00,  9.79it/s]Batches:  99%|█████████▉| 189/190 [00:57<00:00, 10.23it/s]Batches: 100%|██████████| 190/190 [00:57<00:00,  3.29it/s]
+[BERTopic] saved /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-10_topic_stratified_robot_status/strata/强势成功/embeddings.npy
+[BERTopic] UMAP fit_transform once (n_neighbors=15, n_docs=12133)…
+[BERTopic] umap_reduced.npy saved, shape=(12133, 5)
+[BERTopic] representation_model = [KeyBERTInspired, MMR(div=0.3)]
+2026-05-10 23:21:34,495 - BERTopic - Dimensionality - Fitting the dimensionality reduction algorithm
+2026-05-10 23:21:34,495 - BERTopic - Dimensionality - Completed ✓
+2026-05-10 23:21:34,495 - BERTopic - Cluster - Start clustering the reduced embeddings
+2026-05-10 23:21:34,689 - BERTopic - Cluster - Completed ✓
+2026-05-10 23:21:34,691 - BERTopic - Representation - Fine-tuning topics using representation models.
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+2026-05-10 23:21:47,920 - BERTopic - Representation - Completed ✓
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+2026-05-10 23:21:52,026 - BERTopic - WARNING: You are saving a BERTopic model without explicitly defining an embedding model.If you are using a sentence-transformers model or a HuggingFace model supportedby sentence-transformers, please save the model by using a pointer towards that model.For example, `save_embedding_model='sentence-transformers/all-mpnet-base-v2'`
+[BERTopic HDBSCAN mcs=30] model saved to /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-10_topic_stratified_robot_status/strata/强势成功/bert_hdbscan_mcs30/model (safetensors).
+[BERTopic HDBSCAN mcs=30] topics~=67 outlier_rate=0.411 sil=0.648 dbcv=0.327 mean_ari=1.000
+2026-05-10 23:21:52,037 - BERTopic - Dimensionality - Fitting the dimensionality reduction algorithm
+2026-05-10 23:21:52,037 - BERTopic - Dimensionality - Completed ✓
+2026-05-10 23:21:52,037 - BERTopic - Cluster - Start clustering the reduced embeddings
+2026-05-10 23:21:52,270 - BERTopic - Cluster - Completed ✓
+2026-05-10 23:21:52,272 - BERTopic - Representation - Fine-tuning topics using representation models.
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+2026-05-10 23:21:54,429 - BERTopic - Representation - Completed ✓
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+2026-05-10 23:22:03,513 - BERTopic - WARNING: You are saving a BERTopic model without explicitly defining an embedding model.If you are using a sentence-transformers model or a HuggingFace model supportedby sentence-transformers, please save the model by using a pointer towards that model.For example, `save_embedding_model='sentence-transformers/all-mpnet-base-v2'`
+[BERTopic HDBSCAN mcs=50] model saved to /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-10_topic_stratified_robot_status/strata/强势成功/bert_hdbscan_mcs50/model (safetensors).
+[BERTopic HDBSCAN mcs=50] topics~=7 outlier_rate=0.057 sil=0.096 dbcv=-0.133 mean_ari=1.000
+2026-05-10 23:22:03,531 - BERTopic - Dimensionality - Fitting the dimensionality reduction algorithm
+2026-05-10 23:22:03,531 - BERTopic - Dimensionality - Completed ✓
+2026-05-10 23:22:03,531 - BERTopic - Cluster - Start clustering the reduced embeddings
+2026-05-10 23:22:03,826 - BERTopic - Cluster - Completed ✓
+2026-05-10 23:22:03,830 - BERTopic - Representation - Fine-tuning topics using representation models.
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+2026-05-10 23:22:08,795 - BERTopic - Representation - Completed ✓
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+2026-05-10 23:22:12,500 - BERTopic - WARNING: You are saving a BERTopic model without explicitly defining an embedding model.If you are using a sentence-transformers model or a HuggingFace model supportedby sentence-transformers, please save the model by using a pointer towards that model.For example, `save_embedding_model='sentence-transformers/all-mpnet-base-v2'`
+[BERTopic HDBSCAN mcs=80] model saved to /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-10_topic_stratified_robot_status/strata/强势成功/bert_hdbscan_mcs80/model (safetensors).
+[BERTopic HDBSCAN mcs=80] topics~=15 outlier_rate=0.278 sil=0.386 dbcv=0.103 mean_ari=1.000
+2026-05-10 23:22:12,510 - BERTopic - Dimensionality - Fitting the dimensionality reduction algorithm
+2026-05-10 23:22:12,510 - BERTopic - Dimensionality - Completed ✓
+2026-05-10 23:22:12,510 - BERTopic - Cluster - Start clustering the reduced embeddings
+2026-05-10 23:22:12,842 - BERTopic - Cluster - Completed ✓
+2026-05-10 23:22:12,844 - BERTopic - Representation - Fine-tuning topics using representation models.
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+2026-05-10 23:22:14,185 - BERTopic - Representation - Completed ✓
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+2026-05-10 23:22:24,791 - BERTopic - WARNING: You are saving a BERTopic model without explicitly defining an embedding model.If you are using a sentence-transformers model or a HuggingFace model supportedby sentence-transformers, please save the model by using a pointer towards that model.For example, `save_embedding_model='sentence-transformers/all-mpnet-base-v2'`
+[BERTopic HDBSCAN mcs=100] model saved to /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-10_topic_stratified_robot_status/strata/强势成功/bert_hdbscan_mcs100/model (safetensors).
+[BERTopic HDBSCAN mcs=100] topics~=3 outlier_rate=0.014 sil=0.339 dbcv=0.435 mean_ari=1.000
+2026-05-10 23:22:24,804 - BERTopic - Dimensionality - Fitting the dimensionality reduction algorithm
+2026-05-10 23:22:24,804 - BERTopic - Dimensionality - Completed ✓
+2026-05-10 23:22:24,804 - BERTopic - Cluster - Start clustering the reduced embeddings
+2026-05-10 23:22:25,338 - BERTopic - Cluster - Completed ✓
+2026-05-10 23:22:25,340 - BERTopic - Representation - Fine-tuning topics using representation models.
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+2026-05-10 23:22:26,582 - BERTopic - Representation - Completed ✓
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+2026-05-10 23:22:39,704 - BERTopic - WARNING: You are saving a BERTopic model without explicitly defining an embedding model.If you are using a sentence-transformers model or a HuggingFace model supportedby sentence-transformers, please save the model by using a pointer towards that model.For example, `save_embedding_model='sentence-transformers/all-mpnet-base-v2'`
+[BERTopic HDBSCAN mcs=200] model saved to /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-10_topic_stratified_robot_status/strata/强势成功/bert_hdbscan_mcs200/model (safetensors).
+[BERTopic HDBSCAN mcs=200] topics~=2 outlier_rate=0.026 sil=0.535 dbcv=0.194 mean_ari=1.000
+2026-05-10 23:22:39,725 - BERTopic - Dimensionality - Fitting the dimensionality reduction algorithm
+2026-05-10 23:22:39,725 - BERTopic - Dimensionality - Completed ✓
+2026-05-10 23:22:39,725 - BERTopic - Cluster - Start clustering the reduced embeddings
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py:237: RuntimeWarning: divide by zero encountered in matmul
+  current_pot = closest_dist_sq @ sample_weight
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py:237: RuntimeWarning: overflow encountered in matmul
+  current_pot = closest_dist_sq @ sample_weight
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py:237: RuntimeWarning: invalid value encountered in matmul
+  current_pot = closest_dist_sq @ sample_weight
+2026-05-10 23:22:40,014 - BERTopic - Cluster - Completed ✓
+2026-05-10 23:22:40,016 - BERTopic - Representation - Fine-tuning topics using representation models.
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+2026-05-10 23:22:41,803 - BERTopic - Representation - Completed ✓
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py:237: RuntimeWarning: divide by zero encountered in matmul
+  current_pot = closest_dist_sq @ sample_weight
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py:237: RuntimeWarning: overflow encountered in matmul
+  current_pot = closest_dist_sq @ sample_weight
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py:237: RuntimeWarning: invalid value encountered in matmul
+  current_pot = closest_dist_sq @ sample_weight
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py:237: RuntimeWarning: divide by zero encountered in matmul
+  current_pot = closest_dist_sq @ sample_weight
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py:237: RuntimeWarning: overflow encountered in matmul
+  current_pot = closest_dist_sq @ sample_weight
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py:237: RuntimeWarning: invalid value encountered in matmul
+  current_pot = closest_dist_sq @ sample_weight
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py:237: RuntimeWarning: divide by zero encountered in matmul
+  current_pot = closest_dist_sq @ sample_weight
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py:237: RuntimeWarning: overflow encountered in matmul
+  current_pot = closest_dist_sq @ sample_weight
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py:237: RuntimeWarning: invalid value encountered in matmul
+  current_pot = closest_dist_sq @ sample_weight
+2026-05-10 23:22:44,209 - BERTopic - WARNING: You are saving a BERTopic model without explicitly defining an embedding model.If you are using a sentence-transformers model or a HuggingFace model supportedby sentence-transformers, please save the model by using a pointer towards that model.For example, `save_embedding_model='sentence-transformers/all-mpnet-base-v2'`
+[BERTopic KMeans k=5] model saved to /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-10_topic_stratified_robot_status/strata/强势成功/bert_kmeans_k5/model (safetensors).
+[BERTopic KMeans k=5] sil=0.366 mean_ari=0.996 largest_share=0.271 model_saved=True
+2026-05-10 23:22:44,225 - BERTopic - Dimensionality - Fitting the dimensionality reduction algorithm
+2026-05-10 23:22:44,225 - BERTopic - Dimensionality - Completed ✓
+2026-05-10 23:22:44,226 - BERTopic - Cluster - Start clustering the reduced embeddings
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py:237: RuntimeWarning: divide by zero encountered in matmul
+  current_pot = closest_dist_sq @ sample_weight
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py:237: RuntimeWarning: overflow encountered in matmul
+  current_pot = closest_dist_sq @ sample_weight
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py:237: RuntimeWarning: invalid value encountered in matmul
+  current_pot = closest_dist_sq @ sample_weight
+2026-05-10 23:22:44,301 - BERTopic - Cluster - Completed ✓
+2026-05-10 23:22:44,303 - BERTopic - Representation - Fine-tuning topics using representation models.
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+2026-05-10 23:22:46,637 - BERTopic - Representation - Completed ✓
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py:237: RuntimeWarning: divide by zero encountered in matmul
+  current_pot = closest_dist_sq @ sample_weight
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py:237: RuntimeWarning: overflow encountered in matmul
+  current_pot = closest_dist_sq @ sample_weight
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py:237: RuntimeWarning: invalid value encountered in matmul
+  current_pot = closest_dist_sq @ sample_weight
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py:237: RuntimeWarning: divide by zero encountered in matmul
+  current_pot = closest_dist_sq @ sample_weight
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py:237: RuntimeWarning: overflow encountered in matmul
+  current_pot = closest_dist_sq @ sample_weight
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py:237: RuntimeWarning: invalid value encountered in matmul
+  current_pot = closest_dist_sq @ sample_weight
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py:237: RuntimeWarning: divide by zero encountered in matmul
+  current_pot = closest_dist_sq @ sample_weight
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py:237: RuntimeWarning: overflow encountered in matmul
+  current_pot = closest_dist_sq @ sample_weight
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py:237: RuntimeWarning: invalid value encountered in matmul
+  current_pot = closest_dist_sq @ sample_weight
+2026-05-10 23:22:48,276 - BERTopic - WARNING: You are saving a BERTopic model without explicitly defining an embedding model.If you are using a sentence-transformers model or a HuggingFace model supportedby sentence-transformers, please save the model by using a pointer towards that model.For example, `save_embedding_model='sentence-transformers/all-mpnet-base-v2'`
+[BERTopic KMeans k=7] model saved to /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-10_topic_stratified_robot_status/strata/强势成功/bert_kmeans_k7/model (safetensors).
+[BERTopic KMeans k=7] sil=0.409 mean_ari=1.000 largest_share=0.237 model_saved=True
+2026-05-10 23:22:48,287 - BERTopic - Dimensionality - Fitting the dimensionality reduction algorithm
+2026-05-10 23:22:48,287 - BERTopic - Dimensionality - Completed ✓
+2026-05-10 23:22:48,287 - BERTopic - Cluster - Start clustering the reduced embeddings
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py:237: RuntimeWarning: divide by zero encountered in matmul
+  current_pot = closest_dist_sq @ sample_weight
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py:237: RuntimeWarning: overflow encountered in matmul
+  current_pot = closest_dist_sq @ sample_weight
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py:237: RuntimeWarning: invalid value encountered in matmul
+  current_pot = closest_dist_sq @ sample_weight
+2026-05-10 23:22:48,382 - BERTopic - Cluster - Completed ✓
+2026-05-10 23:22:48,383 - BERTopic - Representation - Fine-tuning topics using representation models.
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+2026-05-10 23:22:52,088 - BERTopic - Representation - Completed ✓
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py:237: RuntimeWarning: divide by zero encountered in matmul
+  current_pot = closest_dist_sq @ sample_weight
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py:237: RuntimeWarning: overflow encountered in matmul
+  current_pot = closest_dist_sq @ sample_weight
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py:237: RuntimeWarning: invalid value encountered in matmul
+  current_pot = closest_dist_sq @ sample_weight
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py:237: RuntimeWarning: divide by zero encountered in matmul
+  current_pot = closest_dist_sq @ sample_weight
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py:237: RuntimeWarning: overflow encountered in matmul
+  current_pot = closest_dist_sq @ sample_weight
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py:237: RuntimeWarning: invalid value encountered in matmul
+  current_pot = closest_dist_sq @ sample_weight
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py:237: RuntimeWarning: divide by zero encountered in matmul
+  current_pot = closest_dist_sq @ sample_weight
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py:237: RuntimeWarning: overflow encountered in matmul
+  current_pot = closest_dist_sq @ sample_weight
+/Users/yilin/Desktop/project/robot_failure/.venv/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py:237: RuntimeWarning: invalid value encountered in matmul
+  current_pot = closest_dist_sq @ sample_weight
+2026-05-10 23:22:53,989 - BERTopic - WARNING: You are saving a BERTopic model without explicitly defining an embedding model.If you are using a sentence-transformers model or a HuggingFace model supportedby sentence-transformers, please save the model by using a pointer towards that model.For example, `save_embedding_model='sentence-transformers/all-mpnet-base-v2'`
+[BERTopic KMeans k=10] model saved to /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-10_topic_stratified_robot_status/strata/强势成功/bert_kmeans_k10/model (safetensors).
+[BERTopic KMeans k=10] sil=0.410 mean_ari=0.975 largest_share=0.177 model_saved=True
+Stratified run done. Output: /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-10_topic_stratified_robot_status

@@ -1,2 +1,5 @@
 run_id,date,task,hypothesis,input_data,method,key_params,output_dir,status,decision
 2026-05-09_topic_full_corpus_bge_base,2026-05-10,topic_full_corpus,,,BAAI/bge-base-zh-v1.5,,"/Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-09_topic_full_corpus_bge_base",active,main
+smoke_save_check,2026-05-10,topic_full_corpus,,,BAAI/bge-base-zh-v1.5,,"/Users/yilin/Desktop/project/robot_failure/output/experiments/smoke_save_check",active,main
+2026-05-11_topic_stratified_robot_status,2026-05-10,topic_stratified_robot_status,,,BAAI/bge-base-zh-v1.5,,"/Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-11_topic_stratified_robot_status",active,stratified_4_groups
+2026-05-10_topic_stratified_robot_status,2026-05-10,topic_stratified_robot_status,,,BAAI/bge-base-zh-v1.5,,"/Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-10_topic_stratified_robot_status",active,stratified_4_groups

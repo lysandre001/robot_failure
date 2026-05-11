@@ -10,7 +10,7 @@ import json
 import re
 import shutil
 import sys
-from dataclasses import asdict, dataclass, fields
+from dataclasses import asdict, dataclass, fields, replace
 from datetime import datetime
 from pathlib import Path
 from typing import Any
@@ -39,6 +39,65 @@ _URL_ONLY_RE = re.compile(r"^(https?://\S+|www\.\S+)$", re.I)
 _DIGITS_ONLY_RE = re.compile(r"^[\d\s]+$")
 _PURE_PUNCT_RE = re.compile(r"^[\W_]+$", re.UNICODE)
 
+# 机器人状态分层（研究设计）：「强势」「成功」合并为「强势成功」，共 4 层。
+KNOWN_ROBOT_STATUSES_FOR_STRATUM = frozenset({"失败", "弱势", "中性", "强势", "成功"})
+ROBOT_STATUS_STRATUM_ORDER: tuple[str, ...] = ("失败", "弱势", "中性", "强势成功")
+STRATUM_MERGE_RULE = 'robot_status in {"强势","成功"} -> "强势成功"；其余失败/弱势/中性各为一层。'
+
+
+def robot_status_to_stratum_group(robot_status: Any) -> str | None:
+    """帖子级 robot_status → 分层标签；空值返回 None；未知取值抛错。"""
+    if robot_status is None or (isinstance(robot_status, float) and pd.isna(robot_status)):
+        return None
+    s = str(robot_status).strip()
+    if not s:
+        return None
+    if s not in KNOWN_ROBOT_STATUSES_FOR_STRATUM:
+        raise ValueError(
+            f"未知 robot_status={s!r}。期望为 {sorted(KNOWN_ROBOT_STATUSES_FOR_STRATUM)} 之一。"
+            "请检查 config/post_category_by_post.csv 与合并规则。"
+        )
+    if s in ("强势", "成功"):
+        return "强势成功"
+    return s
+
+
+def _adaptive_cfg_for_stratum(cfg: TopicModelingConfig, n_comments: int) -> TopicModelingConfig:
+    """小语料时收缩 LDA K / KMeans K / HDBSCAN mcs，避免无效聚类。"""
+    if n_comments < 1:
+        return cfg
+    lda_cap = max(2, min(max(cfg.lda_k_values), n_comments // 20))
+    lda_k = tuple(k for k in cfg.lda_k_values if k <= lda_cap)
+    if not lda_k:
+        for fallback in (5, 3, 2):
+            if fallback <= max(2, n_comments // 15):
+                lda_k = (fallback,)
+                break
+        if not lda_k:
+            lda_k = (2,)
+
+    km_cap = max(2, n_comments // 25)
+    bert_k = tuple(k for k in cfg.bert_kmeans_k_values if k <= km_cap)
+    if not bert_k:
+        bert_k = (max(2, min(3, max(2, n_comments // 30))),)
+
+    cap_mcs = max(8, n_comments // 2)
+    hdb = tuple(m for m in cfg.bert_hdbscan_min_cluster_sizes if m <= cap_mcs)
+    if not hdb:
+        seed = max(5, min(40, n_comments // 6))
+        hdb = tuple(sorted({seed, max(5, seed * 2 // 3), min(cap_mcs, seed * 2)}))
+
+    lda_min_df = max(1, min(cfg.lda_min_df, max(1, n_comments // 50)))
+    nmf_min_df = max(1, min(cfg.nmf_min_df, max(1, n_comments // 40)))
+    return replace(
+        cfg,
+        lda_k_values=lda_k,
+        bert_kmeans_k_values=bert_k,
+        bert_hdbscan_min_cluster_sizes=hdb,
+        lda_min_df=int(lda_min_df),
+        nmf_min_df=int(nmf_min_df),
+    )
+
 
 @dataclass
 class TopicModelingConfig:
@@ -51,9 +110,13 @@ class TopicModelingConfig:
     device: str | None = None  # None -> auto mps/cuda/cpu
     lda_k_values: tuple[int, ...] = (5, 7, 10, 12)
     bert_kmeans_k_values: tuple[int, ...] = (5, 7, 10)
-    bert_hdbscan_min_cluster_sizes: tuple[int, ...] = (100, 200, 400)
+    bert_hdbscan_min_cluster_sizes: tuple[int, ...] = (30, 50, 80, 100, 200)
     bert_hdbscan_min_samples: int | None = None
     bert_reduce_outliers: bool = True
+    use_keybert_inspired: bool = True
+    mmr_diversity: float = 0.3
+    stability_seeds: tuple[int, ...] = (42, 7, 2026)
+    auto_reduce_kmeans_k7: bool = False
     min_clean_chars: int = 4
     min_effective_tokens: int = 2
     random_seed: int = 42
@@ -212,11 +275,13 @@ def build_shared_analyzable_corpus(
         kept_rows.append(row2)
 
     shared = pd.DataFrame(kept_rows).reset_index(drop=True)
+    shared["robot_status_group"] = shared["robot_status"].map(robot_status_to_stratum_group)
     excluded_df = pd.DataFrame(excluded_rows)
     summary = {
         "n_raw": int(n_raw),
         "n_shared": int(len(shared)),
         "coverage": float(len(shared) / n_raw) if n_raw else 0.0,
+        "n_missing_robot_status_group": int(shared["robot_status_group"].isna().sum()),
         **{k: int(v) for k, v in stats.items()},
     }
     return shared, excluded_df, summary
@@ -481,6 +546,119 @@ def _export_cross_tabs(
     merged.to_csv(out_path, index=False)
 
 
+class _PassthroughUMAP:
+    """让多个 BERTopic 实例共享一份预计算的 UMAP 5D；不再让 BERTopic 重 fit UMAP。"""
+
+    def __init__(self, reduced: np.ndarray) -> None:
+        self.reduced = np.asarray(reduced)
+
+    def fit(self, X, y=None):  # noqa: D401, N803
+        return self
+
+    def transform(self, X):  # noqa: D401, N803
+        return self.reduced
+
+    def fit_transform(self, X, y=None):  # noqa: D401, N803
+        return self.reduced
+
+
+def _ctfidf_top_terms_for_topic(bt: Any, topic_id: int, top_n: int = 15) -> list[str]:
+    """从 c-TF-IDF 矩阵直接取该主题的 top terms（不经 representation_model 重排）。"""
+    try:
+        c_tf_idf = bt.c_tf_idf_
+        words = bt.vectorizer_model.get_feature_names_out()
+        topic_to_index = {t: i for i, t in enumerate(sorted(bt.get_topics().keys()))}
+        if topic_id not in topic_to_index:
+            return []
+        idx = topic_to_index[topic_id]
+        row = c_tf_idf[idx].toarray().ravel() if hasattr(c_tf_idf, "toarray") else np.asarray(c_tf_idf[idx]).ravel()
+        order = np.argsort(row)[::-1][:top_n]
+        return [str(words[j]) for j in order if row[j] > 0]
+    except Exception:
+        return []
+
+
+def _bertopic_quality_metrics(reduced: np.ndarray, labels: np.ndarray, *, is_hdbscan: bool) -> dict[str, float]:
+    """单次拟合的聚类质量：silhouette（在 5D UMAP 上） + DBCV（仅 HDBSCAN，含 -1）+ 主题大小。"""
+    out: dict[str, float] = {}
+    labels = np.asarray(labels)
+    mask_valid = labels != -1
+    n_topics = int(len(set(labels[mask_valid].tolist())))
+    out["n_topics"] = float(n_topics)
+    out["outlier_rate"] = float(np.mean(labels == -1))
+    if mask_valid.sum() >= 2 and n_topics >= 2:
+        try:
+            from sklearn.metrics import silhouette_score
+            sil = silhouette_score(reduced[mask_valid], labels[mask_valid])
+            out["silhouette"] = float(sil)
+        except Exception:
+            out["silhouette"] = float("nan")
+    else:
+        out["silhouette"] = float("nan")
+    if is_hdbscan:
+        try:
+            import hdbscan
+            dbcv = hdbscan.validity.validity_index(np.asarray(reduced, dtype=np.float64), labels.astype(int))
+            out["dbcv"] = float(dbcv)
+        except Exception:
+            out["dbcv"] = float("nan")
+    else:
+        out["dbcv"] = float("nan")
+    if n_topics > 0:
+        sizes = pd.Series(labels[mask_valid]).value_counts().to_numpy()
+        total = float(sizes.sum())
+        out["largest_share"] = float(sizes.max() / total) if total > 0 else float("nan")
+        out["smallest_share"] = float(sizes.min() / total) if total > 0 else float("nan")
+    else:
+        out["largest_share"] = float("nan")
+        out["smallest_share"] = float("nan")
+    return out
+
+
+def _seed_stability_ari(
+    reduced: np.ndarray,
+    *,
+    method: str,
+    seeds: tuple[int, ...],
+    k: int | None = None,
+    mcs: int | None = None,
+    min_samples: int | None = None,
+) -> dict[str, float]:
+    """同一组降维结果上，多 seed 重跑同一聚类，两两 Adjusted Rand Index。"""
+    from sklearn.cluster import KMeans
+    from sklearn.metrics import adjusted_rand_score
+
+    runs: list[np.ndarray] = []
+    for s in seeds:
+        if method == "kmeans":
+            assert k is not None, "kmeans needs k"
+            labels = KMeans(n_clusters=k, random_state=int(s), n_init=10).fit_predict(reduced)
+        elif method == "hdbscan":
+            from hdbscan import HDBSCAN
+            assert mcs is not None, "hdbscan needs mcs"
+            ms = mcs if min_samples is None else min_samples
+            labels = HDBSCAN(
+                min_cluster_size=mcs,
+                min_samples=ms,
+                metric="euclidean",
+                cluster_selection_method="eom",
+            ).fit_predict(reduced)
+        else:
+            raise ValueError(method)
+        runs.append(labels)
+    if len(runs) < 2:
+        return {"mean_ari": float("nan"), "min_ari": float("nan"), "n_seeds": float(len(runs))}
+    pair_scores: list[float] = []
+    for i in range(len(runs)):
+        for j in range(i + 1, len(runs)):
+            pair_scores.append(float(adjusted_rand_score(runs[i], runs[j])))
+    return {
+        "mean_ari": float(np.mean(pair_scores)),
+        "min_ari": float(np.min(pair_scores)),
+        "n_seeds": float(len(runs)),
+    }
+
+
 def _run_bertopic_suite(
     cfg: TopicModelingConfig,
     shared: pd.DataFrame,
@@ -491,6 +669,7 @@ def _run_bertopic_suite(
 ) -> dict[str, Any]:
     print("[BERTopic] importing optional deps…", file=log_stream, flush=True)
     from bertopic import BERTopic
+    from bertopic.representation import KeyBERTInspired, MaximalMarginalRelevance
     from hdbscan import HDBSCAN
     from sentence_transformers import SentenceTransformer
     from sklearn.cluster import KMeans
@@ -528,6 +707,26 @@ def _run_bertopic_suite(
 
     assert len(docs_raw) == len(embeddings), "docs/embeddings length mismatch"
 
+    # B2: UMAP 只跑一次；n_neighbors 随样本量收缩（小分层语料必须 < n_samples）。
+    n_doc = len(docs_raw)
+    umap_n_neighbors = min(15, max(2, n_doc - 1))
+    print(
+        f"[BERTopic] UMAP fit_transform once (n_neighbors={umap_n_neighbors}, n_docs={n_doc})…",
+        file=log_stream,
+        flush=True,
+    )
+    umap_runner = UMAP(
+        n_neighbors=umap_n_neighbors,
+        n_components=5,
+        min_dist=0.0,
+        metric="cosine",
+        random_state=cfg.random_seed,
+    )
+    reduced = umap_runner.fit_transform(embeddings)
+    np.save(run_dir / "umap_reduced.npy", reduced)
+    print(f"[BERTopic] umap_reduced.npy saved, shape={reduced.shape}", file=log_stream, flush=True)
+    passthrough = _PassthroughUMAP(reduced)
+
     def make_vectorizer():
         return CountVectorizer(
             analyzer=lambda text: _jieba_tokenizer_vec(text, stopwords),
@@ -536,16 +735,106 @@ def _run_bertopic_suite(
             max_features=8000,
         )
 
-    umap_model = UMAP(
-        n_neighbors=15,
-        n_components=5,
-        min_dist=0.0,
-        metric="cosine",
-        random_state=cfg.random_seed,
-    )
+    representation_model: list[Any] | None = None
+    if cfg.use_keybert_inspired:
+        try:
+            representation_model = [
+                KeyBERTInspired(),
+                MaximalMarginalRelevance(diversity=cfg.mmr_diversity),
+            ]
+            print(
+                f"[BERTopic] representation_model = [KeyBERTInspired, MMR(div={cfg.mmr_diversity})]",
+                file=log_stream,
+                flush=True,
+            )
+        except Exception as e:
+            print(f"[WARN] representation_model 初始化失败（{e}），回退到默认 c-TF-IDF。", file=log_stream)
+            representation_model = None
 
-    vectorizer_model = make_vectorizer()
     meta_out: dict[str, Any] = {"bertopic_runs": []}
+    quality_rows: list[dict[str, Any]] = []
+
+    def _persist_topics_csv(bt: Any, subdir: Path) -> None:
+        info = bt.get_topic_info()
+        info.to_csv(subdir / "topics.csv", index=False)
+        ctfidf_rows = []
+        for tid in sorted(bt.get_topics().keys()):
+            terms = _ctfidf_top_terms_for_topic(bt, tid, top_n=cfg.top_terms)
+            ctfidf_rows.append({"Topic": tid, "ctfidf_top_terms": ",".join(terms)})
+        if ctfidf_rows:
+            pd.DataFrame(ctfidf_rows).to_csv(subdir / "topics_ctfidf.csv", index=False)
+
+    def _cast_internal_dict_keys(bt: Any) -> None:
+        """BERTopic 0.17 safetensors save 在 json.dump 时遇到 numpy.int64 dict key 会 raise；
+        把 bt.topics_ 与 representations_ / labels_ 的 dict key 提前 cast 成 python int。
+        某些 attr 在某些版本是 property（无法 setattr）→ 单独包 try。"""
+        try:
+            if hasattr(bt, "topics_") and bt.topics_ is not None:
+                bt.topics_ = [int(t) for t in bt.topics_]
+        except Exception as e:
+            print(f"[WARN] cast topics_ failed: {e}", file=log_stream)
+        # topic_labels_ 在 BERTopic 0.17 是 @property（从 topic_representations_ 派生），不需 cast。
+        for attr in ("topic_representations_", "topic_sizes_"):
+            try:
+                d = getattr(bt, attr, None)
+                if isinstance(d, dict):
+                    setattr(bt, attr, {int(k): v for k, v in d.items()})
+            except Exception as e:
+                print(f"[WARN] cast {attr} failed: {e}", file=log_stream)
+        try:
+            d = getattr(bt, "topic_aspects_", None)
+            if isinstance(d, dict):
+                new_aspects = {}
+                for aspect, val in d.items():
+                    new_aspects[aspect] = (
+                        {int(k): v for k, v in val.items()} if isinstance(val, dict) else val
+                    )
+                bt.topic_aspects_ = new_aspects
+        except Exception as e:
+            print(f"[WARN] cast topic_aspects_ failed: {e}", file=log_stream)
+        # vectorizer_model.vocabulary_ values 在 sklearn 内部可能是 np.int64；
+        # BERTopic 写 ctfidf_config.json 时会触发 "int64 is not JSON serializable"。
+        try:
+            vec = getattr(bt, "vectorizer_model", None)
+            vocab = getattr(vec, "vocabulary_", None)
+            if isinstance(vocab, dict):
+                vec.vocabulary_ = {str(k): int(v) for k, v in vocab.items()}
+        except Exception as e:
+            print(f"[WARN] cast vectorizer vocabulary_ failed: {e}", file=log_stream)
+
+    def _save_model(bt: Any, subdir: Path, label: str) -> bool:
+        _cast_internal_dict_keys(bt)
+        safetensors_dir = subdir / "model"
+        try:
+            bt.save(
+                str(safetensors_dir),
+                serialization="safetensors",
+                save_ctfidf=True,
+                save_embedding_model=False,
+            )
+            print(f"[BERTopic {label}] model saved to {safetensors_dir} (safetensors).", file=log_stream)
+            return True
+        except Exception as e:
+            print(f"[WARN][BERTopic {label}] safetensors save failed: {e}; falling back to pickle.", file=log_stream)
+            # 清掉 safetensors 残留目录，避免 pickle 写单文件 path 冲突。
+            try:
+                if safetensors_dir.exists() and safetensors_dir.is_dir():
+                    shutil.rmtree(safetensors_dir)
+            except Exception as e_rm:
+                print(f"[WARN] cleanup partial safetensors dir failed: {e_rm}", file=log_stream)
+            pickle_path = subdir / "model.pkl"
+            try:
+                bt.save(
+                    str(pickle_path),
+                    serialization="pickle",
+                    save_ctfidf=True,
+                    save_embedding_model=False,
+                )
+                print(f"[BERTopic {label}] model saved to {pickle_path} (pickle).", file=log_stream)
+                return True
+            except Exception as e2:
+                print(f"[ERROR][BERTopic {label}] pickle save also failed: {e2}", file=log_stream)
+                return False
 
     for mcs in cfg.bert_hdbscan_min_cluster_sizes:
         min_samples = cfg.bert_hdbscan_min_samples if cfg.bert_hdbscan_min_samples is not None else mcs
@@ -558,9 +847,10 @@ def _run_bertopic_suite(
         )
         bt = BERTopic(
             embedding_model=encoder,
-            umap_model=umap_model,
+            umap_model=passthrough,
             hdbscan_model=hdb,
             vectorizer_model=make_vectorizer(),
+            representation_model=representation_model,
             low_memory=cfg.low_memory,
             calculate_probabilities=cfg.calculate_probabilities,
             verbose=True,
@@ -585,8 +875,7 @@ def _run_bertopic_suite(
         doc_topics["topic_assigned"] = assigned if assigned is not None else topics_raw
         doc_topics.to_csv(subdir / "doc_topics.csv", index=False)
 
-        info = bt.get_topic_info()
-        info.to_csv(subdir / "topics.csv", index=False)
+        _persist_topics_csv(bt, subdir)
 
         assign_df = shared.copy()
         assign_df["topic"] = topics_raw
@@ -604,15 +893,45 @@ def _run_bertopic_suite(
         _export_cross_tabs(valid, subdir / "by_robot_status.csv", "robot_status")
         _export_cross_tabs(valid, subdir / "by_post_category.csv", "post_category")
 
+        qm = _bertopic_quality_metrics(reduced, topics_raw, is_hdbscan=True)
+        ari = _seed_stability_ari(
+            reduced,
+            method="hdbscan",
+            seeds=cfg.stability_seeds,
+            mcs=mcs,
+            min_samples=min_samples,
+        )
+        pd.DataFrame([{**ari, "method": "hdbscan", "mcs": mcs}]).to_csv(subdir / "stability_seeds.csv", index=False)
+        quality_rows.append(
+            {
+                "method": "hdbscan",
+                "k_or_mcs": mcs,
+                "n_topics": qm["n_topics"],
+                "outlier_rate": qm["outlier_rate"],
+                "silhouette": qm["silhouette"],
+                "dbcv": qm["dbcv"],
+                "mean_ari": ari["mean_ari"],
+                "min_ari": ari["min_ari"],
+                "largest_share": qm["largest_share"],
+                "smallest_share": qm["smallest_share"],
+            }
+        )
+        saved = _save_model(bt, subdir, f"HDBSCAN mcs={mcs}")
+
         meta_out["bertopic_runs"].append(
             {
                 "mcs": mcs,
                 "n_topics_approx": int(n_topics),
                 "outlier_rate_topic_raw": out_rate,
+                "silhouette": qm["silhouette"],
+                "dbcv": qm["dbcv"],
+                "mean_ari": ari["mean_ari"],
+                "model_saved": bool(saved),
             }
         )
         print(
-            f"[BERTopic HDBSCAN mcs={mcs}] topics~={n_topics} outlier_rate={out_rate:.3f}",
+            f"[BERTopic HDBSCAN mcs={mcs}] topics~={n_topics} outlier_rate={out_rate:.3f} "
+            f"sil={qm['silhouette']:.3f} dbcv={qm['dbcv']:.3f} mean_ari={ari['mean_ari']:.3f}",
             file=log_stream,
         )
 
@@ -620,21 +939,22 @@ def _run_bertopic_suite(
         km = KMeans(n_clusters=k, random_state=cfg.random_seed, n_init=10)
         bt_k = BERTopic(
             embedding_model=encoder,
-            umap_model=umap_model,
+            umap_model=passthrough,
             hdbscan_model=km,
             vectorizer_model=make_vectorizer(),
+            representation_model=representation_model,
             low_memory=cfg.low_memory,
             calculate_probabilities=False,
             verbose=True,
         )
         topics_km, _ = bt_k.fit_transform(docs_raw, embeddings)
+        topics_km_arr = np.asarray(topics_km)
         subdir = run_dir / f"bert_kmeans_k{k}"
         subdir.mkdir(parents=True, exist_ok=True)
         doc_topics = shared[["comment_id", "帖子id", "post_category", "robot_status", "human_role", "content"]].copy()
         doc_topics["topic"] = topics_km
         doc_topics.to_csv(subdir / "doc_topics.csv", index=False)
-        info = bt_k.get_topic_info()
-        info.to_csv(subdir / "topics.csv", index=False)
+        _persist_topics_csv(bt_k, subdir)
 
         assign_df = shared.copy()
         assign_df["topic"] = topics_km
@@ -647,7 +967,56 @@ def _run_bertopic_suite(
         _export_cross_tabs(assign_df, subdir / "by_post_id.csv", "post_id", "帖子id")
         _export_cross_tabs(assign_df, subdir / "by_robot_status.csv", "robot_status")
         _export_cross_tabs(assign_df, subdir / "by_post_category.csv", "post_category")
-        print(f"[BERTopic KMeans k={k}] done.", file=log_stream)
+
+        qm = _bertopic_quality_metrics(reduced, topics_km_arr, is_hdbscan=False)
+        ari = _seed_stability_ari(reduced, method="kmeans", seeds=cfg.stability_seeds, k=k)
+        pd.DataFrame([{**ari, "method": "kmeans", "k": k}]).to_csv(subdir / "stability_seeds.csv", index=False)
+        quality_rows.append(
+            {
+                "method": "kmeans",
+                "k_or_mcs": k,
+                "n_topics": qm["n_topics"],
+                "outlier_rate": qm["outlier_rate"],
+                "silhouette": qm["silhouette"],
+                "dbcv": qm["dbcv"],
+                "mean_ari": ari["mean_ari"],
+                "min_ari": ari["min_ari"],
+                "largest_share": qm["largest_share"],
+                "smallest_share": qm["smallest_share"],
+            }
+        )
+        saved = _save_model(bt_k, subdir, f"KMeans k={k}")
+
+        # B6 + auto-reduce：仅 k=7 + flag 开启时输出 reduced 副本
+        if cfg.auto_reduce_kmeans_k7 and k == 7:
+            try:
+                bt_red = bt_k  # reduce_topics 会修改原对象，做一份对照即可
+                bt_red.reduce_topics(docs_raw, nr_topics="auto")
+                topics_red = np.asarray(bt_red.topics_)
+                info_red = bt_red.get_topic_info()
+                info_red.to_csv(subdir / "topics_reduced.csv", index=False)
+                doc_red = shared[["comment_id", "帖子id", "post_category", "robot_status", "human_role", "content"]].copy()
+                doc_red["topic"] = topics_red
+                doc_red.to_csv(subdir / "doc_topics_reduced.csv", index=False)
+                print(f"[BERTopic KMeans k={k}] auto-reduce -> {len(set(topics_red))} topics", file=log_stream)
+            except Exception as e:
+                print(f"[WARN][auto-reduce] failed: {e}", file=log_stream)
+
+        print(
+            f"[BERTopic KMeans k={k}] sil={qm['silhouette']:.3f} mean_ari={ari['mean_ari']:.3f} "
+            f"largest_share={qm['largest_share']:.3f} model_saved={saved}",
+            file=log_stream,
+        )
+
+    if quality_rows:
+        pd.DataFrame(quality_rows).to_csv(run_dir / "a_bertopic_quality.csv", index=False)
+        meta_out["quality_summary_csv"] = "a_bertopic_quality.csv"
+
+    meta_out["umap_precomputed_shared"] = True
+    meta_out["representation_model"] = (
+        ["KeyBERTInspired", f"MMR({cfg.mmr_diversity})"] if representation_model else ["c-tf-idf"]
+    )
+    meta_out["stability_seeds"] = list(cfg.stability_seeds)
 
     return meta_out
 
@@ -853,6 +1222,285 @@ def _robot_status_mean_table(assign: pd.DataFrame, k: int) -> pd.DataFrame:
     return pd.DataFrame(rows)
 
 
+def _run_topic_pipeline_steps(
+    cfg: TopicModelingConfig,
+    shared: pd.DataFrame,
+    stopwords: set[str],
+    run_dir: Path,
+    tee: Tee,
+    *,
+    summary_corpus: dict[str, Any],
+    run_loo: bool = True,
+    min_docs_bertopic: int = 20,
+) -> tuple[str, dict[str, Any]]:
+    """单语料子目录：LDA/NMF/BERTopic/LOO/comparison.md；BERTopic 在极小 n 时可跳过。"""
+    embedding_used = cfg.embedding_model
+    meta_run: dict[str, Any] = {}
+
+    title = "=== Topic modeling run ==="
+    if summary_corpus.get("stratum"):
+        title = f"=== Topic modeling stratum={summary_corpus.get('stratum')} ==="
+    print(title, file=tee)
+    print(json.dumps(summary_corpus, ensure_ascii=False, indent=2), file=tee)
+
+    _lda_nmf_scan_and_export(cfg, shared, stopwords, run_dir, tee)
+
+    if len(shared) >= min_docs_bertopic:
+        try:
+            meta_run = _run_bertopic_suite(cfg, shared, stopwords, run_dir, embedding_used, tee)
+        except Exception as e:
+            print(f"[BERTopic] primary model failed ({embedding_used}): {e}", file=tee)
+            embedding_used = cfg.embedding_model_fallback
+            print(f"[BERTopic] trying fallback: {embedding_used}", file=tee)
+            meta_run = _run_bertopic_suite(cfg, shared, stopwords, run_dir, embedding_used, tee)
+    else:
+        print(f"[BERTopic] skipped: n_shared={len(shared)} < {min_docs_bertopic}", file=tee)
+        meta_run = {
+            "bertopic_runs": [],
+            "skipped_reason": f"n_shared_lt_{min_docs_bertopic}",
+            "representation_model": [],
+            "umap_precomputed_shared": False,
+        }
+
+    if run_loo:
+        try:
+            _loo_sensitivity(cfg, shared, stopwords, run_dir)
+        except Exception as e:
+            print(f"[LOO] skipped: {e}", file=tee)
+    else:
+        print("[LOO] skipped (n_posts<3 or stratified policy)", file=tee)
+
+    write_comparison_md(cfg, run_dir, summary_corpus, embedding_used)
+    return embedding_used, meta_run
+
+
+def _write_experiment_config_json(
+    cfg_snapshot: TopicModelingConfig,
+    run_dir: Path,
+    shared: pd.DataFrame,
+    summary_corpus: dict[str, Any],
+    embedding_used: str,
+    meta_run: dict[str, Any],
+    *,
+    extra: dict[str, Any] | None = None,
+) -> None:
+    bert_runs_meta = meta_run.get("bertopic_runs", []) if isinstance(meta_run, dict) else []
+    bert_model_saved = (
+        bool(bert_runs_meta) and all(bool(r.get("model_saved", False)) for r in bert_runs_meta)
+    )
+    faq = {
+        "C1_chinese_tokenizer": "jieba (token_pattern=None)",
+        "C2_stopwords_after_embedding": True,
+        "C3_umap_random_state": cfg_snapshot.random_seed,
+        "C4_calculate_probabilities": cfg_snapshot.calculate_probabilities,
+        "C5_low_memory": cfg_snapshot.low_memory,
+        "C6_outlier_strategy": "reduce_outliers(strategy='c-tf-idf') + KMeans backup",
+        "C7_min_topic_size_sensitivity": list(cfg_snapshot.bert_hdbscan_min_cluster_sizes),
+        "C8_model_used": embedding_used,
+        "C10_raw_text_to_encoder": True,
+        "POS_main_pipeline": False,
+        "content_filter_config": str(cfg_snapshot.comment_content_filter_json),
+        "post_category_source": str(cfg_snapshot.post_category_by_post_csv),
+        "representation_model": meta_run.get("representation_model", ["c-tf-idf"]) if isinstance(meta_run, dict) else ["c-tf-idf"],
+        "umap_precomputed_shared": bool(meta_run.get("umap_precomputed_shared", False)) if isinstance(meta_run, dict) else False,
+        "bert_model_saved": bert_model_saved,
+        "stability_seeds": list(cfg_snapshot.stability_seeds),
+        "stratified_merge_rule": STRATUM_MERGE_RULE,
+    }
+    config_payload: dict[str, Any] = {
+        "run_id": cfg_snapshot.run_id,
+        "generated_at": datetime.now().isoformat(timespec="seconds"),
+        "input_csv": str(cfg_snapshot.input_csv),
+        "input_csv_sha256": _sha256_file(cfg_snapshot.input_csv),
+        "n_shared": int(len(shared)),
+        "summary_corpus": summary_corpus,
+        "embedding_model_resolved": embedding_used,
+        "faq_compliance": faq,
+        "config": {
+            f.name: _json_safe_cfg_value(getattr(cfg_snapshot, f.name))
+            for f in fields(cfg_snapshot)
+            if f.name != "experiments_root"
+        },
+        "bertopic_meta": meta_run,
+    }
+    if extra:
+        config_payload.update(extra)
+    with open(run_dir / "config.json", "w", encoding="utf-8") as f:
+        json.dump(config_payload, f, ensure_ascii=False, indent=2)
+
+
+def _append_registry_line(
+    experiments_root: Path,
+    run_id: str,
+    embedding_used: str,
+    run_dir: Path,
+    *,
+    task: str,
+    decision: str = "main",
+) -> None:
+    reg_path = experiments_root / "registry.csv"
+    line = f'{run_id},{datetime.now().strftime("%Y-%m-%d")},{task},,,{embedding_used},,"{run_dir}",active,{decision}\n'
+    if reg_path.is_file():
+        existing = reg_path.read_text(encoding="utf-8")
+        if run_id not in {ln.split(",", 1)[0] for ln in existing.splitlines()[1:] if ln.strip()}:
+            with open(reg_path, "a", encoding="utf-8") as f:
+                f.write(line)
+    else:
+        reg_path.write_text("run_id,date,task,hypothesis,input_data,method,key_params,output_dir,status,decision\n", encoding="utf-8")
+        with open(reg_path, "a", encoding="utf-8") as f:
+            f.write(line)
+
+
+def _write_stratified_overview(
+    parent_dir: Path,
+    rows: list[dict[str, Any]],
+    cfg: TopicModelingConfig,
+) -> None:
+    lines = [
+        "# 分层主题建模总览（robot_status_group）",
+        "",
+        f"- 生成时间（UTC 本地）：{datetime.now().isoformat(timespec='seconds')}",
+        f"- 父 `run_id`：`{cfg.run_id}`",
+        f"- 合并规则：{STRATUM_MERGE_RULE}",
+        "",
+        "## 各层规模与输出",
+        "",
+        "| stratum | n_comments | n_posts | BERTopic | output_dir |",
+        "|---------|------------|---------|----------|------------|",
+    ]
+    for r in rows:
+        bp = "skipped" if r.get("skipped") else ("ok" if r.get("n_comments", 0) >= 20 else "LDA/NMF only")
+        od = r.get("output_dir", "")
+        lines.append(
+            f"| {r.get('stratum')} | {r.get('n_comments', 0)} | {r.get('n_posts', 0)} | {bp} | `{od}` |"
+        )
+    lines.extend(
+        [
+            "",
+            "## 方法说明",
+            "",
+            "- 每层内 LDA / NMF / BERTopic（若 n≥20）共用该层 `shared_analyzable_corpus.csv`（**M7**）。",
+            "- `robot_status_group` 来自研究设计，非模型聚类；**不可**将跨层 topic id 等同（第二轮自检）。",
+            "- 帖数极少层仅作描述性阅读（**M8**）。",
+            "",
+        ]
+    )
+    (parent_dir / "comparison_stratified_overview.md").write_text("\n".join(lines), encoding="utf-8")
+
+
+def run_stratified_robot_status_experiment(cfg: TopicModelingConfig) -> Path:
+    """按 `robot_status_group` 四层分别跑完整主题管线（共享全量清洗规则后再切分）。"""
+    buf_parent = io.StringIO()
+    tee_parent = Tee(sys.stdout, buf_parent)
+    run_dir = cfg.experiments_root / cfg.run_id
+    run_dir.mkdir(parents=True, exist_ok=True)
+
+    stopwords = load_topic_stopwords()
+    shared, excluded, summary_corpus = build_shared_analyzable_corpus(cfg, stopwords=stopwords)
+
+    miss = int(summary_corpus.get("n_missing_robot_status_group", 0))
+    if miss:
+        print(f"[WARN] {miss} comments lack robot_status_group", file=tee_parent, flush=True)
+
+    shared.to_csv(run_dir / "shared_analyzable_corpus_full.csv", index=False)
+    excluded.to_csv(run_dir / "excluded_meaningless.csv", index=False)
+    shutil.copy2(cfg.comment_content_filter_json, run_dir / "comment_content_filter.json")
+    shutil.copy2(cfg.post_category_by_post_csv, run_dir / "post_category_by_post.csv")
+
+    overview_rows: list[dict[str, Any]] = []
+    last_embedding = cfg.embedding_model
+
+    for label in ROBOT_STATUS_STRATUM_ORDER:
+        sub = shared[shared["robot_status_group"] == label].copy()
+        n_c = len(sub)
+        n_p = int(sub["帖子id"].nunique()) if n_c else 0
+        sdir = run_dir / "strata" / label
+        if n_c == 0:
+            overview_rows.append(
+                {
+                    "stratum": label,
+                    "n_comments": 0,
+                    "n_posts": 0,
+                    "output_dir": "",
+                    "skipped": True,
+                }
+            )
+            print(f"[stratum {label}] empty, skip", file=tee_parent, flush=True)
+            continue
+
+        sdir.mkdir(parents=True, exist_ok=True)
+        sub.to_csv(sdir / "shared_analyzable_corpus.csv", index=False)
+        cfg_s = _adaptive_cfg_for_stratum(cfg, n_c)
+        buf_s = io.StringIO()
+        tee_s = Tee(sys.stdout, buf_s)
+        sum_s = {
+            **summary_corpus,
+            "stratum": label,
+            "n_shared_stratum": n_c,
+            "n_posts_stratum": n_p,
+            "adaptive_lda_k": list(cfg_s.lda_k_values),
+            "adaptive_bert_kmeans_k": list(cfg_s.bert_kmeans_k_values),
+            "adaptive_hdbscan_mcs": list(cfg_s.bert_hdbscan_min_cluster_sizes),
+            "adaptive_lda_min_df": cfg_s.lda_min_df,
+            "adaptive_nmf_min_df": cfg_s.nmf_min_df,
+        }
+        run_loo = n_p >= 3
+        embedding_used, meta_run = _run_topic_pipeline_steps(
+            cfg_s, sub, stopwords, sdir, tee_s, summary_corpus=sum_s, run_loo=run_loo
+        )
+        last_embedding = embedding_used
+        _write_experiment_config_json(
+            cfg_s,
+            sdir,
+            sub,
+            sum_s,
+            embedding_used,
+            meta_run,
+            extra={
+                "stratum": label,
+                "parent_run_dir": str(run_dir.resolve()),
+                "stratified_experiment": True,
+            },
+        )
+        (sdir / "run.log").write_text(buf_s.getvalue(), encoding="utf-8")
+        overview_rows.append(
+            {
+                "stratum": label,
+                "n_comments": n_c,
+                "n_posts": n_p,
+                "output_dir": str(sdir.resolve()),
+                "skipped": False,
+            }
+        )
+
+    _write_stratified_overview(run_dir, overview_rows, cfg)
+
+    parent_payload = {
+        "run_id": cfg.run_id,
+        "generated_at": datetime.now().isoformat(timespec="seconds"),
+        "mode": "stratified_robot_status_group",
+        "strata": overview_rows,
+        "merge_rule": STRATUM_MERGE_RULE,
+        "summary_corpus_full": summary_corpus,
+        "input_csv": str(cfg.input_csv),
+        "input_csv_sha256": _sha256_file(cfg.input_csv),
+    }
+    with open(run_dir / "config_stratified_parent.json", "w", encoding="utf-8") as f:
+        json.dump(parent_payload, f, ensure_ascii=False, indent=2)
+
+    (run_dir / "run.log").write_text(buf_parent.getvalue(), encoding="utf-8")
+    _append_registry_line(
+        cfg.experiments_root,
+        cfg.run_id,
+        last_embedding,
+        run_dir,
+        task="topic_stratified_robot_status",
+        decision="stratified_4_groups",
+    )
+    print(f"Stratified run done. Output: {run_dir}", file=tee_parent)
+    return run_dir
+
+
 def run_experiment(cfg: TopicModelingConfig) -> Path:
     buf = io.StringIO()
     tee = Tee(sys.stdout, buf)
@@ -869,79 +1517,22 @@ def run_experiment(cfg: TopicModelingConfig) -> Path:
     shutil.copy2(cfg.comment_content_filter_json, run_dir / "comment_content_filter.json")
     shutil.copy2(cfg.post_category_by_post_csv, run_dir / "post_category_by_post.csv")
 
-    embedding_used = cfg.embedding_model
-    meta_run: dict[str, Any] = {}
+    embedding_used, meta_run = _run_topic_pipeline_steps(
+        cfg, shared, stopwords, run_dir, tee, summary_corpus=summary_corpus, run_loo=True
+    )
 
-    print("=== Topic modeling run ===", file=tee)
-    print(json.dumps(summary_corpus, ensure_ascii=False, indent=2), file=tee)
-
-    _lda_nmf_scan_and_export(cfg, shared, stopwords, run_dir, tee)
-
-    try:
-        meta_run = _run_bertopic_suite(cfg, shared, stopwords, run_dir, embedding_used, tee)
-    except Exception as e:
-        print(f"[BERTopic] primary model failed ({embedding_used}): {e}", file=tee)
-        embedding_used = cfg.embedding_model_fallback
-        print(f"[BERTopic] trying fallback: {embedding_used}", file=tee)
-        meta_run = _run_bertopic_suite(cfg, shared, stopwords, run_dir, embedding_used, tee)
-
-    try:
-        _loo_sensitivity(cfg, shared, stopwords, run_dir)
-    except Exception as e:
-        print(f"[LOO] skipped: {e}", file=tee)
-
-    write_comparison_md(cfg, run_dir, summary_corpus, embedding_used)
-
-    faq = {
-        "C1_chinese_tokenizer": "jieba (token_pattern=None)",
-        "C2_stopwords_after_embedding": True,
-        "C3_umap_random_state": cfg.random_seed,
-        "C4_calculate_probabilities": cfg.calculate_probabilities,
-        "C5_low_memory": cfg.low_memory,
-        "C6_outlier_strategy": "reduce_outliers(strategy='c-tf-idf') + KMeans backup",
-        "C7_min_topic_size_sensitivity": list(cfg.bert_hdbscan_min_cluster_sizes),
-        "C8_model_used": embedding_used,
-        "C10_raw_text_to_encoder": True,
-        "POS_main_pipeline": False,
-        "content_filter_config": str(cfg.comment_content_filter_json),
-        "post_category_source": str(cfg.post_category_by_post_csv),
-    }
-
-    config_payload = {
-        "run_id": cfg.run_id,
-        "generated_at": datetime.now().isoformat(timespec="seconds"),
-        "input_csv": str(cfg.input_csv),
-        "input_csv_sha256": _sha256_file(cfg.input_csv),
-        "n_shared": int(len(shared)),
-        "summary_corpus": summary_corpus,
-        "embedding_model_resolved": embedding_used,
-        "faq_compliance": faq,
-        "config": {
-            f.name: _json_safe_cfg_value(getattr(cfg, f.name))
-            for f in fields(cfg)
-            if f.name != "experiments_root"
-        },
-        "bertopic_meta": meta_run,
-    }
-    with open(run_dir / "config.json", "w", encoding="utf-8") as f:
-        json.dump(config_payload, f, ensure_ascii=False, indent=2)
+    _write_experiment_config_json(cfg, run_dir, shared, summary_corpus, embedding_used, meta_run)
 
     log_text = buf.getvalue()
     (run_dir / "run.log").write_text(log_text, encoding="utf-8")
 
-    reg_path = cfg.experiments_root / "registry.csv"
-    line = f'{cfg.run_id},{datetime.now().strftime("%Y-%m-%d")},topic_full_corpus,,,{embedding_used},,"{run_dir}",active,main\n'
-    if reg_path.is_file():
-        existing = reg_path.read_text(encoding="utf-8")
-        if cfg.run_id not in {
-            ln.split(",", 1)[0] for ln in existing.splitlines()[1:] if ln.strip()
-        }:
-            with open(reg_path, "a", encoding="utf-8") as f:
-                f.write(line)
-    else:
-        reg_path.write_text("run_id,date,task,hypothesis,input_data,method,key_params,output_dir,status,decision\n", encoding="utf-8")
-        with open(reg_path, "a", encoding="utf-8") as f:
-            f.write(line)
+    _append_registry_line(
+        cfg.experiments_root,
+        cfg.run_id,
+        embedding_used,
+        run_dir,
+        task="topic_full_corpus",
+    )
 
     print(f"Done. Output: {run_dir}", file=tee)
     return run_dir
@@ -986,7 +1577,22 @@ def main() -> None:
         type=int,
         nargs="+",
         default=None,
-        help="BERTopic HDBSCAN min_cluster_size 列表（敏感度），如 100 200 400",
+        help="BERTopic HDBSCAN min_cluster_size 列表（敏感度），如 30 50 80 100 200",
+    )
+    ap.add_argument(
+        "--auto-reduce",
+        action="store_true",
+        help="开启后对 bert_kmeans_k7 跑 reduce_topics(nr_topics='auto')，输出 *_reduced.csv 对照（默认关）",
+    )
+    ap.add_argument(
+        "--no-keybert",
+        action="store_true",
+        help="关闭 KeyBERTInspired+MMR 主题词重排（默认开）",
+    )
+    ap.add_argument(
+        "--stratify-robot-status",
+        action="store_true",
+        help="按 robot_status_group 四层（强势+成功合并为「强势成功」）分别跑 LDA/NMF/BERTopic，输出 strata/<层>/",
     )
     args = ap.parse_args()
 
@@ -997,15 +1603,26 @@ def main() -> None:
         overrides["bert_kmeans_k_values"] = tuple(args.bert_kmeans_k)
     if args.hdbscan_min_cluster_sizes:
         overrides["bert_hdbscan_min_cluster_sizes"] = tuple(args.hdbscan_min_cluster_sizes)
+    if args.auto_reduce:
+        overrides["auto_reduce_kmeans_k7"] = True
+    if args.no_keybert:
+        overrides["use_keybert_inspired"] = False
+
+    run_id = args.run_id
+    if args.stratify_robot_status and run_id == TopicModelingConfig.run_id:
+        run_id = datetime.now().strftime("%Y-%m-%d") + "_topic_stratified_robot_status"
 
     cfg = TopicModelingConfig(
-        run_id=args.run_id,
+        run_id=run_id,
         input_csv=Path(args.input_csv),
         embedding_model=args.embedding_model,
         device=args.device,
         **overrides,
     )
-    run_experiment(cfg)
+    if args.stratify_robot_status:
+        run_stratified_robot_status_experiment(cfg)
+    else:
+        run_experiment(cfg)
 
 
 if __name__ == "__main__":

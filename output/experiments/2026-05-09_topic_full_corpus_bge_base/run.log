@@ -23,9 +23,22 @@
 [BERTopic] SentenceTransformer('BAAI/bge-base-zh-v1.5', device='cpu') …
 [BERTopic] 已从本地 HuggingFace 缓存加载嵌入模型。
 [BERTopic] loaded embeddings from /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-09_topic_full_corpus_bge_base/embeddings.npy
-[BERTopic HDBSCAN mcs=100] topics~=20 outlier_rate=0.313
-[BERTopic HDBSCAN mcs=200] topics~=2 outlier_rate=0.036
-[BERTopic HDBSCAN mcs=400] topics~=2 outlier_rate=0.045
-[BERTopic KMeans k=5] done.
-[BERTopic KMeans k=7] done.
-[BERTopic KMeans k=10] done.
+[BERTopic] UMAP fit_transform once for all variants…
+[BERTopic] umap_reduced.npy saved, shape=(18832, 5)
+[BERTopic] representation_model = [KeyBERTInspired, MMR(div=0.3)]
+[BERTopic HDBSCAN mcs=30] model saved to /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-09_topic_full_corpus_bge_base/bert_hdbscan_mcs30/model (safetensors).
+[BERTopic HDBSCAN mcs=30] topics~=97 outlier_rate=0.404 sil=0.620 dbcv=0.312 mean_ari=1.000
+[BERTopic HDBSCAN mcs=50] model saved to /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-09_topic_full_corpus_bge_base/bert_hdbscan_mcs50/model (safetensors).
+[BERTopic HDBSCAN mcs=50] topics~=58 outlier_rate=0.475 sil=0.650 dbcv=0.281 mean_ari=1.000
+[BERTopic HDBSCAN mcs=80] model saved to /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-09_topic_full_corpus_bge_base/bert_hdbscan_mcs80/model (safetensors).
+[BERTopic HDBSCAN mcs=80] topics~=29 outlier_rate=0.446 sil=0.583 dbcv=0.254 mean_ari=1.000
+[BERTopic HDBSCAN mcs=100] model saved to /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-09_topic_full_corpus_bge_base/bert_hdbscan_mcs100/model (safetensors).
+[BERTopic HDBSCAN mcs=100] topics~=20 outlier_rate=0.313 sil=0.354 dbcv=0.105 mean_ari=1.000
+[BERTopic HDBSCAN mcs=200] model saved to /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-09_topic_full_corpus_bge_base/bert_hdbscan_mcs200/model (safetensors).
+[BERTopic HDBSCAN mcs=200] topics~=2 outlier_rate=0.036 sil=0.438 dbcv=0.291 mean_ari=1.000
+[BERTopic KMeans k=5] model saved to /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-09_topic_full_corpus_bge_base/bert_kmeans_k5/model (safetensors).
+[BERTopic KMeans k=5] sil=0.339 mean_ari=0.995 largest_share=0.281 model_saved=True
+[BERTopic KMeans k=7] model saved to /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-09_topic_full_corpus_bge_base/bert_kmeans_k7/model (safetensors).
+[BERTopic KMeans k=7] sil=0.377 mean_ari=0.995 largest_share=0.225 model_saved=True
+[BERTopic KMeans k=10] model saved to /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-09_topic_full_corpus_bge_base/bert_kmeans_k10/model (safetensors).
+[BERTopic KMeans k=10] sil=0.370 mean_ari=0.758 largest_share=0.214 model_saved=True

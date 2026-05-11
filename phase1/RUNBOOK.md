@@ -43,11 +43,29 @@ PYTHONUNBUFFERED=1 ./.venv/bin/python -m phase1.topic_modeling --device cpu
     --embedding-model BAAI/bge-base-zh-v1.5 \
     --lda-k 5 7 10 12 \
     --bert-kmeans-k 5 7 10 \
-    --hdbscan-min-cluster-sizes 100 200 400
+    --hdbscan-min-cluster-sizes 30 50 80 100 200
+# 可选：对 KMeans k=7 跑 nr_topics='auto' 主题合并副本（默认关）
+./.venv/bin/python -m phase1.topic_modeling --device cpu --auto-reduce
+# 可选：关闭 KeyBERTInspired+MMR 重排，回到默认 c-TF-IDF
+./.venv/bin/python -m phase1.topic_modeling --device cpu --no-keybert
 
-# 3) 两轮自检-修正循环（人工对照本 RUNBOOK §6 阅读，并写入 review_round{1,2}.md 到实验目录）
+# 2b) 按机器人状态分层（4 档：失败 / 弱势 / 中性 / 强势成功；「强势」「成功」合并）
+# 默认 run_id 若仍为全量默认值，会自动改为当日 topic_stratified_robot_status
+./.venv/bin/python -m phase1.topic_modeling --stratify-robot-status --device cpu \
+    --run-id 2026-05-11_topic_stratified_robot_status
+# 产物：<run_id>/shared_analyzable_corpus_full.csv、strata/<层>/{shared,corpus,comparison.md,...}、comparison_stratified_overview.md
 
-# 4) 关键词筛选探索（任意时刻）
+# 3) BERTopic 可视化（reload 已存模型，不再 fit）
+./.venv/bin/python -m phase1.topic_visualize \
+    --run-id 2026-05-09_topic_full_corpus_bge_base \
+    --variant bert_kmeans_k7 \
+    --class-col robot_status post_category
+# 输出：<run_dir>/<variant>/figs/{topics_barchart, topics_heatmap, topics_hierarchy,
+#       topics_per_class_<col>, documents_2d}.html
+
+# 4) 两轮自检-修正循环（人工对照本 RUNBOOK §6 阅读，并写入 review_round{1,2}.md 到实验目录）
+
+# 5) 关键词筛选探索（任意时刻）
 ./.venv/bin/python -m phase1.keyword_filter --out 替代焦虑 \
     --keywords "替代,失业,抢饭碗,被取代"
 ./.venv/bin/python -m phase1.keyword_filter --out lex_species \
@@ -144,6 +162,23 @@ PYTHONUNBUFFERED=1 ./.venv/bin/python -m phase1.topic_modeling --device cpu
 
 ---
 
+## 5. 经验：BERTopic 流程优化（2026-05-10 第二轮 review）
+
+第一版主题建模跑完后回看，BERTopic 路线有 6 处工程盲点。已在 [phase1/topic_modeling.py](topic_modeling.py) 与新增的 [phase1/topic_visualize.py](topic_visualize.py) 里修。
+
+| # | 盲点 | 现象 | 影响 | 已采取的对策 |
+|---|------|------|------|--------------|
+| **B1** | **模型不存档** | `bt.fit_transform(...)` 跑完即丢，下游 `update_topics` / `merge_topics` / `reduce_topics("auto")` / 可视化都得重 fit | UMAP+HDBSCAN/KMeans ~10s/个 × 多次重复浪费 | 每个 BERTopic 跑完 `bt.save(subdir / "model", serialization="safetensors", save_embedding_model=False)` |
+| **B2** | **UMAP 实例被多个 BERTopic 共享** | 同一个 `UMAP(...)` 对象传给 6+ 个 BERTopic 实例，每次 `fit_transform` 重新 fit 它，前一次状态被覆盖；语义不严谨 + 浪费时间 | 每个 K 都重跑 ~10s UMAP（共 ~50–60s） | `_run_bertopic_suite` 里 **UMAP 只跑一次**，得到 `reduced` 落盘 `umap_reduced.npy`；BERTopic 用 `_PassthroughUMAP(reduced)` 包一层，不再重 fit |
+| **B3** | **单一 representation（c-TF-IDF）** | 短词主导 top terms，长词（如 `人形机器人` `云南白药`）排名靠后 | 报告里看不到具领域显著性的词 | `representation_model = [KeyBERTInspired(), MaximalMarginalRelevance(0.3)]`；同时把原始 c-TF-IDF top terms 写到 `topics_ctfidf.csv` 对照 |
+| **B4** | **K 选择只看主题数 + outlier rate** | 缺 silhouette / DBCV / 多 seed 一致性 | 不知道这个 K 的聚类「值不值」/ 是否稳定 | 加 `_bertopic_quality_metrics` + `_seed_stability_ari`；汇总 `a_bertopic_quality.csv`（method、k/mcs、n_topics、silhouette、dbcv、mean_ari、min_ari、largest_share） |
+| **B5** | **HDBSCAN sensitivity 区间偏粗** | `mcs ∈ {100, 200, 400}` 中 200/400 都坍塌到 2 主题 | 看不到细粒度结构 | 默认改为 `(30, 50, 80, 100, 200)`，主报告解释优先级：先 100 看 outlier，再看更小 mcs 的语义 |
+| **B6** | **没有 fit-then-iterate 路径** | 想换 representation / 合并主题就得重 fit + 重 UMAP | 调试节奏慢 | saved model + `phase1/topic_visualize.py` reload 出图；要换 representation 用 `bt.update_topics()` 不重 embed |
+
+> 原则不变：主题模型仍是**探索性的**，不是分类器；上述指标只用来**比较 K 之间相对优劣**与排查异常，不用于「证明这个 K 就是对的」。
+
+---
+
 ## 7. Troubleshooting
 
 | 现象 | 处理 |
@@ -163,13 +198,21 @@ PYTHONUNBUFFERED=1 ./.venv/bin/python -m phase1.topic_modeling --device cpu
 - **当前 run_id**：`2026-05-09_topic_full_corpus_bge_base`（见 `output/experiments/2026-05-09_topic_full_corpus_bge_base/`）。
 - shared corpus：`n_raw=31,245 → n_shared=18,832`，覆盖率 0.6027。
 - 嵌入模型：`BAAI/bge-base-zh-v1.5`（CPU）。
-- HDBSCAN 灵敏度（`mcs / ~主题数 / outlier_rate`）：`100 / 20 / 31.3%`、`200 / 2 / 3.6%`、`400 / 2 / 4.5%` —— 主题数对 `mcs` 极敏感，主解读以 `comparison.md` 多 K 对照 + KMeans K=5/7/10 + 手工核读为准。
+- BERTopic 流程升级（2026-05-10 第二轮 review）：UMAP 只跑一次（`umap_reduced.npy`）共享给所有 BERTopic 实例；代表词加 `KeyBERTInspired + MMR(0.3)` 重排（原始 c-TF-IDF 保存在 `topics_ctfidf.csv`）；每个 variant 都 `bt.save(serialization="safetensors")` 留档；新增 `a_bertopic_quality.csv`（silhouette / DBCV / mean_ari / largest_share）。
+- HDBSCAN 灵敏度（`mcs / 主题数 / outlier / silhouette / DBCV / mean_ari / largest_share`）：
+  - `30  / 97 / 40.4% / 0.620 / 0.312 / 1.000 / 6.2%`
+  - `50  / 58 / 47.5% / **0.650** / 0.281 / 1.000 / 7.6%`
+  - `80  / 29 / 44.6% / 0.583 / 0.254 / 1.000 / 16.3%`
+  - `100 / 20 / 31.3% / 0.354 / 0.105 / 1.000 / 44.2%`
+  - `200 / 2  / 3.6%  / 0.438 / 0.291 / 1.000 / 90.6%（坍塌）`
+- KMeans（`k / silhouette / mean_ari / largest_share`）：`5/0.339/0.995/28.1%`、`7/0.377/0.995/22.5%`、`10/0.370/0.758/21.4%`。
+- 主报告解释建议（详见 `comparison.md` §解释优先级）：**KMeans K=7 主推**（稳、可对接 `robot_status × post_category` 横切）；HDBSCAN `mcs=50` 用作 codebook 候选维度近读；`mcs=200` 已坍塌不进主报告。
 
 ---
 
 ## 9. 未来扩展（按需，非本阶段）
 
 - 选定 K 后再用 `approximate_distribution` 计算文档-主题分布。
-- BERTopic `nr_topics="auto"` 合并相似主题。
-- 引入 topic coherence（gensim CV/UMass）作为 K 选择补充指标。
+- 在 saved model 上用 `bt.update_topics(...)`（换 representation_model / 调 vectorizer）不重 fit；或 `--auto-reduce` 跑 `nr_topics="auto"` 输出 `*_reduced.csv` 对照。
+- 引入 topic coherence（gensim CV/UMass）作为 K 选择补充指标，与 `a_bertopic_quality.csv` 的几何指标互补。
 - Lexicon **重新接回**只能走「先 IRR + codebook → 单独 `topic_modeling_seeded.py` 模块」这条路；不在本流程内扩展。

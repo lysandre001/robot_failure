@@ -104,34 +104,34 @@
 
 ### BERTopic KMeans k=5
 
-- topic 0: 机器人, 人类, 机器, 人形, 马拉松, 人形机器人, 跑步, 需要, ai, 外卖
-- topic 1: 去年, 意义, 进步, 评论, 科技, 发展, 真的, 亦庄, 搞笑, 技术
-- topic 2: 可爱, 跑步, 孩子, 最后, 奶瓶, 地上, 姿势, 低血糖, 膝盖, 好像
-- topic 3: 遥控, 轮子, 马拉松, 跟着, 遥控器, 自主, 汽车, 赛车, f1, 程序员
-- topic 4: 降温, 散热, 冰块, 干冰, 电池, 润滑, wd40, 云南白药, 换电池, 喷雾
+- topic 0: 机器人, 小机器人, 人形机器人, 机器, 机器人马拉松, 机器狗, 机械, 人类, 玩意, 人形
+- topic 1: 进步, 去年, 好笑, 有意思, 厉害, 科技进步, 好玩, 今年, 有意义, 有人
+- topic 2: 可爱, 这小, 小小的, 搞笑, 喜欢, 看起来, 跑得快, 挺快, 小朋友, 不错
+- topic 3: 遥控, 遥控器, 遥控车, 有人, 机器人, 操控, 跟着, 控制, 玩意, 无人
+- topic 4: 降温, 冰块, 加冰, 发热, 过热, 冷却, 温度, 高温, 散热, 制冷
 
 ### BERTopic KMeans k=7
 
-- topic 0: 机器人, 人类, 机器, 马拉松, 人形机器人, 跑步, 需要, 人形, 比赛, 服务
-- topic 1: 去年, 跑步, 姿势, 最后, 马拉松, 低血糖, 跟着, 膝盖, 今年, 比赛
-- topic 2: 可爱, 奶瓶, 真的, 搞笑, 镜头, 亦庄, 评论, 地上, 好笑, 担架
-- topic 3: 外卖, 意义, 科技, 人类, ai, 发展, 进步, 技术, 终结者, 东西
-- topic 4: 轮子, 汽车, 赛车, f1, 人形, 地形, 战场, 更快, 复杂, 马拉松
-- topic 5: 降温, 散热, 冰块, 干冰, 电池, 润滑, wd40, 云南白药, 换电池, 喷雾
-- topic 6: 遥控, 遥控器, 自主, 跟着, 程序员, 玩具, 工程师, 控制, 后面, 机器人
+- topic 0: 机器人, 小机器人, 人形机器人, 机器人马拉松, 机器, 机器狗, 有人, 人类, 机械, 人形
+- topic 1: 跑得快, 跑不动, 跑步, 有人, 挺快, 赛跑, 跑鞋, 跟着, 两步, 马拉松
+- topic 2: 可爱, 好笑, 好玩, 喜欢, 有意思, 好好笑, 搞笑, 小小的, 看起来, 玩意
+- topic 3: 外卖, 是不是, 是否, 没用, 快递, 有意义, 东西, 干嘛, 不用, 玩意
+- topic 4: 轮子, 轮胎, 赛车, 汽车, 轮椅, 轱辘, 开车, 机器, 玩意, 驾驶
+- topic 5: 降温, 冰块, 加冰, 发热, 冷却, 过热, 温度, 散热, 高温, 制冷
+- topic 6: 遥控, 遥控器, 遥控车, 失控, 机器人, 有人, 监控, 玩意, 操控, 机器
 
 ### BERTopic KMeans k=10
 
-- topic 0: 机器人, 人类, 机器, 马拉松, 人形机器人, 跑步, 比赛, 需要, 人形, 服务
-- topic 1: 跑步, 姿势, 低血糖, 最后, 膝盖, 担架, 站不稳, 孩子, 地上, 摔倒
-- topic 2: 镜头, 评论, 亦庄, 搞笑, 好笑, 真的, 诡异, 鸵鸟, 不行, 视频
-- topic 3: 去年, 马拉松, 跟着, 进步, 程序员, 今年, 比赛, 工程师, 跑步, 速度
-- topic 4: 外卖, 意义, 科技, 发展, 技术, 人类, 快递, 东西, 进步, 伺候
-- topic 5: 降温, 散热, 冰块, 干冰, 电池, 润滑, wd40, 云南白药, 换电池, 喷雾
-- topic 6: 轮子, 汽车, 赛车, 人形, f1, 地形, 更快, 复杂, 为什么, 比赛
-- topic 7: 战场, ai, 终结者, 人类, 打仗, 玩意, 未来, 战争, 炸药包, 炸弹
-- topic 8: 可爱, 奶瓶, 小黑, 鲁班, 大湾, 小孩, 孩子, 小派, 小鼻嘎, 小小的
-- topic 9: 遥控, 遥控器, 自主, 玩具, 跟着, 控制, 荣耀, 机器人, 操控, 后面
+- topic 0: 机器人, 人形机器人, 小机器人, 机器, 机器人马拉松, 机器狗, 有人, 人类, 机械, 人形
+- topic 1: 跑不动, 站不稳, 跑步, 姿势, 走路, 跑鞋, 步伐, 晕倒, 踉跄, 腿短
+- topic 2: 好笑, 好好笑, 搞笑, 哈哈笑, 好玩, 有意思, 不笑, 真是, 开心, 看过
+- topic 3: 跟不上, 跑不过, 跟着, 马拉松, 参加, 有人, 参赛, 跑步, 太慢, 赛跑
+- topic 4: 外卖, 有意义, 玩意, 玩意儿, 人家, 伺候, 东西, 背着, 需要, 别人
+- topic 5: 降温, 冰块, 加冰, 发热, 过热, 冷却, 温度, 高温, 散热, 制冷
+- topic 6: 轮子, 轮胎, 轮椅, 轮式, 更快, 赛车, 跑步, 机器, 比赛, 马拉松
+- topic 7: 打仗, 战场, 玩意, 出现, 用来, 玩意儿, 作战, 没用, 要是, 以为
+- topic 8: 可爱, 好萌, 小可爱, 这小, 小小的, 一只, 喜欢, 这小鼻, 萌萌, 搞笑
+- topic 9: 遥控器, 遥控, 遥控车, 机器人, 机器, 玩意, 失控, 有人, 监控, 玩具
 
 ## 主题 × 分层：横切表文件索引
 
@@ -141,23 +141,66 @@
 
 ## LDA k=7 与 BERTopic KMeans k=7 主题词 Jaccard 配对（启发式）
 
-- LDA topic 0: 最近 BERTopic topic 0（Jaccard≈0.389）
-- LDA topic 1: 最近 BERTopic topic 4（Jaccard≈0.316）
-- LDA topic 2: 最近 BERTopic topic 1（Jaccard≈0.087）
-- LDA topic 3: 最近 BERTopic topic 2（Jaccard≈0.190）
-- LDA topic 4: 最近 BERTopic topic 6（Jaccard≈0.389）
-- LDA topic 5: 最近 BERTopic topic 0（Jaccard≈0.136）
-- LDA topic 6: 最近 BERTopic topic 3（Jaccard≈0.250）
+- LDA topic 0: 最近 BERTopic topic 0（Jaccard≈0.250）
+- LDA topic 1: 最近 BERTopic topic 4（Jaccard≈0.136）
+- LDA topic 2: 最近 BERTopic topic 1（Jaccard≈0.042）
+- LDA topic 3: 最近 BERTopic topic 2（Jaccard≈0.087）
+- LDA topic 4: 最近 BERTopic topic 5（Jaccard≈0.136）
+- LDA topic 5: 最近 BERTopic topic 0（Jaccard≈0.087）
+- LDA topic 6: 最近 BERTopic topic 3（Jaccard≈0.087）
 
 ## HDBSCAN 灵敏度（min_cluster_size）
 
+- `bert_hdbscan_mcs30/topics.csv` 已生成（含 `topic_raw` / `topic_assigned` 见 `doc_topics.csv`）。
+- `bert_hdbscan_mcs50/topics.csv` 已生成（含 `topic_raw` / `topic_assigned` 见 `doc_topics.csv`）。
+- `bert_hdbscan_mcs80/topics.csv` 已生成（含 `topic_raw` / `topic_assigned` 见 `doc_topics.csv`）。
 - `bert_hdbscan_mcs100/topics.csv` 已生成（含 `topic_raw` / `topic_assigned` 见 `doc_topics.csv`）。
 - `bert_hdbscan_mcs200/topics.csv` 已生成（含 `topic_raw` / `topic_assigned` 见 `doc_topics.csv`）。
-- `bert_hdbscan_mcs400/topics.csv` 已生成（含 `topic_raw` / `topic_assigned` 见 `doc_topics.csv`）。
+
+## 主题质量诊断（BERTopic）
+
+详见 `a_bertopic_quality.csv`。本次实验的工程信号摘要：
+
+| 路线 | 参数 | 主题数 | outlier | silhouette ↑ | DBCV ↑ | mean_ari ↑ | largest_share ↓ |
+|------|------|--------|---------|--------------|--------|-----------|-----------------|
+| HDBSCAN | `mcs=30`  | 97 | 40.4% | **0.620** | **0.312** | 1.000 | 6.2% |
+| HDBSCAN | `mcs=50`  | 58 | 47.5% | **0.650** | 0.281 | 1.000 | 7.6% |
+| HDBSCAN | `mcs=80`  | 29 | 44.6% | 0.583 | 0.254 | 1.000 | 16.3% |
+| HDBSCAN | `mcs=100` | 20 | 31.3% | 0.354 | 0.105 | 1.000 | **44.2%** |
+| HDBSCAN | `mcs=200` | 2  | 3.6%  | 0.438 | 0.291 | 1.000 | 90.6%（坍塌） |
+| KMeans  | `k=5`     | 5  | 0     | 0.339 | — | 0.995 | 28.1% |
+| KMeans  | `k=7`     | 7  | 0     | **0.377** | — | **0.995** | 22.5% |
+| KMeans  | `k=10`    | 10 | 0     | 0.370 | — | **0.758** | 21.4% |
+
+指标说明：
+
+- **silhouette**：在 UMAP 5D 上算（HDBSCAN 排除 outlier），数值越大簇内/簇间分离越好。
+- **DBCV**：HDBSCAN 专属的 density-based 验证，含 outlier 一起评估。
+- **mean_ari**：同一 K/参数下，3 个 seed（42/7/2026）两两 Adjusted Rand Index 的均值；越接近 1 表示聚类对随机种子越稳定。`bert_*/stability_seeds.csv` 记录原始值。
+- **largest_share**：占比最大主题的份额；越接近 1 说明结果坍塌成单一主题。
+
+工程信号：
+
+1. **HDBSCAN `mcs=30/50` 在 silhouette + DBCV 上明显优于 KMeans**，但代价是 ~40–48% outlier；如需细粒度结构主题（97/58 个）作为 codebook 候选，从这两个变体里抽样近读。
+2. **HDBSCAN `mcs=100` 是「中粒度可阅读」的拐点**（20 个主题），但 silhouette 已显著下降，且最大主题占 44%——主报告主推此处时需指出"主题不平衡"风险。
+3. **`mcs=200` 已坍塌**（2 个主题、最大 90.6%）；建议从主报告解释序列中移除，仅作 sensitivity 提示。
+4. **KMeans 路线 ARI 在 K=5/7 极稳（0.995）**，K=10 降到 0.758——给定 BGE 嵌入的几何，5–7 个簇是稳定结构，10 个开始拼凑。**主报告若要"等距、可阅读、可对帖子分层"则推荐 KMeans K=7。**
+5. **代表词**：`topics.csv` 已用 `KeyBERTInspired + MMR(0.3)` 重排（具领域显著性的长词更靠前，如 `人形机器人`/`机器人马拉松`）；原始 c-TF-IDF top terms 单独存在 `topics_ctfidf.csv` 用于对照。
+
+可视化已生成（reload 已存模型，无需重 fit）：
+
+- `bert_kmeans_k7/figs/`：barchart / heatmap / hierarchy / topics_per_class_robot_status / topics_per_class_post_category / documents_2d
+- `bert_hdbscan_mcs50/figs/`：同上（最高 silhouette 的 HDBSCAN 变体作对照）
 
 ## 解释优先级
 
-- HDBSCAN：`topic_raw`（含 -1 噪声）为主解释；`topic_assigned` 仅辅助阅读。
+主报告解读建议序列：
+
+1. **KMeans K=7**（主推荐）：代表词稳、跨 seed 稳、在 `robot_status × post_category` 横切上有显著差异 → 对接「机器人状态 / 人类角色」研究框架最自然。
+2. **HDBSCAN `mcs=50`**（细粒度对照）：58 主题 + 最高 silhouette；用于 codebook 候选维度近读，**不进主报告主表**。
+3. **LDA K=7 / K=10**（语义可读性对照）：与 KMeans K=7 配对（见 §Jaccard）。
+4. **HDBSCAN `mcs=100`** 仅作粒度灵敏度提示；`mcs=200` 不进主报告。
+5. HDBSCAN：`topic_raw`（含 -1 噪声）为主解释；`topic_assigned` 仅辅助阅读。
 
 
 ## Leave-one-post-out（爆款帖敏感度）

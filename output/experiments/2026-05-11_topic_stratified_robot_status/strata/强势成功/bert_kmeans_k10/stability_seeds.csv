@@ -1,0 +1,2 @@
+mean_ari,min_ari,n_seeds,method,k
+0.9749307052886461,0.9629685745821497,3.0,kmeans,10

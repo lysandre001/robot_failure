@@ -1,0 +1,51 @@
+{
+  "run_id": "2026-05-10_topic_stratified_robot_status",
+  "generated_at": "2026-05-10T23:23:07",
+  "mode": "stratified_robot_status_group",
+  "strata": [
+    {
+      "stratum": "失败",
+      "n_comments": 1568,
+      "n_posts": 3,
+      "output_dir": "/Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-10_topic_stratified_robot_status/strata/失败",
+      "skipped": false
+    },
+    {
+      "stratum": "弱势",
+      "n_comments": 1490,
+      "n_posts": 4,
+      "output_dir": "/Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-10_topic_stratified_robot_status/strata/弱势",
+      "skipped": false
+    },
+    {
+      "stratum": "中性",
+      "n_comments": 1503,
+      "n_posts": 3,
+      "output_dir": "/Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-10_topic_stratified_robot_status/strata/中性",
+      "skipped": false
+    },
+    {
+      "stratum": "强势成功",
+      "n_comments": 12133,
+      "n_posts": 5,
+      "output_dir": "/Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-10_topic_stratified_robot_status/strata/强势成功",
+      "skipped": false
+    }
+  ],
+  "merge_rule": "robot_status in {\"强势\",\"成功\"} -> \"强势成功\"；其余失败/弱势/中性各为一层。",
+  "summary_corpus_full": {
+    "n_raw": 31245,
+    "n_shared": 18832,
+    "coverage": 0.6027204352696431,
+    "n_missing_robot_status_group": 2138,
+    "excluded_empty_or_too_short": 0,
+    "excluded_pure_emoji": 0,
+    "excluded_only_at_mentions": 4718,
+    "excluded_repeated_fragment": 162,
+    "excluded_pure_noise_row": 2,
+    "excluded_effective_tokens_lt_min": 7344,
+    "excluded_duplicate_text": 187
+  },
+  "input_csv": "/Users/yilin/Desktop/project/robot_failure/output/phase1/data/clean_comments_unified.csv",
+  "input_csv_sha256": "b5034591c5ed04319d39f78db46ef8f748910141048243fac82c59e6363959b4"
+}

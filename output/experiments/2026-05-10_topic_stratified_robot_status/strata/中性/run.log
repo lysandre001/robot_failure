@@ -1,0 +1,69 @@
+=== Topic modeling stratum=中性 ===
+{
+  "n_raw": 31245,
+  "n_shared": 18832,
+  "coverage": 0.6027204352696431,
+  "n_missing_robot_status_group": 2138,
+  "excluded_empty_or_too_short": 0,
+  "excluded_pure_emoji": 0,
+  "excluded_only_at_mentions": 4718,
+  "excluded_repeated_fragment": 162,
+  "excluded_pure_noise_row": 2,
+  "excluded_effective_tokens_lt_min": 7344,
+  "excluded_duplicate_text": 187,
+  "stratum": "中性",
+  "n_shared_stratum": 1503,
+  "n_posts_stratum": 3,
+  "adaptive_lda_k": [
+    5,
+    7,
+    10,
+    12
+  ],
+  "adaptive_bert_kmeans_k": [
+    5,
+    7,
+    10
+  ],
+  "adaptive_hdbscan_mcs": [
+    30,
+    50,
+    80,
+    100,
+    200
+  ],
+  "adaptive_lda_min_df": 5,
+  "adaptive_nmf_min_df": 3
+}
+[LDA k=5] perplexity=188.32 docs=1503
+[NMF k=5] reconstruction_err=34.3094 docs=1503
+[LDA k=7] perplexity=207.22 docs=1503
+[NMF k=7] reconstruction_err=33.7659 docs=1503
+[LDA k=10] perplexity=202.97 docs=1503
+[NMF k=10] reconstruction_err=32.9711 docs=1503
+[LDA k=12] perplexity=211.37 docs=1503
+[NMF k=12] reconstruction_err=32.5107 docs=1503
+[BERTopic] importing optional deps…
+[BERTopic] SentenceTransformer('BAAI/bge-base-zh-v1.5', device='cpu') …
+[BERTopic] 已从本地 HuggingFace 缓存加载嵌入模型。
+[BERTopic] encoding 1503 docs …
+[BERTopic] saved /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-10_topic_stratified_robot_status/strata/中性/embeddings.npy
+[BERTopic] UMAP fit_transform once (n_neighbors=15, n_docs=1503)…
+[BERTopic] umap_reduced.npy saved, shape=(1503, 5)
+[BERTopic] representation_model = [KeyBERTInspired, MMR(div=0.3)]
+[BERTopic HDBSCAN mcs=30] model saved to /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-10_topic_stratified_robot_status/strata/中性/bert_hdbscan_mcs30/model (safetensors).
+[BERTopic HDBSCAN mcs=30] topics~=2 outlier_rate=0.029 sil=0.569 dbcv=0.394 mean_ari=1.000
+[BERTopic HDBSCAN mcs=50] model saved to /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-10_topic_stratified_robot_status/strata/中性/bert_hdbscan_mcs50/model (safetensors).
+[BERTopic HDBSCAN mcs=50] topics~=2 outlier_rate=0.015 sil=0.558 dbcv=0.384 mean_ari=1.000
+[BERTopic HDBSCAN mcs=80] model saved to /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-10_topic_stratified_robot_status/strata/中性/bert_hdbscan_mcs80/model (safetensors).
+[BERTopic HDBSCAN mcs=80] topics~=2 outlier_rate=0.024 sil=0.563 dbcv=0.400 mean_ari=1.000
+[BERTopic HDBSCAN mcs=100] model saved to /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-10_topic_stratified_robot_status/strata/中性/bert_hdbscan_mcs100/model (safetensors).
+[BERTopic HDBSCAN mcs=100] topics~=2 outlier_rate=0.031 sil=0.566 dbcv=0.456 mean_ari=1.000
+[BERTopic HDBSCAN mcs=200] model saved to /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-10_topic_stratified_robot_status/strata/中性/bert_hdbscan_mcs200/model (safetensors).
+[BERTopic HDBSCAN mcs=200] topics~=2 outlier_rate=0.138 sil=0.637 dbcv=0.504 mean_ari=1.000
+[BERTopic KMeans k=5] model saved to /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-10_topic_stratified_robot_status/strata/中性/bert_kmeans_k5/model (safetensors).
+[BERTopic KMeans k=5] sil=0.425 mean_ari=1.000 largest_share=0.257 model_saved=True
+[BERTopic KMeans k=7] model saved to /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-10_topic_stratified_robot_status/strata/中性/bert_kmeans_k7/model (safetensors).
+[BERTopic KMeans k=7] sil=0.363 mean_ari=0.759 largest_share=0.239 model_saved=True
+[BERTopic KMeans k=10] model saved to /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-10_topic_stratified_robot_status/strata/中性/bert_kmeans_k10/model (safetensors).
+[BERTopic KMeans k=10] sil=0.396 mean_ari=0.889 largest_share=0.196 model_saved=True
