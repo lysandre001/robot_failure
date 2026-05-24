@@ -28,13 +28,40 @@
 
 ---
 
+## 2b. 第二批 CSV 合并进语料（anchor 帖）
+
+第二批宽表为根目录 `2-小红书帖子数据.csv`（**不能**直接 `run_phase1.py`）。流程：
+
+```bash
+# 1) 容错清洗 CSV → data/rawdata/xhs_batch2_wide_sanitized.csv + xhs_merge_qc.md
+python -m tools.ingest_xhs_batch2_csv
+
+# 2) 与 1-小红书帖子数据.xlsx 合并 → merged xlsx + posts.csv
+python -m tools.merge_xhs_batches_xlsx
+
+# 3) 清洗（合并 xlsx）
+python run_preprocess.py --xlsx data/rawdata/小红书帖子数据_merged.xlsx
+cp output/phase1/clean_comments_unified.csv data/clean/
+python -m tools.export_comments_per_post
+
+# 4) 全量主题建模（合并语料，新 run_id）
+PYTHONUNBUFFERED=1 ./.venv/bin/python -m phase1.topic_modeling \
+  --run-id 2026-05-19_topic_full_corpus_merged_bge_base \
+  --input-csv data/clean/clean_comments_unified.csv \
+  --device cpu
+```
+
+产物目录：`data/rawdata/`（`posts.csv`、merged xlsx）、`data/clean/`（canonical 评论表）。
+
+---
+
 ## 3. 重跑命令（4 个步骤）
 
 ```bash
 # 1) 清洗（默认不再产 lexicon 衍生表）
-python run_phase1.py
+python run_preprocess.py
 # 仅当需要旧 lexicon 特征：
-python run_phase1.py --legacy-lexicon-features
+python run_preprocess.py --legacy-lexicon-features
 
 # 2) 全量主题建模（LDA + NMF + BERTopic）
 PYTHONUNBUFFERED=1 ./.venv/bin/python -m phase1.topic_modeling --device cpu

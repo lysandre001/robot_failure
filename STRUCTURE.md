@@ -1,27 +1,42 @@
 # 项目结构（可复现流水线）
 
+> 脚本完整索引见 [`tools/README.md`](tools/README.md)。
+
 ## 目录
 
 | 路径 | 作用 |
 |------|------|
-| `小红书帖子数据.xlsx` | 原始数据（不入库） |
-| `phase1/config.py` | 根路径、`output/phase1`、Matplotlib |
-| `phase1/lexicons.py` | 探索性词典（可迭代） |
-| `phase1/preprocess.py` | **步骤 A**：读 Excel、合并类别、去重、统一表 |
-| `phase1/features.py` | **步骤 B**：词典命中与玩梗特征 |
-| `phase1/analysis.py` | **步骤 C**：统计图、共现、主题聚类、辅助 CSV |
-| `phase1/reports.py` | **步骤 D**：质量说明、摘要、codebook 草案 |
-| `phase1/pipeline.py` | 串联 1–8 步 |
-| `run_phase1.py` | 入口：`python run_phase1.py` |
-| `notebooks/phase1_structured.ipynb` | 与上同序的分步 Notebook |
-| `output/phase1/` | 全部产物（CSV / MD / PNG / JSON） |
+| `run_preprocess.py` | **Phase 1 清洗入口**（`run_phase1.py` 为兼容别名） |
+| `phase1/pipeline.py` | 清洗流水线编排 |
+| `phase1/preprocess.py` | 读 Excel、合并类别、去重、统一表 |
+| `phase1/comment_content_filter.py` | 评论噪音规则（库 + 可被 audit 工具调用） |
+| `phase1/topic_modeling.py` | **主题建模主入口**（shared corpus + LDA/NMF/BERTopic） |
+| `phase1/topic_lda.py` | 分词、停用词 |
+| `phase1/topic_visualize.py` | BERTopic 可视化 |
+| `phase1/keyword_filter.py` | 关键词探索（`output/explore/`） |
+| `phase1/xhs_io.py` | 小红书 raw 导入/合并（库） |
+| `tools/` | 一次性导入、辅助导出、ad-hoc 分析 CLI |
+| `config/` | 帖子编码、噪音规则 JSON |
+| `data/clean/` | canonical 清洗产物 |
+| `output/phase1/` | 清洗流水线输出 |
+| `output/experiments/` | 正式主题建模实验 |
+| `output/explore/` | 关键词探索临时产物 |
 
 ## 命令
 
 ```bash
 cd /Users/yilin/Desktop/project/robot_failure
-python3 -m venv .venv && source .venv/bin/activate
-pip install -r requirements.txt
-python run_phase1.py
-jupyter notebook notebooks/phase1_structured.ipynb
+source .venv/bin/activate
+
+# 清洗
+python run_preprocess.py --xlsx data/rawdata/小红书帖子数据_merged.xlsx
+
+# 主题建模
+PYTHONUNBUFFERED=1 python -m phase1.topic_modeling --device cpu \
+  --input-csv data/clean/clean_comments_unified.csv --run-id <run_id>
+
+# 辅助导出
+python -m tools.export_comments_per_post
 ```
+
+详见 [`phase1/RUNBOOK.md`](phase1/RUNBOOK.md)。

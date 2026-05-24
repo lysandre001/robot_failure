@@ -296,7 +296,7 @@ def filter_valid_comments(
         是否去掉“全字相同重复”的文本（如 哈哈哈哈 / 啊啊啊啊）。
         若传入 ``content_rules_path``，则该项被忽略（重复片段由 JSON 中 repeated_fragment 控制）。
     content_rules_path
-        ``config/topic_modeling/comment_content_filter.json`` 等；启用纯 emoji / 仅 @ / 重复短片段等规则。
+        ``config/topic_modeling/comment_content_filter.json`` 等；启用纯 emoji / 含 @ 提及 / 重复短片段等规则。
     content_filter_report_path
         若给定，将本次规则命中统计写入 JSON（仅在与 content_rules_path 同时启用时有效）。
     """

@@ -49,7 +49,7 @@ python -m phase1.comment_content_filter
 ## 四、注意点（本流程专属）
 
 1. **`comment_content_filter.json`**  
-   纯 emoji / 仅 @ / 重复短片段等；调参后应用 `comment_content_filter` 模块看全量 `comment_content_filter_dropped.csv` 与 `comment_content_filter_report.json`。
+   纯 emoji / 含 @ 提及 / 重复短片段等；调参后应用 `comment_content_filter` 模块看全量 `comment_content_filter_dropped.csv` 与 `comment_content_filter_report.json`。
 
 2. **Pipeline 参数**  
    若启用 `content_rules_path`，与 `drop_repeated_single_char` 的语义以 **JSON 规则为准**（旧开关可能被忽略）。

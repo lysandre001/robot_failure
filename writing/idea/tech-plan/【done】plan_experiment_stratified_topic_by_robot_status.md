@@ -1,5 +1,7 @@
 # 实验计划：按机器人帖子状态分层主题建模（4 档）
 
+# done：发现分类型的建模还是挺makesense的
+
 > 与 [`lessons_learned_topic_modeling.md`](lessons_learned_topic_modeling.md)、[`.cursor/plans/clean_topic_modeling_pipeline_2f58b4ff.plan.md`](../.cursor/plans/clean_topic_modeling_pipeline_2f58b4ff.plan.md) 对齐。  
 > **合并规则**：`强势` + `成功` → **`强势成功`**；与 `失败` / `弱势` / `中性` 共四层（研究设计维度，**非**模型聚类结果）。
 

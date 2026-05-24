@@ -1,15 +1,20 @@
 {
-  "version": 1,
-  "description": "评论正文噪音过滤：纯 emoji、仅 @、重复短片段（情绪叠字等）。应用在 normalize 后、与 min_chars 等基础规则配合使用。",
+  "version": 2,
+  "description": "评论正文噪音过滤：纯 emoji、含 @ 提及、重复短片段（情绪叠字等）。应用在 normalize 后、与 min_chars 等基础规则配合使用。",
   "pure_emoji": {
     "enabled": true,
     "notes": "去掉仅由 emoji / ZWJ / 肤色修饰符等组成的评论；含汉字、拉丁字母或数字的保留。"
   },
-  "only_mentions": {
+  "contains_mention": {
     "enabled": true,
     "mention_regex": "[@＠][^\\s@＠]+",
+    "notes": "正文含 @ 或全角＠提及即排除（含 @用户 后仍有实质文字的评论）。"
+  },
+  "only_mentions": {
+    "enabled": false,
+    "mention_regex": "[@＠][^\\s@＠]+",
     "strip_chars_not_substance": " \t\n，。,.!！?？…~～·、:：（）()[]【】「」《》",
-    "notes": "去掉 @ 后若只剩空白与标点，视为「仅艾特」；正文里带 @ 但仍有实质文字则保留。"
+    "notes": "（已由 contains_mention 覆盖）去掉 @ 后若只剩空白与标点，视为「仅艾特」。"
   },
   "repeated_fragment": {
     "enabled": true,

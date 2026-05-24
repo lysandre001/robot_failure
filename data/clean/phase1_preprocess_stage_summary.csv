@@ -1,0 +1,9 @@
+stage,description,rows,unique_posts,unique_comment_id,notes
+A0_merged_wide,合并宽表（第一批Excel+第二批容错CSV）,57855,33,,每行含帖+评论字段
+A2_l1_dedup,一级评论按一级评论id去重,30170,33,30170,
+A3_l2_dedup,二级评论按二级评论id去重,26534,33,26534,
+A4_unified_before_filter,一二级合并长表（Phase1过滤前）,56704,33,56704,
+A5_unified_after_filter,Phase1过滤后（clean_comments_unified）,46051,33,46051,L1=24895; L2=21156
+A5_batch1_subset,第一批16帖（理论抽样）,29215,16,29215,
+A5_batch2_anchor,第二批17帖（anchor）,16836,17,16836,
+A6_shared_corpus,主题建模shared analyzable corpus,28055,33,28055,batch1=19088; batch2=8967

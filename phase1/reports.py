@@ -88,21 +88,29 @@ def build_phase1_summary(enriched: pd.DataFrame, l1: pd.DataFrame) -> None:
     ]
     role_cols = [c for c in enriched.columns if c.startswith("role_")]
     ph_cols = [c for c in enriched.columns if c.startswith("ph_")]
-    for cat in sorted(enriched["post_category"].unique()):
-        sub = enriched[enriched["post_category"] == cat]
-        rmean = sub[role_cols].mean().sort_values(ascending=False).head(3)
-        pmean = sub[ph_cols].mean().sort_values(ascending=False).head(3)
-        tmpl_rate = sub["template_style"].mean()
-        lines.append(f"### {cat}")
-        lines.append(f"- 套话模板命中率(您是…它是…风格): {tmpl_rate:.3%}")
-        lines.append(
-            "- 角色词典均值 Top3: "
-            + ", ".join(f"{k.replace('role_','')}={v:.3f}" for k, v in rmean.items())
-        )
-        lines.append(
-            "- 拟人线索 Top3: " + ", ".join(f"{k.replace('ph_','')}={v:.3f}" for k, v in pmean.items())
-        )
-        lines.append("")
+    has_lexicon = bool(role_cols or ph_cols or "template_style" in enriched.columns)
+    if has_lexicon:
+        for cat in sorted(enriched["post_category"].dropna().unique()):
+            sub = enriched[enriched["post_category"] == cat]
+            lines.append(f"### {cat}")
+            if "template_style" in sub.columns:
+                tmpl_rate = sub["template_style"].mean()
+                lines.append(f"- 套话模板命中率(您是…它是…风格): {tmpl_rate:.3%}")
+            if role_cols:
+                rmean = sub[role_cols].mean().sort_values(ascending=False).head(3)
+                lines.append(
+                    "- 角色词典均值 Top3: "
+                    + ", ".join(f"{k.replace('role_','')}={v:.3f}" for k, v in rmean.items())
+                )
+            if ph_cols:
+                pmean = sub[ph_cols].mean().sort_values(ascending=False).head(3)
+                lines.append(
+                    "- 拟人线索 Top3: "
+                    + ", ".join(f"{k.replace('ph_','')}={v:.3f}" for k, v in pmean.items())
+                )
+            lines.append("")
+    else:
+        lines.append("（未启用 `--legacy-lexicon-features`，跳过词典/模板统计。）\n")
 
     lines.append("## 高回复一级评论（玩梗/协商潜在热点）")
     lines.append("见 `top_high_reply_l1.csv` 前 10 行摘取：")

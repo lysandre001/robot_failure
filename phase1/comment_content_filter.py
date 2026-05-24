@@ -1,4 +1,4 @@
-"""可配置评论内容噪音过滤：纯 emoji、仅 @、重复短片段等。规则见 config/topic_modeling/comment_content_filter.json。"""
+"""可配置评论内容噪音过滤：纯 emoji、含 @ 提及、重复短片段等。规则见 config/topic_modeling/comment_content_filter.json。"""
 from __future__ import annotations
 
 import json
@@ -71,6 +71,14 @@ def substantive_after_stripping_mentions(text: str, rules: dict[str, Any]) -> st
     return t.strip()
 
 
+def contains_mention(text: str, rules: dict[str, Any]) -> bool:
+    """正文是否含 @ 提及（按 mention_regex 匹配，不要求「仅 @」）。"""
+    if not str(text).strip():
+        return False
+    mention_re = _compile_mention_pattern(rules)
+    return mention_re.search(str(text)) is not None
+
+
 def is_only_mentions(text: str, rules: dict[str, Any]) -> bool:
     if not str(text).strip():
         return False
@@ -115,7 +123,7 @@ def is_repeated_fragment_noise(text: str, rules: dict[str, Any]) -> bool:
 def classify_comment_noise(text: str, rules: dict[str, Any]) -> str | None:
     """
     若应排除则返回原因键，否则 None。
-    优先级：pure_emoji -> only_mentions -> repeated_fragment（先判语义更单纯的类）。
+    优先级：pure_emoji -> contains_mention -> only_mentions -> repeated_fragment。
     """
     t = normalize_text(text)
     if not t:
@@ -124,6 +132,10 @@ def classify_comment_noise(text: str, rules: dict[str, Any]) -> str | None:
     pe = rules.get("pure_emoji") or {}
     if pe.get("enabled", True) and is_pure_emoji_text(t):
         return "pure_emoji"
+
+    cm = rules.get("contains_mention") or {}
+    if cm.get("enabled", False) and contains_mention(t, cm):
+        return "contains_mention"
 
     om = rules.get("only_mentions") or {}
     if om.get("enabled", True) and is_only_mentions(t, om):
