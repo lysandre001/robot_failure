@@ -39,18 +39,24 @@ _URL_ONLY_RE = re.compile(r"^(https?://\S+|www\.\S+)$", re.I)
 _DIGITS_ONLY_RE = re.compile(r"^[\d\s]+$")
 _PURE_PUNCT_RE = re.compile(r"^[\W_]+$", re.UNICODE)
 
-# 机器人状态分层（研究设计）：「强势」「成功」合并为「强势成功」，共 4 层。
-KNOWN_ROBOT_STATUSES_FOR_STRATUM = frozenset({"失败", "弱势", "中性", "强势", "成功"})
-ROBOT_STATUS_STRATUM_ORDER: tuple[str, ...] = ("失败", "弱势", "中性", "强势成功")
-STRATUM_MERGE_RULE = 'robot_status in {"强势","成功"} -> "强势成功"；其余失败/弱势/中性各为一层。'
+# 机器人状态分层（研究设计）：「强势」「成功」合并为「强势成功」；「常态」单独一层（≠中性）。
+KNOWN_ROBOT_STATUSES_FOR_STRATUM = frozenset({"失败", "弱势", "常态", "中性", "强势", "成功"})
+ROBOT_STATUS_STRATUM_ORDER: tuple[str, ...] = ("失败", "弱势", "常态", "中性", "强势成功")
+STRATUM_MERGE_RULE = (
+    'robot_status in {"强势","成功"} -> "强势成功"；'
+    '失败/弱势/常态/中性各为一层；「混合」不进分层。'
+    '（历史标签「成功|*」已废弃，表中应使用「强势」等现行取值。）'
+)
 
 
 def robot_status_to_stratum_group(robot_status: Any) -> str | None:
     """帖子级 robot_status → 分层标签；空值返回 None；未知取值抛错。"""
-    if robot_status is None or (isinstance(robot_status, float) and pd.isna(robot_status)):
+    from phase1.post_category_labels import normalize_robot_status_label
+
+    s = normalize_robot_status_label(robot_status)
+    if s is None:
         return None
-    s = str(robot_status).strip()
-    if not s:
+    if s == "混合":
         return None
     if s not in KNOWN_ROBOT_STATUSES_FOR_STRATUM:
         raise ValueError(
@@ -166,12 +172,9 @@ def _pick_device(preference: str | None) -> str:
 
 
 def _split_post_category(s: Any) -> tuple[str, str]:
-    if pd.isna(s) or str(s).strip() == "":
-        return "", ""
-    parts = str(s).split("|", 1)
-    if len(parts) == 2:
-        return parts[0].strip(), parts[1].strip()
-    return parts[0].strip(), ""
+    from phase1.post_category_labels import split_post_category
+
+    return split_post_category(s)
 
 
 def _effective_token_count(text: str, stopwords: set[str]) -> int:
@@ -201,16 +204,17 @@ def build_shared_analyzable_corpus(
     n_raw = len(raw)
     rules = load_comment_filter_rules(cfg.comment_content_filter_json)
 
-    pc = pd.read_csv(cfg.post_category_by_post_csv)
-    pc = pc.rename(columns={"类别": "post_category"})
+    from phase1.post_category_labels import load_post_category_by_post
+
+    pc = load_post_category_by_post(cfg.post_category_by_post_csv)
     if "帖子id" not in raw.columns:
         raise ValueError("input_csv 需含列 帖子id")
-    raw = raw.drop(columns=["post_category"], errors="ignore")
-    raw = raw.merge(pc[["帖子id", "post_category"]], on="帖子id", how="left")
-
-    rs_hr = raw["post_category"].map(_split_post_category)
-    raw["robot_status"] = rs_hr.map(lambda x: x[0])
-    raw["human_role"] = rs_hr.map(lambda x: x[1])
+    raw = raw.drop(columns=["post_category", "robot_status", "human_role"], errors="ignore")
+    raw = raw.merge(
+        pc[["帖子id", "post_category", "robot_status", "human_role"]],
+        on="帖子id",
+        how="left",
+    )
 
     stats: dict[str, int] = {
         "excluded_empty_or_too_short": 0,

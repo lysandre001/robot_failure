@@ -8,6 +8,7 @@ from pathlib import Path
 import pandas as pd
 
 from phase1.config import POST_CATEGORY_BY_POST_CSV, ROOT
+from phase1.post_category_labels import load_post_category_by_post
 from phase1.post_links import DEFAULT_POSTS_CSV, load_post_links
 
 
@@ -17,7 +18,7 @@ def export_counts(
     posts_csv: Path | None = None,
 ) -> pd.DataFrame:
     df = pd.read_csv(input_csv)
-    pc = pd.read_csv(POST_CATEGORY_BY_POST_CSV, encoding="utf-8-sig")
+    pc = load_post_category_by_post(POST_CATEGORY_BY_POST_CSV)
     b1_ids = set(pc["帖子id"].astype(str))
 
     g = df.groupby(["帖子id", "comment_level"]).size().unstack(fill_value=0)
@@ -29,13 +30,6 @@ def export_counts(
     g["合计"] = g["L1"] + g["L2"]
     g = g.reset_index()
     g["corpus"] = g["帖子id"].astype(str).map(lambda x: "batch1" if x in b1_ids else "batch2_anchor")
-    if "类别" in pc.columns:
-        pc = pc.rename(columns={"类别": "post_category"})
-    elif {"机器人状态", "人的形象"}.issubset(pc.columns):
-        pc = pc.copy()
-        pc["post_category"] = pc["机器人状态"].astype(str) + "|" + pc["人的形象"].astype(str)
-    else:
-        raise ValueError("post_category_by_post.csv 需含「类别」或「机器人状态+人的形象」")
     g = g.merge(pc[["帖子id", "post_category"]], on="帖子id", how="left")
     g["post_category"] = g["post_category"].fillna("(anchor)")
 
