@@ -1,0 +1,50 @@
+=== Topic modeling run ===
+{
+  "n_raw": 41251,
+  "n_shared": 26811,
+  "coverage": 0.6499478800513927,
+  "n_missing_robot_status_group": 3756,
+  "excluded_empty_or_too_short": 2262,
+  "excluded_pure_emoji": 0,
+  "excluded_only_at_mentions": 0,
+  "excluded_repeated_fragment": 0,
+  "excluded_pure_noise_row": 7,
+  "excluded_effective_tokens_lt_min": 8783,
+  "excluded_duplicate_text": 3388
+}
+[LDA k=5] perplexity=1754.22 docs=26811
+[NMF k=5] reconstruction_err=159.6106 docs=26811
+[LDA k=7] perplexity=1775.19 docs=26811
+[NMF k=7] reconstruction_err=158.8759 docs=26811
+[LDA k=10] perplexity=1804.63 docs=26811
+[NMF k=10] reconstruction_err=157.9861 docs=26811
+[LDA k=12] perplexity=1873.54 docs=26811
+[NMF k=12] reconstruction_err=157.4198 docs=26811
+[BERTopic] importing optional deps…
+[BERTopic] SentenceTransformer('BAAI/bge-base-zh-v1.5', device='cpu') …
+[BERTopic] 已从本地 HuggingFace 缓存加载嵌入模型。
+[BERTopic] encoding 26811 docs …
+[BERTopic] saved /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-27_topic_merged_bge_hdbscan_sensitivity/embeddings.npy
+[BERTopic] UMAP fit_transform once (n_neighbors=15, n_docs=26811)…
+[BERTopic] umap_reduced.npy saved, shape=(26811, 5)
+[BERTopic] representation_model = [KeyBERTInspired, MMR(div=0.3)]
+[BERTopic HDBSCAN mcs=10] model saved to /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-27_topic_merged_bge_hdbscan_sensitivity/bert_hdbscan_mcs10/model (safetensors).
+[BERTopic HDBSCAN mcs=10] topics~=317 outlier_rate=0.385 sil=0.602 dbcv=0.301 mean_ari=1.000
+[BERTopic HDBSCAN mcs=20] model saved to /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-27_topic_merged_bge_hdbscan_sensitivity/bert_hdbscan_mcs20/model (safetensors).
+[BERTopic HDBSCAN mcs=20] topics~=182 outlier_rate=0.381 sil=0.633 dbcv=0.335 mean_ari=1.000
+[BERTopic HDBSCAN mcs=30] model saved to /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-27_topic_merged_bge_hdbscan_sensitivity/bert_hdbscan_mcs30/model (safetensors).
+[BERTopic HDBSCAN mcs=30] topics~=140 outlier_rate=0.392 sil=0.632 dbcv=0.323 mean_ari=1.000
+[BERTopic HDBSCAN mcs=50] model saved to /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-27_topic_merged_bge_hdbscan_sensitivity/bert_hdbscan_mcs50/model (safetensors).
+[BERTopic HDBSCAN mcs=50] topics~=88 outlier_rate=0.444 sil=0.656 dbcv=0.301 mean_ari=1.000
+[BERTopic HDBSCAN mcs=80] model saved to /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-27_topic_merged_bge_hdbscan_sensitivity/bert_hdbscan_mcs80/model (safetensors).
+[BERTopic HDBSCAN mcs=80] topics~=37 outlier_rate=0.375 sil=0.429 dbcv=0.176 mean_ari=1.000
+[BERTopic HDBSCAN mcs=100] model saved to /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-27_topic_merged_bge_hdbscan_sensitivity/bert_hdbscan_mcs100/model (safetensors).
+[BERTopic HDBSCAN mcs=100] topics~=31 outlier_rate=0.406 sil=0.449 dbcv=0.204 mean_ari=1.000
+[BERTopic HDBSCAN mcs=200] model saved to /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-27_topic_merged_bge_hdbscan_sensitivity/bert_hdbscan_mcs200/model (safetensors).
+[BERTopic HDBSCAN mcs=200] topics~=3 outlier_rate=0.091 sil=0.156 dbcv=-0.510 mean_ari=1.000
+[BERTopic KMeans k=5] model saved to /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-27_topic_merged_bge_hdbscan_sensitivity/bert_kmeans_k5/model (safetensors).
+[BERTopic KMeans k=5] sil=0.336 mean_ari=0.983 largest_share=0.270 model_saved=True
+[BERTopic KMeans k=7] model saved to /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-27_topic_merged_bge_hdbscan_sensitivity/bert_kmeans_k7/model (safetensors).
+[BERTopic KMeans k=7] sil=0.356 mean_ari=0.976 largest_share=0.241 model_saved=True
+[BERTopic KMeans k=10] model saved to /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-27_topic_merged_bge_hdbscan_sensitivity/bert_kmeans_k10/model (safetensors).
+[BERTopic KMeans k=10] sil=0.359 mean_ari=0.792 largest_share=0.221 model_saved=True

@@ -1,0 +1,4 @@
+robot_status,topic,mean_share_post_averaged,n_posts_in_status
+失败,0,0.5866832239053219,5
+失败,1,0.36711798960318764,5
+失败,2,0.04619878649149041,5

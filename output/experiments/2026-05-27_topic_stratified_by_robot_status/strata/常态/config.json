@@ -1,0 +1,189 @@
+{
+  "run_id": "2026-05-27_topic_stratified_by_robot_status",
+  "generated_at": "2026-05-27T00:58:10",
+  "input_csv": "data/clean/clean_comments_unified.csv",
+  "input_csv_sha256": "69025f61d6bc13c6e2eb420ba4beacce60d684939656ff15c69c93290c6aa786",
+  "n_shared": 1972,
+  "summary_corpus": {
+    "n_raw": 41251,
+    "n_shared": 26811,
+    "coverage": 0.6499478800513927,
+    "n_missing_robot_status_group": 3756,
+    "excluded_empty_or_too_short": 2262,
+    "excluded_pure_emoji": 0,
+    "excluded_only_at_mentions": 0,
+    "excluded_repeated_fragment": 0,
+    "excluded_pure_noise_row": 7,
+    "excluded_effective_tokens_lt_min": 8783,
+    "excluded_duplicate_text": 3388,
+    "stratum": "常态",
+    "n_shared_stratum": 1972,
+    "n_posts_stratum": 8,
+    "adaptive_lda_k": [
+      5,
+      7,
+      10,
+      12
+    ],
+    "adaptive_bert_kmeans_k": [
+      5,
+      7,
+      10
+    ],
+    "adaptive_hdbscan_mcs": [
+      30,
+      50,
+      80,
+      100,
+      200
+    ],
+    "adaptive_lda_min_df": 5,
+    "adaptive_nmf_min_df": 3
+  },
+  "embedding_model_resolved": "BAAI/bge-base-zh-v1.5",
+  "faq_compliance": {
+    "C1_chinese_tokenizer": "jieba (token_pattern=None)",
+    "C2_stopwords_after_embedding": true,
+    "C3_umap_random_state": 42,
+    "C4_calculate_probabilities": false,
+    "C5_low_memory": true,
+    "C6_outlier_strategy": "reduce_outliers(strategy='c-tf-idf') + KMeans backup",
+    "C7_min_topic_size_sensitivity": [
+      30,
+      50,
+      80,
+      100,
+      200
+    ],
+    "C8_model_used": "BAAI/bge-base-zh-v1.5",
+    "C10_raw_text_to_encoder": true,
+    "POS_main_pipeline": false,
+    "content_filter_config": "/Users/yilin/Desktop/project/robot_failure/config/topic_modeling/comment_content_filter.json",
+    "post_category_source": "/Users/yilin/Desktop/project/robot_failure/config/post_category_by_post.csv",
+    "representation_model": [
+      "KeyBERTInspired",
+      "MMR(0.3)"
+    ],
+    "umap_precomputed_shared": true,
+    "bert_model_saved": true,
+    "stability_seeds": [
+      42,
+      7,
+      2026
+    ],
+    "stratified_merge_rule": "robot_status in {\"强势\",\"成功\"} -> \"强势成功\"；失败/弱势/常态/中性各为一层；「混合」不进分层。（历史标签「成功|*」已废弃，表中应使用「强势」等现行取值。）"
+  },
+  "config": {
+    "run_id": "2026-05-27_topic_stratified_by_robot_status",
+    "input_csv": "data/clean/clean_comments_unified.csv",
+    "comment_content_filter_json": "/Users/yilin/Desktop/project/robot_failure/config/topic_modeling/comment_content_filter.json",
+    "post_category_by_post_csv": "/Users/yilin/Desktop/project/robot_failure/config/post_category_by_post.csv",
+    "embedding_model": "BAAI/bge-base-zh-v1.5",
+    "embedding_model_fallback": "BAAI/bge-small-zh-v1.5",
+    "device": "cpu",
+    "lda_k_values": [
+      5,
+      7,
+      10,
+      12
+    ],
+    "bert_kmeans_k_values": [
+      5,
+      7,
+      10
+    ],
+    "bert_hdbscan_min_cluster_sizes": [
+      30,
+      50,
+      80,
+      100,
+      200
+    ],
+    "bert_hdbscan_min_samples": null,
+    "bert_reduce_outliers": true,
+    "use_keybert_inspired": true,
+    "mmr_diversity": 0.3,
+    "stability_seeds": [
+      42,
+      7,
+      2026
+    ],
+    "auto_reduce_kmeans_k7": false,
+    "min_clean_chars": 4,
+    "min_effective_tokens": 2,
+    "random_seed": 42,
+    "low_memory": true,
+    "calculate_probabilities": false,
+    "sample_per_topic": 30,
+    "top_terms": 15,
+    "cache_embeddings": true,
+    "lda_min_df": 5,
+    "lda_max_df": 0.92,
+    "nmf_min_df": 3,
+    "nmf_max_df": 0.95,
+    "max_features": 8000
+  },
+  "bertopic_meta": {
+    "bertopic_runs": [
+      {
+        "mcs": 30,
+        "n_topics_approx": 2,
+        "outlier_rate_topic_raw": 0.0,
+        "silhouette": 0.6061139702796936,
+        "dbcv": 0.7305840902426163,
+        "mean_ari": 1.0,
+        "model_saved": true
+      },
+      {
+        "mcs": 50,
+        "n_topics_approx": 2,
+        "outlier_rate_topic_raw": 0.0,
+        "silhouette": 0.6061139702796936,
+        "dbcv": 0.7305840902426163,
+        "mean_ari": 1.0,
+        "model_saved": true
+      },
+      {
+        "mcs": 80,
+        "n_topics_approx": 2,
+        "outlier_rate_topic_raw": 0.0,
+        "silhouette": 0.6061139702796936,
+        "dbcv": 0.7305840902426163,
+        "mean_ari": 1.0,
+        "model_saved": true
+      },
+      {
+        "mcs": 100,
+        "n_topics_approx": 2,
+        "outlier_rate_topic_raw": 0.3433062880324544,
+        "silhouette": 0.573684573173523,
+        "dbcv": 0.10505384669157576,
+        "mean_ari": 1.0,
+        "model_saved": true
+      },
+      {
+        "mcs": 200,
+        "n_topics_approx": 2,
+        "outlier_rate_topic_raw": 0.5329614604462475,
+        "silhouette": 0.6521106362342834,
+        "dbcv": 0.25263197571933055,
+        "mean_ari": 1.0,
+        "model_saved": true
+      }
+    ],
+    "quality_summary_csv": "a_bertopic_quality.csv",
+    "umap_precomputed_shared": true,
+    "representation_model": [
+      "KeyBERTInspired",
+      "MMR(0.3)"
+    ],
+    "stability_seeds": [
+      42,
+      7,
+      2026
+    ]
+  },
+  "stratum": "常态",
+  "parent_run_dir": "/Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-27_topic_stratified_by_robot_status",
+  "stratified_experiment": true
+}
