@@ -1,0 +1,7 @@
+exclude_reason,count
+effective_tokens_lt_min,7344
+only_at_mentions,4718
+duplicate_text,187
+repeated_fragment,162
+pure_digit_id,1
+pure_punctuation,1

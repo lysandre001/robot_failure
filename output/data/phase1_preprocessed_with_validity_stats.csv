@@ -1,0 +1,17 @@
+metric,value
+total_rows,31245.0
+valid_rows,18832.0
+invalid_rows,12413.0
+invalid_rate,0.39727956473035686
+valid_token_min,2.0
+valid_token_p50,3.0
+valid_token_max,192.0
+invalid_token_min,0.0
+invalid_token_p50,0.0
+invalid_token_max,38.0
+valid_char_min,5.0
+valid_char_p50,16.0
+valid_char_max,589.0
+invalid_char_min,5.0
+invalid_char_p50,9.0
+invalid_char_max,196.0
