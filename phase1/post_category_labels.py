@@ -8,6 +8,35 @@ import pandas as pd
 
 from phase1.config import POST_CATEGORY_BY_POST_CSV
 
+# 分析用：将「服务者 / 抢救者 / 保护者」合并为一档（与 robot_status_group 类似，不改 CSV 原值）
+HUMAN_ROLES_MERGED_TO_SERVICE_CARE = frozenset({"服务者", "抢救者", "保护者"})
+HUMAN_ROLE_ANALYSIS_GROUP_LABEL = "服务照护"
+HUMAN_ROLE_ANALYSIS_ORDER: tuple[str, ...] = (
+    HUMAN_ROLE_ANALYSIS_GROUP_LABEL,
+    "被超越者",
+    "观众",
+)
+HUMAN_ROLE_MERGE_RULE = (
+    "服务者、抢救者、保护者 → 服务照护；被超越者、观众保持原标签。"
+)
+
+
+def human_role_to_analysis_group(human_role: Any) -> str | None:
+    """帖子级「人的形象」→ 分析用合并标签；空值返回 None。"""
+    if human_role is None or (isinstance(human_role, float) and pd.isna(human_role)):
+        return None
+    s = str(human_role).strip()
+    if not s or s == "nan":
+        return None
+    if s in HUMAN_ROLES_MERGED_TO_SERVICE_CARE:
+        return HUMAN_ROLE_ANALYSIS_GROUP_LABEL
+    if s in ("被超越者", "观众"):
+        return s
+    raise ValueError(
+        f"未知 human_role={s!r}。期望为 服务者/抢救者/保护者/被超越者/观众 之一，"
+        f"或见合并规则：{HUMAN_ROLE_MERGE_RULE}"
+    )
+
 
 def normalize_robot_status_label(robot_status: Any) -> str | None:
     """原样保留编码表取值，不做状态别名替换（常态≠中性）。"""

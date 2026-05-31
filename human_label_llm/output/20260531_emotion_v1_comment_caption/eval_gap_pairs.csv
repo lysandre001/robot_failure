@@ -1,0 +1,16 @@
+﻿model_key,scope_id,human,llm,n,pct_of_human
+deepseek_v4_pro,scope_comment_caption,Neutral,Positive,56,34.4
+deepseek_v4_pro,scope_comment_caption,Neutral,Negative,23,14.1
+deepseek_v4_pro,scope_comment_caption,Neutral,Mixed,15,9.2
+deepseek_v4_pro,scope_comment_caption,Negative,Mixed,7,17.5
+deepseek_v4_pro,scope_comment_caption,mixed,Negative,6,33.3
+deepseek_v4_pro,scope_comment_caption,Positive,Mixed,5,6.5
+deepseek_v4_pro,scope_comment_caption,Positive,Neutral,5,6.5
+deepseek_v4_pro,scope_comment_caption,mixed,Mixed,5,27.8
+deepseek_v4_pro,scope_comment_caption,Mixed,Negative,4,28.6
+deepseek_v4_pro,scope_comment_caption,Mixed,Neutral,4,28.6
+deepseek_v4_pro,scope_comment_caption,mixed,Positive,4,22.2
+deepseek_v4_pro,scope_comment_caption,Mixed,Positive,3,21.4
+deepseek_v4_pro,scope_comment_caption,Negative,Neutral,3,7.5
+deepseek_v4_pro,scope_comment_caption,mixed,Neutral,3,16.7
+deepseek_v4_pro,scope_comment_caption,Negative,Positive,2,5.0

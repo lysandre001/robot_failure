@@ -146,11 +146,89 @@ def _resolve_path(p: str | Path) -> Path:
     return path.resolve()
 
 
+def _deep_merge(base: dict[str, Any], override: dict[str, Any]) -> dict[str, Any]:
+    merged = dict(base)
+    for key, val in override.items():
+        if key == "extends":
+            continue
+        if key in merged and isinstance(merged[key], dict) and isinstance(val, dict):
+            merged[key] = _deep_merge(merged[key], val)
+        else:
+            merged[key] = val
+    return merged
+
+
+def _finalize_models(cfg: dict[str, Any]) -> dict[str, Any]:
+    """model_catalog + model_keys → models（供 resolve_models 使用）。"""
+    if cfg.get("models"):
+        return cfg
+    catalog = cfg.get("model_catalog")
+    if not isinstance(catalog, dict) or not catalog:
+        return cfg
+    keys = cfg.get("model_keys")
+    if keys is None:
+        keys = list(catalog.keys())
+    if not isinstance(keys, list) or not keys:
+        raise ValueError("model_keys must be a non-empty list when model_catalog is set")
+    missing = [k for k in keys if k not in catalog]
+    if missing:
+        raise ValueError(f"model_keys not in model_catalog: {missing}")
+    out = dict(cfg)
+    out["models"] = {k: catalog[k] for k in keys}
+    return out
+
+
+def resolve_config_path(
+    name_or_path: str | Path,
+    *,
+    experiment_dir: Path | None = None,
+    aliases: dict[str, str] | None = None,
+) -> Path:
+    """别名 / 文件名 / 相对路径 → 绝对 experiment yaml 路径。"""
+    raw = str(name_or_path).strip()
+    if not raw:
+        raise ValueError("Empty experiment config path")
+
+    path = Path(raw)
+    if path.is_file():
+        return path.resolve()
+
+    exp_dir = experiment_dir or (LABEL_DIR / "experiment")
+    alias_map = aliases or {}
+    if raw in alias_map:
+        candidate = exp_dir / alias_map[raw]
+        if candidate.is_file():
+            return candidate.resolve()
+        raise FileNotFoundError(f"Aliased experiment config not found: {candidate}")
+
+    for name in (raw, f"{raw}.yaml"):
+        candidate = exp_dir / name
+        if candidate.is_file():
+            return candidate.resolve()
+
+    resolved = _resolve_path(raw)
+    if resolved.is_file():
+        return resolved
+    raise FileNotFoundError(f"Experiment config not found: {raw}")
+
+
 def load_config(path: Path) -> dict[str, Any]:
     with path.open(encoding="utf-8") as f:
         cfg = yaml.safe_load(f)
     if not isinstance(cfg, dict):
         raise ValueError(f"Invalid config: {path}")
+
+    extends = cfg.get("extends")
+    if extends:
+        base_path = path.parent / str(extends)
+        if not base_path.is_file():
+            raise FileNotFoundError(f"extends base not found: {base_path} (from {path})")
+        base = load_config(base_path.resolve())
+        cfg = _deep_merge(base, cfg)
+
+    cfg = _finalize_models(cfg)
+    for drop_key in ("extends", "model_catalog", "model_keys"):
+        cfg.pop(drop_key, None)
     return cfg
 
 
@@ -160,11 +238,50 @@ def run_dir(cfg: dict[str, Any]) -> Path:
 
 
 def resolve_prompt_id(cfg: dict[str, Any]) -> str:
-    return str(cfg.get("prompt") or "eval_object_v1")
+    return str(cfg.get("prompt") or "eval_object_v1_comment_only")
+
+
+def _merge_video_captions(cfg: dict[str, Any], df: pd.DataFrame, cols: dict[str, str]) -> pd.DataFrame:
+    """按帖子 id 合并 dense video caption（如 config_captions.jsonl 的 overview）。"""
+    data = _data_cfg(cfg)
+    raw = data.get("captions_jsonl")
+    if not raw:
+        return df
+    path = _resolve_path(raw)
+    if not path.is_file():
+        raise FileNotFoundError(f"captions_jsonl not found: {path}")
+
+    join = data.get("caption_join")
+    if not isinstance(join, dict):
+        join = {"post_id": "帖子id", "caption_id": "id"}
+    post_col = str(join["post_id"])
+    cap_id_col = str(join["caption_id"])
+    caption_field = str(data.get("caption_field", "overview"))
+    cap_slot_col = cols.get("caption", "post_caption")
+
+    cap_rows: list[dict[str, Any]] = []
+    with path.open(encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if not line:
+                continue
+            rec = json.loads(line)
+            text = rec.get(caption_field) or rec.get("overview") or ""
+            if not str(text).strip() and rec.get("raw"):
+                text = str(rec["raw"])[:2000]
+            cap_rows.append({post_col: str(rec.get(cap_id_col, "")), cap_slot_col: str(text).strip()})
+
+    if not cap_rows:
+        raise ValueError(f"No records in captions_jsonl: {path}")
+
+    caps = pd.DataFrame(cap_rows).drop_duplicates(subset=[post_col], keep="first")
+    out = df.merge(caps, on=post_col, how="left")
+    out[cap_slot_col] = out[cap_slot_col].fillna("").astype(str).str.strip()
+    return out
 
 
 def load_dataframe(cfg: dict[str, Any], *, apply_limit: bool = True) -> pd.DataFrame:
-    """直接读 experiment yaml 里的 data.input_csv（可选 merge posts）。"""
+    """直接读 experiment yaml 里的 data.input_csv（可选 merge posts / video captions）。"""
     input_csv = resolve_input_csv(cfg)
     cols = resolve_columns(cfg)
     df = pd.read_csv(input_csv)
@@ -178,6 +295,7 @@ def load_dataframe(cfg: dict[str, Any], *, apply_limit: bool = True) -> pd.DataF
         )
         df = df.merge(posts, on=pj["post_id"], how="left")
         df[cap_col] = df[cap_col].fillna("").astype(str).str.strip()
+    df = _merge_video_captions(cfg, df, cols)
     if apply_limit and cfg.get("limit") is not None:
         df = df.head(int(cfg["limit"]))
     return df

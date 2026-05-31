@@ -18,6 +18,7 @@ _FRONTMATTER_RE = re.compile(r"\A---\s*\n(.*?)\n---\s*\n", re.S)
 
 DEFAULT_SCOPE_SLOTS: dict[str, list[str]] = {
     "scope_comment_only": ["comment"],
+    "scope_comment_caption": ["comment", "caption"],
     "scope_comment_title": ["comment", "title"],
     "scope_comment_title_caption": ["comment", "title", "caption"],
 }

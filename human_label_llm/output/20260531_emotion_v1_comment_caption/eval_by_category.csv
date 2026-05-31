@@ -1,0 +1,6 @@
+﻿model_key,scope_id,category,n_gold,n_correct,recall,precision,f1,kappa_ovr
+deepseek_v4_pro,scope_comment_caption,Mixed,14,3,0.2143,0.0857,0.1224,0.0623
+deepseek_v4_pro,scope_comment_caption,Negative,40,28,0.7,0.459,0.5545,0.4728
+deepseek_v4_pro,scope_comment_caption,Neutral,163,69,0.4233,0.8214,0.5587,0.3155
+deepseek_v4_pro,scope_comment_caption,Positive,77,67,0.8701,0.5076,0.6411,0.4786
+deepseek_v4_pro,scope_comment_caption,mixed,18,0,0.0,0.0,0.0,0.0

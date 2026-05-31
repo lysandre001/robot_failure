@@ -1,0 +1,8 @@
+﻿model_key,scope_id,category,n_human,n_correct,n_miss,recall,miss_rate,gap_recall
+deepseek_v4_pro,scope_comment_caption,事件,37,12,25,0.3243,0.6757,0.6757
+deepseek_v4_pro,scope_comment_caption,其他,10,4,6,0.4,0.6,0.6
+deepseek_v4_pro,scope_comment_caption,其他人,27,13,14,0.4815,0.5185,0.5185
+deepseek_v4_pro,scope_comment_caption,自身经验,15,9,6,0.6,0.4,0.4
+deepseek_v4_pro,scope_comment_caption,符号,32,24,8,0.75,0.25,0.25
+deepseek_v4_pro,scope_comment_caption,无主体,35,27,8,0.7714,0.2286,0.2286
+deepseek_v4_pro,scope_comment_caption,机器人本身,155,129,26,0.8323,0.1677,0.1677

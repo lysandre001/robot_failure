@@ -1,13 +1,13 @@
-# eval_object_v1
+# Prompt 与 experiment 一一对应
 
-**一个文件**：[`eval_object_v1.md`](eval_object_v1.md)
-
-- 顶部 `---` … `---`：**版本说明、`label_map`、JSON 解析**（formatter 读取，**不发给模型**）
-- 正文 `# ROLE` 起：**实际 prompt**，`{comment}` 等由 experiment `columns` 填槽
-
-实验配置：[`../experiment/`](../experiment/)
+| 输入条件 | prompt 文件 | experiment 别名 |
+|----------|-------------|-----------------|
+| 仅评论 | `eval_object_v1_comment_only.md` | `object` |
+| 评论 + video caption | `eval_object_v1_comment_caption.md` | `object_caption` |
+| 仅评论 | `eval_emotion_v1_comment_only.md` | `emotion` |
+| 评论 + video caption | `eval_emotion_v1_comment_caption.md` | `emotion_caption` |
 
 ```bash
-.venv/bin/python -m human_label_llm.run dryrun \
-  -c human_label_llm/experiment/20260529_object_v1_comment_only_test.yaml -n 1
+python human_label_llm/run_experiment.py dryrun object -n 1
+python human_label_llm/run_experiment.py dryrun object_caption -n 1
 ```

@@ -10,7 +10,7 @@
 |---|---|---|---|---|
 | M1 聚合 | `aggregate_tiktok.py` | — | `data/tiktok/beijing_robot_marathon_帖子数据(1).csv` | `output/video_match/tiktok_post_category_by_post.csv` (post 粒度, L1/L2 计数, 机器人状态/人的形象留空, 含空 `matched_xhs_id` 列) |
 | M2 切片 | `download_clip.py` | yt-dlp | id+url csv | `clips/{id}.mp4` (0–30s) |
-| M3 caption | `caption_video.py` | **SiliconFlow VLM** | `clips/` | `*_captions.jsonl` |
+| M3 caption | `caption_video.py` | **SiliconFlow VLM** | `clips/` (0–30s) | `*_captions.jsonl` (dense: 每5s分段+合并) |
 | M4 匹配 | `match.py` | **SiliconFlow Embedding** | 两侧 meta + 两侧 caption jsonl | `match_pairs.csv` + 回写 M1 输出的 `matched_xhs_id` |
 
 ## 端到端命令
@@ -28,13 +28,16 @@ python tools/video_match/download_clip.py \
   --in  output/video_match/tiktok_post_category_by_post.csv \
   --out-dir output/video_match/clips/tiktok
 
-# M3  生 caption (可独立删除/重跑/换模型)
+# M3  dense caption: 每5s三层标注 + 合并 (默认)
 python tools/video_match/caption_video.py \
   --clip-dir output/video_match/clips/xhs \
   --out      output/video_match/xhs_captions.jsonl
 python tools/video_match/caption_video.py \
   --clip-dir output/video_match/clips/tiktok \
   --out      output/video_match/tiktok_captions.jsonl
+
+# M3  旧版低成本 (3帧单次, 可选)
+# python tools/video_match/caption_video.py --legacy ...
 
 # M4  匹配 + 回写
 python tools/video_match/match.py \
@@ -46,8 +49,17 @@ python tools/video_match/match.py \
   --threshold 0.78
 ```
 
+## M3 标注框架 (dense, 默认)
+每 5 秒一段 (0–30s 共 6 段)，每段 VLM 三层:
+1. **全局描述** — 该时段发生了什么
+2. **五维追问** — scene / people / actions / interaction / temporal (Who-What-Where-When-How)
+3. **异常追问** — 有无不寻常时刻
+
+第 7 次纯文本调用合并为 `overview` + `timeline` + 汇总字段。输出仍含 `caption/robots/humans/scene/event` 供 M4 匹配。
+
 ## 成本估算 (粗算)
-- M3: ~34 + 176 = 210 视频 × 1 次 VLM 调用 (3 帧 + 短 prompt)。Qwen2.5-VL-32B 单次 ~¥0.003–0.01 → 总 < ¥5。
+- M3 dense: ~210 视频 × 7 次 VLM (6 段×2帧 + 1 合并) → 约 ¥15–35 (视模型/image token 而定)。
+- M3 legacy (`--legacy`): 210 × 1 次 → < ¥5。
 - M4: ~210 条短文本 embedding (bge-m3) → < ¥0.1。
 - 不满意可只用 M3，把 caption 丢给人工对照；或换 7B 模型再降一档。
 

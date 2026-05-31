@@ -1,10 +1,9 @@
 ---
-id: eval_object_v1
+id: eval_object_v1_comment_only
 version: "1.0.0"
 description: |
-  评估对象七分类（马拉松场景机器人评论）。
-  人工金标列：评估对象。实验填槽由 experiment yaml 的 columns + scope_slots 控制。
-  本段 frontmatter 不会发给模型，仅用于版本管理与解析配置。
+  评估对象七分类 · 仅评论（无帖子 caption）。
+  人工金标列：评估对象。
 label_map:
   Robot Itself: 机器人本身
   Personal Experience: 自身经验
@@ -42,8 +41,6 @@ Other: Semantic drift or noise completely detached from the core context. Includ
 
 # INPUT
 <comment>{comment}</comment>
-<post_title>{title}</post_title>
-<post_caption>{caption}</post_caption>
 
 # OUTPUT FORMAT
 You must return only a valid JSON object with the following structure. Do not output any introductory or concluding text, and do not use markdown code blocks.

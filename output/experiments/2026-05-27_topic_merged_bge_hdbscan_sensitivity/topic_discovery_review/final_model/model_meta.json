@@ -1,0 +1,6 @@
+{
+  "final_target_nr_topics": 85,
+  "base_mcs": 50,
+  "topics_csv": "topics_final.csv",
+  "doc_topics_csv": "doc_topics_final.csv"
+}

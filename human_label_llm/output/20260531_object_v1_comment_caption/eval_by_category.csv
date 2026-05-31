@@ -1,0 +1,8 @@
+﻿model_key,scope_id,category,n_gold,n_correct,recall,precision,f1,kappa_ovr
+deepseek_v4_pro,scope_comment_caption,事件,37,12,0.3243,0.6316,0.4286,0.3784
+deepseek_v4_pro,scope_comment_caption,其他,10,4,0.4,0.4444,0.4211,0.4029
+deepseek_v4_pro,scope_comment_caption,其他人,27,13,0.4815,0.619,0.5417,0.504
+deepseek_v4_pro,scope_comment_caption,无主体,35,27,0.7714,0.871,0.8182,0.7967
+deepseek_v4_pro,scope_comment_caption,机器人本身,155,129,0.8323,0.8012,0.8165,0.6271
+deepseek_v4_pro,scope_comment_caption,符号,32,24,0.75,0.6486,0.6957,0.6579
+deepseek_v4_pro,scope_comment_caption,自身经验,15,9,0.6,0.2727,0.375,0.3306

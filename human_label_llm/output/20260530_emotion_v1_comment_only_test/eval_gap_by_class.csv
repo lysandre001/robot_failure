@@ -1,0 +1,6 @@
+﻿model_key,scope_id,category,n_human,n_correct,n_miss,recall,miss_rate,gap_recall
+deepseek_v4_pro,scope_comment_only,Mixed,14,0,14,0.0,1.0,1.0
+deepseek_v4_pro,scope_comment_only,mixed,18,0,18,0.0,1.0,1.0
+deepseek_v4_pro,scope_comment_only,Neutral,163,74,89,0.454,0.546,0.546
+deepseek_v4_pro,scope_comment_only,Negative,40,29,11,0.725,0.275,0.275
+deepseek_v4_pro,scope_comment_only,Positive,77,60,17,0.7792,0.2208,0.2208

@@ -33,7 +33,9 @@ def load_captions(jsonl: Path) -> dict[str, str]:
         except Exception:
             continue
         pid = str(r.get("id", ""))
-        parts = [r.get(k, "") for k in ("caption", "robots", "humans", "scene", "event")]
+        parts = [r.get(k, "") for k in (
+            "overview", "caption", "robots", "humans", "scene", "event", "anomaly",
+        )]
         out[pid] = " | ".join([p for p in parts if p])
     return out
 

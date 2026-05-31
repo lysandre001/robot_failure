@@ -1,0 +1,23 @@
+extends: _defaults.yaml
+
+run_id: 20260531_object_v1_comment_caption
+
+data:
+  captions_jsonl: output/video_match/config_captions.jsonl
+  caption_field: overview
+  caption_join:
+    post_id: 帖子id
+    caption_id: id
+
+columns:
+  gold: 评估对象
+  caption: post_caption
+
+gold_column: 评估对象
+prompt: eval_object_v1_comment_caption
+
+scope_slots:
+  scope_comment_caption: [comment, caption]
+
+scopes:
+  - scope_comment_caption

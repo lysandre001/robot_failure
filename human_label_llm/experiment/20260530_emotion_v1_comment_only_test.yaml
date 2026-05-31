@@ -1,0 +1,9 @@
+extends: _defaults.yaml
+
+run_id: 20260530_emotion_v1_comment_only_test
+
+columns:
+  gold: 情感
+
+gold_column: 情感
+prompt: eval_emotion_v1_comment_only

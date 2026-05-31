@@ -1,0 +1,126 @@
+/Users/yilin/project/2604-robotic_failure_research/.venv/lib/python3.12/site-packages/jieba/_compat.py:18: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources
+Building prefix dict from the default dictionary ...
+Loading model from cache /var/folders/s7/9scpn22j73d8nv7rhtkq94jw0000gn/T/jieba.cache
+Loading model cost 0.725 seconds.
+Prefix dict has been built successfully.
+[topic-number-scan] nr_topics=10 …
+2026-05-31 16:47:15,517 - BERTopic - WARNING: You are loading a BERTopic model without explicitly defining an embedding model. If you want to also load in an embedding model, make sure to use `BERTopic.load(my_model, embedding_model=my_embedding_model)`.
+2026-05-31 16:47:15,534 - BERTopic - Topic reduction - Reducing number of topics
+2026-05-31 16:47:15,570 - BERTopic - Representation - Fine-tuning topics using representation models.
+2026-05-31 16:47:15,749 - BERTopic - Representation - Completed ✓
+2026-05-31 16:47:15,751 - BERTopic - Topic reduction - Reduced number of topics from 89 to 10
+[topic-number-scan] nr_topics=15 …
+2026-05-31 16:47:16,665 - BERTopic - WARNING: You are loading a BERTopic model without explicitly defining an embedding model. If you want to also load in an embedding model, make sure to use `BERTopic.load(my_model, embedding_model=my_embedding_model)`.
+2026-05-31 16:47:16,673 - BERTopic - Topic reduction - Reducing number of topics
+2026-05-31 16:47:16,688 - BERTopic - Representation - Fine-tuning topics using representation models.
+2026-05-31 16:47:16,925 - BERTopic - Representation - Completed ✓
+2026-05-31 16:47:16,930 - BERTopic - Topic reduction - Reduced number of topics from 89 to 15
+[topic-number-scan] nr_topics=20 …
+2026-05-31 16:47:17,542 - BERTopic - WARNING: You are loading a BERTopic model without explicitly defining an embedding model. If you want to also load in an embedding model, make sure to use `BERTopic.load(my_model, embedding_model=my_embedding_model)`.
+2026-05-31 16:47:17,547 - BERTopic - Topic reduction - Reducing number of topics
+2026-05-31 16:47:17,562 - BERTopic - Representation - Fine-tuning topics using representation models.
+2026-05-31 16:47:17,824 - BERTopic - Representation - Completed ✓
+2026-05-31 16:47:17,826 - BERTopic - Topic reduction - Reduced number of topics from 89 to 20
+[topic-number-scan] nr_topics=25 …
+2026-05-31 16:47:18,582 - BERTopic - WARNING: You are loading a BERTopic model without explicitly defining an embedding model. If you want to also load in an embedding model, make sure to use `BERTopic.load(my_model, embedding_model=my_embedding_model)`.
+2026-05-31 16:47:18,592 - BERTopic - Topic reduction - Reducing number of topics
+2026-05-31 16:47:18,610 - BERTopic - Representation - Fine-tuning topics using representation models.
+2026-05-31 16:47:18,750 - BERTopic - Representation - Completed ✓
+2026-05-31 16:47:18,753 - BERTopic - Topic reduction - Reduced number of topics from 89 to 25
+[topic-number-scan] nr_topics=30 …
+2026-05-31 16:47:19,532 - BERTopic - WARNING: You are loading a BERTopic model without explicitly defining an embedding model. If you want to also load in an embedding model, make sure to use `BERTopic.load(my_model, embedding_model=my_embedding_model)`.
+2026-05-31 16:47:19,539 - BERTopic - Topic reduction - Reducing number of topics
+2026-05-31 16:47:19,555 - BERTopic - Representation - Fine-tuning topics using representation models.
+2026-05-31 16:47:19,698 - BERTopic - Representation - Completed ✓
+2026-05-31 16:47:19,701 - BERTopic - Topic reduction - Reduced number of topics from 89 to 30
+[topic-number-scan] nr_topics=35 …
+2026-05-31 16:47:20,473 - BERTopic - WARNING: You are loading a BERTopic model without explicitly defining an embedding model. If you want to also load in an embedding model, make sure to use `BERTopic.load(my_model, embedding_model=my_embedding_model)`.
+2026-05-31 16:47:20,479 - BERTopic - Topic reduction - Reducing number of topics
+2026-05-31 16:47:20,493 - BERTopic - Representation - Fine-tuning topics using representation models.
+2026-05-31 16:47:20,627 - BERTopic - Representation - Completed ✓
+2026-05-31 16:47:20,629 - BERTopic - Topic reduction - Reduced number of topics from 89 to 35
+[topic-number-scan] nr_topics=40 …
+2026-05-31 16:47:21,396 - BERTopic - WARNING: You are loading a BERTopic model without explicitly defining an embedding model. If you want to also load in an embedding model, make sure to use `BERTopic.load(my_model, embedding_model=my_embedding_model)`.
+2026-05-31 16:47:21,402 - BERTopic - Topic reduction - Reducing number of topics
+2026-05-31 16:47:21,417 - BERTopic - Representation - Fine-tuning topics using representation models.
+2026-05-31 16:47:21,562 - BERTopic - Representation - Completed ✓
+2026-05-31 16:47:21,565 - BERTopic - Topic reduction - Reduced number of topics from 89 to 40
+[topic-number-scan] nr_topics=45 …
+2026-05-31 16:47:22,228 - BERTopic - WARNING: You are loading a BERTopic model without explicitly defining an embedding model. If you want to also load in an embedding model, make sure to use `BERTopic.load(my_model, embedding_model=my_embedding_model)`.
+2026-05-31 16:47:22,250 - BERTopic - Topic reduction - Reducing number of topics
+2026-05-31 16:47:22,280 - BERTopic - Representation - Fine-tuning topics using representation models.
+2026-05-31 16:47:22,580 - BERTopic - Representation - Completed ✓
+2026-05-31 16:47:22,586 - BERTopic - Topic reduction - Reduced number of topics from 89 to 45
+[topic-number-scan] nr_topics=50 …
+2026-05-31 16:47:23,384 - BERTopic - WARNING: You are loading a BERTopic model without explicitly defining an embedding model. If you want to also load in an embedding model, make sure to use `BERTopic.load(my_model, embedding_model=my_embedding_model)`.
+2026-05-31 16:47:23,389 - BERTopic - Topic reduction - Reducing number of topics
+2026-05-31 16:47:23,424 - BERTopic - Representation - Fine-tuning topics using representation models.
+2026-05-31 16:47:23,642 - BERTopic - Representation - Completed ✓
+2026-05-31 16:47:23,646 - BERTopic - Topic reduction - Reduced number of topics from 89 to 50
+[topic-number-scan] nr_topics=55 …
+2026-05-31 16:47:24,601 - BERTopic - WARNING: You are loading a BERTopic model without explicitly defining an embedding model. If you want to also load in an embedding model, make sure to use `BERTopic.load(my_model, embedding_model=my_embedding_model)`.
+2026-05-31 16:47:24,607 - BERTopic - Topic reduction - Reducing number of topics
+2026-05-31 16:47:24,623 - BERTopic - Representation - Fine-tuning topics using representation models.
+2026-05-31 16:47:24,787 - BERTopic - Representation - Completed ✓
+2026-05-31 16:47:24,791 - BERTopic - Topic reduction - Reduced number of topics from 89 to 55
+[topic-number-scan] nr_topics=60 …
+2026-05-31 16:47:25,673 - BERTopic - WARNING: You are loading a BERTopic model without explicitly defining an embedding model. If you want to also load in an embedding model, make sure to use `BERTopic.load(my_model, embedding_model=my_embedding_model)`.
+2026-05-31 16:47:25,680 - BERTopic - Topic reduction - Reducing number of topics
+2026-05-31 16:47:25,698 - BERTopic - Representation - Fine-tuning topics using representation models.
+2026-05-31 16:47:25,876 - BERTopic - Representation - Completed ✓
+2026-05-31 16:47:25,879 - BERTopic - Topic reduction - Reduced number of topics from 89 to 60
+[topic-number-scan] nr_topics=65 …
+2026-05-31 16:47:26,710 - BERTopic - WARNING: You are loading a BERTopic model without explicitly defining an embedding model. If you want to also load in an embedding model, make sure to use `BERTopic.load(my_model, embedding_model=my_embedding_model)`.
+2026-05-31 16:47:26,717 - BERTopic - Topic reduction - Reducing number of topics
+2026-05-31 16:47:26,732 - BERTopic - Representation - Fine-tuning topics using representation models.
+2026-05-31 16:47:26,979 - BERTopic - Representation - Completed ✓
+2026-05-31 16:47:26,982 - BERTopic - Topic reduction - Reduced number of topics from 89 to 65
+[topic-number-scan] nr_topics=70 …
+2026-05-31 16:47:27,847 - BERTopic - WARNING: You are loading a BERTopic model without explicitly defining an embedding model. If you want to also load in an embedding model, make sure to use `BERTopic.load(my_model, embedding_model=my_embedding_model)`.
+2026-05-31 16:47:27,854 - BERTopic - Topic reduction - Reducing number of topics
+2026-05-31 16:47:27,869 - BERTopic - Representation - Fine-tuning topics using representation models.
+2026-05-31 16:47:28,045 - BERTopic - Representation - Completed ✓
+2026-05-31 16:47:28,050 - BERTopic - Topic reduction - Reduced number of topics from 89 to 70
+[topic-number-scan] nr_topics=75 …
+2026-05-31 16:47:28,855 - BERTopic - WARNING: You are loading a BERTopic model without explicitly defining an embedding model. If you want to also load in an embedding model, make sure to use `BERTopic.load(my_model, embedding_model=my_embedding_model)`.
+2026-05-31 16:47:28,861 - BERTopic - Topic reduction - Reducing number of topics
+2026-05-31 16:47:28,878 - BERTopic - Representation - Fine-tuning topics using representation models.
+2026-05-31 16:47:29,146 - BERTopic - Representation - Completed ✓
+2026-05-31 16:47:29,149 - BERTopic - Topic reduction - Reduced number of topics from 89 to 75
+[topic-number-scan] nr_topics=80 …
+2026-05-31 16:47:30,010 - BERTopic - WARNING: You are loading a BERTopic model without explicitly defining an embedding model. If you want to also load in an embedding model, make sure to use `BERTopic.load(my_model, embedding_model=my_embedding_model)`.
+2026-05-31 16:47:30,018 - BERTopic - Topic reduction - Reducing number of topics
+2026-05-31 16:47:30,037 - BERTopic - Representation - Fine-tuning topics using representation models.
+2026-05-31 16:47:30,188 - BERTopic - Representation - Completed ✓
+2026-05-31 16:47:30,191 - BERTopic - Topic reduction - Reduced number of topics from 89 to 80
+[topic-number-scan] nr_topics=85 …
+2026-05-31 16:47:31,063 - BERTopic - WARNING: You are loading a BERTopic model without explicitly defining an embedding model. If you want to also load in an embedding model, make sure to use `BERTopic.load(my_model, embedding_model=my_embedding_model)`.
+2026-05-31 16:47:31,072 - BERTopic - Topic reduction - Reducing number of topics
+2026-05-31 16:47:31,093 - BERTopic - Representation - Fine-tuning topics using representation models.
+2026-05-31 16:47:31,261 - BERTopic - Representation - Completed ✓
+2026-05-31 16:47:31,264 - BERTopic - Topic reduction - Reduced number of topics from 89 to 85
+[topic-number-scan] nr_topics=90 …
+2026-05-31 16:47:32,142 - BERTopic - WARNING: You are loading a BERTopic model without explicitly defining an embedding model. If you want to also load in an embedding model, make sure to use `BERTopic.load(my_model, embedding_model=my_embedding_model)`.
+2026-05-31 16:47:32,148 - BERTopic - Topic reduction - Reducing number of topics
+2026-05-31 16:47:32,148 - BERTopic - Topic reduction - Number of topics (90) is equal or higher than the clustered topics(89).
+2026-05-31 16:47:32,148 - BERTopic - Representation - Fine-tuning topics using representation models.
+2026-05-31 16:47:32,406 - BERTopic - Representation - Completed ✓
+[topic-number-scan] nr_topics=95 …
+2026-05-31 16:47:33,409 - BERTopic - WARNING: You are loading a BERTopic model without explicitly defining an embedding model. If you want to also load in an embedding model, make sure to use `BERTopic.load(my_model, embedding_model=my_embedding_model)`.
+2026-05-31 16:47:33,424 - BERTopic - Topic reduction - Reducing number of topics
+2026-05-31 16:47:33,424 - BERTopic - Topic reduction - Number of topics (95) is equal or higher than the clustered topics(89).
+2026-05-31 16:47:33,424 - BERTopic - Representation - Fine-tuning topics using representation models.
+2026-05-31 16:47:33,608 - BERTopic - Representation - Completed ✓
+[topic-number-scan] nr_topics=100 …
+2026-05-31 16:47:34,600 - BERTopic - WARNING: You are loading a BERTopic model without explicitly defining an embedding model. If you want to also load in an embedding model, make sure to use `BERTopic.load(my_model, embedding_model=my_embedding_model)`.
+2026-05-31 16:47:34,612 - BERTopic - Topic reduction - Reducing number of topics
+2026-05-31 16:47:34,613 - BERTopic - Topic reduction - Number of topics (100) is equal or higher than the clustered topics(89).
+2026-05-31 16:47:34,613 - BERTopic - Representation - Fine-tuning topics using representation models.
+2026-05-31 16:47:34,861 - BERTopic - Representation - Completed ✓
+2026-05-31 16:47:36.020 Python[37943:4040680] ApplePersistenceIgnoreState: Existing state will not be touched. New state will be written to /var/folders/s7/9scpn22j73d8nv7rhtkq94jw0000gn/T/org.python.python.savedState
+final_nr: 50
+selection_notes: Base HDBSCAN candidate: mcs=50 (see hdbscan_candidate_summary.csv).
+Scanned target nr_topics: 10–100 step 5.
+Maximum C_V=0.6828 at target_nr=50 (n_topics_final=49, largest_share=0.201).
+No candidate satisfied all structural guards; chose highest C_V on plateau with smallest largest_share.
