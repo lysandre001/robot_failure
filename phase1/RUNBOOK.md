@@ -101,6 +101,32 @@ PYTHONUNBUFFERED=1 ./.venv/bin/python -m phase1.topic_modeling --device cpu
 
 ---
 
+## 4. Topic Discovery（分层主题挖掘 + 人工归并）
+
+> **完整方法论**：[`writing/topic_discovery_review.md`](../writing/topic_discovery_review.md)
+> **实习生 Runbook**：[`writing/topic_discovery_intern_runbook.md`](../writing/topic_discovery_intern_runbook.md)
+> **代码**：[`phase1/topic_discovery.py`](topic_discovery.py) · CLI [`phase1/run_topic_discovery.py`](run_topic_discovery.py)
+
+主题建模（§3）跑完后进入 topic discovery：把 BERTopic 候选 topic 经 `reduce_topics` 收敛到可审阅粒度，生成 coder 表，人工编码后回填评论 domain。当前按 **`comment_level` 分层**（L1 一级评论 / L2 二级回复），pooled 仅作敏感性附录。
+
+```bash
+# 机器全流程（每层独立；--base-mcs 30 是 2026-05-31 决策，新数据需重选）
+./.venv/bin/python -m phase1.run_topic_discovery --comment-level 1 --base-mcs 30 --step all
+./.venv/bin/python -m phase1.run_topic_discovery --comment-level 2 --base-mcs 30 --step all
+
+# 人工标注完成后
+./.venv/bin/python -m phase1.run_topic_discovery --comment-level 1 --base-mcs 30 --step agreement
+./.venv/bin/python -m phase1.run_topic_discovery --comment-level 1 --base-mcs 30 --step backfill
+./.venv/bin/python -m phase1.run_topic_discovery --comment-level 2 --base-mcs 30 --step agreement
+./.venv/bin/python -m phase1.run_topic_discovery --comment-level 2 --base-mcs 30 --step backfill
+```
+
+产物（每层一套）：`topic_discovery_l{1,2}/` 下含 `corpus_freeze.json`、`hdbscan_candidate_summary.csv`、`topic_number_cv_curve.{csv,png}`、`final_model/`、`coder{1,2}_sheet_final_nr*.csv`、`topic_comment_samples_final_nr*.csv`、`sensitivity/`、`output_manifest.csv`。
+
+**前置依赖**：父 run 必须已有 `embeddings.npy` 与 `comment_content_filter.json`（由 [`topic_modeling.py`](topic_modeling.py) 产出，见 §3）。`gensim` 用于 C_V 一致性：`./.venv/bin/pip install gensim`。
+
+---
+
 ## §0 错误清单（接手者必读）
 
 > 每条都要在新流程里规避。

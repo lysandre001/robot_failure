@@ -1,12 +1,16 @@
 {
-  "frozen_at": "2026-05-31T16:45:48",
+  "frozen_at": "2026-05-31T19:23:52",
   "analysis_unit": "comment",
   "run_id": "2026-05-27_topic_merged_bge_hdbscan_sensitivity",
-  "run_dir": "/Users/yilin/project/2604-robotic_failure_research/output/experiments/2026-05-27_topic_merged_bge_hdbscan_sensitivity",
-  "config_path": "/Users/yilin/project/2604-robotic_failure_research/output/experiments/2026-05-27_topic_merged_bge_hdbscan_sensitivity/config.json",
+  "run_dir": "/Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-27_topic_merged_bge_hdbscan_sensitivity",
+  "review_subdir": "topic_discovery_review",
+  "comment_level": null,
+  "stratum": "pooled",
+  "config_path": "/Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-27_topic_merged_bge_hdbscan_sensitivity/config.json",
   "config_sha256": "b6d0937b8d2857714c53150d72dc5729edea703eba75b9d64a6eb9df77ae0f9a",
-  "shared_corpus_path": "/Users/yilin/project/2604-robotic_failure_research/output/experiments/2026-05-27_topic_merged_bge_hdbscan_sensitivity/shared_analyzable_corpus.csv",
+  "shared_corpus_path": "/Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-27_topic_merged_bge_hdbscan_sensitivity/shared_analyzable_corpus.csv",
   "shared_corpus_sha256": "e0271851e97127667a0059ea235dc3e304bea81dbe1e7db059ddfa4aa7887f6e",
+  "n_shared_comments_pool": 26811,
   "n_shared_comments": 26811,
   "input_csv": "data/clean/clean_comments_unified.csv",
   "input_csv_sha256": "69025f61d6bc13c6e2eb420ba4beacce60d684939656ff15c69c93290c6aa786",
@@ -34,7 +38,8 @@
       "excluded_pure_noise_row",
       "excluded_effective_tokens_lt_min",
       "excluded_duplicate_text"
-    ]
+    ],
+    "level_filter": "none (pooled)"
   },
   "machine_role": "BERTopic+HDBSCAN proposes candidate topic structure only; not final social-science themes.",
   "primary_topic_field": "topic_raw",

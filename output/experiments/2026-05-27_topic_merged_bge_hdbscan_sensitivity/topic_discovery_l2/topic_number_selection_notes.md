@@ -1,0 +1,6 @@
+- Base HDBSCAN candidate: mcs=30 (see hdbscan_candidate_summary.csv).
+- Scanned target nr_topics: 10–100 step 5.
+- Maximum C_V=0.7230 at target_nr=15 (n_topics_final=14, largest_share=0.329).
+- Rejected blind max-C_V (target_nr=15): largest_share=0.329 exceeds 12% guard; mega-cluster risk for manual merge.
+- Selected target_nr=45: C_V=0.5047, n_topics_final=44, largest_share=0.100, raw_outlier_rate=0.478.
+- Rationale: passes largest-cluster guard (<=12%), reviewable topic count, highest C_V among structurally eligible candidates.

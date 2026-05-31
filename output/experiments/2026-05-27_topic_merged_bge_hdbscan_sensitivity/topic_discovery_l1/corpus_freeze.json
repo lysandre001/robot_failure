@@ -1,0 +1,47 @@
+{
+  "frozen_at": "2026-05-31T19:16:24",
+  "analysis_unit": "comment",
+  "run_id": "2026-05-27_topic_merged_bge_hdbscan_sensitivity",
+  "run_dir": "/Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-27_topic_merged_bge_hdbscan_sensitivity",
+  "review_subdir": "topic_discovery_l1",
+  "comment_level": 1,
+  "stratum": "level1",
+  "config_path": "/Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-27_topic_merged_bge_hdbscan_sensitivity/config.json",
+  "config_sha256": "b6d0937b8d2857714c53150d72dc5729edea703eba75b9d64a6eb9df77ae0f9a",
+  "shared_corpus_path": "/Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-27_topic_merged_bge_hdbscan_sensitivity/shared_analyzable_corpus.csv",
+  "shared_corpus_sha256": "e0271851e97127667a0059ea235dc3e304bea81dbe1e7db059ddfa4aa7887f6e",
+  "n_shared_comments_pool": 26811,
+  "n_shared_comments": 15901,
+  "input_csv": "data/clean/clean_comments_unified.csv",
+  "input_csv_sha256": "69025f61d6bc13c6e2eb420ba4beacce60d684939656ff15c69c93290c6aa786",
+  "embedding_model": "BAAI/bge-base-zh-v1.5",
+  "summary_corpus": {
+    "n_raw": 41251,
+    "n_shared": 26811,
+    "coverage": 0.6499478800513927,
+    "n_missing_robot_status_group": 3756,
+    "excluded_empty_or_too_short": 2262,
+    "excluded_pure_emoji": 0,
+    "excluded_only_at_mentions": 0,
+    "excluded_repeated_fragment": 0,
+    "excluded_pure_noise_row": 7,
+    "excluded_effective_tokens_lt_min": 8783,
+    "excluded_duplicate_text": 3388
+  },
+  "exclusion_rules": {
+    "source": "config.summary_corpus + comment_content_filter.json",
+    "fields": [
+      "excluded_empty_or_too_short",
+      "excluded_pure_emoji",
+      "excluded_only_at_mentions",
+      "excluded_repeated_fragment",
+      "excluded_pure_noise_row",
+      "excluded_effective_tokens_lt_min",
+      "excluded_duplicate_text"
+    ],
+    "level_filter": "comment_level == 1"
+  },
+  "machine_role": "BERTopic+HDBSCAN proposes candidate topic structure only; not final social-science themes.",
+  "primary_topic_field": "topic_raw",
+  "sensitivity_topic_field": "topic_assigned"
+}

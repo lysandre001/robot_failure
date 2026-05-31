@@ -1,4 +1,14 @@
-"""Rigorous topic discovery workflow: freeze corpus, topic-number selection, review sheets, coding, backfill."""
+"""Rigorous topic discovery workflow: freeze corpus, topic-number selection, review sheets, coding, backfill.
+
+Supports pooled and level-stratified (comment_level=1 / =2) runs. When
+``comment_level`` is set the pipeline:
+- filters ``shared_analyzable_corpus.csv`` to that level,
+- slices the parent run's ``embeddings.npy`` to the same rows,
+- fits UMAP+HDBSCAN per ``mcs`` candidate *inside* the per-level review_dir,
+- runs C_V scan + final selection + coder materials independently for that level.
+
+Pooled behaviour is unchanged: HDBSCAN candidates are read from the parent run.
+"""
 
 from __future__ import annotations
 
@@ -6,6 +16,7 @@ import ast
 import hashlib
 import json
 import shutil
+import sys
 from dataclasses import dataclass, field
 from datetime import datetime
 from pathlib import Path
@@ -33,6 +44,10 @@ class TopicDiscoveryConfig:
     hdbscan_candidate_mcs: list[int] = field(default_factory=lambda: list(HDBSCAN_CANDIDATE_MCS))
     random_state: int = 42
     analysis_unit: str = "comment"
+    # Level-stratified options. comment_level=None means pooled (full corpus).
+    comment_level: int | None = None
+    review_subdir: str = "topic_discovery_review"
+    device: str = "cpu"
 
     @property
     def run_dir(self) -> Path:
@@ -40,7 +55,7 @@ class TopicDiscoveryConfig:
 
     @property
     def review_dir(self) -> Path:
-        return self.run_dir / "topic_discovery_review"
+        return self.run_dir / self.review_subdir
 
     @property
     def shared_corpus_path(self) -> Path:
@@ -49,6 +64,20 @@ class TopicDiscoveryConfig:
     @property
     def config_path(self) -> Path:
         return self.run_dir / "config.json"
+
+    @property
+    def is_level_run(self) -> bool:
+        return self.comment_level is not None
+
+    def hdbscan_dir(self, mcs: int) -> Path:
+        """Where the BERTopic+HDBSCAN candidate for this mcs lives.
+
+        Pooled: parent run (produced by ``phase1.topic_modeling``).
+        Level: inside ``review_dir`` (produced by ``fit`` step here).
+        """
+        if self.is_level_run:
+            return self.review_dir / f"bert_hdbscan_mcs{mcs}"
+        return self.run_dir / f"bert_hdbscan_mcs{mcs}"
 
 
 def file_sha256(path: Path) -> str:
@@ -82,17 +111,27 @@ def freeze_corpus_snapshot(cfg: TopicDiscoveryConfig) -> Path:
     cfg.review_dir.mkdir(parents=True, exist_ok=True)
     run_cfg = load_run_config(cfg)
     shared = pd.read_csv(cfg.shared_corpus_path)
+    n_pool = int(len(shared))
+    if cfg.is_level_run:
+        sub = shared[shared["comment_level"] == cfg.comment_level]
+        n_level = int(len(sub))
+    else:
+        n_level = n_pool
 
     snapshot = {
         "frozen_at": datetime.now().isoformat(timespec="seconds"),
         "analysis_unit": cfg.analysis_unit,
         "run_id": cfg.run_id,
         "run_dir": str(cfg.run_dir.resolve()),
+        "review_subdir": cfg.review_subdir,
+        "comment_level": cfg.comment_level,
+        "stratum": "pooled" if cfg.comment_level is None else f"level{cfg.comment_level}",
         "config_path": str(cfg.config_path.resolve()),
         "config_sha256": file_sha256(cfg.config_path),
         "shared_corpus_path": str(cfg.shared_corpus_path.resolve()),
         "shared_corpus_sha256": file_sha256(cfg.shared_corpus_path),
-        "n_shared_comments": int(len(shared)),
+        "n_shared_comments_pool": n_pool,
+        "n_shared_comments": n_level,
         "input_csv": run_cfg.get("input_csv"),
         "input_csv_sha256": run_cfg.get("input_csv_sha256"),
         "embedding_model": run_cfg.get("embedding_model_resolved"),
@@ -108,6 +147,9 @@ def freeze_corpus_snapshot(cfg: TopicDiscoveryConfig) -> Path:
                 "excluded_effective_tokens_lt_min",
                 "excluded_duplicate_text",
             ],
+            "level_filter": (
+                f"comment_level == {cfg.comment_level}" if cfg.is_level_run else "none (pooled)"
+            ),
         },
         "machine_role": "BERTopic+HDBSCAN proposes candidate topic structure only; not final social-science themes.",
         "primary_topic_field": "topic_raw",
@@ -119,8 +161,231 @@ def freeze_corpus_snapshot(cfg: TopicDiscoveryConfig) -> Path:
     return out
 
 
-def summarize_hdbscan_candidate(mcs: int, run_dir: Path) -> dict[str, Any]:
-    sub = run_dir / f"bert_hdbscan_mcs{mcs}"
+def _cast_bertopic_keys_for_save(bt: Any) -> None:
+    """Mirror of topic_modeling._cast_internal_dict_keys (avoid numpy.int64 dict keys in JSON save)."""
+    try:
+        if hasattr(bt, "topics_") and bt.topics_ is not None:
+            bt.topics_ = [int(t) for t in bt.topics_]
+    except Exception as e:  # pragma: no cover - defensive
+        print(f"[WARN] cast topics_ failed: {e}", flush=True)
+    for attr in ("topic_representations_", "topic_sizes_"):
+        try:
+            d = getattr(bt, attr, None)
+            if isinstance(d, dict):
+                setattr(bt, attr, {int(k): v for k, v in d.items()})
+        except Exception as e:
+            print(f"[WARN] cast {attr} failed: {e}", flush=True)
+    try:
+        d = getattr(bt, "topic_aspects_", None)
+        if isinstance(d, dict):
+            new_aspects = {}
+            for aspect, val in d.items():
+                new_aspects[aspect] = (
+                    {int(k): v for k, v in val.items()} if isinstance(val, dict) else val
+                )
+            bt.topic_aspects_ = new_aspects
+    except Exception as e:
+        print(f"[WARN] cast topic_aspects_ failed: {e}", flush=True)
+    try:
+        vec = getattr(bt, "vectorizer_model", None)
+        vocab = getattr(vec, "vocabulary_", None)
+        if isinstance(vocab, dict):
+            vec.vocabulary_ = {str(k): int(v) for k, v in vocab.items()}
+    except Exception as e:
+        print(f"[WARN] cast vectorizer vocabulary_ failed: {e}", flush=True)
+
+
+def _save_bertopic_model(bt: Any, sub: Path, label: str) -> bool:
+    _cast_bertopic_keys_for_save(bt)
+    safetensors_dir = sub / "model"
+    try:
+        bt.save(
+            str(safetensors_dir),
+            serialization="safetensors",
+            save_ctfidf=True,
+            save_embedding_model=False,
+        )
+        print(f"[fit {label}] model saved to {safetensors_dir} (safetensors).", flush=True)
+        return True
+    except Exception as e:
+        print(f"[WARN][fit {label}] safetensors save failed: {e}; pickle fallback.", flush=True)
+        try:
+            if safetensors_dir.exists() and safetensors_dir.is_dir():
+                shutil.rmtree(safetensors_dir)
+        except Exception:
+            pass
+        pickle_path = sub / "model.pkl"
+        try:
+            bt.save(str(pickle_path), serialization="pickle", save_ctfidf=True, save_embedding_model=False)
+            print(f"[fit {label}] model saved to {pickle_path} (pickle).", flush=True)
+            return True
+        except Exception as e2:
+            print(f"[ERROR][fit {label}] pickle save also failed: {e2}", flush=True)
+            return False
+
+
+def fit_level_hdbscan_candidates(cfg: TopicDiscoveryConfig) -> Path:
+    """Per-level: slice parent embeddings, UMAP+HDBSCAN per mcs, save model + doc_topics.
+
+    Only runs when ``cfg.comment_level`` is set. Pooled HDBSCAN candidates are produced by
+    ``phase1.topic_modeling`` and reused as-is.
+    """
+    if not cfg.is_level_run:
+        print("[fit] pooled mode: reusing parent run HDBSCAN candidates; nothing to fit.", flush=True)
+        return cfg.review_dir
+
+    from bertopic import BERTopic
+    from bertopic.representation import KeyBERTInspired, MaximalMarginalRelevance
+    from hdbscan import HDBSCAN
+    from sentence_transformers import SentenceTransformer
+    from sklearn.feature_extraction.text import CountVectorizer
+    from umap import UMAP
+
+    from phase1.topic_modeling import _PassthroughUMAP, _jieba_tokenizer_vec, _pick_device
+
+    cfg.review_dir.mkdir(parents=True, exist_ok=True)
+    shared_full = pd.read_csv(cfg.shared_corpus_path)
+    if "comment_level" not in shared_full.columns:
+        raise KeyError("shared_analyzable_corpus.csv lacks comment_level column")
+    mask = shared_full["comment_level"].to_numpy() == cfg.comment_level
+    idx = np.where(mask)[0]
+    if len(idx) == 0:
+        raise ValueError(f"no rows match comment_level={cfg.comment_level}")
+    shared_sub = shared_full.iloc[idx].reset_index(drop=True)
+    docs_raw = shared_sub["content"].astype(str).tolist()
+
+    emb_path = cfg.run_dir / "embeddings.npy"
+    if not emb_path.is_file():
+        raise FileNotFoundError(
+            f"missing parent embeddings: {emb_path}. "
+            f"Run `phase1.topic_modeling --run-id {cfg.run_id}` once to materialize them."
+        )
+    embeddings_full = np.load(emb_path)
+    if embeddings_full.shape[0] != len(shared_full):
+        raise ValueError(
+            f"embeddings rows {embeddings_full.shape[0]} != shared_corpus rows {len(shared_full)}; "
+            f"refusing to slice with mismatched index."
+        )
+    embeddings = np.asarray(embeddings_full[idx])
+    print(
+        f"[fit-l{cfg.comment_level}] sub-corpus n={len(docs_raw)} (of {len(shared_full)}) | emb dim={embeddings.shape[1]}",
+        flush=True,
+    )
+
+    # Stopwords from parent run
+    filter_path = cfg.run_dir / "comment_content_filter.json"
+    stopwords: set[str] = set()
+    if filter_path.is_file():
+        with open(filter_path, encoding="utf-8") as f:
+            stopwords = set(json.load(f).get("stopwords", []))
+
+    # Encoder is needed for KeyBERTInspired representation. Load lazily; allow offline-only.
+    encoder: Any = None
+    run_cfg = load_run_config(cfg)
+    model_name = run_cfg.get("embedding_model_resolved") or run_cfg.get("embedding_model") or "BAAI/bge-base-zh-v1.5"
+    device = _pick_device(cfg.device)
+    try:
+        encoder = SentenceTransformer(model_name, device=device, local_files_only=True)
+        print(f"[fit-l{cfg.comment_level}] loaded encoder {model_name!r} from local cache (device={device}).", flush=True)
+    except Exception as e:
+        print(f"[fit-l{cfg.comment_level}] local encoder unavailable ({e}); trying online…", flush=True)
+        try:
+            encoder = SentenceTransformer(model_name, device=device, local_files_only=False)
+        except Exception as e2:
+            print(f"[fit-l{cfg.comment_level}] encoder load failed ({e2}); KeyBERTInspired disabled.", flush=True)
+            encoder = None
+
+    # UMAP once on the sub-corpus.
+    n_doc = len(docs_raw)
+    n_neighbors = min(15, max(2, n_doc - 1))
+    print(f"[fit-l{cfg.comment_level}] UMAP fit_transform n_neighbors={n_neighbors} n_doc={n_doc}…", flush=True)
+    umap_runner = UMAP(
+        n_neighbors=n_neighbors,
+        n_components=5,
+        min_dist=0.0,
+        metric="cosine",
+        random_state=cfg.random_state,
+    )
+    reduced = umap_runner.fit_transform(embeddings)
+    np.save(cfg.review_dir / "umap_reduced.npy", reduced)
+    passthrough = _PassthroughUMAP(reduced)
+
+    representation_model: list[Any] | None
+    if encoder is not None:
+        try:
+            representation_model = [KeyBERTInspired(), MaximalMarginalRelevance(diversity=0.3)]
+        except Exception as e:
+            print(f"[WARN] representation_model init failed ({e}); using default c-TF-IDF.", flush=True)
+            representation_model = None
+    else:
+        representation_model = None
+
+    def make_vectorizer():
+        return CountVectorizer(
+            analyzer=lambda text: _jieba_tokenizer_vec(text, stopwords),
+            min_df=1,
+            max_df=1.0,
+            max_features=8000,
+        )
+
+    summary_rows: list[dict[str, Any]] = []
+    for mcs in cfg.hdbscan_candidate_mcs:
+        sub_dir = cfg.review_dir / f"bert_hdbscan_mcs{mcs}"
+        sub_dir.mkdir(parents=True, exist_ok=True)
+        print(f"[fit-l{cfg.comment_level}] HDBSCAN mcs={mcs} (min_samples={mcs})…", flush=True)
+        hdb = HDBSCAN(
+            min_cluster_size=mcs,
+            min_samples=mcs,
+            metric="euclidean",
+            cluster_selection_method="eom",
+            prediction_data=True,
+        )
+        bt = BERTopic(
+            embedding_model=encoder,
+            umap_model=passthrough,
+            hdbscan_model=hdb,
+            vectorizer_model=make_vectorizer(),
+            representation_model=representation_model,
+            low_memory=True,
+            calculate_probabilities=False,
+            verbose=False,
+        )
+        topics_raw, _ = bt.fit_transform(docs_raw, embeddings)
+        topics_raw = np.asarray(topics_raw, dtype=int)
+        # Persist topics + doc_topics
+        info = bt.get_topic_info()
+        info.to_csv(sub_dir / "topics.csv", index=False)
+        doc_topics = shared_sub[[
+            c for c in ("comment_id", "帖子id", "post_category", "robot_status", "human_role", "content")
+            if c in shared_sub.columns
+        ]].copy()
+        doc_topics["topic_raw"] = topics_raw
+        doc_topics["topic_assigned"] = topics_raw  # outlier reassignment is a downstream sensitivity, skip here
+        doc_topics.to_csv(sub_dir / "doc_topics.csv", index=False)
+        _save_bertopic_model(bt, sub_dir, label=f"l{cfg.comment_level}_mcs{mcs}")
+        n_valid = int((topics_raw >= 0).sum())
+        n_topics = int((info["Topic"] >= 0).sum())
+        sizes = pd.Series(topics_raw[topics_raw >= 0]).value_counts()
+        largest_share = float(sizes.max() / n_valid) if n_valid else float("nan")
+        print(
+            f"[fit-l{cfg.comment_level}] mcs={mcs}: n_topics={n_topics}, "
+            f"outlier={(topics_raw == -1).mean():.3f}, largest_share_valid={largest_share:.3f}",
+            flush=True,
+        )
+        summary_rows.append(summarize_hdbscan_candidate(mcs, cfg.run_dir, cfg))
+
+    df = pd.DataFrame(summary_rows)
+    summary_path = cfg.review_dir / "hdbscan_candidate_summary.csv"
+    df.to_csv(summary_path, index=False)
+    print(f"[fit-l{cfg.comment_level}] summary → {summary_path}", flush=True)
+    return summary_path
+
+
+def summarize_hdbscan_candidate(mcs: int, run_dir: Path, cfg: TopicDiscoveryConfig | None = None) -> dict[str, Any]:
+    if cfg is not None:
+        sub = cfg.hdbscan_dir(mcs)
+    else:
+        sub = run_dir / f"bert_hdbscan_mcs{mcs}"
     topics = pd.read_csv(sub / "topics.csv")
     docs = pd.read_csv(sub / "doc_topics.csv")
     n_docs = len(docs)
@@ -151,15 +416,29 @@ def summarize_hdbscan_candidate(mcs: int, run_dir: Path) -> dict[str, Any]:
 
 
 def write_hdbscan_candidate_summary(cfg: TopicDiscoveryConfig) -> pd.DataFrame:
-    rows = [summarize_hdbscan_candidate(mcs, cfg.run_dir) for mcs in cfg.hdbscan_candidate_mcs]
+    rows: list[dict[str, Any]] = []
+    for mcs in cfg.hdbscan_candidate_mcs:
+        sub = cfg.hdbscan_dir(mcs)
+        if not (sub / "topics.csv").is_file():
+            # Skip silently if a candidate hasn't been fit; surface in manifest later.
+            continue
+        rows.append(summarize_hdbscan_candidate(mcs, cfg.run_dir, cfg))
     df = pd.DataFrame(rows)
     out = cfg.review_dir / "hdbscan_candidate_summary.csv"
     df.to_csv(out, index=False)
     return df
 
 
+def _filter_shared_to_level(cfg: TopicDiscoveryConfig, shared: pd.DataFrame) -> pd.DataFrame:
+    if not cfg.is_level_run:
+        return shared
+    sub = shared[shared["comment_level"] == cfg.comment_level].reset_index(drop=True)
+    return sub
+
+
 def _load_docs_and_stopwords(cfg: TopicDiscoveryConfig) -> tuple[list[str], set[str], pd.DataFrame]:
     shared = pd.read_csv(cfg.shared_corpus_path)
+    shared = _filter_shared_to_level(cfg, shared)
     docs_raw = shared["content"].astype(str).tolist()
     filter_path = cfg.run_dir / "comment_content_filter.json"
     stopwords: set[str] = set()
@@ -235,7 +514,7 @@ def _structural_diagnostics(topics_arr: np.ndarray) -> dict[str, Any]:
 def _load_bertopic_base(cfg: TopicDiscoveryConfig) -> Any:
     from bertopic import BERTopic
 
-    model_dir = cfg.run_dir / f"bert_hdbscan_mcs{cfg.base_mcs}" / "model"
+    model_dir = cfg.hdbscan_dir(cfg.base_mcs) / "model"
     return BERTopic.load(str(model_dir))
 
 
@@ -243,7 +522,12 @@ def scan_topic_numbers(cfg: TopicDiscoveryConfig) -> tuple[pd.DataFrame, pd.Data
     """Step 2b: reduce_topics scan + C_V coherence + structural diagnostics."""
     docs_raw, stopwords, _ = _load_docs_and_stopwords(cfg)
     tokenized = _tokenize_corpus(docs_raw, stopwords)
-    base_model_dir = cfg.run_dir / f"bert_hdbscan_mcs{cfg.base_mcs}" / "model"
+    base_model_dir = cfg.hdbscan_dir(cfg.base_mcs) / "model"
+    if not base_model_dir.is_dir():
+        raise FileNotFoundError(
+            f"BERTopic base model missing: {base_model_dir}. "
+            f"Run `--step fit` first (for level runs) or `phase1.topic_modeling` (pooled)."
+        )
     reduced_root = cfg.review_dir / f"topic_number_scan_mcs{cfg.base_mcs}"
     reduced_root.mkdir(parents=True, exist_ok=True)
 
@@ -261,7 +545,7 @@ def scan_topic_numbers(cfg: TopicDiscoveryConfig) -> tuple[pd.DataFrame, pd.Data
         diag = _structural_diagnostics(topics_arr)
         info = bt.get_topic_info()
         info.to_csv(reduced_root / f"topics_nr{nr}.csv", index=False)
-        doc_df = pd.read_csv(cfg.run_dir / f"bert_hdbscan_mcs{cfg.base_mcs}" / "doc_topics.csv")
+        doc_df = pd.read_csv(cfg.hdbscan_dir(cfg.base_mcs) / "doc_topics.csv")
         doc_df = doc_df.drop(columns=[c for c in ("topic_reduced",) if c in doc_df.columns])
         doc_df["topic_reduced"] = topics_arr
         doc_df.to_csv(reduced_root / f"doc_topics_nr{nr}.csv", index=False)
@@ -523,6 +807,9 @@ def build_enhanced_topic_review_table(
     topic_col = "topic_reduced" if "topic_reduced" in docs.columns else "topic_raw"
     assigned_col = "topic_assigned" if "topic_assigned" in docs.columns else None
     docs = docs_with_full_metadata(docs, cfg.shared_corpus_path)
+    if cfg.is_level_run and "comment_level" in docs.columns:
+        # Defensive: drop any leaked rows from the other level
+        docs = docs[pd.to_numeric(docs["comment_level"], errors="coerce") == cfg.comment_level].copy()
     valid_topics = topics[topics["Topic"] >= 0].copy()
     valid_topics["top_terms"] = valid_topics["Representation"].map(lambda x: ", ".join(parse_terms(x, n=12)))
 
@@ -587,15 +874,18 @@ def build_enhanced_topic_review_table(
                 }
             )
 
-        rows.append(
+        row_out: dict[str, Any] = {
+            "topic_id": tid,
+            "raw_count": int(len(sub)),
+            "assigned_count": assigned_count,
+            "n_posts_raw": n_posts,
+            "top_post_share_raw": top_post_share,
+        }
+        if not cfg.is_level_run:
+            row_out["level1_share_raw"] = level1_share
+            row_out["level2_share_raw"] = level2_share
+        row_out.update(
             {
-                "topic_id": tid,
-                "raw_count": int(len(sub)),
-                "assigned_count": assigned_count,
-                "n_posts_raw": n_posts,
-                "top_post_share_raw": top_post_share,
-                "level1_share_raw": level1_share,
-                "level2_share_raw": level2_share,
                 "top_terms": row["top_terms"],
                 "representative_docs": row.get("Representative_Docs", ""),
                 "sample_comments_10": format_comments_compact(review_comments),
@@ -604,6 +894,7 @@ def build_enhanced_topic_review_table(
                 "random_examples": format_examples(random_ex, random_n),
             }
         )
+        rows.append(row_out)
 
     review_df = pd.DataFrame(rows).sort_values("raw_count", ascending=False).reset_index(drop=True)
     post_diag_df = pd.DataFrame(post_rows).sort_values(["topic_id", "raw_count"], ascending=[True, False])
@@ -633,12 +924,11 @@ def generate_final_review_materials(cfg: TopicDiscoveryConfig, final_nr: int) ->
         "assigned_count",
         "n_posts_raw",
         "top_post_share_raw",
-        "level1_share_raw",
-        "level2_share_raw",
-        "top_terms",
-        "representative_docs",
-        "sample_comments_10",
     ]
+    if not cfg.is_level_run:
+        base_cols += ["level1_share_raw", "level2_share_raw"]
+    base_cols += ["top_terms", "representative_docs", "sample_comments_10"]
+    base_cols = [c for c in base_cols if c in review_df.columns]
     paths: dict[str, Path] = {
         "review": review_path,
         "post_diag": post_diag_path,
@@ -796,7 +1086,7 @@ def run_sensitivity_analyses(cfg: TopicDiscoveryConfig, final_nr: int, curve_df:
     neighbor_rows = curve_df[curve_df["target_nr_topics"].isin(neighbors + [final_nr])]
     neighbor_rows.to_csv(sens_dir / "adjacent_topic_number_comparison.csv", index=False)
 
-    base_doc = pd.read_csv(cfg.run_dir / f"bert_hdbscan_mcs{cfg.base_mcs}" / "doc_topics.csv")
+    base_doc = pd.read_csv(cfg.hdbscan_dir(cfg.base_mcs) / "doc_topics.csv")
     raw_valid = base_doc[base_doc["topic_raw"] >= 0]
     assigned_valid = base_doc[base_doc["topic_assigned"] >= 0]
     pd.DataFrame(
@@ -820,7 +1110,10 @@ def run_sensitivity_analyses(cfg: TopicDiscoveryConfig, final_nr: int, curve_df:
     high_dom = review[review["top_post_share_raw"] >= 0.3].sort_values("top_post_share_raw", ascending=False)
     high_dom.to_csv(sens_dir / "high_post_dominance_topics.csv", index=False)
 
-    mcs_rows = [summarize_hdbscan_candidate(m, cfg.run_dir) for m in cfg.hdbscan_candidate_mcs]
+    mcs_rows = []
+    for m in cfg.hdbscan_candidate_mcs:
+        if (cfg.hdbscan_dir(m) / "topics.csv").is_file():
+            mcs_rows.append(summarize_hdbscan_candidate(m, cfg.run_dir, cfg))
     pd.DataFrame(mcs_rows).to_csv(sens_dir / "hdbscan_mcs_sensitivity_summary.csv", index=False)
 
 
@@ -974,11 +1267,20 @@ def run_pipeline(cfg: TopicDiscoveryConfig | None = None, *, steps: set[str] | N
     all_steps = steps or {"all"}
     if "all" in all_steps:
         all_steps = {"freeze", "select", "review", "codebook", "sensitivity", "validate", "document"}
+        if cfg.is_level_run:
+            all_steps.add("fit")
 
     results: dict[str, Any] = {}
     if "freeze" in all_steps:
         results["corpus_freeze"] = str(freeze_corpus_snapshot(cfg))
-        results["hdbscan_summary"] = str(write_hdbscan_candidate_summary(cfg))
+
+    if "fit" in all_steps:
+        results["hdbscan_fit"] = str(fit_level_hdbscan_candidates(cfg))
+
+    if "freeze" in all_steps or "fit" in all_steps:
+        # Refresh hdbscan summary against whatever candidates are now present.
+        df = write_hdbscan_candidate_summary(cfg)
+        results["hdbscan_summary"] = f"{cfg.review_dir / 'hdbscan_candidate_summary.csv'} (rows={len(df)})"
 
     curve_df: pd.DataFrame | None = None
     final_nr: int | None = None
