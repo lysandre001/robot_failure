@@ -1,0 +1,902 @@
+﻿帖子id,post_category,human_category,帖子点赞数,帖子评论数,comment_level,comment_id,parent_comment_id,user_id,帖子标题,content,评估对象,情感(p/neg/n/m),combo,comment_time,location,like_count,reply_count,char_len,llm_deepseek_v4_pro_scope_comment_only,llm_deepseek_v4_pro_scope_comment_only_reason,llm_deepseek_v4_pro_scope_comment_only_status
+69da7e87000000001a03484e,强势,观众,,8169.0,1,69db19cb00000000020346e4,,689b0bc3000000001900ea67,"今晚的亦庄机器人马拉松测试
+
+",跑的比车还快,机器人本身,Positive,观众+强势,2026.04.12,湖南,0,0.0,6,机器人本身,"The comment directly evaluates the robot's physical state by comparing its speed to a car, focusing on the robot's embodiment.",ok
+69da7e87000000001a03484e,强势,观众,,8169.0,2,69db0cfd000000000d036355,69db06f4000000000d036c86,5be006c022aac20001dbf32c,"今晚的亦庄机器人马拉松测试
+
+",应该也是动态调整平衡吧,机器人本身,Neutral,观众+强势,2026.04.12,湖南,0,,11,机器人本身,"The comment speculates about a robot's balancing mechanism, directly evaluating its physical state and mechanical function.",ok
+69da7e87000000001a03484e,强势,观众,,8169.0,1,69db5f2b0000000015007b88,,6213500e0000000010004674,"今晚的亦庄机器人马拉松测试
+
+",还得给机器让道了,其他人,Mixed,观众+强势,2026.04.12,河北,1,0.0,8,自身经验,"The comment expresses a personal subjective reaction (having to yield to a machine) that projects the speaker's identity and emotion into the situation, establishing a connection between the robot and the user's private experience.",ok
+69da7e87000000001a03484e,强势,观众,,8169.0,1,69db0aec0000000002034b0f,,5f49c941000000000100a100,"今晚的亦庄机器人马拉松测试
+
+",跑完一趟该保养了。。。。,机器人本身,Neutral,观众+强势,2026.04.12,北京,0,0.0,12,机器人本身,"The comment directly evaluates the robot's physical state after operation, suggesting maintenance is needed, which focuses on the robot's mechanical condition.",ok
+69da7e87000000001a03484e,强势,观众,,8169.0,1,69db057d0000000015008b10,,6579886b000000002002ff44,"今晚的亦庄机器人马拉松测试
+
+",牛马要失业了,符号,Negative,观众+强势,2026.04.12,江西,0,0.0,6,符号,"The comment expresses a concern about technological unemployment, viewing the robot as a symbol of automation replacing human labor, a grand narrative about the future of work and society.",ok
+69da7e87000000001a03484e,强势,观众,,8169.0,2,69dc9e48000000003502ac36,69dc60790000000015007da9,5f099e250000000001007c49,"今晚的亦庄机器人马拉松测试
+
+",我看到了！,无主体,Neutral,观众+强势,2026.04.13,北京,0,,5,自身经验,"The comment expresses the speaker's direct sensory experience of seeing something, likely the robot, establishing a subjective connection between the user and the technology.",ok
+69da7e87000000001a03484e,强势,观众,,8169.0,2,69daff46000000003102c7d2,69dafb88000000000d037bec,57dfddb8bd0da51d557881c1,"今晚的亦庄机器人马拉松测试
+
+",你好聪明啊,机器人本身,Positive,观众+强势,2026.04.12,福建,3,,5,机器人本身,"The comment directly evaluates the robot's intelligence, which is a characteristic of the robot itself, thus the subject is the robot entity.",ok
+69da7e87000000001a03484e,强势,观众,,8169.0,1,69db5169000000000d03f6d7,,61d97cc4000000001000714a,"今晚的亦庄机器人马拉松测试
+
+",跑得真的好快，这要撞到人或者车，人和车直接报废了。。,机器人本身,Negative,观众+强势,2026.04.12,北京,0,0.0,26,机器人本身,"The comment directly evaluates the robot's speed and the physical damage it could cause, focusing on its kinematic performance and mechanical embodiment.",ok
+69da7e87000000001a03484e,强势,观众,,8169.0,1,69dcf6f800000000010046d6,,68cefaa20000000021024429,"今晚的亦庄机器人马拉松测试
+
+",酷,无主体,Positive,观众+强势,2026.04.13,吉林,0,0.0,1,无主体,"The comment is a single-word interjection expressing admiration with no specific target, fitting the definition of pure emotional catharsis without a subject.",ok
+69da7e87000000001a03484e,强势,观众,,8169.0,2,69db260b000000000d03f4e4,69daef940000000001007f78,61547da10000000002020369,"今晚的亦庄机器人马拉松测试
+
+",造出来肯定是要追着人跑的啊[doge]，以后谁敢偷东西，一堆铁疙瘩奔过来,符号,Mixed,观众+强势,2026.04.12,湖北,0,,36,符号,"The comment imagines a future scenario where robots are used to chase thieves, treating the robot as a symbol of technological progress and societal control, a grand narrative rather than its physical embodiment.",ok
+69db34bb000000001a0348ae,失败,抢救者,4896.0,1198.0,2,69e4ae2e0000000014018c11,69e48f1d0000000014019819,5c3885670000000005017178,"机器人抢救现场
+
+",好地狱,无主体,Negative,抢救者+失败,2026.04.19,广西,0,,3,无主体,"The comment is a pure emotional exclamation ('What a hell') reacting to the context without specifying any evaluation target. It lacks a clear subject or object and functions as an interjection, fitting the definition of No Subject.",ok
+69db34bb000000001a0348ae,失败,抢救者,4896.0,1198.0,2,69dccd5c000000003502bf27,69dc73fa00000000350236af,564e8371c2bdeb20807db809,"机器人抢救现场
+
+",我也是哈哈哈哈哈哈哈哈,无主体,Neutral,抢救者+失败,2026.04.13,山西,0,,11,自身经验,"The comment '我也是哈哈哈哈哈哈哈哈' translates to 'Me too hahahahaha', which expresses a shared subjective emotional reaction (laughter) and self-alignment with a prior statement, likely about the robot. This indicates a personal, subjective connection to the robot experience, centering on private emotions and user identity, fitting 'Personal Experience'.",ok
+69db34bb000000001a0348ae,失败,抢救者,4896.0,1198.0,1,69dca3f1000000000d034ab9,,5657c4cfa40e1830a978ab8f,"机器人抢救现场
+
+",以后能不能搞一辆机器人开、机器人修的救护车,机器人本身,Mixed,抢救者+失败,2026.04.13,上海,0,0.0,21,机器人本身,"The comment focuses on the functional capability of robots to drive and repair, envisioning a future application. The core evaluation is about robots performing specific tasks, which relates to their intended state/functionality.",ok
+69db34bb000000001a0348ae,失败,抢救者,4896.0,1198.0,2,69e457ff000000001401e400,69dcb1ea000000000d03c735,60f44bcf00000000010093d1,"机器人抢救现场
+
+",可能类似儿科，碳基家长很难缠[笑哭R],机器人本身,Negative,抢救者+失败,2026.04.19,甘肃,19,,19,其他人,"The comment likens dealing with robots to pediatricians handling difficult parents, centering on third-party humans (parents) rather than the robot or personal experience.",ok
+69db34bb000000001a0348ae,失败,抢救者,4896.0,1198.0,2,69dcedb00000000002035a9a,69dccd300000000001005f74,60c3211a000000000101fe4f,"机器人抢救现场
+
+",何异味，我不懂，干啥啊,无主体,Mixed,抢救者+失败,2026.04.13,北京,0,,11,无主体,"The comment expresses confusion with no specific evaluation target, just interjections of not understanding, fitting pure emotional catharsis.",ok
+69db34bb000000001a0348ae,失败,抢救者,4896.0,1198.0,2,69dc9da80000000035029737,69dc88aa000000003501e385,65f3ea7b000000000500a0c9,"机器人抢救现场
+
+",Hhhhh,无主体,Neutral,抢救者+失败,2026.04.13,澳大利亚,0,,5,无主体,"The comment 'Hhhhh' is a laughter interjection, lacking any specific evaluation target, subject, or object, indicating pure emotional catharsis.",ok
+69db34bb000000001a0348ae,失败,抢救者,4896.0,1198.0,1,69dc73fa00000000350236af,,5b825f4d72dd190001eeab6a,"机器人抢救现场
+
+",我还以为是机器人医生来救人[笑哭R],事件,Mixed,抢救者+失败,2026.04.13,北京,2706,62.0,18,自身经验,"The comment expresses a personal mistaken expectation and subjective reaction, linking the robot to the self's interpretation and emotions.",ok
+69db34bb000000001a0348ae,失败,抢救者,4896.0,1198.0,2,69e4ce40000000001401a408,69e48f1d0000000014019819,5c7fe4b40000000011020109,"机器人抢救现场
+
+",太地狱了哈哈哈,无主体,Negative,抢救者+失败,2026.04.19,天津,0,,7,无主体,"The comment is a pure emotional exclamation ('too hellish hahaha') with no specific evaluation target, syntactically lacking a subject and consisting of interjections.",ok
+69db34bb000000001a0348ae,失败,抢救者,4896.0,1198.0,2,69dca7eb0000000030027509,69dca7a2000000003500ce1c,631554e600000000120036f6,"机器人抢救现场
+
+",工程师学习一下给机器人心肺复苏,其他人,Mixed,抢救者+失败,2026.04.13,陕西,0,,15,机器人本身,"The comment directly addresses the robot's physical state, suggesting CPR, which is a direct evaluation of the robot's embodiment and condition.",ok
+69db34bb000000001a0348ae,失败,抢救者,4896.0,1198.0,2,69dcbe3d000000001400bd3b,69dcac4900000000350260dc,5a89825211be103137e88dea,"机器人抢救现场
+
+",笑死了,无主体,Neutral,抢救者+失败,2026.04.13,江苏,0,,3,无主体,"The comment '笑死了' is a pure emotional expression meaning 'laughed to death', with no specific evaluation target or subject mentioned. It functions as cathartic interjection without a clear object.",ok
+69df625d0000000021005c63,失败,观众,,9992.0,1,69e13fb7000000001401a401,,6516a48400000000240166d8,“扶我起来，我还能再跑10公里”,机�人是用在工作上，不是娛樂吧，為什麼執著做人的行為？,机器人本身,Mixed,观众+失败,2026.04.17,加拿大,0,0.0,27,机器人本身,"The comment directly evaluates the robot's purpose and behavior, criticizing its anthropomorphic actions, which centers on the robot entity itself.",ok
+69df625d0000000021005c63,失败,观众,,9992.0,1,69e0153c000000001400b357,,6464a604000000002a009f55,“扶我起来，我还能再跑10公里”,意义在哪？,事件,Negative,观众+失败,2026.04.16,浙江,0,0.0,5,符号,"The comment questions the meaning or purpose of the robot, treating it as a symbol for a broader narrative or technological endgame.",ok
+69df625d0000000021005c63,失败,观众,,9992.0,1,69df95af00000000160165a8,,61a96d53000000001000655f,“扶我起来，我还能再跑10公里”,哈哈哈哈哈哈哈哈，笑死了，二排、杂毛公司的人形机器人烂到家了。,机器人本身,Negative,观众+失败,2026.04.15,贵州,0,0.0,31,机器人本身,直接评价人形机器人的质量，称其“烂到家了”，核心主语为机器人实体本身。,ok
+69df625d0000000021005c63,失败,观众,,9992.0,1,69dfacb000000000020367d5,,59f433064eacab24119374df,“扶我起来，我还能再跑10公里”,我笑死了,无主体,Neutral,观众+失败,2026.04.15,云南,0,0.0,4,无主体,"The comment '我笑死了' is a pure emotional expression of amusement with no specific evaluation target related to the robot, context, or other elements. It lacks a clear object of evaluation, fitting the 'No Subject' category.",ok
+69df625d0000000021005c63,失败,观众,,9992.0,2,69e1ff6a000000001401e013,69e1c624000000001401c02f,5beb98c2660b8b00019cd777,“扶我起来，我还能再跑10公里”,笑死,无主体,Neutral,观众+失败,2026.04.17,上海,1,,2,无主体,"The comment is a pure emotional outburst ('laughing to death') without any explicit or implied evaluation target, fitting the definition of 'No Subject'.",ok
+69df625d0000000021005c63,失败,观众,,9992.0,1,69df93e000000000350290fb,,5f3e4bea0000000001006bbb,“扶我起来，我还能再跑10公里”,机器人就跟新能源车一样,符号,Negative,观众+失败,2026.04.15,北京,0,0.0,11,符号,"The comment draws an abstract parallel between robots and new energy vehicles, framing them as comparable symbols within a broader technological or industrial narrative, rather than evaluating the robot's physical state or personal experience.",ok
+69df625d0000000021005c63,失败,观众,,9992.0,1,69e0eb750000000014018c1a,,6297510c00000000210219ce,“扶我起来，我还能再跑10公里”,在家里不做实验么拿出来现眼,其他人,Negative,观众+失败,2026.04.16,韩国,0,0.0,13,机器人本身,"The comment evaluates the robot's state of being untested and the act of showing it off, focusing on the robot as the core entity criticized.",ok
+69df625d0000000021005c63,失败,观众,,9992.0,2,69e066940000000002036d1c,69e066750000000002036684,627fa7940000000021022d86,“扶我起来，我还能再跑10公里”,笑的我肚肚疼,无主体,Neutral,观众+失败,2026.04.16,新疆,0,,6,无主体,"The comment expresses pure emotional catharsis (laughter causing physical discomfort) without referencing the robot, other people, or any specific contextual element. It lacks a clear evaluation target.",ok
+69df625d0000000021005c63,失败,观众,,9992.0,2,69df99b9000000001500254a,69df971b00000000350151b3,5e7ab52200000000010037c8,“扶我起来，我还能再跑10公里”,现在就很好笑，再过几年他们中的很多都没有了[捂脸R],符号,Negative,观众+失败,2026.04.15,浙江,886,,26,机器人本身,"The comment directly evaluates the robots' existence, predicting many will disappear, which focuses on the robots' state and future.",ok
+69df625d0000000021005c63,失败,观众,,9992.0,2,69e4d1c0000000001401cc08,69dfb3290000000002035b6b,5cedfc810000000018028ccc,“扶我起来，我还能再跑10公里”,火起来[点赞R],无主体,Positive,观众+失败,2026.04.19,重庆,0,,8,无主体,"The comment '火起来[点赞R]' is a short exclamation meaning 'get popular' with a thumbs-up emoji. It lacks a specific evaluation target, no direct reference to the robot, personal experience, symbol, event, or other people. It's a pure emotional catharsis with an emoji and no clear subject.",ok
+69e2583b00000000230211ea,失败,抢救者,,2406.0,2,69e30dd3000000001401e82a,69e30077000000001401b80f,6396dfe500000000260107c4,"
+
+",[黄金薯R],无主体,Neutral,抢救者+失败,2026.04.18,河北,1,,6,无主体,"The comment consists solely of an emoji notation without any explicit or implicit subject, expressing pure emotional catharsis.",ok
+69e2583b00000000230211ea,失败,抢救者,,2406.0,1,69e816a8000000001401d405,,5c144cf7000000000503b289,"
+
+",稀碎,机器人本身,Negative,抢救者+失败,2026.04.22,河北,0,0.0,2,机器人本身,"The comment directly evaluates the physical state of the robot, describing it as shattered or broken, which is a direct evaluation of the robot itself.",ok
+69e2583b00000000230211ea,失败,抢救者,,2406.0,1,69e2f04d000000001401bc28,,5dcbe2a8000000000100bdf1,"
+
+",输在了起跑线上[笑哭R][笑哭R][笑哭R],机器人本身,Negative,抢救者+失败,2026.04.18,广东,0,0.0,22,机器人本身,"The comment metaphorically evaluates the robot's performance or state as 'lost at the starting line,' directly addressing the robot entity itself.",ok
+69e2583b00000000230211ea,失败,抢救者,,2406.0,1,69e8e94b000000001401b019,,62e00874000000001e01e952,"
+
+",爆装备了[汗颜R],机器人本身,Negative,抢救者+失败,2026.04.22,河北,0,0.0,9,机器人本身,"The comment describes a physical malfunction ('equipment exploded') of the robot, directly evaluating its mechanical state.",ok
+69e2583b00000000230211ea,失败,抢救者,,2406.0,1,69e87418000000001401a412,,5b7381b8d1dd4100011c9428,"
+
+",心疼程序员一秒钟[捂脸R],其他人,Mixed,抢救者+失败,2026.04.22,陕西,0,0.0,13,其他人,"The comment expresses sympathy for a programmer, focusing on a third-party human rather than the robot or personal experience.",ok
+69e2583b00000000230211ea,失败,抢救者,,2406.0,1,69e4441f000000001401e428,,61029b4a000000000101d378,"
+
+",机器人要是真的崛起了这个能作为革命先驱写进它们历史书的程度,符号,Positive,抢救者+失败,2026.04.19,上海,0,0.0,29,符号,将机器人视为宏大叙事中的符号，使用抽象名词（革命先驱、历史书）和目的论表达，讨论机器人崛起的假想未来，无关其具体状态。,ok
+69e2583b00000000230211ea,失败,抢救者,,2406.0,1,69e8bb75000000001401e011,,62d6bbb50000000002000129,"
+
+",怎么遥控的[笑哭R],机器人本身,Mixed,抢救者+失败,2026.04.22,辽宁,0,0.0,10,机器人本身,"The comment asks about the remote control mechanism of the robot, directly evaluating its technical operation and physical state.",ok
+69e2583b00000000230211ea,失败,抢救者,,2406.0,1,69e2ff3d000000001401c000,,635aab890000000018029cec,"
+
+",机器一败涂地[捂脸R],机器人本身,Negative,抢救者+失败,2026.04.18,广西,0,0.0,11,机器人本身,"The comment directly evaluates the robot entity itself, stating that 'the machine is completely defeated', focusing on its performance or state with no reference to personal experience, symbols, or other elements.",ok
+69e2583b00000000230211ea,失败,抢救者,,2406.0,1,69e301370000000014018815,,5f9155a6000000000100a7fb,"
+
+",好脆,机器人本身,Negative,抢救者+失败,2026.04.18,广东,0,0.0,2,机器人本身,"The comment directly evaluates a physical property of the robot, focusing on its perceived material state.",ok
+69e2583b00000000230211ea,失败,抢救者,,2406.0,1,69e2feb90000000014019427,,5f8f8675000000000101d7aa,"
+
+",符合一倒就蹬腿乱踢印象[偷笑R],机器人本身,Negative,抢救者+失败,2026.04.18,广东,2,0.0,16,机器人本身,"The comment directly describes the robot's physical behavior (falling down and kicking legs wildly), evaluating its embodied state.",ok
+69e40352000000002102fc75,常态,服务者,,1160.0,1,69e43c9b000000001401bc0d,,5e611fe60000000001004a84,"机器人马拉松现场第一视角看全部队伍
+
+",跑马拉松到底有什么意义。。,事件,Negative,服务者+常态,2026.04.19,四川,0,0.0,13,符号,"The comment questions the meaning of running a marathon, which in the context of robots in public spaces likely reflects a teleological inquiry about the purpose of such demonstrations, framing the event as a symbol for a larger narrative rather than evaluating the robot itself or a personal experience.",ok
+69e40352000000002102fc75,常态,服务者,,1160.0,1,69e48ecb000000001401c035,,628b52570000000021026a44,"机器人马拉松现场第一视角看全部队伍
+
+",现在能跑马拉松，以后就能打环太平洋,符号,Positive,服务者+常态,2026.04.19,四川,0,0.0,17,符号,"The comment extrapolates from a current robot marathon to a grand sci-fi scenario (Pacific Rim), viewing the robot as a symbol of technological progression toward a grand narrative endgame.",ok
+69e40352000000002102fc75,常态,服务者,,1160.0,2,69e43b42000000001401d83a,69e437a7000000001401882e,600ecd15000000000101c35f,"机器人马拉松现场第一视角看全部队伍
+
+",这难道不很有趣吗？,事件,Positive,服务者+常态,2026.04.19,湖南,0,,9,机器人本身,"The comment '这难道不很有趣吗？' ('Isn't this interesting?') directly evaluates the robot being discussed, as 'this' refers to the robot shown in the context of public spaces. It expresses a subjective judgment about the robot's appeal, fitting the direct evaluation of the robot entity.",ok
+69e40352000000002102fc75,常态,服务者,,1160.0,2,69e43bb8000000001401e81f,69e437a7000000001401882e,5c84a702000000001000d573,"机器人马拉松现场第一视角看全部队伍
+
+",特斯拉一样是遥控还有vr操作的,事件,Neutral,服务者+常态,2026.04.19,日本,0,,15,机器人本身,"The comment directly describes the robot's operational characteristics, comparing its remote control and VR operation to Tesla, which constitutes an evaluation of the robot's physical/digital state.",ok
+69e40352000000002102fc75,常态,服务者,,1160.0,1,69e44a3f000000001401d406,,566b07a5447608749ad32c7b,"机器人马拉松现场第一视角看全部队伍
+
+",没有意义的活动,事件,Negative,服务者+常态,2026.04.19,上海,0,0.0,7,事件,"The comment evaluates the activity itself, calling it meaningless, focusing on the event rather than the robot or personal experience.",ok
+69e40352000000002102fc75,常态,服务者,,1160.0,1,69e43396000000001401d808,,6101f2100000000001000892,"机器人马拉松现场第一视角看全部队伍
+
+",再厉害也得人弄它[偷笑R][偷笑R][偷笑R],机器人本身,Mixed,服务者+常态,2026.04.19,辽宁,6,5.0,23,符号,"The comment makes an abstract philosophical statement about human superiority over robots, treating the robot as a symbol of technological limits rather than evaluating its immediate physical state or a personal experience.",ok
+69e40352000000002102fc75,常态,服务者,,1160.0,1,69e44a46000000001401ac29,,5c517f27000000001002efca,"机器人马拉松现场第一视角看全部队伍
+
+",传下去：机器人全体上吊[偷笑R][偷笑R][偷笑R]哈哈哈哈,机器人本身,Neutral,服务者+常态,2026.04.19,河北,1,0.0,30,符号,"The comment uses the concept of robots as a collective symbol to deliver a humorous narrative about their mass suicide, which is an abstract teleological expression, not tied to an actual robot's state.",ok
+69e40352000000002102fc75,常态,服务者,,1160.0,1,69e4e31c000000002d031fc6,,68f2fc7b000000003702b949,"机器人马拉松现场第一视角看全部队伍
+
+",机器人也有尊严。看他们都选择运动员，演员的工种。做厨师，佣人，有点低级。去打仗，有点危险。,自身经验,Neutral,服务者+常态,2026.04.19,美国,0,0.0,45,机器人本身,"The comment anthropomorphizes the robot by attributing dignity and hypothetical job preferences, directly evaluating the robot's conceptual state and role rather than external factors.",ok
+69e40352000000002102fc75,常态,服务者,,1160.0,1,69e46ae0000000001401ac1c,,603620e60000000001003764,"机器人马拉松现场第一视角看全部队伍
+
+",我看到一个偷�了[偷笑R],机器人本身,Neutral,服务者+常态,2026.04.19,北京,0,0.0,13,自身经验,"The comment expresses a subjective observation ('I saw...') accompanied by an amused emoji, centering on the user's private experience and emotional reaction rather than the robot's intrinsic properties.",ok
+69e40352000000002102fc75,常态,服务者,,1160.0,1,69e44b150000000014018c05,,5af26a984eacab0f0dcd4a7d,"机器人马拉松现场第一视角看全部队伍
+
+",好搞笑啊，一排机器人被揪着脖领子[笑哭R],机器人本身,Neutral,服务者+常态,2026.04.19,湖北,0,0.0,21,机器人本身,"The comment humorously describes the physical situation of robots being grabbed by the collar, directly evaluating their embodied state.",ok
+69e41e24000000001a025f1a,失败,观众,1155.0,129.0,1,69e43ee8000000001401c013,,5bcef806779bd50001870709,"人形机器人半马摔倒瞬间��
+
+",看到了我，她摔得时候我亲眼所见噼里啪啦的,机器人本身,Neutral,观众+失败,2026.04.19,北京,0,0.0,20,自身经验,"The commenter describes a personal eyewitness account of the robot falling, emphasizing their direct observation ('saw me', 'witnessed with my own eyes') and sensory details ('crackling sound'). The core subject is the subjective relationship between the commenter and the robot's action.",ok
+69e41e24000000001a025f1a,失败,观众,1155.0,129.0,1,69e4348c000000001401c418,,618dbd6d000000001000713a,"人形机器人半马摔倒瞬间��
+
+",氛围这么好么[笑哭R][笑哭R][笑哭R],事件,Neutral,观众+失败,2026.04.19,上海,0,0.0,21,事件,"The comment evaluates the atmosphere (氛围) of the event, focusing on a peripheral situational element rather than the robot itself, personal experience, symbolism, or other subjects.",ok
+69e41e24000000001a025f1a,失败,观众,1155.0,129.0,1,69e4a875000000001401b013,,64738157000000001c0292d2,"人形机器人半马摔倒瞬间��
+
+",这一惊一乍的真吓人[捂脸R],机器人本身,Negative,观众+失败,2026.04.19,上海,1,0.0,14,机器人本身,"The comment directly evaluates the robot's startling movements ('这一惊一乍的真吓人'), focusing on its physical behavior and immediate state.",ok
+69e41e24000000001a025f1a,失败,观众,1155.0,129.0,2,69e4325e0000000014019c19,69e42cb3000000001401c41a,5e0d64cb000000000100b6aa,"人形机器人半马摔倒瞬间��
+
+",说是冷却用的东西[笑哭R],机器人本身,Neutral,观众+失败,2026.04.19,北京,20,,13,机器人本身,"The comment focuses on a functional attribute of the robot, describing it as 'something used for cooling', which directly evaluates the physical or digital state of the robot.",ok
+69e41e24000000001a025f1a,失败,观众,1155.0,129.0,1,69e453eb000000001401880a,,600e766100000000010011e5,"人形机器人半马摔倒瞬间��
+
+",脚步轻浮，晚上没休息好,机器人本身,Neutral,观众+失败,2026.04.19,新疆,0,0.0,11,机器人本身,"The comment describes the robot's physical gait as unsteady, directly evaluating its embodied state.",ok
+69e41e24000000001a025f1a,失败,观众,1155.0,129.0,1,69e47f430000000014018c2f,,60c3a37e000000000100b246,"人形机器人半马摔倒瞬间��
+
+",脑浆子都摔出来了，还在坚持[笑哭R],机器人本身,mixed,观众+失败,2026.04.19,北京,1,0.0,18,机器人本身,"The comment anthropomorphically describes the robot's physical state (brain matter spilling out) and its persistence, directly evaluating the robot's embodiment and endurance.",ok
+69e41e24000000001a025f1a,失败,观众,1155.0,129.0,1,69e45947000000001401d80b,,5fc44a95000000000101e9cc,"人形机器人半马摔倒瞬间��
+
+",右腿关节处受伤了[吃瓜R]感觉使不上劲了[笑哭R],机器人本身,Neutral,观众+失败,2026.04.19,浙江,7,1.0,25,机器人本身,"The comment directly evaluates the robot's physical state, mentioning its right leg joint injury and weakness, focusing on embodiment and mechanical parts.",ok
+69e41e24000000001a025f1a,失败,观众,1155.0,129.0,1,69e4dba7000000001401d80f,,60d83c5d000000000101c238,"人形机器人半马摔倒瞬间��
+
+",这是喝了多少[笑哭R],机器人本身,Neutral,观众+失败,2026.04.19,中国澳门,0,0.0,11,机器人本身,"The comment directly addresses the robot's physical state by likening it to a drunk person, focusing on the robot's embodied behavior.",ok
+69e41e24000000001a025f1a,失败,观众,1155.0,129.0,1,69e495860000000014019c23,,5cc639810000000011019a83,"人形机器人半马摔倒瞬间��
+
+",现在每一个拉胯的瞬间，将来必定成为中国智能机器人发展史上的基石,符号,Positive,观众+失败,2026.04.19,江苏,2,0.0,31,符号,"The comment abstracts the robot's current failures into a grand national narrative about China's technological development, using macroscopic terms like 'history of China's intelligent robot development' and a teleological future-oriented expression.",ok
+69e41e24000000001a025f1a,失败,观众,1155.0,129.0,1,69e46192000000001401d41c,,660ba0c0000000000b00e907,"人形机器人半马摔倒瞬间��
+
+",有点摔晕了[捂脸R],机器人本身,Neutral,观众+失败,2026.04.19,上海,0,0.0,10,机器人本身,"The comment describes the robot's physical state after a fall, directly evaluating its embodiment and condition.",ok
+69e429b4000000001b00037a,常态,观众,,2026.0,1,69e48970000000001401bc35,,654e25030000000008003f4b,"张杰演唱会机器人来参加半马了？？
+
+",一群人看机器人，意义何在？,事件,Negative,观众+常态,2026.04.19,陕西,1,0.0,13,事件,"The comment questions the significance of a group watching robots, focusing on the activity itself rather than the robot's physical state or personal experience.",ok
+69e429b4000000001b00037a,常态,观众,,2026.0,1,69e44d94000000001401e420,,613203b4000000000201d53c,"张杰演唱会机器人来参加半马了？？
+
+",笑死我了 跳的是二百舞 你在比赛呢知道么[doge][doge][doge][doge],机器人本身,mixed,观众+常态,2026.04.19,北京,0,0.0,44,机器人本身,"The comment evaluates the robot's dance performance, directly calling it foolish, which is a critique of the robot's physical state.",ok
+69e429b4000000001b00037a,常态,观众,,2026.0,2,69e49cfb000000001401dc06,69e450c6000000001401e02b,5f5f5222000000000100bb87,"张杰演唱会机器人来参加半马了？？
+
+",加油跑，指着养老呢,机器人本身,Positive,观众+常态,2026.04.19,北京,0,,9,自身经验,"The comment expresses a personal aspiration, projecting the robot's running performance onto the commenter's own future need for elderly care, establishing a subjective relationship between the user and the technology.",ok
+69e429b4000000001b00037a,常态,观众,,2026.0,1,69e449110000000014018800,,589d4c0f5e87e76781b1ad7a,"张杰演唱会机器人来参加半马了？？
+
+",突然的饭撒[doge],机器人本身,Neutral,观众+常态,2026.04.19,上海,0,0.0,11,机器人本身,"The comment attributes an anthropomorphic action (fan service) to the robot, directly evaluating its behavior.",ok
+69e429b4000000001b00037a,常态,观众,,2026.0,1,69e449810000000014018819,,63f17213000000001001d9a7,"张杰演唱会机器人来参加半马了？？
+
+",还在着魔[捂脸R],机器人本身,Neutral,观众+常态,2026.04.19,山西,0,0.0,9,机器人本身,"The comment describes the robot as still being obsessed/possessed, evaluating its current anthropomorphic state.",ok
+69e429b4000000001b00037a,常态,观众,,2026.0,1,69e460160000000014019028,,5d947520000000000100136c,"张杰演唱会机器人来参加半马了？？
+
+",情绪价值给满了。[大笑R],机器人本身,Positive,观众+常态,2026.04.19,江苏,1,0.0,13,无主体,"The comment expresses a sense of emotional satisfaction ('The emotional value is fully provided') without explicitly naming the source. It lacks a clear evaluation target (robot, person, event, etc.) and functions as a pure emotional catharsis, reinforced by the laughing emoji.",ok
+69e429b4000000001b00037a,常态,观众,,2026.0,1,69e45261000000001401b01f,,64735340000000001003540f,"张杰演唱会机器人来参加半马了？？
+
+",哥们，晚上一起喝点,机器人本身,Neutral,观众+常态,2026.04.19,陕西,0,0.0,9,自身经验,"The comment directly addresses a social relationship and self-projection, inviting the robot as a 'bro' to have a drink, establishing a personal and subjective connection.",ok
+69e429b4000000001b00037a,常态,观众,,2026.0,2,69e486590000000014018825,69e437270000000014019410,58fffaad5e87e7541dfdc6f7,"张杰演唱会机器人来参加半马了？？
+
+",哈哈哈哈哈哈是我,自身经验,Neutral,观众+常态,2026.04.19,海南,0,,8,自身经验,"The comment expresses laughter and self-identification ('it's me'), projecting the user's identity into the context, indicating a subjective relationship centered on personal experience.",ok
+69e429b4000000001b00037a,常态,观众,,2026.0,1,69e45c82000000001401d805,,5ad947fbe8ac2b74d7522f0d,"张杰演唱会机器人来参加半马了？？
+
+",每天都能刷到机器人在跑步…所以到底为啥要让它们跑步？ 产品测试？,事件,Negative,观众+常态,2026.04.19,内蒙古,0,0.0,32,事件,评论追问机器人跑步活动的原因，关注的是事件目的（如产品测试）而非机器人实体本身，因此核心主语是活动行为。,ok
+69e429b4000000001b00037a,常态,观众,,2026.0,2,69e5dff3000000001401bc02,69e447a4000000001401c801,6153b7ff0000000002021501,"张杰演唱会机器人来参加半马了？？
+
+",还会饭撒笑死我了,机器人本身,Neutral,观众+常态,2026.04.20,韩国,0,,8,机器人本身,"The comment directly evaluates the robot's anthropomorphic behavior ('can still do fan service'), making the robot's action the core subject of amusement.",ok
+69e42cc100000000220001ad,弱势,观众,,8501.0,2,69e847a9000000001401a402,69e505d8000000001401a409,59d46cdf51783a48b6a11f58,"机器人马拉松倒数第一名，萌翻了���
+
+",蚊子怎么都不可爱，小时候是个恶心的蛆，长大了还是个惹人烦的东西[微笑R],其他,Neutral,观众+弱势,2026.04.22,河南,0,,36,其他,评论完全在讨论蚊子的特性，与机器人无关，属于脱离语境的无关内容。,ok
+69e42cc100000000220001ad,弱势,观众,,8501.0,2,69e7462e0000000014019823,69e505d8000000001401a409,60b768dc000000000100a209,"机器人马拉松倒数第一名，萌翻了���
+
+",哎，一下就想到了我闺女，越长越不带人希见,自身经验,mixed,观众+弱势,2026.04.21,山东,0,,20,自身经验,"The commenter directly connects the robot to a personal memory of their daughter, expressing self-projection and private emotions, which fits the Personal Experience category for establishing a subjective relationship.",ok
+69e42cc100000000220001ad,弱势,观众,,8501.0,1,69e55ec0000000001401e80a,,5b7a9c231886a30001301d2f,"机器人马拉松倒数第一名，萌翻了���
+
+",感觉下一秒就要摔倒了,机器人本身,Neutral,观众+弱势,2026.04.20,山东,0,0.0,10,机器人本身,"The comment directly evaluates the robot's physical stability and kinematic state, predicting an imminent fall based on its embodiment.",ok
+69e42cc100000000220001ad,弱势,观众,,8501.0,1,69e4edcb000000002b02a6b0,,6289c8af00000000210245fe,"机器人马拉松倒数第一名，萌翻了���
+
+",踉踉跄跄的居然还不摔，平衡控制的很好啊[点赞R],机器人本身,Positive,观众+弱势,2026.04.19,美国,0,0.0,24,机器人本身,"The comment directly evaluates the robot's physical state, specifically its stumbling gait and balance control, which are characteristics of the robot's embodiment.",ok
+69e42cc100000000220001ad,弱势,观众,,8501.0,1,69e5546d000000001401a800,,679b5627000000000a03e7c1,"机器人马拉松倒数第一名，萌翻了���
+
+",是个孩子,机器人本身,Neutral,观众+弱势,2026.04.20,重庆,0,0.0,4,机器人本身,"The comment '是个孩子' (It is a child) anthropomorphizes the robot, directly evaluating its state, which fits the 'Robot Itself' category.",ok
+69e42cc100000000220001ad,弱势,观众,,8501.0,2,69e75cdf000000001401980b,69e730c8000000001401e825,64b55d3c0000000025037806,"机器人马拉松倒数第一名，萌翻了���
+
+",你现在看到所以小孩都可爱是吧,机器人本身,Positive,观众+弱势,2026.04.21,广东,0,,14,其他人,"The comment addresses another person's perception of children, focusing on a third-party human's subjective view, not the robot itself.",ok
+69e42cc100000000220001ad,弱势,观众,,8501.0,2,69e71cda000000001401ac15,69e505d8000000001401a409,6002dd7e000000000101e643,"机器人马拉松倒数第一名，萌翻了���
+
+",有时候不会长大你又不高兴了[坏笑R],机器人本身,Neutral,观众+弱势,2026.04.21,广东,0,,18,机器人本身,"The comment evaluates the robot's characteristic of 'not growing up', directly addressing the robot's state with an anthropomorphic quality.",ok
+69e42cc100000000220001ad,弱势,观众,,8501.0,2,69e5a63f0000000014018802,69e505d8000000001401a409,6023e6f8000000000100b2e6,"机器人马拉松倒数第一名，萌翻了���
+
+",GG呢？,事件,Neutral,观众+弱势,2026.04.20,湖北,0,,4,其他人,"The comment asks about the whereabouts of 'GG', which is likely a nickname for a person (possibly a streamer or individual). It focuses on a third-party human, not the robot, event, or personal experience.",ok
+69e42cc100000000220001ad,弱势,观众,,8501.0,1,69e45b990000000014019800,,5d5fccd90000000001007ab1,"机器人马拉松倒数第一名，萌翻了���
+
+",跪着跑？,机器人本身,Neutral,观众+弱势,2026.04.19,广东,0,0.0,4,机器人本身,"The comment directly questions the robot's physical motion, referring to a kinematic gait, which evaluates the robot's embodied state.",ok
+69e42cc100000000220001ad,弱势,观众,,8501.0,2,69e566ae000000001401a00a,69e5080b000000001401dc17,5d3a7657000000001102c428,"机器人马拉松倒数第一名，萌翻了���
+
+",是最终研发出拟人的机器人，不是为了纯粹的走路才发明机器人，这只是起步阶段。,符号,Positive,观众+弱势,2026.04.20,日本,0,,37,符号,"The comment frames the robot as part of a grand technological narrative, using teleological expressions like 'ultimately develop humanoid robots' and 'just the initial stage', treating it as a symbol for progress rather than evaluating its immediate state or personal experience.",ok
+69e43a5a000000001d01dcc7,常态,观众,1966.0,167.0,2,69e8e153000000001401c442,69e8b22f000000001401c401,6416f4f200000000110232da,"机器人嘲讽同伴
+
+",自主的还有40% 的机器人呢，而且夺冠的那个是自主机器人[doge],机器人本身,Positive,观众+常态,2026.04.22,北京,6,,34,机器人本身,"The comment discusses the autonomous nature of specific robots, directly evaluating their capabilities, which falls under the physical/digital state of the robot (embodiment characteristic).",ok
+69e43a5a000000001d01dcc7,常态,观众,1966.0,167.0,1,69e70d0c000000002b034ebd,,678c7af5000000000e011356,"机器人嘲讽同伴
+
+",喝高了,机器人本身,Neutral,观众+常态,2026.04.21,美国,0,0.0,3,机器人本身,"The comment '喝高了' ('drunk') anthropomorphizes the robot's behavior or appearance, directly evaluating its physical/digital state as if intoxicated. This centers on the robot's embodied or anthropomorphic state.",ok
+69e43a5a000000001d01dcc7,常态,观众,1966.0,167.0,2,69e756b2000000001401e446,69e62a47000000001401d417,648654a1000000001403c4bf,"机器人嘲讽同伴
+
+",假摔更搞笑[笑哭R],机器人本身,Neutral,观众+常态,2026.04.21,上海,0,,10,机器人本身,"The comment evaluates the robot's physical action (fake fall) as funny, which is a direct assessment of the robot's kinematic state.",ok
+69e43a5a000000001d01dcc7,常态,观众,1966.0,167.0,1,69e479ec000000001401c811,,5dd28e3f000000000100aa75,"机器人嘲讽同伴
+
+",跑不过就整活是吧[doge],机器人本身,mixed,观众+常态,2026.04.19,北京,19,0.0,14,机器人本身,"The comment directly evaluates the robot's physical performance (running) and its subsequent behavior (整活), focusing on the robot's own actions and state.",ok
+69e43a5a000000001d01dcc7,常态,观众,1966.0,167.0,1,69e4ded6000000001401a021,,58919b9650c4b40886f6537b,"机器人嘲讽同伴
+
+",问题你也跑的不快啊？好意思笑别人，而且还是遥控的，有啥好得瑟的,机器人本身,mixed,观众+常态,2026.04.19,浙江,0,0.0,31,其他人,"The comment directly addresses a person ('you') who is mocking others, criticizing their own speed and dismissing their pride in a remote-controlled robot. The focus is on the third-party human (the mocker), not the robot itself.",ok
+69e43a5a000000001d01dcc7,常态,观众,1966.0,167.0,1,69e46095000000001401a415,,5fff9001000000000100917d,"机器人嘲讽同伴
+
+",鼓掌是遥控的吗,机器人本身,Neutral,观众+常态,2026.04.19,江苏,15,1.0,7,机器人本身,"The comment directly questions whether the robot's clapping action is remote-controlled, which evaluates the physical mechanism and embodiment of the robot itself.",ok
+69e43a5a000000001d01dcc7,常态,观众,1966.0,167.0,1,69e43cee000000001401d430,,5d3a4f66000000001003090f,"机器人嘲讽同伴
+
+",我说他干嘛呢，后来才看见地上坐着一个[偷笑R]，看他这两步跑得跟喝多了似的，五十步笑百步呢[偷笑R][偷笑R][偷笑R],机器人本身,Neutral,观众+常态,2026.04.19,山西,287,3.0,60,机器人本身,"The comment directly evaluates the robot's physical movement and behavior, describing its gait as '跑得跟喝多了似的' (running like it's drunk) and making a moral comparison ('五十步笑百步') about its actions, which focuses on the robot's kinematic state and anthropomorphic behavior.",ok
+69e43a5a000000001d01dcc7,常态,观众,1966.0,167.0,2,69e4c78e000000001401e405,69e450da000000001401d82d,684a1935000000001d009219,"机器人嘲讽同伴
+
+",跳舞跳没电了[笑哭R],机器人本身,Neutral,观众+常态,2026.04.19,湖北,1,,11,机器人本身,"The comment directly evaluates the robot's physical state (running out of battery) while performing an action (dancing), focusing on the robot's embodiment and functional status.",ok
+69e43a5a000000001d01dcc7,常态,观众,1966.0,167.0,2,69e45d32000000001401e826,69e44cf2000000001401d42d,64225b0e00000000120137c1,"机器人嘲讽同伴
+
+",机器人本体是宇树的，但是参加的公司不是,事件,Neutral,观众+常态,2026.04.19,福建,55,,19,机器人本身,评论直接评价了机器人本体的来源（宇树），核心是机器人的实体身份，而非事件、个人体验或象征意义。,ok
+69e43a5a000000001d01dcc7,常态,观众,1966.0,167.0,1,69e464fe000000001401c034,,57c14f9182ec39025df0b571,"机器人嘲讽同伴
+
+",这个蓝色的究竟是坐了多久,机器人本身,Neutral,观众+常态,2026.04.19,广东,5,0.0,12,机器人本身,"The comment focuses on the physical state of the robot, specifically asking how long a particular blue robot has been sitting, directly evaluating the robot's embodiment.",ok
+69e43b14000000001a02e095,弱势,服务者,,2760.0,1,69e44efa000000001401e00c,,5e611ab7000000000100abea,"好萌的小黑仔跑马拉松
+
+",不会是wd40吧[捂脸R],机器人本身,Neutral,服务者+弱势,2026.04.19,北京,0,0.0,13,机器人本身,"The comment directly evaluates the robot's physical state by suggesting it might be relying on WD40, a lubricant, indicating a humorous take on its mechanical condition.",ok
+69e43b14000000001a02e095,弱势,服务者,,2760.0,2,69e4c3d60000000014018c08,69e4c2e6000000001401941e,691e22ce00000000320147fd,"好萌的小黑仔跑马拉松
+
+",笑死,无主体,Neutral,服务者+弱势,2026.04.19,湖北,0,,2,无主体,The comment is a short emotional interjection expressing amusement without specifying what is funny; it lacks a clear evaluation target.,ok
+69e43b14000000001a02e095,弱势,服务者,,2760.0,1,69e4a236000000001401c432,,6711e633000000001d020dca,"好萌的小黑仔跑马拉松
+
+",刚才跑的还挺快。,机器人本身,Positive,服务者+弱势,2026.04.19,江苏,0,0.0,8,机器人本身,"The comment evaluates the robot's movement speed, directly commenting on its physical capability.",ok
+69e43b14000000001a02e095,弱势,服务者,,2760.0,1,69e45dd5000000001401b83e,,59fff22ae8ac2b61c5e7bfa3,"好萌的小黑仔跑马拉松
+
+",配速多少啊,机器人本身,Neutral,服务者+弱势,2026.04.19,上海,0,0.0,5,机器人本身,"The comment directly asks about the robot's speed/pace, which is a physical performance characteristic of the robot itself.",ok
+69e43b14000000001a02e095,弱势,服务者,,2760.0,1,69e46694000000001401dc07,,60ad167a000000000101c7c5,"好萌的小黑仔跑马拉松
+
+",我最喜欢这一只，嘿嘿，好可爱,机器人本身,Positive,服务者+弱势,2026.04.19,安徽,0,0.0,14,机器人本身,"The comment directly praises the robot's cuteness and states a preference for this particular robot, evaluating its physical/embodied appearance.",ok
+69e43b14000000001a02e095,弱势,服务者,,2760.0,1,69e45abf0000000014018c09,,5feaf7510000000001000503,"好萌的小黑仔跑马拉松
+
+",这个可爱些,机器人本身,Neutral,服务者+弱势,2026.04.19,山东,0,0.0,5,机器人本身,"The comment directly evaluates the robot's physical appearance, describing it as cuter, which is an assessment of the robot itself.",ok
+69e43b14000000001a02e095,弱势,服务者,,2760.0,1,69e46c2b0000000014019807,,64786f2a00000000250365af,"好萌的小黑仔跑马拉松
+
+",为什么喷他的辟谷,机器人本身,Neutral,服务者+弱势,2026.04.19,福建,0,0.0,8,机器人本身,"The comment directly evaluates a physical part (the '辟谷', likely a misspelling of 屁股 meaning butt) of the robot, focusing on its embodiment and state.",ok
+69e43b14000000001a02e095,弱势,服务者,,2760.0,1,69e46cf9000000001401bc04,,621f37350000000010008e83,"好萌的小黑仔跑马拉松
+
+",遥控也算机器人？,机器人本身,Negative,服务者+弱势,2026.04.19,重庆,1,0.0,8,机器人本身,"The comment questions the definition of a robot, focusing on the robot's nature and classification, which is a direct evaluation of the robot itself.",ok
+69e43b14000000001a02e095,弱势,服务者,,2760.0,1,69e48bfa000000001401a420,,67503af6000000001c01ad14,"好萌的小黑仔跑马拉松
+
+",天呐！人在加班996，被PUA开会写报告，机器人在跳舞练武术跑马拉松[笑哭R]人活成了牲畜，牲畜活成了食物，机器人活成了人,自身经验,Negative,服务者+弱势,2026.04.19,广东,0,0.0,61,符号,"The comment uses robots as a symbolic contrast to human dehumanization under modern work culture, framing a grand narrative about societal roles rather than describing a specific robot's state. It contains abstract nouns and teleological expressions about what humans and robots 'have become'.",ok
+69e43b14000000001a02e095,弱势,服务者,,2760.0,1,69e48383000000001401c017,,5da543210000000001000015,"好萌的小黑仔跑马拉松
+
+",尿裤子了吗？还是瘙痒难耐？,机器人本身,Neutral,服务者+弱势,2026.04.19,广东,0,0.0,13,机器人本身,"The comment mockingly attributes human bodily functions (wet pants, itching) to the robot, implying an evaluation of the robot's physical state or malfunction.",ok
+69e4412a000000002103883f,强势,观众,3517.0,445.0,2,69e47df2000000001401dc3e,69e47d38000000001401c423,5c124415f7e8b957900d0ee5,"荣耀闪电队-齐天大圣夺冠！
+
+",我看到了摔倒了碎掉了很多，没拍到！,机器人本身,Neutral,观众+强势,2026.04.19,北京,5,,17,机器人本身,"The comment describes the robot falling and breaking, directly evaluating its physical state. The mention of missing the capture is secondary; the core subject is the robot's embodiment and mishap.",ok
+69e4412a000000002103883f,强势,观众,3517.0,445.0,1,69e486e0000000001401c80a,,675075df00000000080092d6,"荣耀闪电队-齐天大圣夺冠！
+
+",冷却液都不够喷了,机器人本身,Negative,观众+强势,2026.04.19,上海,0,0.0,8,机器人本身,"The comment directly evaluates a physical aspect of the robot (coolant level), indicating an assessment of the robot's own state.",ok
+69e4412a000000002103883f,强势,观众,3517.0,445.0,1,69e50474000000001401cc10,,694eb1ec0000000003012463,"荣耀闪电队-齐天大圣夺冠！
+
+",抱歉占用了社会资源，大家晚上好，实在很无助来到这里求大家！！点开头像看一眼，[合十R][合十R]能拉的话拉一把[哭惹R]娃在lcu.再不缴费就不行了[哭惹R]。实在一点没有了，一个人在楼道口痛哭，命运为何如此不公，。[哭惹R][哭惹R][合十R][哭惹R]。，,其他,Negative,观众+强势,2026.04.20,广西,0,0.0,130,其他,"The comment is a personal plea for financial help, completely unrelated to robots or public spaces; it is spam or irrelevant chatter.",ok
+69e4412a000000002103883f,强势,观众,3517.0,445.0,1,69e48303000000002b033c7e,,5e97d71f0000000001009bdb,"荣耀闪电队-齐天大圣夺冠！
+
+",好像诡异的螳螂啊啊啊啊啊[捂脸R],机器人本身,Negative,观众+强势,2026.04.19,马来西亚,0,0.0,17,机器人本身,"The comment directly describes the robot's appearance, comparing it to a mantis, which is an evaluation of the robot's physical embodiment.",ok
+69e4412a000000002103883f,强势,观众,3517.0,445.0,1,69e48a5b000000001401ac12,,5fa0a3250000000001004682,"荣耀闪电队-齐天大圣夺冠！
+
+",闪电是冠军,机器人本身,Positive,观众+强势,2026.04.19,湖北,4,0.0,5,机器人本身,"The comment directly evaluates a robot named 'Lightning' as the champion, focusing on the robot entity itself.",ok
+69e4412a000000002103883f,强势,观众,3517.0,445.0,1,69e47b10000000001401dc24,,63bfcf0a00000000260070be,"荣耀闪电队-齐天大圣夺冠！
+
+",一群没见过世面的人[doge]日本荷兰德国美国，早在40年就已经有机器人了，没事多多去外头走走[汗颜R],其他人,mixed,观众+强势,2026.04.19,广东,0,1.0,52,其他人,"The comment criticizes a group of people for being uninformed about robots, focusing on third-party humans rather than the robot itself.",ok
+69e4412a000000002103883f,强势,观众,3517.0,445.0,1,69e479ac0000000014018c17,,5df49e38000000000100015e,"荣耀闪电队-齐天大圣夺冠！
+
+",希望能在活一千年，看看会发生什么,符号,Positive,观众+强势,2026.04.19,广东,10,3.0,16,自身经验,"The comment expresses a personal wish to extend one's life to witness future technological or societal changes. This is a self-projection and establishes a subjective connection between the commenter's identity and the broader context, making it a personal experience.",ok
+69e4412a000000002103883f,强势,观众,3517.0,445.0,1,69e45934000000001401d422,,5e0855ce0000000001008a9d,"荣耀闪电队-齐天大圣夺冠！
+
+",像极我赶早八的样子,自身经验,Neutral,观众+强势,2026.04.19,浙江,1,0.0,9,自身经验,"The comment directly compares the robot's behavior to the user's personal experience of rushing to an early morning class, establishing a subjective connection between the robot and the user's own identity and emotions.",ok
+69e4412a000000002103883f,强势,观众,3517.0,445.0,1,69e47d6b000000001401e02a,,635e4394000000001901c383,"荣耀闪电队-齐天大圣夺冠！
+
+",喊加油有用吗,其他人,Neutral,观众+强势,2026.04.19,江苏,1,1.0,6,事件,"The comment questions the usefulness of the activity of shouting encouragement, focusing on the peripheral situational action rather than the robot itself, personal experience, or people.",ok
+69e4412a000000002103883f,强势,观众,3517.0,445.0,2,69e4729e000000001401e009,69e47150000000001401a407,5c124415f7e8b957900d0ee5,"荣耀闪电队-齐天大圣夺冠！
+
+",现在各种神解说，神评论,其他人,Neutral,观众+强势,2026.04.19,北京,0,,11,其他人,"The comment praises the quality of commentary and comments from others, focusing on third-party humans (commentators/netizens) rather than the robot or other elements.",ok
+69e44171000000001a026b25,混合,观众,9971.0,613.0,2,69e4612a000000001401d43b,69e45ec9000000001401d41a,60f1747800000000010051bf,"机器人马拉松比赛摔倒丝滑起身帅炸了��
+
+",哈哈哈哈笑死，连机器人都不放过！明年应该颜值会高起来～,事件,mixed,观众+混合,2026.04.19,浙江,67,,27,机器人本身,"The comment mocks the harsh judgment of a robot's appearance and predicts its aesthetic improvement next year, directly evaluating the robot's physical state.",ok
+69e44171000000001a026b25,混合,观众,9971.0,613.0,1,69e460a9000000001401bc21,,5481d2b3d6e4a97e1eef4d81,"机器人马拉松比赛摔倒丝滑起身帅炸了��
+
+",她跑的好优雅[皱眉R],机器人本身,Positive,观众+混合,2026.04.19,上海,0,0.0,11,机器人本身,"The comment directly evaluates the robot's physical movement ('跑的好优雅' - runs so gracefully), focusing on its kinematic gait and embodiment.",ok
+69e44171000000001a026b25,混合,观众,9971.0,613.0,1,69e4b097000000001401e80b,,5c5508f00000000018035ce8,"机器人马拉松比赛摔倒丝滑起身帅炸了��
+
+",这是自主起身重新跑还是遥控的,机器人本身,Neutral,观众+混合,2026.04.19,山东,0,0.0,14,机器人本身,"The comment directly questions the robot's operational state, asking whether it autonomously gets up and runs or is remote-controlled, which evaluates the physical/digital state of the robot itself.",ok
+69e44171000000001a026b25,混合,观众,9971.0,613.0,1,69e4d468000000001401c40e,,5c0b4d62000000000503d40f,"机器人马拉松比赛摔倒丝滑起身帅炸了��
+
+",突发恶疾,机器人本身,Negative,观众+混合,2026.04.19,山东,0,0.0,4,机器人本身,"The comment anthropomorphizes the robot by describing a sudden illness, directly evaluating the robot's state or behavior.",ok
+69e44171000000001a026b25,混合,观众,9971.0,613.0,2,69e8e5fb000000001401e827,69e58ccb0000000014019002,6159b571000000001f03587b,"机器人马拉松比赛摔倒丝滑起身帅炸了��
+
+",你要先学会耐心等个四五年,符号,Neutral,观众+混合,2026.04.22,福建,0,,12,符号,"The comment projects a teleological narrative about the timeline of robot technology, using abstract temporal concept of 'patience and years', which is not about the robot's immediate state but about the grand narrative of technological development.",ok
+69e44171000000001a026b25,混合,观众,9971.0,613.0,1,69e848f6000000001401c81c,,5c67c12a00000000110028bc,"机器人马拉松比赛摔倒丝滑起身帅炸了��
+
+",嘎巴一下死了 嘎巴一下活了,机器人本身,Mixed,观众+混合,2026.04.22,广东,0,0.0,13,机器人本身,"The comment describes the robot’s physical state change (dying and coming alive) directly, focusing on its mechanical or anthropomorphic action.",ok
+69e44171000000001a026b25,混合,观众,9971.0,613.0,1,69e76f16000000001401b015,,68f4a655000000003202aca1,"机器人马拉松比赛摔倒丝滑起身帅炸了��
+
+",他摔倒起来的时候还扭了两下[笑哭R],机器人本身,Neutral,观众+混合,2026.04.21,,0,0.0,18,机器人本身,"The comment describes the robot's physical actions (falling, getting up, and twisting) directly, focusing on its movement and embodiment.",ok
+69e44171000000001a026b25,混合,观众,9971.0,613.0,1,69e45d40000000001401a831,,5b68545516f4d100012d97ee,"机器人马拉松比赛摔倒丝滑起身帅炸了��
+
+",机器人：我只是躺下歇会[黄金薯R],机器人本身,Neutral,观众+混合,2026.04.19,北京,0,0.0,17,机器人本身,"The comment mimics the robot's speech about its physical state of lying down to rest, directly evaluating the robot's embodied action.",ok
+69e44171000000001a026b25,混合,观众,9971.0,613.0,1,69e4f664000000001401a81c,,61aa35f5000000001000d535,"机器人马拉松比赛摔倒丝滑起身帅炸了��
+
+",把小朋友高兴的,其他人,Neutral,观众+混合,2026.04.19,江苏,1,0.0,7,其他人,"The comment focuses on the emotional reaction of a child (小朋友) to the situation, making the child the central evaluation subject, which falls under Other People.",ok
+69e44171000000001a026b25,混合,观众,9971.0,613.0,1,69e973eb0000000014019412,,68031cd5000000000d00b0e5,"机器人马拉松比赛摔倒丝滑起身帅炸了��
+
+",这是人在控制吗？还是按照程序设定？,机器人本身,Neutral,观众+混合,2026.04.23,广东,0,0.0,17,机器人本身,"The comment directly questions the robot's operational mode, evaluating its control mechanism.",ok
+69e4426b000000001d01c7ed,混合,观众,,7334.0,2,69e48b1d0000000014018c0a,69e45ff1000000001401c824,5cd5156d0000000017016b68,"一个大的一个小的一个废的
+
+",这么好玩[笑哭R][笑哭R]连人类的八卦也学会了[笑哭R][笑哭R],机器人本身,Positive,观众+混合,2026.04.19,广东,26,,34,机器人本身,"The comment directly evaluates the robot's fun nature and its ability to mimic human gossip, focusing on the robot's characteristics.",ok
+69e4426b000000001d01c7ed,混合,观众,,7334.0,2,69e48001000000001401e011,69e47fbd0000000014018819,624a64e2000000001000c399,"一个大的一个小的一个废的
+
+",他妈的，我要笑死了，我的天呢,无主体,Neutral,观众+混合,2026.04.19,陕西,0,,14,无主体,"The comment consists solely of emotional outbursts and exclamations without a clear evaluation target. It lacks any specific subject such as the robot, personal experience, symbols, events, or other people.",ok
+69e4426b000000001d01c7ed,混合,观众,,7334.0,1,69e46469000000001401b830,,5773cf0382ec393ea13d034a,"一个大的一个小的一个废的
+
+",有个跑不动坐下了,机器人本身,Neutral,观众+混合,2026.04.19,贵州,0,0.0,8,机器人本身,"The comment describes a specific robot's physical state, noting that it ran out of energy or malfunctioned and sat down, directly evaluating the robot entity itself.",ok
+69e4426b000000001d01c7ed,混合,观众,,7334.0,2,69e75d70000000001401a005,69e4d997000000001401a802,5de225ab000000000100aaa0,"一个大的一个小的一个废的
+
+",笑死我了,无主体,Neutral,观众+混合,2026.04.21,广东,0,,4,无主体,"The comment is a pure emotional expression of amusement with no specific evaluation target, exhibiting missing subjects and high-density interjection.",ok
+69e4426b000000001d01c7ed,混合,观众,,7334.0,2,69e4a7770000000014018800,69e46241000000001401e822,5e44c55e0000000001001a3a,"一个大的一个小的一个废的
+
+",这里禁止随地大小坐[doge],机器人本身,Neutral,观众+混合,2026.04.19,安徽,0,,15,事件,"The comment humorously references a rule against sitting, focusing on the situational context rather than the robot entity.",ok
+69e4426b000000001d01c7ed,混合,观众,,7334.0,2,69e49d18000000001401a40b,69e461fb000000001401e82b,5bf2eb15292fe9000108c8df,"一个大的一个小的一个废的
+
+",哈哈哈哈哈哈哈俺不中嘞,无主体,Neutral,观众+混合,2026.04.19,浙江,0,,11,无主体,"The comment consists solely of laughter and an exclamation of being overwhelmed, which is pure emotional catharsis without any specific evaluation target.",ok
+69e4426b000000001d01c7ed,混合,观众,,7334.0,1,69e47627000000001401d813,,558eba00e58d137840840814,"一个大的一个小的一个废的
+
+",昨晚上宿醉了,机器人本身,Neutral,观众+混合,2026.04.19,北京,0,0.0,6,其他,"The comment is about personal hangover and completely detached from the robot context, representing semantic drift or noise.",ok
+69e4426b000000001d01c7ed,混合,观众,,7334.0,2,69e6cd27000000001401b000,69e461fb000000001401e82b,65cb194b000000000401dd42,"一个大的一个小的一个废的
+
+",xsw,无主体,Neutral,观众+混合,2026.04.21,浙江,0,,3,其他,The comment 'xsw' is nonsensical and devoid of any coherent subject related to robots or public spaces; it is purely noise.,ok
+69e4426b000000001d01c7ed,混合,观众,,7334.0,1,69e464a7000000001401bc2f,,5ad3ab9b4eacab6eda1c8044,"一个大的一个小的一个废的
+
+",拿个奶瓶窜的还挺快,机器人本身,Positive,观众+混合,2026.04.19,山东,1,0.0,9,机器人本身,"The comment describes the robot's physical action (running fast) and its interaction with an object (holding a milk bottle), directly evaluating the robot's embodiment and kinematic state.",ok
+69e4426b000000001d01c7ed,混合,观众,,7334.0,1,69e5b8d80000000014018c00,,57173751aed758063e68a26a,"一个大的一个小的一个废的
+
+",哈哈哈,无主体,Neutral,观众+混合,2026.04.20,上海,0,0.0,3,无主体,"The comment consists solely of laughter, expressing emotion without any specific evaluation target or subject.",ok
+69e44278000000001a0217bb,强势,被超越者,6019.0,372.0,2,69e585840000000014019008,69e47b6f000000001401940b,61a3251f0000000021025747,"机器人超过我的瞬间
+
+",哈哈哈哈哈哈哈我昨天看到一个豆包机器人,机器人本身,Neutral,被超越者+强势,2026.04.20,江苏,1,,19,自身经验,"The comment shares a personal anecdote about seeing a robot, emphasizing the speaker's own experience and emotional reaction.",ok
+69e44278000000001a0217bb,强势,被超越者,6019.0,372.0,1,69e49d16000000001401d438,,593acec950c4b47077c3866f,"机器人超过我的瞬间
+
+",机器人摔倒需要一堆工作人员扶着才能起来 还需要有个拿遥控的,机器人本身,Neutral,被超越者+强势,2026.04.19,河北,0,0.0,29,事件,评论描述了机器人摔倒后需要工作人员及遥控辅助的场景，焦点是活动现场的实际情况和流程，而非直接评价机器人本身的机械状态或抽象象征意义。,ok
+69e44278000000001a0217bb,强势,被超越者,6019.0,372.0,1,69e58097000000001401b820,,5e9ef34d000000000100623c,"机器人超过我的瞬间
+
+",现实版终结者啊,符号,Positive,被超越者+强势,2026.04.20,马来西亚,3,0.0,7,符号,"The comment likens the robot to the 'Terminator', invoking a grand narrative of dystopian robots, rather than evaluating its physical state or personal experience.",ok
+69e44278000000001a0217bb,强势,被超越者,6019.0,372.0,1,69e575390000000014019816,,64f2e17b000000000500232c,"机器人超过我的瞬间
+
+",老哥是没吃饱早饭吗？多吃两个馒头，超过它！[生气R],其他人,mixed,被超越者+强势,2026.04.20,河北,0,0.0,26,其他人,"The comment addresses a person (老哥), questioning his breakfast and urging him to eat more to surpass the robot. The focus is on the other person's state and action, not the robot itself.",ok
+69e44278000000001a0217bb,强势,被超越者,6019.0,372.0,2,69e4b1e7000000001401a00b,69e47b6f000000001401940b,604d8387000000000100a4db,"机器人超过我的瞬间
+
+",幼儿组,机器人本身,Neutral,被超越者+强势,2026.04.19,湖南,0,,3,其他人,"The comment '幼儿组' (toddler group) points to a category of people, likely children involved in the robot context, focusing on third-party humans rather than the robot, personal experience, or other elements.",ok
+69e44278000000001a0217bb,强势,被超越者,6019.0,372.0,2,69e44f84000000001401d42f,69e443c50000000014019c00,64e357400000000002012a84,"机器人超过我的瞬间
+
+",天气热心率很容易上去[捂脸R],机器人本身,Neutral,被超越者+强势,2026.04.19,广东,0,,15,自身经验,"The comment expresses a personal physical sensation (heart rate increase due to hot weather) accompanied by a self-referential emotional emoji, indicating a subjective connection to the user's own experience without reference to the robot, event, or others.",ok
+69e44278000000001a0217bb,强势,被超越者,6019.0,372.0,2,69e464cb000000001401e415,69e4573a000000001401a417,6121ebd1000000002002f450,"机器人超过我的瞬间
+
+",您是语言的艺术,其他人,Neutral,被超越者+强势,2026.04.19,山西,880,,7,机器人本身,"The comment directly addresses the robot, praising it as 'the art of language', which evaluates a characteristic of the robot itself.",ok
+69e44278000000001a0217bb,强势,被超越者,6019.0,372.0,1,69e62ee1000000001401e839,,5d0c6c0f0000000011031c2c,"机器人超过我的瞬间
+
+",哈哈哈哈哈哈哈哈哈我这几天刷了好多好多机器人视频 还是第一次刷到选手这边的视角哈哈哈哈哈哈,其他人,Neutral,被超越者+强势,2026.04.20,广东,6,1.0,45,自身经验,"The comment expresses the user's personal activity of watching robot videos and their subjective excitement at discovering a new contestant's perspective, which is a private emotional experience.",ok
+69e44278000000001a0217bb,强势,被超越者,6019.0,372.0,2,69e64780000000001401dc05,69e5bf73000000001401940a,648b28de0000000011003037,"机器人超过我的瞬间
+
+",是呢，敏感是一个好词,无主体,Neutral,被超越者+强势,2026.04.20,江苏,1,,10,其他,"The comment evaluates the word 'sensitive' as a good word, which is a semantic drift completely detached from the core context of robots in public spaces.",ok
+69e44278000000001a0217bb,强势,被超越者,6019.0,372.0,1,69e5bf73000000001401940a,,5af417c911be10381999484b,"机器人超过我的瞬间
+
+",“机器人超过我了”莫名想哭 感受到了一代一代的托举 是人和人之间 也是人和机器人之间,符号,Positive,被超越者+强势,2026.04.20,江西,93,6.0,42,符号,将机器人视为代际传承和时代进步的抽象符号，抒发宏大叙事情感，而非评价机器人本身的具体状态。,ok
+69e447d2000000001d01aa01,强势,服务者,,2912.0,1,69e4753c000000001401a406,,5603b7ebf5a26346d03b14c8,"当算法有了腿，程序员万万没想到……
+
+",能现场观看吗,事件,Neutral,服务者+强势,2026.04.19,广西,0,0.0,6,事件,该评论询问能否现场观看，关注的是活动组织与参与方式，属于对事件本身的提问，而非机器人实体或其他方面。,ok
+69e447d2000000001d01aa01,强势,服务者,,2912.0,2,69e80d4d000000001401a400,69e45575000000001401e004,54e586e42e1d935fe28515be,"当算法有了腿，程序员万万没想到……
+
+",您是说……捧着电脑……骑车追？[偷笑R],其他人,Neutral,服务者+强势,2026.04.22,上海,0,,20,事件,"The comment humorously responds to a described action involving chasing with a computer on a bike, focusing on the situational activity rather than the robot, personal identity, or symbols.",ok
+69e447d2000000001d01aa01,强势,服务者,,2912.0,1,69e45d56000000001401e410,,613ee442000000000201eea4,"当算法有了腿，程序员万万没想到……
+
+",程序员可要跑稳了啊  你一摔   它可能就起飞了[笑哭R][笑哭R],其他人,Neutral,服务者+强势,2026.04.19,江西,1,0.0,34,其他人,评论的重点是提醒程序员要跑稳，摔了机器人会起飞，核心对象是作为第三方的程序员，属于对其他人物的关注。,ok
+69e447d2000000001d01aa01,强势,服务者,,2912.0,2,69e6183e0000000014018827,69e44e85000000001401a404,63d8c8980000000027028669,"当算法有了腿，程序员万万没想到……
+
+",300m就得换[捂脸R],机器人本身,mixed,服务者+强势,2026.04.20,浙江,0,,12,机器人本身,"The comment mentions a functional limitation (needing replacement after 300m) directly relating to a robot's physical capability or endurance, thus evaluating the robot entity itself.",ok
+69e447d2000000001d01aa01,强势,服务者,,2912.0,1,69e4a012000000001401e04d,,6380ca6e000000001f01efd0,"当算法有了腿，程序员万万没想到……
+
+",解决了程序员长期低头工作得不到锻炼的问题[笑哭R],其他人,Neutral,服务者+强势,2026.04.19,上海,1,0.0,25,自身经验,"The comment humorously links the robot to solving programmers' personal lack of exercise, projecting a subjective benefit onto the technology and establishing a connection between robot and user identity.",ok
+69e447d2000000001d01aa01,强势,服务者,,2912.0,2,69e474fc000000001401c829,69e44a84000000001401b822,6389b8eb000000001f01b904,"当算法有了腿，程序员万万没想到……
+
+",666,无主体,Positive,服务者+强势,2026.04.19,浙江,0,,3,符号,"The number 666 is a widely recognized cultural symbol for evil or the apocalypse, used here to project a grand, abstract narrative onto the robot rather than evaluating its physical state or personal experience.",ok
+69e447d2000000001d01aa01,强势,服务者,,2912.0,2,69e45fde000000001401c017,69e44e85000000001401a404,6911ee320000000037004ce5,"当算法有了腿，程序员万万没想到……
+
+",和800里加急 歇人不歇马有何区别？一场马拉松被玩成了程序员接力赛了[doge],事件,mixed,服务者+强势,2026.04.19,山东,2,,40,事件,"The comment uses a metaphorical comparison to evaluate the nature of the event, likening it to historical courier systems and a relay race, focusing on the activity's rules and organization rather than the robot's physical or symbolic attributes.",ok
+69e447d2000000001d01aa01,强势,服务者,,2912.0,1,69e49cb1000000001401c833,,61628f130000000002018b2f,"当算法有了腿，程序员万万没想到……
+
+",挺好的，多运动防猝死,其他人,Positive,服务者+强势,2026.04.19,陕西,0,0.0,10,无主体,"The comment expresses a general positive sentiment and offers health advice without explicitly referring to the robot or any specific evaluation target. The subject of the evaluation is absent, making it pure emotional catharsis.",ok
+69e447d2000000001d01aa01,强势,服务者,,2912.0,1,69e45be4000000001401c84b,,630431af000000000f006ff4,"当算法有了腿，程序员万万没想到……
+
+",卷完脑力卷体力[笑哭R],其他人,mixed,服务者+强势,2026.04.19,山东,0,0.0,12,符号,"The comment uses the robot as a symbol for societal involution and competition, framing it within a grand narrative of technological endgame rather than evaluating the robot's physical state or personal experience.",ok
+69e447d2000000001d01aa01,强势,服务者,,2912.0,2,69e76bf7000000001401b016,69e45575000000001401e004,59a0d8f682ec397da35b747b,"当算法有了腿，程序员万万没想到……
+
+",当然是因为机器人有想法了，自己跑了，总不能是因为定位漂移、ZMP偏移、控制时延与里程累积误差共同导致的轨迹跟踪失效吧。,机器人本身,Neutral,服务者+强势,2026.04.21,湖北,1,,59,机器人本身,"The comment directly discusses the robot's behavior and posits a fanciful reason ('the robot has ideas and ran away') versus technical failure modes, focusing on the robot entity and its anthropomorphic state.",ok
+69e44f3a000000002301079c,常态,观众,813.0,29.0,1,69f5ac57000000002701f65a,,5db51fcb00000000010085ff,"论机器人上班的精神状态…
+
+",l,其他,Neutral,观众+常态,2026.05.02,河北,0,0.0,1,其他,"The comment is a single character 'l', which is semantic noise with no discernible subject, evaluation, or context.",ok
+69e44f3a000000002301079c,常态,观众,813.0,29.0,2,69e9c976000000001401980b,69e45c350000000014019419,65bb1216000000000903f135,"论机器人上班的精神状态…
+
+",土 的8     ？？？,其他,Neutral,观众+常态,2026.04.23,广西,0,,12,其他,"The comment consists of random Chinese characters, a number, and question marks with no coherent meaning or connection to the robot context, resembling noise or illogical gibberish.",ok
+69e44f3a000000002301079c,常态,观众,813.0,29.0,1,69f43162000000002800b05b,,5b7a5f202cc31d00014e8089,"论机器人上班的精神状态…
+
+",1[哭惹R][偷笑R][哭惹R][哭惹R][哭惹R][飞吻R][哭惹R][哭惹R][哭惹R][哭惹R][哭惹R][哭惹R][哭惹R][哭惹R][哭惹R][哭惹R][哭惹R][哭惹R][哭惹R][哭惹R][哭惹R][飞吻R][哭惹R][哭惹R][哭惹R][哭惹R][哭惹R][哭惹R][哭惹R][哭惹R][哭惹R][哭惹R][哭惹R][哭惹R][飞吻R][飞吻R][哭惹R][哭惹R][哭惹R],其他,Neutral,观众+常态,2026.05.01,辽宁,0,0.0,196,无主体,"The comment consists almost entirely of emojis representing emotional expressions (crying, sly smile, blowing kiss) with no identifiable evaluation target. The leading '1' and dense repetition of emojis indicate pure affective release without reference to robot, self, symbol, event, or other people.",ok
+69e44f3a000000002301079c,常态,观众,813.0,29.0,1,69eec5080000000028037a56,,64723c6e000000001c02bb85,"论机器人上班的精神状态…
+
+",我真绝了，第一张图片乍一看我还以为是p图的[笑哭R][笑哭R][笑哭R],机器人本身,Neutral,观众+常态,2026.04.27,安徽,1,0.0,36,自身经验,"The comment focuses on the user's subjective perception ('我真绝了' and '我还以为是p图的'), highlighting a personal reaction rather than directly evaluating the robot's physical state.",ok
+69e44f3a000000002301079c,常态,观众,813.0,29.0,1,69e8b250000000001401c032,,5c08e2a10000000007018670,"论机器人上班的精神状态…
+
+",这不叫豆包，这叫豆角。,机器人本身,Neutral,观众+常态,2026.04.22,山东,0,0.0,11,机器人本身,"The comment directly evaluates the naming of the robot, which is a fundamental aspect of its identity; thus the robot itself is the core subject, even though the evaluation is playful and about a label rather than physical state.",ok
+69e44f3a000000002301079c,常态,观众,813.0,29.0,1,69e45c350000000014019419,,6531a193000000002b001034,"论机器人上班的精神状态…
+
+",感谢关注[派对R]小派亲友团发来贺电,事件,Neutral,观众+常态,2026.04.19,北京,3,3.0,18,其他,"The comment is a generic thank-you message and congratulatory note from a group, with no discernible connection to robots in public spaces; it appears to be noise or spam.",ok
+69e44fbf000000001e00cc6a,强势,服务者,136.0,12.0,1,69e4c5b4000000001401e433,,643bc13f000000000e01fe19,"程序员：也没说搞科研还需要体力啊！
+
+",扛電腦的程序員比完賽頭髮都跑沒一半了[doge],其他人,Neutral,服务者+强势,2026.04.19,中国台湾,7,0.0,24,其他人,"The comment humorously focuses on the programmer's hair loss after the competition, making the programmer (a third-party human) the central evaluation subject.",ok
+69e44fbf000000001e00cc6a,强势,服务者,136.0,12.0,2,69f5e89d000000002803a493,69f1ddd30000000029024048,64049f1d0000000029011c50,"程序员：也没说搞科研还需要体力啊！
+
+",平衡车很难控制平衡的 摔一下可厉害了,其他人,Neutral,服务者+强势,2026.05.02,上海,1,,18,机器人本身,"The comment directly assesses the physical balance control of the balance scooter, which is an evaluation of the robot's own capability and embodiment, without personal projection or external narrative.",ok
+69e44fbf000000001e00cc6a,强势,服务者,136.0,12.0,1,69f1ddd30000000029024048,,6042bc97000000000101e0e7,"程序员：也没说搞科研还需要体力啊！
+
+",明年踩着平衡车跟后面。[失望R][失望R],符号,Neutral,服务者+强势,2026.04.29,上海,0,2.0,21,自身经验,"The comment projects self into a future scenario with the robot, expressing a personal intention to follow it with a balance scooter, showing a subjective relationship.",ok
+69e4551e000000001f005895,强势,被超越者,,816.0,2,69e49a9b000000001401d412,69e47e4a000000001401cc1c,5aceceb84eacab32f6747d05,"荣耀机器人赢麻了�我觉得它表情在嘲讽我
+
+",他甚至还挣扎了一下[捂脸R],机器人本身,Neutral,被超越者+强势,2026.04.19,北京,19,,14,机器人本身,"The comment anthropomorphizes the robot by describing it as 'struggling', directly evaluating its physical behavior and embodiment.",ok
+69e4551e000000001f005895,强势,被超越者,,816.0,2,69e49a8a0000000014018c38,69e48d160000000014018c1b,6695ac4a000000000f0344e4,"荣耀机器人赢麻了�我觉得它表情在嘲讽我
+
+",您好这位AI，我可没说过AI的坏话，都是他们说的,机器人本身,mixed,被超越者+强势,2026.04.19,辽宁,746,,24,自身经验,"The comment is directly addressing the AI, with the speaker defending their own words and clarifying their personal stance towards the AI, establishing a subjective relationship between user and robot.",ok
+69e4551e000000001f005895,强势,被超越者,,816.0,2,69e5bc76000000001401d81e,69e4c0ce000000001401980e,633f9111000000000900aca1,"荣耀机器人赢麻了�我觉得它表情在嘲讽我
+
+",加上�，城市战，完全没有问题,符号,Positive,被超越者+强势,2026.04.20,重庆,0,,14,符号,"The comment interprets the robot in the context of 'urban warfare', a grand abstract narrative rather than addressing the robot's physical state or personal experience. This frames the robot as a symbol for technological or military advancement.",ok
+69e4551e000000001f005895,强势,被超越者,,816.0,2,69e49acf000000001401dc32,69e49413000000001401dc2c,608c6f17000000000100a22f,"荣耀机器人赢麻了�我觉得它表情在嘲讽我
+
+",手拿着奶瓶[偷笑R],机器人本身,Neutral,被超越者+强势,2026.04.19,上海,8,,10,机器人本身,"The comment describes a physical attribute or action of the robot (holding a milk bottle), directly evaluating the robot's state.",ok
+69e4551e000000001f005895,强势,被超越者,,816.0,2,69ef64d5000000002a03355a,69e5aeb9000000001401a81c,62807e3b0000000021026770,"荣耀机器人赢麻了�我觉得它表情在嘲讽我
+
+","They are lazy beings instead they abuse their robot to do for them. The West may make a case into the UN ""No robot rights""",符号,Negative,被超越者+强势,2026.04.27,马来西亚,0,,122,符号,"The comment uses the robot as a symbol to discuss a larger narrative about robot rights and international politics (UN, West), not evaluating the robot's immediate state or personal experience.",ok
+69e4551e000000001f005895,强势,被超越者,,816.0,1,69e49d13000000001401dc2a,,568a03ae6a6a69649c8131e4,"荣耀机器人赢麻了�我觉得它表情在嘲讽我
+
+",跑起来跟章若楠一样,其他人,Neutral,被超越者+强势,2026.04.19,浙江,38,6.0,9,机器人本身,"The comment directly evaluates the robot's kinematic gait by comparing it to a specific person's running style, focusing on the physical state of the robot itself.",ok
+69e4551e000000001f005895,强势,被超越者,,816.0,2,69e4f902000000001401e011,69e47e4a000000001401cc1c,613c1f260000000002022b94,"荣耀机器人赢麻了�我觉得它表情在嘲讽我
+
+",这还人机共跑诶,事件,Neutral,被超越者+强势,2026.04.19,江苏,1,,7,事件,"The comment highlights the activity of human and robot running together, focusing on the event rather than the robot itself.",ok
+69e4551e000000001f005895,强势,被超越者,,816.0,2,69e489dd0000000014019823,69e479ad000000001401a817,63239ad8000000002303db4d,"荣耀机器人赢麻了�我觉得它表情在嘲讽我
+
+",橙飞是？,其他,Neutral,被超越者+强势,2026.04.19,北京,0,,4,其他人,"The comment is asking about the identity of a person named 橙飞, which is a focus on a third-party human.",ok
+69e4551e000000001f005895,强势,被超越者,,816.0,2,69e4956e000000001401b019,69e494b30000000014018800,63239ad8000000002303db4d,"荣耀机器人赢麻了�我觉得它表情在嘲讽我
+
+",小短手[笑哭R],机器人本身,Neutral,被超越者+强势,2026.04.19,北京,0,,8,机器人本身,"The comment directly evaluates the robot's physical feature ('short hands'), which is an embodiment characteristic.",ok
+69e4551e000000001f005895,强势,被超越者,,816.0,2,69e49543000000001401ac1e,69e48d160000000014018c1b,5657ebd003eb843b7d2baff0,"荣耀机器人赢麻了�我觉得它表情在嘲讽我
+
+",你们人类？敢问兄台来自哪个星球[doge],机器人本身,Neutral,被超越者+强势,2026.04.19,辽宁,22,,21,机器人本身,"The comment directly addresses the robot's non-human identity, teasingly asking about its planetary origin, which evaluates the robot's anthropomorphic state.",ok
+69e45dbe000000001f00434f,强势,观众,4650.0,773.0,1,69e7686e000000001401d408,,61361d03000000000201fb4e,"机器人跑马拉松超越人类？
+
+",元气仔最像跑步的你,机器人本身,Neutral,观众+强势,2026.04.21,广东,0,0.0,9,机器人本身,"The comment directly evaluates the robot's physical state or kinematic gait, comparing the robot named '元气仔' to a running human.",ok
+69e45dbe000000001f00434f,强势,观众,4650.0,773.0,2,69e99be1000000001401c00f,69e5de78000000001401e014,5a0f99e94eacab7efe51adb5,"机器人跑马拉松超越人类？
+
+",这个啊？,无主体,Neutral,观众+强势,2026.04.23,上海,2,,4,其他,"The comment is a brief interrogative phrase ('This one?') without any evaluation of the robot, personal experience, symbol, event, or other people. It lacks a specific evaluation target and functions as semantic noise.",ok
+69e45dbe000000001f00434f,强势,观众,4650.0,773.0,1,69e50b820000000014019002,,64803557000000001f005fb6,"机器人跑马拉松超越人类？
+
+",看得我一身鸡皮疙瘩。两年时间。我们国家的具身智能发展又往前迈了一大步，不敢想象2030年会怎么样,符号,Positive,观众+强势,2026.04.20,贵州,8,2.0,48,符号,"The comment connects the robot to a grand narrative about national technological progress ('我们国家的具身智能发展又往前迈了一大步') and speculates about the future era ('不敢想象2030年会怎么样'), treating the robot as a symbol of macro-level advancement rather than evaluating its physical state or personal experience.",ok
+69e45dbe000000001f00434f,强势,观众,4650.0,773.0,1,69e7538b000000001401c013,,5f0c02cc0000000001006bd8,"机器人跑马拉松超越人类？
+
+",谁得了第一？,事件,Neutral,观众+强势,2026.04.21,北京,0,1.0,6,事件,"The comment asks about who won first place, focusing on the outcome of a competition or event, which is a peripheral situational element rather than evaluating the robot entity itself.",ok
+69e45dbe000000001f00434f,强势,观众,4650.0,773.0,1,69e56a080000000014018811,,5b5d0153f7e8b977eb92d218,"机器人跑马拉松超越人类？
+
+",华子何在,事件,Neutral,观众+强势,2026.04.20,中国香港,0,0.0,4,其他人,评论询问'华子'在哪里，'华子'是人的昵称，关注点在第三方人类而非机器人本身,ok
+69e45dbe000000001f00434f,强势,观众,4650.0,773.0,2,69e4f535000000001401a417,69e4daa5000000001401c02c,616f7255000000001f03f638,"机器人跑马拉松超越人类？
+
+",赞同,无主体,Positive,观众+强势,2026.04.19,河南,2,,2,无主体,"The comment '赞同' (agree) is a simple expression of agreement without specifying any target; it lacks a clear subject, functioning as a pure emotional reaction or interjection, fitting the 'No Subject' category.",ok
+69e45dbe000000001f00434f,强势,观众,4650.0,773.0,2,69e6f1d60000000014019009,69e5f0f90000000014019420,64f893480000000002010ad8,"机器人跑马拉松超越人类？
+
+",这一层无与伦比啊[doge],无主体,Positive,观众+强势,2026.04.21,宁夏,5,,14,机器人本身,"The comment directly evaluates a specific layer of the robot, praising it as 'unparalleled', which focuses on the robot's physical or digital state rather than personal experience or external context.",ok
+69e45dbe000000001f00434f,强势,观众,4650.0,773.0,1,69e5a96d000000001401c805,,67a0fc68000000000d009afd,"机器人跑马拉松超越人类？
+
+",元气仔太牛了吧[笑哭R]这跑步姿势,机器人本身,Positive,观众+强势,2026.04.20,江苏,0,0.0,17,机器人本身,"The comment directly evaluates the robot's running posture, which is a physical state of the robot itself.",ok
+69e45dbe000000001f00434f,强势,观众,4650.0,773.0,1,69e4f31e000000001401bc06,,61dfb3cc0000000010009f5c,"机器人跑马拉松超越人类？
+
+",这是跟机器人一起跑步的快乐吗？[捂脸R],事件,Neutral,观众+强势,2026.04.19,广东,1,0.0,20,自身经验,"The comment expresses a subjective emotion ('joy') by projecting the self into the scenario of running with a robot, focusing on the personal feeling rather than the robot's state or the event itself.",ok
+69e45dbe000000001f00434f,强势,观众,4650.0,773.0,2,69e4e045000000001401ac27,69e4debe0000000014018812,61c7a8af0000000010008531,"机器人跑马拉松超越人类？
+
+",松延动力B2应该是像燃气热水器的那个，没有头的,事件,Neutral,观众+强势,2026.04.19,山东,0,,23,机器人本身,"The comment directly evaluates the physical appearance of the robot Songyan Power B2, describing its resemblance to a gas water heater and lack of a head, which is a direct assessment of the robot's embodiment.",ok
+69e46032000000001f002048,常态,保护者,,5680.0,1,69e97634000000001401a412,,5bb6266105d6950001c133da,"看着你们累倒在地上我很心疼，恨不得替你们
+
+",我听清了，是传位于八阿哥机器王,,Neutral,保护者+常态,2026.04.23,山西,1,0.0,15,符号,"The comment uses the robot as a symbolic 'Robot King' in a succession narrative, abstracting it into a grand, meme-like story rather than evaluating its physical state or personal experience.",ok
+69e46032000000001f002048,常态,保护者,,5680.0,1,69e997cf000000001401cc23,,62a6079900000000210216f4,"看着你们累倒在地上我很心疼，恨不得替你们
+
+",本人将严肃的在此评论，并在机器人统治地球之后当做投名状,符号,Positive,保护者+常态,2026.04.23,北京,0,0.0,27,符号,"The comment projects a future narrative of robot domination and uses the act of commenting as an allegiance token, making the robot a symbol for a grand teleological scenario rather than evaluating any immediate physical state or personal experience.",ok
+69e46032000000001f002048,常态,保护者,,5680.0,2,69e98cc70000000014018c06,69e9789f000000001401a404,5ef1d6b80000000001002bb5,"看着你们累倒在地上我很心疼，恨不得替你们
+
+",俺也一样,自身经验,Neutral,保护者+常态,2026.04.23,上海,0,,4,无主体,"The comment expresses pure alignment with a previous statement without any evaluative content regarding the robot, personal experience, symbolism, events, or other people. It lacks a specific evaluation target and consists of a formulaic phrase.",ok
+69e463df000000001b003017,强势,服务者,3270.0,219.0,1,69e771aa000000001401e800,,68935b6b000000002803750d,"
+
+",[喝奶茶R]那一天4月12号试炼的时候，我就感觉这红机器人厉害,机器人本身,Positive,服务者+强势,2026.04.21,安徽,0,0.0,31,机器人本身,"The comment directly evaluates the red robot's impressive performance, focusing on the robot entity itself.",ok
+69e463df000000001b003017,强势,服务者,3270.0,219.0,1,69e6c36a000000001401b809,,5f026fc40000000001004d77,"
+
+",明年春晚是不是要表演机器人跑步[笑哭R],机器人本身,Mixed,服务者+强势,2026.04.21,广西,0,0.0,20,事件,"The comment speculates about a potential performance at the Spring Festival Gala, focusing on the activity and event organization rather than the robot's intrinsic state.",ok
+69e463df000000001b003017,强势,服务者,3270.0,219.0,1,69e6cec30000000014019804,,6.00518E+23,"
+
+",它跑的超快的[笑哭R],机器人本身,Positive,服务者+强势,2026.04.21,云南,0,0.0,11,机器人本身,"The comment directly evaluates the robot's physical capability (running speed), focusing on the entity itself.",ok
+69e463df000000001b003017,强势,服务者,3270.0,219.0,2,69e886c1000000001401ac1e,69e4f0db000000002b002b1e,5ddb501e0000000001006df8,"
+
+",尊敬的各位领导……,符号,Neutral,服务者+强势,2026.04.22,四川,0,,9,其他人,"The comment directly addresses 'leaders', which are third-party humans, without reference to the robot or personal experience.",ok
+69e463df000000001b003017,强势,服务者,3270.0,219.0,1,69e60bee0000000014019015,,5fa24957000000000101edad,"
+
+",还不能自主,机器人本身,Neutral,服务者+强势,2026.04.20,四川,0,0.0,5,机器人本身,"The comment directly evaluates the robot's autonomous capability, which is a state of the robot itself.",ok
+69e463df000000001b003017,强势,服务者,3270.0,219.0,2,69e62a5a000000001401c430,69e5e9b80000000014018c04,60b590de0000000001006a28,"
+
+",来自股民的绝望[笑哭R],自身经验,Negative,服务者+强势,2026.04.20,西藏,0,,12,其他人,"The comment refers to the despair of stock investors, a third-party group, and does not focus on the robot itself, personal experience, or other categories.",ok
+69e463df000000001b003017,强势,服务者,3270.0,219.0,1,69e4c4f2000000001401b014,,5c73d352000000001100397a,"
+
+",冠军说啥了？[猪头R],机器人本身,Neutral,服务者+强势,2026.04.19,北京,0,0.0,11,其他人,"The comment asks about what a champion (a third-party human) said, focusing on another person in the context.",ok
+69e463df000000001b003017,强势,服务者,3270.0,219.0,2,69e62c56000000001401e40e,69e4f0db000000002b002b1e,5abce90c11be103cfab026b7,"
+
+",怎么有点耳熟[doge],机器人本身,Neutral,服务者+强势,2026.04.20,湖北,1,,12,机器人本身,"Comment reacts to the robot's sound or speech being familiar, thus evaluating a sensory/digital state of the robot itself.",ok
+69e463df000000001b003017,强势,服务者,3270.0,219.0,2,69e57b2c0000000014018c1d,69e55be4000000001401dc0e,603ae0300000000001000b81,"
+
+",那肯定[笑哭R],无主体,Neutral,服务者+强势,2026.04.20,陕西,25,,8,无主体,"The comment is a generic agreement expression with an emoji, lacking any specific evaluation target. It's pure emotional catharsis without a clear subject.",ok
+69e463df000000001b003017,强势,服务者,3270.0,219.0,2,69e59e70000000001401a408,69e4a67e0000000014018004,647ca03e000000001f005749,"
+
+",我看有人工在进行降温,事件,Neutral,服务者+强势,2026.04.20,广东,0,,10,事件,"The comment observes a cooling activity being performed by '人工' (which could mean manual labor or artificial intelligence), focusing on the peripheral activity rather than evaluating the robot itself, personal experience, or symbolic meaning.",ok
+69e46730000000001d0199c8,强势,观众,,761.0,2,69e4eace000000001401e829,69e46b1c000000001401c433,5816ccaf82ec39271051085b,"
+
+",浑身肌无力哈哈哈哈,机器人本身,Negative,观众+强势,2026.04.19,河北,16,,9,机器人本身,直接描述机器人全身肌无力的物理状态，聚焦于其运动或肢体表现，属于对机器人本身实体状态的评价。,ok
+69e46730000000001d0199c8,强势,观众,,761.0,1,69e4b96b000000001401c009,,666556950000000003031b17,"
+
+",头上是，e，头发？,机器人本身,Neutral,观众+强势,2026.04.19,新疆,0,0.0,9,机器人本身,"The comment directly questions a physical feature of the robot (hair on its head), focusing on its embodiment.",ok
+69e46730000000001d0199c8,强势,观众,,761.0,2,69ea307e000000001401cc28,69e9c432000000001401c404,5f8851ff000000000100162b,"
+
+",我要笑死了,无主体,Neutral,观众+强势,2026.04.23,江苏,1,,5,无主体,"The comment is a pure emotional outburst ('I'm dying of laughter') without any explicit evaluation target, lacking a clear subject.",ok
+69e46730000000001d0199c8,强势,观众,,761.0,2,69e6435c000000001401b804,69e54d60000000001401c002,5fbf371a000000000101c7c1,"
+
+",如果“类人型机器人”最正经的应用是这个，那我承认我错了。,自身经验,Neutral,观众+强势,2026.04.20,加拿大,0,,28,自身经验,"The comment expresses a personal change of mind ('I admit I was wrong') regarding the application of humanoid robots, establishing a subjective relationship between the speaker's identity and the technology.",ok
+69e46730000000001d0199c8,强势,观众,,761.0,2,69e5cb840000000014018c1a,69e52051000000001401bc02,656bcc32000000001902e486,"
+
+",摔倒那个是遥控的吧，第一个冲线，但进不了前三,事件,Neutral,观众+强势,2026.04.20,广东,0,,22,机器人本身,"The comment evaluates the robot's physical action (falling), its control mechanism (remote-controlled), and its performance in a race, directly focusing on the robot's embodiment and state.",ok
+69e46730000000001d0199c8,强势,观众,,761.0,1,69e4c60f0000000014019423,,622ec1f20000000021026662,"
+
+",刚刚刷到的，这位穿鞋的优雅人士你有看到吗，跑姿跟人差不多,机器人本身,Neutral,观众+强势,2026.04.19,江苏,4,1.0,28,机器人本身,评论直接描述机器人的外观（穿鞋）和动作（跑姿跟人差不多），评价对象是机器人本身的物理状态和运动姿态，没有涉及个人体验、象征或事件等。,ok
+69e46730000000001d0199c8,强势,观众,,761.0,1,69e5b2bc000000001401881b,,699b0b44000000001d01bf18,"
+
+",别说，怪好看，比真人跑马拉松好看[笑哭R],事件,Positive,观众+强势,2026.04.20,四川,0,0.0,21,机器人本身,"The comment directly evaluates the robot's appearance and performance, comparing it favorably to human marathon runners. The phrase '怪好看' targets the robot entity itself, making 'Robot Itself' the dominant subject.",ok
+69e46730000000001d0199c8,强势,观众,,761.0,1,69e4b915000000001401cc15,,5b7d65e36855df0001e2b207,"
+
+",真要比谁跑得快，直接用四个轮子机器狗不就行了...[失望R]人形机器人核心要比的也不是这吧,事件,Negative,观众+强势,2026.04.19,浙江,1,0.0,45,符号,"The comment questions the purpose of comparing humanoid robots by speed, arguing their core competition is about something else, reflecting a symbolic narrative about the essence of humanoid technology rather than evaluating a specific robot's state.",ok
+69e46730000000001d0199c8,强势,观众,,761.0,1,69e4fd5f000000001401ac1a,,60d1e1520000000001001d5e,"
+
+",我不明白了，后边四个轮载人的车是机器，前边两个腿给地上跑的也是机器，那这个马拉松比的是什么啊[笑哭R]和人比速度但又不如车快，和车比像不像人但又不是人,事件,mixed,观众+强势,2026.04.20,辽宁,1,5.0,75,事件,"The core of the comment is questioning the rationale and nature of a robot marathon event, focusing on what the competition is actually comparing rather than the robots themselves. It discusses the event's organization and logic.",ok
+69e46730000000001d0199c8,强势,观众,,761.0,2,69e631a7000000001401e42a,69e5e00c000000001401e414,5a23a50411be1049db07c8bb,"
+
+",比赛要求要拟人 不仅要评选速度 还要评选跑姿啦,事件,Neutral,观众+强势,2026.04.20,江西,20,,23,事件,"The comment discusses competition rules requiring anthropomorphic qualities and evaluation criteria (speed and running posture), focusing on the event's organization and rules rather than the robot itself.",ok
+69e47f8f000000001f007203,混合,观众,,5834.0,2,69e7a53d000000001401c410,69e60d1b0000000014019808,6.64374E+23,2026年机器人马拉松状态，五年后再看�,杜华,其他人,Neutral,观众+混合,2026.04.22,安徽,0,,2,其他人,"The comment is solely a name, likely referring to a third-party person such as a public figure or netizen, without any evaluation of the robot itself, personal experience, event, or symbol.",ok
+69e47f8f000000001f007203,混合,观众,,5834.0,2,69eab87e000000001401c00d,69e55d77000000001401bc0e,61499fa40000000002024636,2026年机器人马拉松状态，五年后再看�,机器人也是人[满月R],机器人本身,Neutral,观众+混合,2026.04.24,辽宁,0,,11,符号,"The comment makes an abstract, symbolic claim equating robots to humans, reflecting a grand narrative about technology and society.",ok
+69e47f8f000000001f007203,混合,观众,,5834.0,1,69e4aca5000000001401cc1c,,5dee72cf0000000001000d2f,2026年机器人马拉松状态，五年后再看�,五年后绝对进步巨大,符号,Positive,观众+混合,2026.04.19,四川,2,0.0,9,符号,评论用抽象的时间展望（五年后）和进步叙事，将技术发展视为宏观历史进程的象征，未讨论机器人实体、个人体验或具体事件，属于对技术终局的宏大叙事。,ok
+69e47f8f000000001f007203,混合,观众,,5834.0,1,69e82e3b000000001401dc16,,5ad4c0b24eacab70b64cf6bf,2026年机器人马拉松状态，五年后再看�,居然还有120[捂脸R],事件,Neutral,观众+混合,2026.04.22,河北,0,2.0,12,机器人本身,"The comment '居然还有120[捂脸R]' expresses surprise at the existence of a '120', likely a robot model number. The evaluation centers on the robot's physical/digital state, making 'Robot Itself' the most fitting category.",ok
+69e47f8f000000001f007203,混合,观众,,5834.0,2,69e577af000000001401a80f,69e55d77000000001401bc0e,5e5e181d0000000001009977,2026年机器人马拉松状态，五年后再看�,追着它拿遥控器的那个吧。。。毕竟远了就连接不上了[笑哭R],其他人,Negative,观众+混合,2026.04.20,广东,0,,29,事件,"The comment references an action (chasing the robot with a remote control) and explains the situational cause (limited connection range). The focus is on the activity and the rule/limitation of the remote, not on the person’s identity or the robot itself.",ok
+69e47f8f000000001f007203,混合,观众,,5834.0,1,69e61e64000000001401bc1c,,5d202b1d0000000012017b2f,2026年机器人马拉松状态，五年后再看�,好厉害，科技发展真快[哇R][点赞R],符号,Positive,观众+混合,2026.04.20,广东,0,0.0,19,符号,"The comment praises the rapid development of technology as a grand narrative, treating the robot as a symbol of technological progress rather than evaluating the robot itself or a personal experience.",ok
+69e47f8f000000001f007203,混合,观众,,5834.0,1,69e5c76e000000001401e024,,5cfcf18d0000000016024283,2026年机器人马拉松状态，五年后再看�,跑的好高兴,机器人本身,Positive,观众+混合,2026.04.20,江苏,0,0.0,5,机器人本身,"The comment evaluates the robot's running motion and attributes a happy emotional state to it, focusing on its physical performance and anthropomorphic expression.",ok
+69e47f8f000000001f007203,混合,观众,,5834.0,2,69e715b10000000014019423,69e60d1b0000000014019808,6178e6290000000002024b53,2026年机器人马拉松状态，五年后再看�,豆脚哈哈哈哈哈哈好会起名字,机器人本身,Neutral,观众+混合,2026.04.21,广东,0,,13,事件,"The comment focuses on the act of naming, praising the naming skill, which is a peripheral situational element rather than evaluating the robot's physical state or other categories.",ok
+69e47f8f000000001f007203,混合,观众,,5834.0,1,69e7cba3000000001401c800,,5d6136ec000000000100529d,2026年机器人马拉松状态，五年后再看�,好玩不？！下一步，世界是它的！,符号,Positive,观众+混合,2026.04.22,山东,0,0.0,15,符号,"The comment projects a grand narrative about the robot's future dominance ('the world is its'), which is a symbolic interpretation unrelated to its immediate physical state or personal experience.",ok
+69e47f8f000000001f007203,混合,观众,,5834.0,1,69e5a79d000000001401b00c,,5fcdc03d000000000100712a,2026年机器人马拉松状态，五年后再看�,man！,机器人本身,Neutral,观众+混合,2026.04.20,天津,0,0.0,4,无主体,"The comment is a simple interjection with no clear subject, functioning as pure emotional catharsis.",ok
+69e481e8000000002003ad94,强势,服务者,,,1,69e62146000000001401880e,,621b90f1000000001000ce41,"
+
+",跑累了,机器人本身,Neutral,服务者+强势,2026.04.20,内蒙古,0,0.0,3,机器人本身,"The comment directly attributes a physical and anthropomorphic state (tired from running) to the robot, evaluating its embodiment and kinematic gait.",ok
+69e481e8000000002003ad94,强势,服务者,,,1,69e55b04000000001401e804,,5c3d0d8e000000000700e270,"
+
+",不如遥控玩具好玩,机器人本身,Negative,服务者+强势,2026.04.20,福建,0,0.0,8,机器人本身,直接比较机器人与遥控玩具的有趣程度，评价对象是机器人本身的性能/特性。,ok
+69e481e8000000002003ad94,强势,服务者,,,1,69e6f5aa000000001401b80a,,5ff14f5d000000000101cba2,"
+
+",全程跟吗？，如果是全程跟，那到底是谁在跑马拉松？,事件,Negative,服务者+强势,2026.04.21,湖北,0,0.0,24,机器人本身,"The comment questions whether the robot follows the entire marathon and, if so, who is actually running, thereby evaluating the robot's role and capability in the activity. The focus is on the robot's embodiment and action, not merely the event or personal experience.",ok
+69e481e8000000002003ad94,强势,服务者,,,1,69e74c9c0000000014019402,,5f08874b0000000001000d32,"
+
+",以后用来打日本人,符号,Neutral,服务者+强势,2026.04.21,湖南,0,0.0,8,符号,"The comment projects a future use of the robot for a nationalistic conflict, using abstract macroscopic nouns and teleological expression about a technological endgame, viewing the robot as a symbol for a grand narrative rather than evaluating its immediate state.",ok
+69e481e8000000002003ad94,强势,服务者,,,1,69ec580700000000270228fd,,5f4c555f0000000001003d06,"
+
+",一个站都站不稳的东西设计好的程序，要来干什么？,机器人本身,Negative,服务者+强势,2026.04.25,日本,2,5.0,23,机器人本身,"The comment directly criticizes the robot's physical instability ('a thing that can't even stand steadily'), evaluating its embodied mechanical state.",ok
+69e481e8000000002003ad94,强势,服务者,,,1,69e49355000000001401a012,,5d3bfe02000000001200436b,"
+
+",他怎么站不住了,机器人本身,Neutral,服务者+强势,2026.04.19,江苏,0,0.0,7,机器人本身,"The comment directly questions the robot's physical stability, referring to its embodiment and kinematic state.",ok
+69e481e8000000002003ad94,强势,服务者,,,1,69e49f4c000000001401bc28,,63687973000000001f017237,"
+
+",半路要补冰[点赞R],机器人本身,Neutral,服务者+强势,2026.04.19,天津,0,0.0,10,事件,"The comment mentions the need to replenish ice halfway, which is a situational detail related to the activity rather than the robot's physical state or a personal experience. The thumbs-up emoji reinforces appreciation for the tip or observation about the event.",ok
+69e481e8000000002003ad94,强势,服务者,,,1,69e4a7dd0000000014019c13,,6191cfb4000000001000687d,"
+
+",加冰+换电+加润滑油,机器人本身,Neutral,服务者+强势,2026.04.19,广东,0,0.0,10,机器人本身,"The comment lists maintenance actions (adding ice, changing battery, adding lubricant) that directly pertain to the robot's physical components and mechanical state, evaluating the robot itself.",ok
+69e481e8000000002003ad94,强势,服务者,,,1,69e4a6d5000000001401d41f,,5f3fee6d000000000101cbfe,"
+
+",那三个补给的比机器人惨[捂脸R],其他人,mixed,服务者+强势,2026.04.19,上海,7,0.0,16,其他人,"The comment focuses on '那三个补给的' (the three resupply people) being more pitiful than the robot, making them the primary evaluation target. The robot is only a reference point for the comparison.",ok
+69e481e8000000002003ad94,强势,服务者,,,1,69e6dfe8000000001401c418,,63cca48e00000000270287c5,"
+
+",目的是啥  表示困惑[叹气R] 。F1一堆人维护至少是人在驾驶 体验速度激情； 这个遥控跑步 去锻炼他的身体？,事件,Negative,服务者+强势,2026.04.21,上海,0,0.0,55,机器人本身,"The comment directly questions the purpose of the robot (遥控跑步) and compares it to human-driven F1, focusing on the robot's function and embodiment, thus evaluating the robot itself.",ok
+69e48341000000001a02d0c4,强势,观众,3931.0,1022.0,2,69e4bb29000000001401a400,69e4a930000000001401a020,5fec361f000000000101dd81,"机器人马拉松，我们看乐了，西方人看破防了�
+
+",乐观点，我爸妈应该就能享受到，再10年到了80，刚好,符号,Positive,观众+强势,2026.04.19,浙江,1,,26,自身经验,"The comment expresses a hopeful personal vision where the user's elderly parents will benefit from the robot in the future, establishing a subjective connection between the technology and the user's family, private emotions, and identity.",ok
+69e48341000000001a02d0c4,强势,观众,3931.0,1022.0,1,69e4a6340000000014019028,,6200bd9c00000000100067cb,"机器人马拉松，我们看乐了，西方人看破防了�
+
+",速度比去年快太多了,机器人本身,Positive,观众+强势,2026.04.19,北京,0,0.0,9,机器人本身,"The comment directly evaluates the speed of the robot, which is a physical attribute of the robot itself, comparing it to last year's performance.",ok
+69e48341000000001a02d0c4,强势,观众,3931.0,1022.0,1,69e4c5310000000014019404,,594b258250c4b436ae9f9762,"机器人马拉松，我们看乐了，西方人看破防了�
+
+",机器人能不能套个皮肤哇？我等着未来男友嘞,机器人本身,Positive,观众+强势,2026.04.19,浙江,0,0.0,20,自身经验,"The comment transitions from a request about the robot's appearance to a personal projection of a romantic future with the robot, making the dominant evaluation subject the user's subjective experience and emotional connection.",ok
+69e48341000000001a02d0c4,强势,观众,3931.0,1022.0,2,69e4ea70000000001401e02a,69e4a930000000001401a020,5e98f9bd0000000001001625,"机器人马拉松，我们看乐了，西方人看破防了�
+
+",我也能用上，价格两万以内绝对买个,机器人本身,Positive,观众+强势,2026.04.19,福建,1,,16,自身经验,"The comment expresses a personal willingness to purchase and use the robot, establishing a subjective relationship between the commenter and the technology.",ok
+69e48341000000001a02d0c4,强势,观众,3931.0,1022.0,2,69e56912000000001401980f,69e495f6000000001401e015,5954f2a582ec394362ffbdb3,"机器人马拉松，我们看乐了，西方人看破防了�
+
+",那肯定不用，既然会取肯定会送，都送到家[笑哭R][笑哭R],机器人本身,Positive,观众+强势,2026.04.20,中国香港,0,,29,自身经验,"The comment expresses a personal stance ('I don't need that') and links the robot's functionality to a personal outcome (home delivery), establishing a subjective relationship between the robot and the user's private life.",ok
+69e48341000000001a02d0c4,强势,观众,3931.0,1022.0,2,69e5866b0000000014018c17,69e56581000000001401a405,63710c92000000001f0190a7,"机器人马拉松，我们看乐了，西方人看破防了�
+
+",各有千秋,机器人本身,Positive,观众+强势,2026.04.20,日本,0,,4,机器人本身,"The comment '各有千秋' (each has its own merits) directly evaluates the robots by comparing their positive attributes, focusing on the inherent qualities of the robots themselves.",ok
+69e48341000000001a02d0c4,强势,观众,3931.0,1022.0,2,69e598af000000001401e82c,69e4a930000000001401a020,60ec585900000000010028bd,"机器人马拉松，我们看乐了，西方人看破防了�
+
+",然后你回家伺候它，保养，清洁维修,机器人本身,Negative,观众+强势,2026.04.20,河北,0,,16,机器人本身,"The comment directly addresses the physical maintenance and care of the robot, referring to servicing, cleaning, and repairing its embodied state, making the robot itself the central evaluation subject.",ok
+69e48341000000001a02d0c4,强势,观众,3931.0,1022.0,2,69e63e36000000001401e412,69e56581000000001401a405,5c7401e6000000001001afc6,"机器人马拉松，我们看乐了，西方人看破防了�
+
+",卖不卖的出去直接看数据，现在都可查,机器人本身,Neutral,观众+强势,2026.04.20,江苏,0,,17,符号,评论将机器人销售数据视为衡量市场表现的指标，属于对机器人作为产业符号的宏观评价。,ok
+69e48341000000001a02d0c4,强势,观众,3931.0,1022.0,2,69e57999000000001401d81f,69e56581000000001401a405,659d1378000000002200aba9,"机器人马拉松，我们看乐了，西方人看破防了�
+
+",看看奇瑞每年出口发动机多少[嘻嘻R],事件,Neutral,观众+强势,2026.04.20,广东,0,,18,其他,"The comment mentions Chery's engine exports, which is completely unrelated to the context of robots in public spaces; it's a semantic drift.",ok
+69e48341000000001a02d0c4,强势,观众,3931.0,1022.0,2,69e59dd20000000014019018,69e4e615000000001401a40c,592eafd050c4b47fd2ccb63b,"机器人马拉松，我们看乐了，西方人看破防了�
+
+",有道理,无主体,Neutral,观众+强势,2026.04.20,新疆,0,,3,其他人,"The comment '有道理' ('makes sense') is a reaction to a previous statement, implicitly acknowledging the reasoning of another commenter. It focuses on that third-party human's argument, rather than evaluating the robot, expressing personal experience, or referencing symbols, events, or pure emotion.",ok
+69e48b0b000000001a02578c,失败,服务者,3334.0,467.0,1,69eac09d000000001401a412,,63565c220000000018028218,"北京马拉松机器人中暑了�
+
+",看来人类的耐力在蓝星是遥遥领先[doge],自身经验,Positive,服务者+失败,2026.04.24,广东,8,0.0,21,符号,"The comment makes a broad statement about human endurance being superior on Earth, framing robots in a grand narrative of human versus machine capabilities without evaluating the robot's immediate state or personal experience.",ok
+69e48b0b000000001a02578c,失败,服务者,3334.0,467.0,1,69f45b93000000002a030b8a,,602ad64e0000000001006432,"北京马拉松机器人中暑了�
+
+",背的干冰降温的？,机器人本身,Neutral,服务者+失败,2026.05.01,江苏,0,0.0,8,机器人本身,"The comment speculates about the robot's physical cooling mechanism, directly evaluating its design or functional component.",ok
+69e48b0b000000001a02578c,失败,服务者,3334.0,467.0,2,69f221e500000000290377f7,69ef404c000000002b003d6a,603caad20000000001009db6,"北京马拉松机器人中暑了�
+
+",给这些研发团队展示的平台，其实就是科技大赛呗，用马拉松来测试看谁做的机器人在行动能力上表现最好，不会真以为是要培养机器人参加运动会吧,其他人,Neutral,服务者+失败,2026.04.29,湖南,75,,66,事件,"The comment primarily evaluates the event/activity (a tech competition using a marathon to test robot mobility) and its purpose, rather than the robots themselves or personal experiences.",ok
+69e48b0b000000001a02578c,失败,服务者,3334.0,467.0,1,69fee60f000000002800af5d,,5c5ec8b5000000001d0002fc,"北京马拉松机器人中暑了�
+
+",笑死，遥控玩具,机器人本身,Negative,服务者+失败,2026.05.09,北京,0,0.0,7,机器人本身,"The comment directly evaluates the robot as a 'remote control toy', mocking its nature and focusing on its functional state, which fits the definition of Robot Itself.",ok
+69e48b0b000000001a02578c,失败,服务者,3334.0,467.0,2,69f45ec8000000002b0271a2,69f457bb000000002800b3a4,5a6dcf1a11be104cdb0973df,"北京马拉松机器人中暑了�
+
+",哈哈哈哈哈哈咋啦,无主体,Neutral,服务者+失败,2026.05.01,福建,0,,8,无主体,"The comment consists solely of laughter and a colloquial question, expressing pure emotional reaction without a specific evaluation target.",ok
+69e48b0b000000001a02578c,失败,服务者,3334.0,467.0,2,69f398d90000000027029498,69f31deb0000000027020402,609201d60000000001007432,"北京马拉松机器人中暑了�
+
+",哈哈哈[笑哭R],无主体,Neutral,服务者+失败,2026.05.01,天津,0,,8,无主体,"Comment consists solely of laughter and a laughing emoji, expressing pure amusement without evaluating any specific target.",ok
+69e48b0b000000001a02578c,失败,服务者,3334.0,467.0,1,69eafb13000000001401c01f,,5e511c40000000000100809e,"北京马拉松机器人中暑了�
+
+",连撞墙都复刻了,机器人本身,Neutral,服务者+失败,2026.04.24,重庆,0,0.0,7,机器人本身,"The comment directly evaluates the robot's physical action of bumping into walls, noting that even this detail is replicated. The focus is on the robot's behavior, which falls under the Robot Itself category.",ok
+69e48b0b000000001a02578c,失败,服务者,3334.0,467.0,2,69eb87fa000000002701712a,69eae867000000001401e003,66d19491000000001d022ce1,"北京马拉松机器人中暑了�
+
+",这东西遥控也不简单,机器人本身,Neutral,服务者+失败,2026.04.24,浙江,9,,9,机器人本身,"The comment evaluates the difficulty of remotely controlling the robot, focusing on a direct attribute of the robot's operation.",ok
+69e48b0b000000001a02578c,失败,服务者,3334.0,467.0,1,69ea3e2d000000001401b008,,58300a3550c4b459f57d1804,"北京马拉松机器人中暑了�
+
+",是不是低电糖了[石化R],机器人本身,Neutral,服务者+失败,2026.04.23,陕西,5,0.0,12,机器人本身,"The comment directly questions the robot's battery status, which is a physical state of the robot.",ok
+69e48b0b000000001a02578c,失败,服务者,3334.0,467.0,2,69f41a2e00000000290184a1,69ecb9a7000000002803354c,5b5c76e04eacab28222a6ccf,"北京马拉松机器人中暑了�
+
+",可能这种就是表演性质的吧，真正实用的也是四条腿,机器人本身,Neutral,服务者+失败,2026.05.01,四川,0,,23,机器人本身,"The comment evaluates the robot's design and practical utility, directly referencing the robot's physical form (two legs vs. four legs) and its intended purpose (performance vs. practicality).",ok
+69e48d54000000002102e178,弱势,保护者,,1589.0,2,69e4c8d8000000001401e415,69e4aa34000000001401bc30,575d363e6a6a6951fa730b9c,"�亦庄机器人半马最感人一幕
+
+",还有个小机器人拿着奶瓶跑,机器人本身,Positive,保护者+弱势,2026.04.19,广东,96,,12,机器人本身,"The comment directly describes the physical appearance and action of a small robot holding a milk bottle and running, focusing on the robot's embodiment and kinematic state.",ok
+69e48d54000000002102e178,弱势,保护者,,1589.0,1,69e4b68e0000000014018819,,625e60a00000000010007264,"�亦庄机器人半马最感人一幕
+
+",红后：白名单+1[doge],其他,Neutral,保护者+弱势,2026.04.19,广东,1,0.0,14,符号,"The comment references 'Red Queen' (an AI from Resident Evil) and 'whitelist +1', which treats the robot as a symbolic placeholder in a narrative about AI control or technological systems, not as a physical entity.",ok
+69e48d54000000002102e178,弱势,保护者,,1589.0,2,69e4eb35000000001401bc14,69e4e394000000001401bc31,5b541fcce8ac2b601a85a7c8,"�亦庄机器人半马最感人一幕
+
+",我自己写的报告也是我的宝宝……[害羞R]不准任何人说他不好,自身经验,Positive,保护者+弱势,2026.04.19,湖南,412,,29,自身经验,评论将个人写的报告比作宝宝，表达不许他人批评的私人情感，核心是自我投射和主观关系，属于个人体验。,ok
+69e48d54000000002102e178,弱势,保护者,,1589.0,2,69e4bdf4000000001401c420,69e4b9b9000000001401ac12,61683d39000000001f038b0e,"�亦庄机器人半马最感人一幕
+
+",哎呦喂！！！,无主体,Neutral,保护者+弱势,2026.04.19,北京,0,,6,无主体,The comment is a pure interjection expressing emotion with no clear subject or object.,ok
+69e48d54000000002102e178,弱势,保护者,,1589.0,2,69e4b251000000001401e831,69e4abf1000000001401c014,55e3d9d3b7ba2231748224fc,"�亦庄机器人半马最感人一幕
+
+",这也太可爱了[哇R],机器人本身,Positive,保护者+弱势,2026.04.19,北京,0,,10,机器人本身,"The comment directly evaluates the robot as 'cute', attributing an aesthetic quality to the robot itself, with no reference to personal identity, symbolic meaning, or other external elements.",ok
+69e48d54000000002102e178,弱势,保护者,,1589.0,2,69e58bc2000000001401d417,69e504de000000001401bc03,596b6e8150c4b44943313a6b,"�亦庄机器人半马最感人一幕
+
+",我以为是小学生志愿者[笑哭了R],机器人本身,Neutral,保护者+弱势,2026.04.20,山东,18,,16,自身经验,"The comment centers on the user's personal mistaken expectation ('I thought...'), expressing a subjective reaction and humor, which aligns with Personal Experience.",ok
+69e48d54000000002102e178,弱势,保护者,,1589.0,1,69e4a2d0000000001401ac06,,5e9176000000000001000a4a,"�亦庄机器人半马最感人一幕
+
+",相信他们会把它们“养”好的，感觉今年脚底下利索点了,机器人本身,Positive,保护者+弱势,2026.04.19,河北,74,2.0,25,自身经验,"The comment expresses a subjective feeling of improved personal mobility ('脚底下利索点了') linked to others taking care of robots, establishing a connection between the technology and the user's private experience, making personal experience the core subject.",ok
+69e48d54000000002102e178,弱势,保护者,,1589.0,2,69e582e2000000001401bc08,69e4a2e5000000001401b816,5d2cb717000000001102d929,"�亦庄机器人半马最感人一幕
+
+",你过得挺不开心的吧，虽然你没发现。但是你应该觉得生活挺无聊的。[doge],其他,Neutral,保护者+弱势,2026.04.20,广东,1,,37,机器人本身,"The comment addresses the robot directly, attributing emotional states ('unhappy', 'bored') and assuming a subjective inner life, which is an anthropomorphic evaluation of the robot itself.",ok
+69e48d54000000002102e178,弱势,保护者,,1589.0,2,69e6487b000000001401a80b,69e4e394000000001401bc31,6191c74a000000002102ac34,"�亦庄机器人半马最感人一幕
+
+",我自己写的工作案例十来年了都不舍得删,自身经验,Neutral,保护者+弱势,2026.04.20,福建,0,,18,自身经验,"The comment centers on the user's own work cases and their emotional attachment, expressing a subjective, personalized relationship without any external evaluation target.",ok
+69e48d54000000002102e178,弱势,保护者,,1589.0,1,69e4c274000000001401dc33,,62ee2680000000001f016a03,"�亦庄机器人半马最感人一幕
+
+",即视感,事件,Neutral,保护者+弱势,2026.04.19,中国香港,154,5.0,3,自身经验,"The comment '即视感' (déjà vu) expresses a personal, subjective feeling triggered by the robot or the scenario, focusing on the user's internal state and private emotion, which aligns with Personal Experience.",ok
+69e4b08d000000001d01c1bc,混合,观众,,379.0,1,69e4ec78000000001401dc03,,63818618000000001f014bee,"机器人马拉松参赛选手“进化速度这一块”
+
+",第一名跑步姿势好像一位女明星[偷笑R],机器人本身,Neutral,观众+混合,2026.04.19,陕西,0,0.0,19,机器人本身,"The comment directly evaluates the physical movement (running posture) of the first-place robot, comparing it to a human celebrity, focusing on the robot's embodiment and kinematic gait.",ok
+69e4b08d000000001d01c1bc,混合,观众,,379.0,1,69e4ce39000000001401e002,,5ee91c3e0000000001002cdd,"机器人马拉松参赛选手“进化速度这一块”
+
+",[doge]就说周一股票涨不涨吧,符号,Neutral,观众+混合,2026.04.19,丹麦,1,0.0,16,其他,"The comment mentions stock market predictions, which is completely unrelated to robots in public spaces. It is semantic noise detached from the core context.",ok
+69e4b08d000000001d01c1bc,混合,观众,,379.0,1,69e4df44000000001401c047,,66c4dea7000000001d0333ab,"机器人马拉松参赛选手“进化速度这一块”
+
+",底特律变人[doge],机器人本身,Neutral,观众+混合,2026.04.19,江苏,1,0.0,11,符号,"The comment references the game 'Detroit: Become Human', using it as a symbolic narrative about robot sentience and societal implications, unrelated to any specific robot's immediate state.",ok
+69e4b08d000000001d01c1bc,混合,观众,,379.0,2,69e4ea0f000000001401e002,69e4da0f000000001401d820,6377b63e000000001f017f11,"机器人马拉松参赛选手“进化速度这一块”
+
+",这在科研上叫做把现有技术找一个场景或者应用去展示[笑哭R],事件,Neutral,观众+混合,2026.04.19,北京,0,,29,事件,"The comment focuses on the activity of demonstrating existing technology in a scenario, not the robot itself.",ok
+69e4b08d000000001d01c1bc,混合,观众,,379.0,2,69e5742c000000001401d814,69e4d200000000001401d80b,5afaf832e8ac2b71ccf18f2e,"机器人马拉松参赛选手“进化速度这一块”
+
+",我还是希望他发达一点，我希望我老了机器人可以照顾我,符号,Positive,观众+混合,2026.04.20,天津,0,,25,自身经验,"The comment expresses a personal wish about robots being developed enough to care for the speaker in old age, establishing a direct connection between the robot and the user's own future identity and subjective needs. This is self-projection.",ok
+69e4b08d000000001d01c1bc,混合,观众,,379.0,2,69e4d2bb000000001401a424,69e4d2b00000000014019829,68944c1e0000000028001164,"机器人马拉松参赛选手“进化速度这一块”
+
+","这场机器人马拉松比赛，看似是一场充满趣味的科技秀，实则是我国人工智能与高端制造领域发展的一个生动缩影。对于这一现象，我们可以从以下几个维度进行思考：
+技术落地的“试金石”：比赛将机器人置于开放、动态的复杂环境中，这是一场走出实验室的 大型压力测试 。过程中出现的跌倒、抽搐等问题，恰恰暴露了在运动控制、能源管理和环境感知等方面的短板，为后续的技术迭代指明了方向。
+产业发展的“催化剂”：正如视频中类比汽车、飞机的发展史，任何颠覆性技术的成熟都离不开实践的检验。这场赛事为科研机构和企业提供了宝贵的 真实世界数据 ，加速了人形机器人从“能跑”向“会跑”、“跑好”的跨越，推动了整个产业链的成熟。
+创新生态的“展示窗”：300多个机器人同台竞技，展现了我国在机器人领域的 创新活力与集群效应 。这种开放包容、鼓励试错的氛围，不仅激发了科研人员的热情，也向世界展示了中国在前沿科技领域的探索精神和巨大潜力。
+总而言之，这场马拉松不仅是机器人的比赛，更是对未来智慧生活的预演。它让我们看到，科技创新的道路虽然曲折，但前景无比广阔。",符号,Positive,观众+混合,2026.04.19,--,2,,461,事件,"The comment focuses entirely on the robot marathon as an event, analyzing its role as a testbed, catalyst, and showcase for technology. It evaluates the activity's organization, its significance in data collection, and its reflection of industrial development, rather than evaluating the robots themselves or other subjects.",ok
+69e4b08d000000001d01c1bc,混合,观众,,379.0,2,69e4eba90000000014019427,69e4da0f000000001401d820,596817c550c4b40c56a879cc,"机器人马拉松参赛选手“进化速度这一块”
+
+",你想想在战场上（不要攻击我这个ip[捂脸R][捂脸R]）,符号,mixed,观众+混合,2026.04.19,美国,0,,28,自身经验,"The comment projects the self into a hypothetical battlefield scenario and expresses concern about personal attack based on IP, centering on private emotion and identity.",ok
+69e4b08d000000001d01c1bc,混合,观众,,379.0,2,69e4d5050000000014019c17,69e4d00f000000001401d40a,61f500350000000010004dd1,"机器人马拉松参赛选手“进化速度这一块”
+
+",因为只举办了半马比赛吧[笑哭R] 没活动也没人去让机器人跑全马,事件,Neutral,观众+混合,2026.04.19,北京,16,,31,事件,"The comment discusses the event organization (half-marathon only, no full marathon for robots), focusing on the activity itself rather than the robot's attributes or personal feelings.",ok
+69e4b08d000000001d01c1bc,混合,观众,,379.0,2,69e4edc5000000001401c034,69e4da0f000000001401d820,5b80627157e9c70001b35d77,"机器人马拉松参赛选手“进化速度这一块”
+
+",感觉多跑跑也挺好的吧[doge]防止关节生锈然后机器人的耐力也很重要[扯脸H],事件,mixed,观众+混合,2026.04.19,广东,0,,39,机器人本身,"The comment directly evaluates the robot's physical functions, such as joint movement to prevent rust and the importance of endurance. Although '感觉' expresses a personal feeling, it is used as a casual hedge, and the core focus remains on the robot's embodiment and operational state.",ok
+69e4b08d000000001d01c1bc,混合,观众,,379.0,2,69e4ebde000000001401bc10,69e4da0f000000001401d820,653d4ba5000000000400a8c0,"机器人马拉松参赛选手“进化速度这一块”
+
+",因为跑步很检测稳定性啊，有的机器人跑一小段可以但是跑远距离就不行了,事件,Neutral,观众+混合,2026.04.19,河南,0,,33,机器人本身,"The comment directly evaluates the robot's physical performance and stability during running, focusing on the robot's own capability and state without involving personal identity, symbols, events, other people, or emotional catharsis.",ok
+69e4c771000000002102c3fc,常态,服务者,,89.0,1,69e4f9a2000000001401a41a,,60ffcf39000000000101f6e1,"一镜到底！看人形机器人跑半马如何补给。
+
+",一代代的不断迭代优化，越来越好[点赞R],符号,Positive,服务者+常态,2026.04.19,日本,66,0.0,20,机器人本身,"The comment evaluates the robot's iterative optimization and improvement over generations, directly addressing its evolving state.",ok
+69e4c771000000002102c3fc,常态,服务者,,89.0,1,69e4dac3000000001401d422,,5f0669e80000000001005653,"一镜到底！看人形机器人跑半马如何补给。
+
+",厉害,其他,Positive,服务者+常态,2026.04.19,新疆,14,0.0,2,无主体,"The comment '厉害' is a pure emotional interjection meaning 'impressive' or 'amazing' without specifying any target or subject. It lacks a clear evaluation target, exhibiting high-density interjection characteristic of pure emotional catharsis.",ok
+69e4c771000000002102c3fc,常态,服务者,,89.0,1,69e4d5ff000000001401e438,,67910249000000000a03f67a,"一镜到底！看人形机器人跑半马如何补给。
+
+",[飞吻R],无主体,Positive,服务者+常态,2026.04.19,江苏,3,1.0,5,无主体,"The comment consists solely of an emoji expressing a kiss emotion, with no explicit evaluation target or contextual subject. It is a pure emotional expression without a specific reference.",ok
+69e4c771000000002102c3fc,常态,服务者,,89.0,1,69e558ae000000001401e406,,62ece8c4000000001f005a2c,"一镜到底！看人形机器人跑半马如何补给。
+
+",很骄傲，这么优秀的工程师，制造出了这么好的机器人，都是我们国家的[飞吻R]祝国泰民安，繁荣昌盛！！！,符号,Positive,服务者+常态,2026.04.20,澳大利亚,8,0.0,50,符号,"The comment expresses pride in the engineers and the robot as a product of the nation, connecting the robot to a grand narrative of national achievement and prosperity. The robot serves as a symbol for the country's technological prowess and collective identity, rather than evaluating the robot's physical state or personal experience.",ok
+69e4c771000000002102c3fc,常态,服务者,,89.0,1,69e4d5f6000000001401e02b,,63a12593000000002601154a,"一镜到底！看人形机器人跑半马如何补给。
+
+",1,无主体,Neutral,服务者+常态,2026.04.19,内蒙古,3,0.0,1,其他,The comment is a single digit with no discernible evaluation target or relation to the core context of robots in public spaces. It appears to be noise or gibberish.,ok
+69e4c771000000002102c3fc,常态,服务者,,89.0,1,69e4f663000000001401940d,,5b121f91e8ac2b19ad66de2f,"一镜到底！看人形机器人跑半马如何补给。
+
+",加油[赞R],机器人本身,Positive,服务者+常态,2026.04.19,广东,1,0.0,6,无主体,"The comment is a pure interjection of encouragement ('加油') followed by a praise emoji, with no explicit evaluation target, fitting the definition of emotional catharsis without a specific subject.",ok
+69e4c771000000002102c3fc,常态,服务者,,89.0,2,69e58545000000001401880c,69e4ec3b000000001401d81d,654109840000000006004d7f,"一镜到底！看人形机器人跑半马如何补给。
+
+",这一年来进步神速，期待明年更大的惊喜！,符号,Positive,服务者+常态,2026.04.20,湖北,66,,19,符号,"The comment expresses excitement about rapid progress and anticipation for future surprises, viewing the robot's development as a symbol of technological advancement rather than evaluating its physical/digital state or personal connection.",ok
+69e4c771000000002102c3fc,常态,服务者,,89.0,1,69e4f8e9000000001401c80f,,68bfe4f4000000001a026018,"一镜到底！看人形机器人跑半马如何补给。
+
+",厉害了[点赞R],机器人本身,Positive,服务者+常态,2026.04.19,四川,0,0.0,8,无主体,"The comment is a pure exclamation of amazement with a thumbs-up emoji, lacking any specific subject or object; it's an emotional catharsis without a targeted evaluation.",ok
+69e4c771000000002102c3fc,常态,服务者,,89.0,1,69e4f9e40000000014019820,,650e690e0000000012007787,"一镜到底！看人形机器人跑半马如何补给。
+
+",自主的，太酷了[赞R],机器人本身,Positive,服务者+常态,2026.04.19,吉林,16,0.0,11,机器人本身,"The comment evaluates the robot's autonomous capability and expresses admiration, focusing directly on the robot's inherent attribute.",ok
+69e4c771000000002102c3fc,常态,服务者,,89.0,1,69e52b25000000001401c403,,64ceac98000000000b0080ca,"一镜到底！看人形机器人跑半马如何补给。
+
+",祝祖国繁荣昌盛！,符号,Positive,服务者+常态,2026.04.20,美国,310,1.0,8,符号,评论表达了对祖国繁荣的祝愿，属于抽象宏观叙事，将机器人场景抽象为对国家发展的象征性表达，核心是宏大叙事而非机器人本身。,ok
+69e59e520000000022027a90,弱势,观众,,2593.0,1,69e736b8000000001401dc36,,58ae8d8150c4b4173d44d3bc,"花田里犯了错|机器人马拉松正赛搞笑赏析
+
+",第二个机器人，马路对面是真的在跑马拉松吗？,机器人本身,Neutral,观众+弱势,2026.04.21,江苏,0,0.0,21,事件,"The comment references a 'second robot' but the central query is about the reality of a marathon happening across the road, which is a peripheral situational activity unrelated to the robot itself. Thus, the dominant subject is the event.",ok
+69e59e520000000022027a90,弱势,观众,,2593.0,1,69e5fc0d000000001401d80d,,603248c50000000001001741,"花田里犯了错|机器人马拉松正赛搞笑赏析
+
+",想看采访被踢了的保安大叔,其他人,Neutral,观众+弱势,2026.04.20,北京,1,0.0,12,其他人,"The comment expresses a desire to see an interview with a security guard who was kicked, focusing on a third-party human rather than the robot itself, personal experience, or other categories.",ok
+69e59e520000000022027a90,弱势,观众,,2593.0,2,69e702160000000014019418,69e6394c000000001401c410,59f49a5fe8ac2b4035d8e923,"花田里犯了错|机器人马拉松正赛搞笑赏析
+
+",哈哈哈哈你懂你懂，大家都不懂，大明白～,其他人,mixed,观众+弱势,2026.04.21,辽宁,5,,19,其他人,"The comment sarcastically mocks another person as a 'know-it-all', focusing on a third-party human's perceived attitude rather than the robot or personal experience.",ok
+69e59e520000000022027a90,弱势,观众,,2593.0,2,69e6c3ac000000001401b818,69e6417c000000001401e432,5e57d99000000000010022c0,"花田里犯了错|机器人马拉松正赛搞笑赏析
+
+",有点道理[笑哭R],无主体,Neutral,观众+弱势,2026.04.21,上海,0,,9,其他人,"The comment acknowledges someone else's opinion as 'makes some sense', directly evaluating another person's statement or perspective, which centers on other people.",ok
+69e59e520000000022027a90,弱势,观众,,2593.0,1,69e60287000000001401a028,,59e5516be8ac2b305bd40142,"花田里犯了错|机器人马拉松正赛搞笑赏析
+
+",荣耀的脚让我想起了我家的海绵拖把[笑哭R],自身经验,Neutral,观众+弱势,2026.04.20,贵州,0,0.0,21,机器人本身,"The comment directly evaluates the physical appearance of the robot's feet, comparing them to a sponge mop, which focuses on the robot's embodiment and mechanical parts.",ok
+69e59e520000000022027a90,弱势,观众,,2593.0,1,69e6fa01000000001401d80e,,55909fc167bc651a06b73b09,"花田里犯了错|机器人马拉松正赛搞笑赏析
+
+",先安排个100米塞吧，马拉松，确定能跑完吗？,机器人本身,Negative,观众+弱势,2026.04.21,河北,0,0.0,22,机器人本身,"The comment directly questions the robot's physical capability to finish a marathon, focusing on the robot's performance and embodiment.",ok
+69e59e520000000022027a90,弱势,观众,,2593.0,2,69e755a9000000001401cc3b,69e6c46c0000000014019c0e,64253d89000000001201181c,"花田里犯了错|机器人马拉松正赛搞笑赏析
+
+",然后很多人类都会被淘汰,符号,Negative,观众+弱势,2026.04.21,广东,2,,11,符号,"The comment projects a broad, abstract narrative about human obsolescence due to robots, which is a teleological expression about the technological endgame, fitting the Symbol category.",ok
+69e59e520000000022027a90,弱势,观众,,2593.0,2,69e71632000000001401d416,69e7162b000000001401dc1a,68944c1e0000000028001164,"花田里犯了错|机器人马拉松正赛搞笑赏析
+
+","小鹏汽车目前主要专注于智能电动汽车领域，其技术核心是XNGP智能辅助驾驶和SEPA2.0扶摇架构等，并未公开发布过人形机器人产品。这次参加北京亦庄机器人马拉松的主要是宇树（Unitree）、优必选等专注于人形机器人研发的公司。
+不过，小鹏在飞行汽车（如小鹏汇天）和智能机器人（如小鹏AI机器人）方面也有布局，只是可能还没来得及参加这种“马拉松”级别的体能测试[偷笑R]。",其他,Neutral,观众+弱势,2026.04.21,--,0,,185,事件,"The comment clarifies which companies participated in the robot marathon event, noting that Xiaopeng hasn't released a humanoid robot and wasn't a participant. The focus is on the event organization, participants, and the company's relationship to it, rather than the robots themselves or personal experience.",ok
+69e59e520000000022027a90,弱势,观众,,2593.0,2,69e6fbd7000000001401b011,69e6394c000000001401c410,66aaec9a000000001d023d7a,"花田里犯了错|机器人马拉松正赛搞笑赏析
+
+",冷知识，自主组的冠军“荣耀闪电”用时50多分钟，比人类世界纪录还快六分多钟[偷笑R],机器人本身,Positive,观众+弱势,2026.04.21,北京,11,,42,机器人本身,"The comment directly evaluates the robot '荣耀闪电' by comparing its completion time to the human world record, focusing on the robot's performance.",ok
+69e59e520000000022027a90,弱势,观众,,2593.0,2,69e613a6000000001401cc14,69e5f3fd0000000014018c0c,5c91c7be000000001202ccfa,"花田里犯了错|机器人马拉松正赛搞笑赏析
+
+",有趣的点就是各种各样的表现[失望R],事件,Neutral,观众+弱势,2026.04.20,湖南,2,,18,机器人本身,评论中的“各种各样的表现”指的是机器人的行为或动作展示，属于对机器人实体状态（运动步态、外部行为）的直接评价，核心主体是机器人本身。,ok
+69e5a09a000000002103ba03,常态,观众,711.0,83.0,2,69e634ab000000001401c42c,69e5be20000000001401dc06,6273f2430000000021022fc8,"半马途中机器人即兴表演，越夸越上头
+
+",随主人,机器人本身,Neutral,观众+常态,2026.04.20,甘肃,0,,3,机器人本身,"The comment '随主人' (follows the owner) directly describes the robot's action and functional behavior, focusing on the robot as an entity without personal self-reference or broader narrative.",ok
+69e5a09a000000002103ba03,常态,观众,711.0,83.0,1,69e5e0d6000000001401c829,,657aeba00000000020032b10,"半马途中机器人即兴表演，越夸越上头
+
+",[飞吻R]太灵动了[害羞R],机器人本身,Positive,观众+常态,2026.04.20,上海,0,0.0,14,机器人本身,"The comment directly evaluates the robot's liveliness and agility, focusing on its physical state with clear praise.",ok
+69e5a09a000000002103ba03,常态,观众,711.0,83.0,1,69e60ec7000000001401e401,,617a5846000000000201a887,"半马途中机器人即兴表演，越夸越上头
+
+",太能嘚瑟了[笑哭R][笑哭R],机器人本身,Neutral,观众+常态,2026.04.20,湖北,0,0.0,15,机器人本身,"The comment evaluates the robot's behavior as 'showing off,' directly targeting the robot's state or performance.",ok
+69e5a09a000000002103ba03,常态,观众,711.0,83.0,1,69e61c64000000001401e830,,620b9adc000000001000cef2,"半马途中机器人即兴表演，越夸越上头
+
+",机器人里也有嘉豪,机器人本身,mixed,观众+常态,2026.04.20,湖北,0,0.0,8,机器人本身,"The comment states that inside the robot there is also 'Jiahao', directly attributing a human name to the robot, which is an anthropomorphic evaluation of the robot entity itself.",ok
+69e5a09a000000002103ba03,常态,观众,711.0,83.0,1,69e610ad0000000014019c07,,6096b483000000000100255c,"半马途中机器人即兴表演，越夸越上头
+
+",请问他最后跑完了吗？,机器人本身,Neutral,观众+常态,2026.04.20,福建,0,0.0,10,其他人,"The comment asks about a person ('他') completing a run, focusing on a third-party human unrelated to personal experience.",ok
+69e5a09a000000002103ba03,常态,观众,711.0,83.0,1,69e63380000000001401dc26,,69074ebf0000000039011e5b,"半马途中机器人即兴表演，越夸越上头
+
+",跳得挺好的呢,机器人本身,Positive,观众+常态,2026.04.20,江苏,3,0.0,6,机器人本身,"The comment directly evaluates the robot's dancing performance, which is a kinematic aspect of the robot itself.",ok
+69e5a09a000000002103ba03,常态,观众,711.0,83.0,1,69e5f9560000000014019c05,,5571274562a60c1e3f2b5d29,"半马途中机器人即兴表演，越夸越上头
+
+",机器人中的显眼包,机器人本身,Neutral,观众+常态,2026.04.20,河北,1,0.0,8,机器人本身,"The comment directly evaluates the robot's characteristic of being conspicuous or attention-grabbing, focusing on the robot entity itself.",ok
+69e5a09a000000002103ba03,常态,观众,711.0,83.0,1,69e6099f000000001401c820,,5a721c5411be1017fcb4207b,"半马途中机器人即兴表演，越夸越上头
+
+",跳的比我好太多了,自身经验,Positive,观众+常态,2026.04.20,北京,1,0.0,8,自身经验,"The comment compares the robot's movement directly to the speaker's own ability, establishing a subjective personal relationship and self-projection.",ok
+69e5a09a000000002103ba03,常态,观众,711.0,83.0,1,69e5f82f000000001401e414,,6695b211000000000f035c60,"半马途中机器人即兴表演，越夸越上头
+
+",快点学会做饭[偷笑R],机器人本身,Positive,观众+常态,2026.04.20,福建,1,0.0,11,机器人本身,"The comment directly addresses the robot's ability to learn cooking, focusing on its functional state and capability. The core evaluation target is the robot entity itself.",ok
+69e5a09a000000002103ba03,常态,观众,711.0,83.0,1,69e61505000000001401b025,,619b1873000000000202437e,"半马途中机器人即兴表演，越夸越上头
+
+",比春晚好看[大笑R],事件,Positive,观众+常态,2026.04.20,广西,0,0.0,10,事件,"The comment compares the robot event to the Spring Festival Gala, evaluating the activity itself as more entertaining.",ok
+69e634590000000022003bb5,常态,观众,,824.0,2,69e6dfda000000001401b001,69e6c14d000000001401d80c,5aa2a5af4eacab391f84aaea,"每个马拉松机器人，都有自己的热血故事。
+
+",自主的，可以看看它的胸牌，只不过工作人员跟着要看机热的情况，这也很正常，这才出厂多久啊，还是个宝宝呢[笑哭R],机器人本身,Positive,观众+常态,2026.04.21,浙江,15,,55,机器人本身,"The comment directly evaluates the robot's autonomy, physical state (badge, heat monitoring), and anthropomorphizes it as a 'baby' due to its recent production. The core focus is on the robot entity itself, not the surrounding event, personal feelings, or other people.",ok
+69e634590000000022003bb5,常态,观众,,824.0,1,69e82002000000001401c818,,636f034f000000001f01d03c,"每个马拉松机器人，都有自己的热血故事。
+
+",工程师们加油啊 老了接送我跳广场舞买菜跑腿的事就拜托机器崽崽们了[皱眉R],其他人,Positive,观众+常态,2026.04.22,上海,42,0.0,37,自身经验,"The comment projects the user's future self into a scenario where robots perform care tasks, establishing a subjective relationship between the robot and their personal life plan.",ok
+69e634590000000022003bb5,常态,观众,,824.0,2,69e74c2e000000001401ac2c,69e6c0e9000000001401a00a,5735abf71c07df688eef10bd,"每个马拉松机器人，都有自己的热血故事。
+
+",卧槽[捂脸R][捂脸R][捂脸R][捂脸R],无主体,Neutral,观众+常态,2026.04.21,江苏,5,,22,无主体,"The comment consists solely of an exclamation ('卧槽') and repeated facepalm emojis, expressing pure emotional reaction without any specific evaluation target, making it pure emotional catharsis.",ok
+69e634590000000022003bb5,常态,观众,,824.0,1,69e7249d000000001401a80d,,64d73d090000000001012768,"每个马拉松机器人，都有自己的热血故事。
+
+",[点赞R],无主体,Positive,观众+常态,2026.04.21,辽宁,0,0.0,5,无主体,"The comment consists solely of a thumbs-up emoji, expressing pure approval without a specific evaluation target. It lacks a subject, object, or any reference to the robot, event, or other entities.",ok
+69e634590000000022003bb5,常态,观众,,824.0,1,69e6fadf000000001401d428,,5df888fa0000000001002af4,"每个马拉松机器人，都有自己的热血故事。
+
+",原来是你们团队叫加速进化，我看到你们机器人上贴这个以为是你们的机器人要加速进化了[石化R][石化R][石化R],机器人本身,Neutral,观众+常态,2026.04.21,四川,2076,8.0,55,机器人本身,"The comment revolves around the robot and a sticker on it, interpreting the robot's potential to 'accelerate evolution'. The core evaluation is about the robot's state or perceived capability.",ok
+69e634590000000022003bb5,常态,观众,,824.0,1,69e6fe5d0000000014019c03,,59f53813e8ac2b6a85026ecd,"每个马拉松机器人，都有自己的热血故事。
+
+",它跑步姿势好像我小时候看的动画片里的人物[大笑R][大笑R],机器人本身,Neutral,观众+常态,2026.04.21,天津,1,0.0,30,机器人本身,"The comment directly evaluates the robot's running posture, comparing it to cartoon characters, focusing on the physical kinematic state of the robot itself.",ok
+69e634590000000022003bb5,常态,观众,,824.0,1,69e6f006000000001401902e,,65f3c613000000000500e6cd,"每个马拉松机器人，都有自己的热血故事。
+
+",就跟看自己孩子去参加学校运动会跑步，那种激动心情一样一样的,自身经验,Positive,观众+常态,2026.04.21,湖南,4,0.0,29,自身经验,"The comment expresses a personal emotional analogy, comparing the feeling of watching a robot to the pride and excitement of watching one's own child, thus focusing on subjective experience and self-projection.",ok
+69e634590000000022003bb5,常态,观众,,824.0,1,69e6ce0e000000001401e805,,6211e5e70000000021020156,"每个马拉松机器人，都有自己的热血故事。
+
+",看完了，太不容易了，完赛了[派对R]祝贺�这小机器人真够努力的�最后感觉跟人一样靠意志品质到终点的,机器人本身,Positive,观众+常态,2026.04.21,上海,1,0.0,49,机器人本身,"The comment directly evaluates the robot's effort and human-like willpower during a race, focusing on the embodiment and performance of the robot itself.",ok
+69e634590000000022003bb5,常态,观众,,824.0,2,69e7749c000000001401cc1e,69e6af22000000001401d40d,649ea1f6000000001c02b114,"每个马拉松机器人，都有自己的热血故事。
+
+",鞋子也亮眼[微笑R],机器人本身,Positive,观众+常态,2026.04.21,山东,3,,10,机器人本身,"The comment directly evaluates a physical part of the robot (shoes) as eye-catching, focusing on the robot's embodied appearance.",ok
+69e634590000000022003bb5,常态,观众,,824.0,2,69e7523d000000001401c832,69e6c0f20000000014018c04,611a6a3d000000002002b846,"每个马拉松机器人，都有自己的热血故事。
+
+",那还挺小巧思的，我看有的拿奶瓶啊什么的就纯粹是装饰了,机器人本身,Positive,观众+常态,2026.04.21,广东,16,,26,机器人本身,"The comment evaluates the physical design of the robot, specifically noting that holding a milk bottle is purely decorative, which pertains to the robot's embodiment and features.",ok
+69e6f2bc0000000023005345,弱势,观众,,687.0,1,69e76082000000001401e822,,628b95910000000021026e6e,"�机器人第一视角，好多人呀
+
+",好可爱啊，好萌啊,机器人本身,Positive,观众+弱势,2026.04.21,广东,0,0.0,8,机器人本身,"The comment directly evaluates the robot's appearance or behavior as cute and adorable, focusing on its embodied qualities without reference to self, others, events, symbols, or other subjects.",ok
+69e6f2bc0000000023005345,弱势,观众,,687.0,2,69e73f98000000001401dc2c,69e7170a000000001401b807,5aae1bb6e8ac2b7381e19672,"�机器人第一视角，好多人呀
+
+",太可爱了，小孩组不用拿什么名次，小朋友跟大人一起比太不公平了[笑哭R],机器人本身,Mixed,观众+弱势,2026.04.21,重庆,47,,35,事件,"The comment primarily discusses the unfairness of kids competing with adults in a competition, focusing on event organization and rules, which fits the Event category.",ok
+69e6f2bc0000000023005345,弱势,观众,,687.0,1,69e73281000000001401bc1b,,61772231000000001f03f08a,"�机器人第一视角，好多人呀
+
+",可爱！！,机器人本身,Positive,观众+弱势,2026.04.21,安徽,0,0.0,4,机器人本身,"The comment expresses a direct emotional evaluation ('cute') of the robot's physical or anthropomorphic state, with no other subjects referenced.",ok
+69e6f2bc0000000023005345,弱势,观众,,687.0,2,69e72849000000001401c008,69e72510000000001401e404,61ff60a90000000010007db0,"�机器人第一视角，好多人呀
+
+",还是腿太短了啊！[捂脸R],机器人本身,Neutral,观众+弱势,2026.04.21,上海,58,,13,机器人本身,"The comment directly evaluates the physical attributes of the robot's legs, focusing on its embodiment.",ok
+69e6f2bc0000000023005345,弱势,观众,,687.0,1,69e74cb6000000001401e816,,6.92E+26,"�机器人第一视角，好多人呀
+
+",看到小派跑步的样子，想起年前离世的宝宝了。[哭惹R],自身经验,Mixed,观众+弱势,2026.04.21,江西,0,0.0,26,自身经验,"The comment establishes a deeply personal, emotional connection between seeing the robot's movement and a private memory of a deceased loved one. The core subject is the subjective, self-projected experience, not the robot's physical state.",ok
+69e6f2bc0000000023005345,弱势,观众,,687.0,1,69e77b08000000001401bc2e,,591d2b2450c4b456e7362e15,"�机器人第一视角，好多人呀
+
+",真的是你们的嘛，我到处问,机器人本身,Neutral,观众+弱势,2026.04.21,广东,0,0.0,12,自身经验,"The comment expresses a personal inquiry about robot ownership, revealing the commenter's subjective engagement and effort to confirm a connection, making self-projection central.",ok
+69e6f2bc0000000023005345,弱势,观众,,687.0,1,69e74416000000001401d804,,5ab3598a11be106e65c07ef1,"�机器人第一视角，好多人呀
+
+",出了荣耀那个机器人 我就记得这个 太可爱了,机器人本身,Positive,观众+弱势,2026.04.21,重庆,0,0.0,21,机器人本身,"The comment directly evaluates the robot's appearance by calling it 'cute', focusing on the robot entity itself.",ok
+69e6f2bc0000000023005345,弱势,观众,,687.0,1,69e7585d000000001401cc19,,5facab75000000000100592b,"�机器人第一视角，好多人呀
+
+",呦，这是你家的小盆友啊,机器人本身,Neutral,观众+弱势,2026.04.21,山东,0,0.0,11,其他人,"The comment addresses another person, calling the robot 'your little friend', thus focusing on the relationship between a third-party human and the robot, making 'Other People' the central subject.",ok
+69e6f2bc0000000023005345,弱势,观众,,687.0,1,69e74f7d000000001401c026,,5ea8349a0000000001003666,"�机器人第一视角，好多人呀
+
+",最喜欢拿着奶瓶�的小派了❤️,机器人本身,Positive,观众+弱势,2026.04.21,重庆,1,0.0,14,机器人本身,The comment directly evaluates the robot '小派' by describing its physical state of holding a milk bottle and expresses personal liking for that embodied attribute.,ok
+69e6f2bc0000000023005345,弱势,观众,,687.0,2,69e74b33000000001401c42d,69e72520000000001401e42b,5571ff9424caa92b109a3e9e,"�机器人第一视角，好多人呀
+
+",一定要发原声视频呀，踩一脚吱一声,其他人,Neutral,观众+弱势,2026.04.21,浙江,11,,16,机器人本身,The comment focuses on a specific physical characteristic of the robot (squeaking when stepped on) and requests a video to capture that sound.,ok

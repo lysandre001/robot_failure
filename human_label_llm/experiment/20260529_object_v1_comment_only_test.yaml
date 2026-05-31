@@ -1,0 +1,33 @@
+run_id: 20260529_object_v1_comment_only_test
+
+# 数据文件（相对仓库根目录）
+data:
+  input_csv: human_label_llm/label_data/filtered_sample10_per_post_humanlabel.csv
+# 填槽名 {comment}/{title}/{caption} → CSV 列名（由 experiment 控制）
+columns:
+  comment_id: comment_id
+  comment: content
+  gold: 评估对象
+
+gold_column: 评估对象
+
+prompt: eval_object_v1
+
+scope_slots:
+  scope_comment_only: [comment]
+
+scopes:
+  - scope_comment_only
+
+models:
+  deepseek_v4_pro:
+    provider: deepseek
+    model: deepseek-v4-pro
+    reasoning: on
+    reasoning_effort: high
+
+temperature: 0.0
+max_tokens: 2048
+concurrency: 5
+timeout: 180
+limit: null

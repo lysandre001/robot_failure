@@ -1,103 +1,103 @@
-﻿帖子id,帖子链接,corpus,帖子正文,post_category,L1,L2,合计
+﻿帖子id,帖子链接,corpus,帖子正文,post_category,robot_status,human_role,L1,L2,合计
 69db34bb000000001a0348ae,https://www.xiaohongshu.com/explore/69db34bb000000001a0348ae?source=webshare&xhsshare=pc_web&xsec_token=ABmGnOO3uUiWICJt2WQTIPmVYSmSx6guxTfsmY6azmrM8=&xsec_source=pc_share,batch1,"亦庄机器人马拉松
 
-",失败|抢救者,98,316,414
+",失败|抢救者,失败,抢救者,98,316,414
 69e2583b00000000230211ea,https://www.xiaohongshu.com/explore/69e2583b00000000230211ea?source=webshare&xhsshare=pc_web&xsec_token=ABEh-jaB3qs_ulEnGc0ym9HQaX5VchRhbYJsK_5JN8jII=&xsec_source=pc_share,batch1,"马拉松上机器人跑崩了，零件掉一地，最后躺着上担架。
 
-",失败|抢救者,1391,416,1807
+",失败|抢救者,失败,抢救者,1391,416,1807
 69e48b0b000000001a02578c,https://www.xiaohongshu.com/explore/69e48b0b000000001a02578c?source=webshare&xhsshare=pc_web&xsec_token=ABNo_BFRrK-4aWK8jdQuDcf1DeOvkqWWv4W7Y_5Ep9iZI=&xsec_source=pc_share,batch1,"一个自动机器人配两个助理🥵
 
-",失败|服务者,135,142,277
+",失败|服务者,失败,服务者,135,142,277
 69df625d0000000021005c63,https://www.xiaohongshu.com/explore/69df625d0000000021005c63?source=webshare&xhsshare=pc_web&xsec_token=ABmwDHDtxW8ICF6uM0M4EqkNMm0_ID6NkuwJDN5IuQzbo=&xsec_source=pc_share,batch1,"北京亦庄机器人马拉松名场面，希望能给你带来快
 
-",失败|观众,1313,599,1912
+",失败|观众,失败,观众,1313,599,1912
 69e41e24000000001a025f1a,https://www.xiaohongshu.com/explore/69e41e24000000001a025f1a?source=webshare&xhsshare=pc_web&xsec_token=ABHtr88UWkKZZAADKyuBN5pTeKWMG0bczPVWjI-PKiWg4=&xsec_source=pc_share,batch1,"
 
-",失败|观众,79,36,115
+",失败|观众,失败,观众,79,36,115
 69e46032000000001f002048,https://www.xiaohongshu.com/explore/69e46032000000001f002048?app_platform=ios&app_version=9.29&share_from_user_hidden=true&xsec_source=app_share&type=normal&xsec_token=CBGl5EWuZ01NccooWZo8fji9ToO8TGzw2vfxoVG8aiMi8=&author_share=1&xhsshare=CopyLink&shareRedId=Nzw5NDU-OUo2OkpEQTwzOj46Pk1JSEw-&apptime=1778476558&share_id=5ef79586de544f50bc49b22aa568b5e7,batch1,"如果未来机器人统治世界，我希望你们能记得，我和其他人不一样，我永远拥护你们！！
 
-",常态|保护者,989,2920,3909
+",常态|保护者,常态,保护者,989,2920,3909
 69e40352000000002102fc75,https://www.xiaohongshu.com/explore/69e40352000000002102fc75?source=webshare&xhsshare=pc_web&xsec_token=ABNo_BFRrK-4aWK8jdQuDcf3fi8kk0yeJvVycFft-jpKg=&xsec_source=pc_share,batch1,"好多人呀，感觉大家都来了
 
-",常态|服务者,595,299,894
+",常态|服务者,常态,服务者,595,299,894
 69e4c771000000002102c3fc,https://www.xiaohongshu.com/explore/69e4c771000000002102c3fc?source=webshare&xhsshare=pc_web&xsec_token=ABNo_BFRrK-4aWK8jdQuDcf5sNOG0SZHayf_1Oz3MYGk4=&xsec_source=pc_share,batch1,"
 
-",常态|服务者,35,5,40
+",常态|服务者,常态,服务者,35,5,40
 69e429b4000000001b00037a,https://www.xiaohongshu.com/explore/69e429b4000000001b00037a?app_platform=ios&app_version=9.29&share_from_user_hidden=true&xsec_source=app_share&type=video&xsec_token=CBGl5EWuZ01NccooWZo8fji9JyQabNSst4pOdwuW38QdU=&author_share=1&xhsshare=CopyLink&shareRedId=Nzw5NDU-OUo2OkpEQTwzOj46Pk1JSEw-&apptime=1778476600&share_id=612df443888d4c46af42d11bf28564fc,batch1,"哈哈哈哈哈哈是同一款吗？求证！！[笑哭R][笑哭R]
 
-",常态|观众,404,314,718
+",常态|观众,常态,观众,404,314,718
 69e43a5a000000001d01dcc7,https://www.xiaohongshu.com/explore/69e43a5a000000001d01dcc7?source=webshare&xhsshare=pc_web&xsec_token=ABHtr88UWkKZZAADKyuBN5pWWcyDJgZkEGIP1wQE4k6N8=&xsec_source=pc_share,batch1,"它嘲讽倒地不起的同伴，笑死我了 还给了我一个饭撒[飞吻R]
 
-",常态|观众,50,44,94
+",常态|观众,常态,观众,50,44,94
 69e44f3a000000002301079c,https://www.xiaohongshu.com/explore/69e44f3a000000002301079c?source=webshare&xhsshare=pc_web&xsec_token=CBIKdUwRBDKLtFUfL9ckADqvu5WnQfrCeMbQRtezhhUWE=&xsec_source=pc_share,batch1,"谁懂看到豆包（哦不，是豆脚😂）在跑道上狂奔的魔幻感啊哈哈哈哈哈！！
 
-",常态|观众,6,2,8
+",常态|观众,常态,观众,6,2,8
 69e5a09a000000002103ba03,https://www.xiaohongshu.com/explore/69e5a09a000000002103ba03?source=webshare&xhsshare=pc_web&xsec_token=CBntWBTn_T3IntSn9_pkfTxg2ucmkP_yDlp1qWUAPuaug=&xsec_source=pc_share,batch1,"在2026年4月20日举行的某场半程马拉松赛事中，一台参赛的人形机器人出现了引人注目的行为。它在奔跑途中突然停下，转而开始表演舞蹈动作。周围观众发出的“哇！再来一个！”等热烈称赞，似乎影响了机器人的后续行为，使其一度偏离了比赛的主要任务。
 
-",常态|观众,48,8,56
+",常态|观众,常态,观众,48,8,56
 69e634590000000022003bb5,https://www.xiaohongshu.com/explore/69e634590000000022003bb5?source=webshare&xhsshare=pc_web&xsec_token=ABegEExteR-fh44OcwJc-MQkW6u9PDssK7meNVt9Wpgjc=&xsec_source=pc_share,batch1,"这是我的。
 
-",常态|观众,233,136,369
+",常态|观众,常态,观众,233,136,369
 69e48d54000000002102e178,https://www.xiaohongshu.com/explore/69e48d54000000002102e178?source=webshare&xhsshare=pc_web&xsec_token=ABHtr88UWkKZZAADKyuBN5pbE4Gbh9JiGOnx4gle4oDZk=&xsec_source=pc_share,batch1,"即使失败，工程师依然深深爱着自家机器人小孩[哭惹R]
 
-",弱势|保护者,78,401,479
+",弱势|保护者,弱势,保护者,78,401,479
 69e43b14000000001a02e095,https://www.xiaohongshu.com/explore/69e43b14000000001a02e095?source=webshare&xhsshare=pc_web&xsec_token=ABNo_BFRrK-4aWK8jdQuDcf-MGegTlmG91hDD0ON_I8Io=&xsec_source=pc_share,batch1,"突然停下来了，工作人员喷了点东西又开始跑了。猜测应该是降温
 
-",弱势|服务者,858,192,1050
+",弱势|服务者,弱势,服务者,858,192,1050
 69e42cc100000000220001ad,https://www.xiaohongshu.com/explore/69e42cc100000000220001ad?source=webshare&xhsshare=pc_web&xsec_token=ABHtr88UWkKZZAADKyuBN5pTtWvzTgk7t_UqtKL02iuV8=&xsec_source=pc_share,batch1,"
 
-",弱势|观众,939,710,1649
+",弱势|观众,弱势,观众,939,710,1649
 69e59e520000000022027a90,https://www.xiaohongshu.com/explore/69e59e520000000022027a90?app_platform=ios&app_version=9.29&share_from_user_hidden=true&xsec_source=app_share&type=video&xsec_token=CBgVdMEgrizyknnJDpQYh4-sf5Wtm9JRBmnZ-A9S8LjsQ=&author_share=1&xhsshare=CopyLink&shareRedId=Nzw5NDU-OUo2OkpEQTwzOj46Pk1JSEw-&apptime=1778476531&share_id=9185500936f2429d8f02e85e715afa0d,batch1,"北京亦庄机器人马拉松名场面，希望能给你带来快乐
 
-",弱势|观众,1318,501,1819
+",弱势|观众,弱势,观众,1318,501,1819
 69e6f2bc0000000023005345,https://www.xiaohongshu.com/explore/69e6f2bc0000000023005345?source=webshare&xhsshare=pc_web&xsec_token=ABa-SF7HSETP6hVMh5HXuewX25bgOc_J1O8RyXVzwM-gE=&xsec_source=pc_share,batch1,"
 
-",弱势|观众,193,158,351
+",弱势|观众,弱势,观众,193,158,351
 69e447d2000000001d01aa01,https://www.xiaohongshu.com/explore/69e447d2000000001d01aa01?source=webshare&xhsshare=pc_web&xsec_token=ABNo_BFRrK-4aWK8jdQuDcfwOz4p_ANO3EiAqL0ZaOfK4=&xsec_source=pc_share,batch1,"你刷到这个画面了吗？这是北京人形机器人半程马拉松的赛道上的场景，程序员抱着笔记本电脑，气喘吁吁地跟在机器人身后一路狂奔。网友调侃：“机器人拿了第一，电脑拿了第二，程序员拿了第三。”
 
-",强势|服务者,538,655,1193
+",强势|服务者,强势,服务者,538,655,1193
 69e44fbf000000001e00cc6a,https://www.xiaohongshu.com/explore/69e44fbf000000001e00cc6a?source=webshare&xhsshare=pc_web&xsec_token=CBIKdUwRBDKLtFUfL9ckADqmOPSzSGhKWoIZ1zwdhJjIQ=&xsec_source=pc_share,batch1,"近日，在2026北京亦庄人形机器人半程马拉松赛前的备战过程中，有机器人一路向前飞奔，几名工程师扛着电脑在后面拼命追，这爆笑一幕引发网友热议：“也没说搞科研还需要体力啊”[笑哭R][笑哭R]
 
-",强势|服务者,6,2,8
+",强势|服务者,强势,服务者,6,2,8
 69e463df000000001b003017,https://www.xiaohongshu.com/explore/69e463df000000001b003017?source=webshare&xhsshare=pc_web&xsec_token=ABNo_BFRrK-4aWK8jdQuDcf9BcGIkQLiNddI_ajXQxwG8=&xsec_source=pc_share,batch1,"机器人“闪电”夺冠后戴着金牌亮相，记者争先恐后采访
 
-",强势|服务者,128,52,180
+",强势|服务者,强势,服务者,128,52,180
 69e481e8000000002003ad94,https://www.xiaohongshu.com/explore/69e481e8000000002003ad94?source=webshare&xhsshare=pc_web&xsec_token=CBIKdUwRBDKLtFUfL9ckADqpDPWAU3O7maZ62l5l6vIYY=&xsec_source=pc_share,batch1,"堪比赛车！机器人马拉松高燃补给场面！
 
-",强势|服务者,5707,4006,9713
+",强势|服务者,强势,服务者,5707,4006,9713
 69e44278000000001a0217bb,https://www.xiaohongshu.com/explore/69e44278000000001a0217bb?source=webshare&xhsshare=pc_web&xsec_token=ABHtr88UWkKZZAADKyuBN5pXVFuXtjrLFhf-ETm99Dw4s=&xsec_source=pc_share,batch1,"今天参加亦庄半程马拉松，机器人跑的太快了，一会就超过我了，这是第6个超过我的机器人。 今天荣耀闪电突破50分钟完赛，比人快多了
 
-",强势|被超越者,148,161,309
+",强势|被超越者,强势,被超越者,148,161,309
 69e4551e000000001f005895,https://www.xiaohongshu.com/explore/69e4551e000000001f005895?source=webshare&xhsshare=pc_web&xsec_token=ABHtr88UWkKZZAADKyuBN5pTKJy_HE5kGjVCcdECQtSM4=&xsec_,batch1,"恭喜荣耀包揽金银铜所有奖项！中国力量[赞R]
 
-",强势|被超越者,87,328,415
+",强势|被超越者,强势,被超越者,87,328,415
 69da7e87000000001a03484e,https://www.xiaohongshu.com/explore/69da7e87000000001a03484e?source=webshare&xhsshare=pc_web&xsec_token=ABNBHHNeP1pQepTYoKTNbl6lC82nUfCh7p4tjQ0yh3Yco=&xsec_source=pc_share,batch1,"是什么让我熬夜剪视频，是亦庄的机器人马拉松测试！！快的几位是真快啊，完全是原速度（按跑过我面前的速度排序），咣当咣当跑过去了
 慢的也是真慢，还有没头的机器人，也有摔跤的跑得歪歪扭扭突然不跑的，早上再剪了 总得来说很有意思
 
-",强势|观众,3106,2188,5294
+",强势|观众,强势,观众,3106,2188,5294
 69e4412a000000002103883f,https://www.xiaohongshu.com/explore/69e4412a000000002103883f?source=webshare&xhsshare=pc_web&xsec_token=ABNo_BFRrK-4aWK8jdQuDcf7a1hqWqWX3z2ISnAkjgyRw=&xsec_source=pc_share,batch1,"我这个位置是起点第一个群众可以观看的地方，人很多！大家都很激动兴奋！！各种神点评！
 
-",强势|观众,232,148,380
+",强势|观众,强势,观众,232,148,380
 69e45dbe000000001f00434f,https://www.xiaohongshu.com/explore/69e45dbe000000001f00434f?source=webshare&xhsshare=pc_web&xsec_token=ABNo_BFRrK-4aWK8jdQuDcf1SawCDJsMo9imYKkVZnW5s=&xsec_source=pc_share,batch1,"带你现场感受机器人马拉松的真实速度！有幸作为连续两次参加世界机器人马拉松现场报道的博主！ 真的想大喊一声，真的太快了！
 想起来去年咱们第一年办的时候，外网网友说，怎么证明你们机器人不是真人假扮的？ 今年：很简单，那就超越人类极限咯！
 
-",强势|观众,239,181,420
+",强势|观众,强势,观众,239,181,420
 69e46730000000001d0199c8,https://www.xiaohongshu.com/explore/69e46730000000001d0199c8?source=webshare&xhsshare=pc_web&xsec_token=ABNo_BFRrK-4aWK8jdQuDcfzqZMnMiFJ0tRzfs5N3w0uw=&xsec_source=pc_share,batch1,"
 
-",强势|观众,343,168,511
+",强势|观众,强势,观众,343,168,511
 69e48341000000001a02d0c4,https://www.xiaohongshu.com/explore/69e48341000000001a02d0c4?source=webshare&xhsshare=pc_web&xsec_token=ABNo_BFRrK-4aWK8jdQuDcf_pHFF3E3OSazOgSNfaQmTo=&xsec_source=pc_share,batch1,"妄自菲薄的往往是自己人，到了现在，还有人在说机器人没用，就是个遥控玩具，我且不说未来会越来越智能，我就说现在改进改进用在国防上，面对坏人，它拿着真理，追着你跑，你怕不怕，哪怕他续航就俩小时，你敢说你能一直跑俩小时？[偷笑R]
 真乃恍然大悟惊坐起，列强竟是我自己啊～哈哈哈哈 不知不觉，已经领先了太多🤖
 
-",强势|观众,332,492,824
+",强势|观众,强势,观众,332,492,824
 69e44171000000001a026b25,https://www.xiaohongshu.com/explore/69e44171000000001a026b25?source=webshare&xhsshare=pc_web&xsec_token=ABNo_BFRrK-4aWK8jdQuDcf-Uef1fXjZdX0tz2zYWadIg=&xsec_source=pc_share,batch1,"机器人马拉松比赛摔倒后表演了一套鲤鱼打挺丝滑起身，动作行云流水👍👍
 
-",混合|观众,338,113,451
+",混合|观众,混合,观众,338,113,451
 69e4426b000000001d01c7ed,https://www.xiaohongshu.com/explore/69e4426b000000001d01c7ed?source=webshare&xhsshare=pc_web&xsec_token=ABHtr88UWkKZZAADKyuBN5pbUIlFyuaHMlMd6ouyFruIs=&xsec_source=pc_share,batch1,"
 
-",混合|观众,767,1528,2295
+",混合|观众,混合,观众,767,1528,2295
 69e47f8f000000001f007203,https://www.xiaohongshu.com/explore/69e47f8f000000001f007203?source=webshare&xhsshare=pc_web&xsec_token=ABHtr88UWkKZZAADKyuBN5pa0nehc6OZnM27rlZfWbIec=&xsec_source=pc_share,batch1,"记录一下2026年的机器人状态，五年后再看！
 
-",混合|观众,1556,1484,3040
+",混合|观众,混合,观众,1556,1484,3040
 69e4b08d000000001d01c1bc,https://www.xiaohongshu.com/explore/69e4b08d000000001d01c1bc?source=webshare&xhsshare=pc_web&xsec_token=ABNo_BFRrK-4aWK8jdQuDcf_-QmOr87KjFgtg1Au50bZs=&xsec_source=pc_share,batch1,"
 
-",混合|观众,97,160,257
+",混合|观众,混合,观众,97,160,257

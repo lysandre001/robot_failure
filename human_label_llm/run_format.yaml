@@ -1,0 +1,40 @@
+run_id: 20260529_object_v1_comment_only_test
+
+input_csv: human_label_llm/label_data/clean_comments_robot_human_filtered_sample10_per_post(labelled) - clean_comments_robot_human_filtered_sample10_per_post(labelled).csv
+posts_csv: data/rawdata/posts.csv
+
+prompt: eval_object_v1
+
+columns:
+  comment_id: comment_id
+  comment: content
+  title: 帖子标题
+  caption: post_caption
+  gold: 评估对象
+
+gold_column: 评估对象
+
+posts_join:
+  post_id: 帖子id
+  caption_from: 帖子正文
+
+scope_slots:
+  scope_comment_only: [comment]
+  scope_comment_title: [comment, title]
+  scope_comment_title_caption: [comment, title, caption]
+
+scopes:
+  - scope_comment_only
+
+models:
+  deepseek_v4_pro:
+    provider: deepseek
+    model: deepseek-v4-pro
+    reasoning: on
+    reasoning_effort: high   # high | max
+
+temperature: 0.0
+max_tokens: 2048            
+concurrency: 5
+timeout: 180
+limit: null

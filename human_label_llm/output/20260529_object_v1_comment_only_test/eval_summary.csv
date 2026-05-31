@@ -1,0 +1,2 @@
+﻿model_key,scope_id,gold_column,pred_column,n,accuracy,kappa,n_parse_error,n_api_error,n_agree,n_disagree,agreement_rate,disagreement_rate,macro_recall,macro_precision,macro_f1
+deepseek_v4_pro,scope_comment_only,评估对象,llm_deepseek_v4_pro_scope_comment_only,311,0.6495,0.5163,0,0,202,109,0.6495,0.3505,0.5632,0.535,0.5358

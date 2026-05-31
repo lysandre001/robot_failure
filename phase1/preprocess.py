@@ -1,6 +1,8 @@
 """步骤 A：读 Excel、合并类别、去重、统一评论表。"""
 from __future__ import annotations
 
+from typing import Any
+
 import json
 import os
 from collections import Counter
@@ -76,27 +78,63 @@ def normalize_post_id(pid) -> str | None:
     return s if s else None
 
 
+def _split_post_category_label(s: Any) -> tuple[str, str]:
+    if pd.isna(s) or str(s).strip() == "":
+        return "", ""
+    parts = str(s).split("|", 1)
+    if len(parts) == 2:
+        return parts[0].strip(), parts[1].strip()
+    return parts[0].strip(), ""
+
+
+def load_post_category_table(path: Path | str | None = None) -> pd.DataFrame:
+    """
+    读取帖子编码表，返回 ``帖子id, post_category, robot_status, human_role``。
+
+    支持三种 config 格式：
+    - ``机器人状态`` + ``人的形象``（当前 canonical）
+    - ``post_category`` 或 ``类别``（``状态|角色`` 合并字符串）
+    """
+    p = Path(path) if path is not None else POST_CATEGORY_BY_POST_CSV
+    tab = pd.read_csv(p, encoding="utf-8-sig")
+    if tab.empty:
+        return pd.DataFrame(columns=["帖子id", "post_category", "robot_status", "human_role"])
+
+    id_col = "帖子id" if "帖子id" in tab.columns else tab.columns[0]
+    out = tab[[id_col]].copy().rename(columns={id_col: "帖子id"})
+    out["帖子id"] = out["帖子id"].map(normalize_post_id)
+
+    if {"机器人状态", "人的形象"}.issubset(tab.columns):
+        out["robot_status"] = tab["机器人状态"].map(lambda x: "" if pd.isna(x) else str(x).strip())
+        out["human_role"] = tab["人的形象"].map(lambda x: "" if pd.isna(x) else str(x).strip())
+        out["post_category"] = out["robot_status"] + "|" + out["human_role"]
+    elif "post_category" in tab.columns:
+        out["post_category"] = tab["post_category"].map(lambda x: "" if pd.isna(x) else str(x).strip())
+        split = out["post_category"].map(_split_post_category_label)
+        out["robot_status"] = split.map(lambda x: x[0])
+        out["human_role"] = split.map(lambda x: x[1])
+    elif "类别" in tab.columns:
+        out["post_category"] = tab["类别"].map(lambda x: "" if pd.isna(x) else str(x).strip())
+        split = out["post_category"].map(_split_post_category_label)
+        out["robot_status"] = split.map(lambda x: x[0])
+        out["human_role"] = split.map(lambda x: x[1])
+    else:
+        cat_col = tab.columns[1]
+        out["post_category"] = tab[cat_col].map(lambda x: "" if pd.isna(x) else str(x).strip())
+        split = out["post_category"].map(_split_post_category_label)
+        out["robot_status"] = split.map(lambda x: x[0])
+        out["human_role"] = split.map(lambda x: x[1])
+
+    out = out.dropna(subset=["帖子id"])
+    out = out[out["post_category"].str.len() > 0]
+    return out.drop_duplicates(subset=["帖子id"], keep="first")[
+        ["帖子id", "post_category", "robot_status", "human_role"]
+    ]
+
+
 def _read_post_id_category_csv(path: Path) -> dict[str, str]:
-    if not path.is_file():
-        return {}
-    tab = pd.read_csv(path, encoding="utf-8-sig")
-    if tab.empty or tab.shape[1] < 2:
-        return {}
-    cols = list(tab.columns)
-    id_col = "帖子id" if "帖子id" in cols else cols[0]
-    cat_col = "类别" if "类别" in cols else cols[1]
-    out: dict[str, str] = {}
-    for _, row in tab.iterrows():
-        key = normalize_post_id(row[id_col])
-        if key is None:
-            continue
-        if pd.isna(row[cat_col]):
-            continue
-        val = str(row[cat_col]).strip()
-        if not val or val.startswith("#"):
-            continue
-        out[key] = val
-    return out
+    tab = load_post_category_table(path)
+    return dict(zip(tab["帖子id"], tab["post_category"]))
 
 
 def apply_post_category_by_post(
@@ -106,25 +144,41 @@ def apply_post_category_by_post(
     csv_path: Path | str | None = None,
 ) -> pd.DataFrame:
     """
-    用「帖子 id → 类别」表覆盖 `post_category`。未出现在表中的帖子保留 `merge_post_category` 的结果。
+    用研究编码表覆盖 ``post_category`` / ``robot_status`` / ``human_role``。
 
-    默认读 `config/post_category_by_post.csv`（列为 `帖子id`,`类别`；列名也可换成前两列）。
-    若在代码里传入 `overrides`，会与 CSV 合并（同 id 以 overrides 为准）。
+    默认读 ``config/post_category_by_post.csv``（``机器人状态`` + ``人的形象``，或 legacy ``类别``）。
+    未出现在表中的帖子保留 ``merge_post_category`` 的结果；``robot_status`` / ``human_role`` 留空。
     """
     out = df.copy()
-    if "帖子id" not in out.columns or "post_category" not in out.columns:
+    if "帖子id" not in out.columns:
         return out
     path = Path(csv_path) if csv_path is not None else POST_CATEGORY_BY_POST_CSV
-    assign: dict[str, str] = _read_post_id_category_csv(path)
+    if not path.is_file():
+        return out
+
+    prev_cat = out["post_category"] if "post_category" in out.columns else None
+    pc = load_post_category_table(path)
     if overrides:
+        extra_rows = []
         for k, v in overrides.items():
             nk = normalize_post_id(k)
-            if nk and v:
-                assign[nk] = str(v).strip()
-    if not assign:
-        return out
-    new_cats = out["帖子id"].map(lambda p: assign.get(normalize_post_id(p)))
-    out["post_category"] = new_cats.fillna(out["post_category"])
+            if not nk or not v:
+                continue
+            rs, hr = _split_post_category_label(str(v).strip())
+            extra_rows.append(
+                {"帖子id": nk, "post_category": str(v).strip(), "robot_status": rs, "human_role": hr}
+            )
+        if extra_rows:
+            pc = pd.concat([pc, pd.DataFrame(extra_rows)], ignore_index=True)
+            pc = pc.drop_duplicates(subset=["帖子id"], keep="last")
+
+    out["帖子id"] = out["帖子id"].map(normalize_post_id)
+    out = out.drop(columns=["post_category", "robot_status", "human_role"], errors="ignore")
+    out = out.merge(pc, on="帖子id", how="left")
+    if prev_cat is not None:
+        out["post_category"] = out["post_category"].fillna(prev_cat)
+    if "post_category" in out.columns:
+        out["post_category"] = out["post_category"].fillna("unknown")
     return out
 
 
@@ -163,6 +217,8 @@ def build_level1(df: pd.DataFrame) -> pd.DataFrame:
     cols = [
         "帖子id",
         "post_category",
+        "robot_status",
+        "human_role",
         "帖子标题",
         "帖子正文",
         "帖子点赞数",
@@ -201,6 +257,8 @@ def build_level2(df: pd.DataFrame) -> pd.DataFrame:
     cols = [
         "帖子id",
         "post_category",
+        "robot_status",
+        "human_role",
         "帖子标题",
         "帖子点赞数",
         "帖子评论数",
@@ -238,6 +296,8 @@ def unified_comments(l1: pd.DataFrame, l2: pd.DataFrame) -> pd.DataFrame:
     common = [
         "帖子id",
         "post_category",
+        "robot_status",
+        "human_role",
         "帖子标题",
         "帖子点赞数",
         "帖子评论数",
@@ -270,6 +330,20 @@ def _is_repeated_single_char(text: str) -> bool:
     if not t:
         return False
     return len(set(t)) == 1
+
+
+def refresh_post_labels(df: pd.DataFrame, *, csv_path: Path | str | None = None) -> pd.DataFrame:
+    """在已有 clean 表上刷新 ``post_category`` / ``robot_status`` / ``human_role``。"""
+    out = df.copy()
+    out["帖子id"] = out["帖子id"].map(normalize_post_id)
+    prev_cat = out["post_category"] if "post_category" in out.columns else None
+    pc = load_post_category_table(csv_path)
+    out = out.drop(columns=["post_category", "robot_status", "human_role"], errors="ignore")
+    out = out.merge(pc, on="帖子id", how="left")
+    if prev_cat is not None:
+        out["post_category"] = out["post_category"].fillna(prev_cat)
+    out["post_category"] = out["post_category"].fillna("unknown")
+    return out
 
 
 def filter_valid_comments(

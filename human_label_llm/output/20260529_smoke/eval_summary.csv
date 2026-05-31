@@ -1,0 +1,3 @@
+﻿model_key,scope_id,gold_column,pred_column,n,accuracy,kappa,n_parse_error
+claude_4_7,scope_comment_only,human_eval_object,llm_claude_4_7_scope_comment_only,0,,,312
+claude_4_7,scope_comment_title,human_eval_object,llm_claude_4_7_scope_comment_title,0,,,312

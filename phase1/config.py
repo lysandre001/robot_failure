@@ -11,7 +11,7 @@ OUT = ROOT / "output" / "phase1"
 FIG = OUT / "figures"
 # 默认数据文件；可用环境变量 ROBOTIC_FAILURE_XLSX 或 load_raw_frames(xlsx=...) 覆盖
 XLSX = ROOT / "小红书帖子数据.xlsx"
-# 每条帖子的分析用类别：`帖子id`,`类别`（见 config/post_category_by_post.csv）
+# 帖子编码：`config/post_category_by_post.csv`（``机器人状态`` + ``人的形象``；合并为 ``post_category``）
 POST_CATEGORY_BY_POST_CSV = ROOT / "config" / "post_category_by_post.csv"
 
 # 避免无写权限环境下的 Matplotlib 缓存问题
