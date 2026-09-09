@@ -1,0 +1,163 @@
+{
+  "run_id": "2026-05-19_topic_full_corpus_merged_bge_base",
+  "generated_at": "2026-05-19T19:26:14",
+  "input_csv": "data/clean/clean_comments_unified.csv",
+  "input_csv_sha256": "01a8cde50cc9d06f9e54f88a820fee0a3ef0e06cc5f99415cecc6a80653353ef",
+  "n_shared": 28055,
+  "summary_corpus": {
+    "n_raw": 46051,
+    "n_shared": 28055,
+    "coverage": 0.6092158693622288,
+    "n_missing_robot_status_group": 11127,
+    "excluded_empty_or_too_short": 2193,
+    "excluded_pure_emoji": 0,
+    "excluded_only_at_mentions": 0,
+    "excluded_repeated_fragment": 0,
+    "excluded_pure_noise_row": 6,
+    "excluded_effective_tokens_lt_min": 12396,
+    "excluded_duplicate_text": 3401
+  },
+  "embedding_model_resolved": "BAAI/bge-base-zh-v1.5",
+  "faq_compliance": {
+    "C1_chinese_tokenizer": "jieba (token_pattern=None)",
+    "C2_stopwords_after_embedding": true,
+    "C3_umap_random_state": 42,
+    "C4_calculate_probabilities": false,
+    "C5_low_memory": true,
+    "C6_outlier_strategy": "reduce_outliers(strategy='c-tf-idf') + KMeans backup",
+    "C7_min_topic_size_sensitivity": [
+      30,
+      50,
+      80,
+      100,
+      200
+    ],
+    "C8_model_used": "BAAI/bge-base-zh-v1.5",
+    "C10_raw_text_to_encoder": true,
+    "POS_main_pipeline": false,
+    "content_filter_config": "/Users/yilin/Desktop/project/robot_failure/config/topic_modeling/comment_content_filter.json",
+    "post_category_source": "/Users/yilin/Desktop/project/robot_failure/config/post_category_by_post.csv",
+    "representation_model": [
+      "KeyBERTInspired",
+      "MMR(0.3)"
+    ],
+    "umap_precomputed_shared": true,
+    "bert_model_saved": true,
+    "stability_seeds": [
+      42,
+      7,
+      2026
+    ],
+    "stratified_merge_rule": "robot_status in {\"强势\",\"成功\"} -> \"强势成功\"；其余失败/弱势/中性各为一层。"
+  },
+  "config": {
+    "run_id": "2026-05-19_topic_full_corpus_merged_bge_base",
+    "input_csv": "data/clean/clean_comments_unified.csv",
+    "comment_content_filter_json": "/Users/yilin/Desktop/project/robot_failure/config/topic_modeling/comment_content_filter.json",
+    "post_category_by_post_csv": "/Users/yilin/Desktop/project/robot_failure/config/post_category_by_post.csv",
+    "embedding_model": "BAAI/bge-base-zh-v1.5",
+    "embedding_model_fallback": "BAAI/bge-small-zh-v1.5",
+    "device": "cpu",
+    "lda_k_values": [
+      5,
+      7,
+      10,
+      12
+    ],
+    "bert_kmeans_k_values": [
+      5,
+      7,
+      10
+    ],
+    "bert_hdbscan_min_cluster_sizes": [
+      30,
+      50,
+      80,
+      100,
+      200
+    ],
+    "bert_hdbscan_min_samples": null,
+    "bert_reduce_outliers": true,
+    "use_keybert_inspired": true,
+    "mmr_diversity": 0.3,
+    "stability_seeds": [
+      42,
+      7,
+      2026
+    ],
+    "auto_reduce_kmeans_k7": false,
+    "min_clean_chars": 4,
+    "min_effective_tokens": 2,
+    "random_seed": 42,
+    "low_memory": true,
+    "calculate_probabilities": false,
+    "sample_per_topic": 30,
+    "top_terms": 15,
+    "cache_embeddings": true,
+    "lda_min_df": 5,
+    "lda_max_df": 0.92,
+    "nmf_min_df": 3,
+    "nmf_max_df": 0.95,
+    "max_features": 8000
+  },
+  "bertopic_meta": {
+    "bertopic_runs": [
+      {
+        "mcs": 30,
+        "n_topics_approx": 139,
+        "outlier_rate_topic_raw": 0.4170736054179291,
+        "silhouette": 0.6651221513748169,
+        "dbcv": 0.31783910802913945,
+        "mean_ari": 1.0,
+        "model_saved": true
+      },
+      {
+        "mcs": 50,
+        "n_topics_approx": 90,
+        "outlier_rate_topic_raw": 0.4437711637854215,
+        "silhouette": 0.6681572198867798,
+        "dbcv": 0.29946347696012504,
+        "mean_ari": 1.0,
+        "model_saved": true
+      },
+      {
+        "mcs": 80,
+        "n_topics_approx": 37,
+        "outlier_rate_topic_raw": 0.3632151131705578,
+        "silhouette": 0.43719255924224854,
+        "dbcv": 0.23346043979383577,
+        "mean_ari": 1.0,
+        "model_saved": true
+      },
+      {
+        "mcs": 100,
+        "n_topics_approx": 31,
+        "outlier_rate_topic_raw": 0.3857779361967564,
+        "silhouette": 0.4445313811302185,
+        "dbcv": 0.23787850362262594,
+        "mean_ari": 1.0,
+        "model_saved": true
+      },
+      {
+        "mcs": 200,
+        "n_topics_approx": 15,
+        "outlier_rate_topic_raw": 0.3999643557298164,
+        "silhouette": 0.4373551309108734,
+        "dbcv": 0.11312443474327868,
+        "mean_ari": 1.0,
+        "model_saved": true
+      }
+    ],
+    "quality_summary_csv": "a_bertopic_quality.csv",
+    "umap_precomputed_shared": true,
+    "representation_model": [
+      "KeyBERTInspired",
+      "MMR(0.3)"
+    ],
+    "stability_seeds": [
+      42,
+      7,
+      2026
+    ]
+  }
+}

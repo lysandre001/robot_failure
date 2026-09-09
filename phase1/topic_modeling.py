@@ -10,7 +10,7 @@ import json
 import re
 import shutil
 import sys
-from dataclasses import asdict, dataclass, fields, replace
+from dataclasses import asdict, dataclass, fields
 from datetime import datetime
 from pathlib import Path
 from typing import Any
@@ -21,7 +21,7 @@ from sklearn.decomposition import LatentDirichletAllocation, NMF
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 
 from phase1.comment_content_filter import classify_comment_noise, load_comment_filter_rules
-from phase1.config import ROOT
+from phase1.config import CLEAN_COMMENTS_UNIFIED, ROOT
 from phase1.preprocess import normalize_text
 from phase1.topic_lda import (
     clean_text,
@@ -68,47 +68,10 @@ def robot_status_to_stratum_group(robot_status: Any) -> str | None:
     return s
 
 
-def _adaptive_cfg_for_stratum(cfg: TopicModelingConfig, n_comments: int) -> TopicModelingConfig:
-    """小语料时收缩 LDA K / KMeans K / HDBSCAN mcs，避免无效聚类。"""
-    if n_comments < 1:
-        return cfg
-    lda_cap = max(2, min(max(cfg.lda_k_values), n_comments // 20))
-    lda_k = tuple(k for k in cfg.lda_k_values if k <= lda_cap)
-    if not lda_k:
-        for fallback in (5, 3, 2):
-            if fallback <= max(2, n_comments // 15):
-                lda_k = (fallback,)
-                break
-        if not lda_k:
-            lda_k = (2,)
-
-    km_cap = max(2, n_comments // 25)
-    bert_k = tuple(k for k in cfg.bert_kmeans_k_values if k <= km_cap)
-    if not bert_k:
-        bert_k = (max(2, min(3, max(2, n_comments // 30))),)
-
-    cap_mcs = max(8, n_comments // 2)
-    hdb = tuple(m for m in cfg.bert_hdbscan_min_cluster_sizes if m <= cap_mcs)
-    if not hdb:
-        seed = max(5, min(40, n_comments // 6))
-        hdb = tuple(sorted({seed, max(5, seed * 2 // 3), min(cap_mcs, seed * 2)}))
-
-    lda_min_df = max(1, min(cfg.lda_min_df, max(1, n_comments // 50)))
-    nmf_min_df = max(1, min(cfg.nmf_min_df, max(1, n_comments // 40)))
-    return replace(
-        cfg,
-        lda_k_values=lda_k,
-        bert_kmeans_k_values=bert_k,
-        bert_hdbscan_min_cluster_sizes=hdb,
-        lda_min_df=int(lda_min_df),
-        nmf_min_df=int(nmf_min_df),
-    )
-
-
 @dataclass
 class TopicModelingConfig:
-    run_id: str = "2026-05-09_topic_full_corpus_bge_base"
-    input_csv: Path = ROOT / "output" / "phase1" / "data" / "clean_comments_unified.csv"
+    run_id: str = "2026-05-27_topic_merged_bge_hdbscan_sensitivity"
+    input_csv: Path = CLEAN_COMMENTS_UNIFIED
     comment_content_filter_json: Path = ROOT / "config" / "topic_modeling" / "comment_content_filter.json"
     post_category_by_post_csv: Path = ROOT / "config" / "post_category_by_post.csv"
     embedding_model: str = "BAAI/bge-base-zh-v1.5"
@@ -1355,156 +1318,6 @@ def _append_registry_line(
             f.write(line)
 
 
-def _write_stratified_overview(
-    parent_dir: Path,
-    rows: list[dict[str, Any]],
-    cfg: TopicModelingConfig,
-) -> None:
-    lines = [
-        "# 分层主题建模总览（robot_status_group）",
-        "",
-        f"- 生成时间（UTC 本地）：{datetime.now().isoformat(timespec='seconds')}",
-        f"- 父 `run_id`：`{cfg.run_id}`",
-        f"- 合并规则：{STRATUM_MERGE_RULE}",
-        "",
-        "## 各层规模与输出",
-        "",
-        "| stratum | n_comments | n_posts | BERTopic | output_dir |",
-        "|---------|------------|---------|----------|------------|",
-    ]
-    for r in rows:
-        bp = "skipped" if r.get("skipped") else ("ok" if r.get("n_comments", 0) >= 20 else "LDA/NMF only")
-        od = r.get("output_dir", "")
-        lines.append(
-            f"| {r.get('stratum')} | {r.get('n_comments', 0)} | {r.get('n_posts', 0)} | {bp} | `{od}` |"
-        )
-    lines.extend(
-        [
-            "",
-            "## 方法说明",
-            "",
-            "- 每层内 LDA / NMF / BERTopic（若 n≥20）共用该层 `shared_analyzable_corpus.csv`（**M7**）。",
-            "- `robot_status_group` 来自研究设计，非模型聚类；**不可**将跨层 topic id 等同（第二轮自检）。",
-            "- 帖数极少层仅作描述性阅读（**M8**）。",
-            "",
-        ]
-    )
-    (parent_dir / "comparison_stratified_overview.md").write_text("\n".join(lines), encoding="utf-8")
-
-
-def run_stratified_robot_status_experiment(cfg: TopicModelingConfig) -> Path:
-    """按 `robot_status_group` 四层分别跑完整主题管线（共享全量清洗规则后再切分）。"""
-    buf_parent = io.StringIO()
-    tee_parent = Tee(sys.stdout, buf_parent)
-    run_dir = cfg.experiments_root / cfg.run_id
-    run_dir.mkdir(parents=True, exist_ok=True)
-
-    stopwords = load_topic_stopwords()
-    shared, excluded, summary_corpus = build_shared_analyzable_corpus(cfg, stopwords=stopwords)
-
-    miss = int(summary_corpus.get("n_missing_robot_status_group", 0))
-    if miss:
-        print(f"[WARN] {miss} comments lack robot_status_group", file=tee_parent, flush=True)
-
-    shared.to_csv(run_dir / "shared_analyzable_corpus_full.csv", index=False)
-    excluded.to_csv(run_dir / "excluded_meaningless.csv", index=False)
-    shutil.copy2(cfg.comment_content_filter_json, run_dir / "comment_content_filter.json")
-    shutil.copy2(cfg.post_category_by_post_csv, run_dir / "post_category_by_post.csv")
-
-    overview_rows: list[dict[str, Any]] = []
-    last_embedding = cfg.embedding_model
-
-    for label in ROBOT_STATUS_STRATUM_ORDER:
-        sub = shared[shared["robot_status_group"] == label].copy()
-        n_c = len(sub)
-        n_p = int(sub["帖子id"].nunique()) if n_c else 0
-        sdir = run_dir / "strata" / label
-        if n_c == 0:
-            overview_rows.append(
-                {
-                    "stratum": label,
-                    "n_comments": 0,
-                    "n_posts": 0,
-                    "output_dir": "",
-                    "skipped": True,
-                }
-            )
-            print(f"[stratum {label}] empty, skip", file=tee_parent, flush=True)
-            continue
-
-        sdir.mkdir(parents=True, exist_ok=True)
-        sub.to_csv(sdir / "shared_analyzable_corpus.csv", index=False)
-        cfg_s = _adaptive_cfg_for_stratum(cfg, n_c)
-        buf_s = io.StringIO()
-        tee_s = Tee(sys.stdout, buf_s)
-        sum_s = {
-            **summary_corpus,
-            "stratum": label,
-            "n_shared_stratum": n_c,
-            "n_posts_stratum": n_p,
-            "adaptive_lda_k": list(cfg_s.lda_k_values),
-            "adaptive_bert_kmeans_k": list(cfg_s.bert_kmeans_k_values),
-            "adaptive_hdbscan_mcs": list(cfg_s.bert_hdbscan_min_cluster_sizes),
-            "adaptive_lda_min_df": cfg_s.lda_min_df,
-            "adaptive_nmf_min_df": cfg_s.nmf_min_df,
-        }
-        run_loo = n_p >= 3
-        embedding_used, meta_run = _run_topic_pipeline_steps(
-            cfg_s, sub, stopwords, sdir, tee_s, summary_corpus=sum_s, run_loo=run_loo
-        )
-        last_embedding = embedding_used
-        _write_experiment_config_json(
-            cfg_s,
-            sdir,
-            sub,
-            sum_s,
-            embedding_used,
-            meta_run,
-            extra={
-                "stratum": label,
-                "parent_run_dir": str(run_dir.resolve()),
-                "stratified_experiment": True,
-            },
-        )
-        (sdir / "run.log").write_text(buf_s.getvalue(), encoding="utf-8")
-        overview_rows.append(
-            {
-                "stratum": label,
-                "n_comments": n_c,
-                "n_posts": n_p,
-                "output_dir": str(sdir.resolve()),
-                "skipped": False,
-            }
-        )
-
-    _write_stratified_overview(run_dir, overview_rows, cfg)
-
-    parent_payload = {
-        "run_id": cfg.run_id,
-        "generated_at": datetime.now().isoformat(timespec="seconds"),
-        "mode": "stratified_robot_status_group",
-        "strata": overview_rows,
-        "merge_rule": STRATUM_MERGE_RULE,
-        "summary_corpus_full": summary_corpus,
-        "input_csv": str(cfg.input_csv),
-        "input_csv_sha256": _sha256_file(cfg.input_csv),
-    }
-    with open(run_dir / "config_stratified_parent.json", "w", encoding="utf-8") as f:
-        json.dump(parent_payload, f, ensure_ascii=False, indent=2)
-
-    (run_dir / "run.log").write_text(buf_parent.getvalue(), encoding="utf-8")
-    _append_registry_line(
-        cfg.experiments_root,
-        cfg.run_id,
-        last_embedding,
-        run_dir,
-        task="topic_stratified_robot_status",
-        decision="stratified_4_groups",
-    )
-    print(f"Stratified run done. Output: {run_dir}", file=tee_parent)
-    return run_dir
-
-
 def run_experiment(cfg: TopicModelingConfig) -> Path:
     buf = io.StringIO()
     tee = Tee(sys.stdout, buf)
@@ -1593,11 +1406,6 @@ def main() -> None:
         action="store_true",
         help="关闭 KeyBERTInspired+MMR 主题词重排（默认开）",
     )
-    ap.add_argument(
-        "--stratify-robot-status",
-        action="store_true",
-        help="按 robot_status_group 四层（强势+成功合并为「强势成功」）分别跑 LDA/NMF/BERTopic，输出 strata/<层>/",
-    )
     args = ap.parse_args()
 
     overrides: dict[str, Any] = {}
@@ -1612,21 +1420,14 @@ def main() -> None:
     if args.no_keybert:
         overrides["use_keybert_inspired"] = False
 
-    run_id = args.run_id
-    if args.stratify_robot_status and run_id == TopicModelingConfig.run_id:
-        run_id = datetime.now().strftime("%Y-%m-%d") + "_topic_stratified_robot_status"
-
     cfg = TopicModelingConfig(
-        run_id=run_id,
+        run_id=args.run_id,
         input_csv=Path(args.input_csv),
         embedding_model=args.embedding_model,
         device=args.device,
         **overrides,
     )
-    if args.stratify_robot_status:
-        run_stratified_robot_status_experiment(cfg)
-    else:
-        run_experiment(cfg)
+    run_experiment(cfg)
 
 
 if __name__ == "__main__":

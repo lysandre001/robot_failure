@@ -1,0 +1,46 @@
+=== Topic modeling run ===
+{
+  "n_raw": 46051,
+  "n_shared": 28055,
+  "coverage": 0.6092158693622288,
+  "n_missing_robot_status_group": 11127,
+  "excluded_empty_or_too_short": 2193,
+  "excluded_pure_emoji": 0,
+  "excluded_only_at_mentions": 0,
+  "excluded_repeated_fragment": 0,
+  "excluded_pure_noise_row": 6,
+  "excluded_effective_tokens_lt_min": 12396,
+  "excluded_duplicate_text": 3401
+}
+[LDA k=5] perplexity=1736.29 docs=28055
+[NMF k=5] reconstruction_err=162.9787 docs=28055
+[LDA k=7] perplexity=1748.68 docs=28055
+[NMF k=7] reconstruction_err=162.2081 docs=28055
+[LDA k=10] perplexity=1771.48 docs=28055
+[NMF k=10] reconstruction_err=161.2276 docs=28055
+[LDA k=12] perplexity=1843.91 docs=28055
+[NMF k=12] reconstruction_err=160.6497 docs=28055
+[BERTopic] importing optional deps…
+[BERTopic] SentenceTransformer('BAAI/bge-base-zh-v1.5', device='cpu') …
+[BERTopic] 已从本地 HuggingFace 缓存加载嵌入模型。
+[BERTopic] encoding 28055 docs …
+[BERTopic] saved /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-19_topic_full_corpus_merged_bge_base/embeddings.npy
+[BERTopic] UMAP fit_transform once (n_neighbors=15, n_docs=28055)…
+[BERTopic] umap_reduced.npy saved, shape=(28055, 5)
+[BERTopic] representation_model = [KeyBERTInspired, MMR(div=0.3)]
+[BERTopic HDBSCAN mcs=30] model saved to /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-19_topic_full_corpus_merged_bge_base/bert_hdbscan_mcs30/model (safetensors).
+[BERTopic HDBSCAN mcs=30] topics~=139 outlier_rate=0.417 sil=0.665 dbcv=0.318 mean_ari=1.000
+[BERTopic HDBSCAN mcs=50] model saved to /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-19_topic_full_corpus_merged_bge_base/bert_hdbscan_mcs50/model (safetensors).
+[BERTopic HDBSCAN mcs=50] topics~=90 outlier_rate=0.444 sil=0.668 dbcv=0.299 mean_ari=1.000
+[BERTopic HDBSCAN mcs=80] model saved to /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-19_topic_full_corpus_merged_bge_base/bert_hdbscan_mcs80/model (safetensors).
+[BERTopic HDBSCAN mcs=80] topics~=37 outlier_rate=0.363 sil=0.437 dbcv=0.233 mean_ari=1.000
+[BERTopic HDBSCAN mcs=100] model saved to /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-19_topic_full_corpus_merged_bge_base/bert_hdbscan_mcs100/model (safetensors).
+[BERTopic HDBSCAN mcs=100] topics~=31 outlier_rate=0.386 sil=0.445 dbcv=0.238 mean_ari=1.000
+[BERTopic HDBSCAN mcs=200] model saved to /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-19_topic_full_corpus_merged_bge_base/bert_hdbscan_mcs200/model (safetensors).
+[BERTopic HDBSCAN mcs=200] topics~=15 outlier_rate=0.400 sil=0.437 dbcv=0.113 mean_ari=1.000
+[BERTopic KMeans k=5] model saved to /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-19_topic_full_corpus_merged_bge_base/bert_kmeans_k5/model (safetensors).
+[BERTopic KMeans k=5] sil=0.325 mean_ari=0.726 largest_share=0.255 model_saved=True
+[BERTopic KMeans k=7] model saved to /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-19_topic_full_corpus_merged_bge_base/bert_kmeans_k7/model (safetensors).
+[BERTopic KMeans k=7] sil=0.372 mean_ari=0.988 largest_share=0.244 model_saved=True
+[BERTopic KMeans k=10] model saved to /Users/yilin/Desktop/project/robot_failure/output/experiments/2026-05-19_topic_full_corpus_merged_bge_base/bert_kmeans_k10/model (safetensors).
+[BERTopic KMeans k=10] sil=0.347 mean_ari=0.838 largest_share=0.218 model_saved=True

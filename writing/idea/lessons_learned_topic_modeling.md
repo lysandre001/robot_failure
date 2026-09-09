@@ -37,15 +37,9 @@ PYTHONUNBUFFERED=1 ./.venv/bin/python -m phase1.topic_modeling --device cpu
 
 **与主流程隔离的探索工具**：`keyword_filter.py` → 仅 `output/explore/`，**不得**接入 LDA/BERTopic 输入或当标签（**M1/M2**）。
 
-**按机器人帖子状态分层（4 档）**：在 `build_shared_analyzable_corpus` 中为每条评论生成 **`robot_status_group`**——**「强势」「成功」合并为 `强势成功`**，其余 `失败` / `弱势` / `中性` 各一层（实现见 [`phase1/topic_modeling.py`](../phase1/topic_modeling.py) 中 `robot_status_to_stratum_group`、`ROBOT_STATUS_STRATUM_ORDER`）。分层跑完整管线时使用：
+**`robot_status_group` 列**：在 `build_shared_analyzable_corpus` 中写入，供横切表使用（「强势」「成功」→ `强势成功`；「混合」不进分层）。实现见 `robot_status_to_stratum_group`。
 
-```bash
-./.venv/bin/python -m phase1.topic_modeling --stratify-robot-status --device cpu --run-id <你的run_id>
-```
-
-产物与说明见 [`phase1/RUNBOOK.md`](../phase1/RUNBOOK.md) §3「2b」与各层目录下 `comparison_stratified_overview.md`。
-
-**完整实验计划（工作量、执行步骤、两轮自检清单）**：[分层主题建模实验计划](plan/plan_experiment_stratified_topic_by_robot_status.md)。
+**历史分层实验**：`--stratify-robot-status` CLI 已移除；旧产物在 `output/experiments/_archived/`。若需分层对照，从 archived run 读取，勿重跑该模式。
 
 ---
 

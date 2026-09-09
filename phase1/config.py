@@ -9,6 +9,9 @@ ROOT = Path(__file__).resolve().parents[1]
 
 OUT = ROOT / "output" / "phase1"
 FIG = OUT / "figures"
+# Canonical 清洗产物目录（主题建模默认读此处）
+CLEAN_DIR = ROOT / "data" / "clean"
+CLEAN_COMMENTS_UNIFIED = CLEAN_DIR / "clean_comments_unified.csv"
 # 默认数据文件；可用环境变量 ROBOTIC_FAILURE_XLSX 或 load_raw_frames(xlsx=...) 覆盖
 XLSX = ROOT / "小红书帖子数据.xlsx"
 # 帖子编码：`config/post_category_by_post.csv`（``机器人状态`` + ``人的形象``；合并为 ``post_category``）

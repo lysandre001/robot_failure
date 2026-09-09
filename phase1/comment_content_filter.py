@@ -195,9 +195,9 @@ def run_filter_report(
 
     root = Path(__file__).resolve().parents[1]
     if out_summary is None:
-        out_summary = root / "output" / "phase1" / "comment_content_filter_report.json"
+        out_summary = root / "data" / "clean" / "comment_content_filter_report.json"
     if out_dropped is None:
-        out_dropped = root / "output" / "phase1" / "comment_content_filter_dropped.csv"
+        out_dropped = root / "data" / "clean" / "comment_content_filter_dropped.csv"
 
     out_summary.parent.mkdir(parents=True, exist_ok=True)
     payload = {
@@ -233,9 +233,8 @@ if __name__ == "__main__":
         type=str,
         default=str(
             Path(__file__).resolve().parents[1]
-            / "output"
-            / "phase1"
             / "data"
+            / "clean"
             / "clean_comments_unified_before_filter.csv"
         ),
     )

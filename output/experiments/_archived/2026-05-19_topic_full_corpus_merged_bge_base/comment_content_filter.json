@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "description": "评论正文噪音过滤：纯 emoji、仅 @、重复短片段（情绪叠字等）。应用在 normalize 后、与 min_chars 等基础规则配合使用。",
+  "pure_emoji": {
+    "enabled": true,
+    "notes": "去掉仅由 emoji / ZWJ / 肤色修饰符等组成的评论；含汉字、拉丁字母或数字的保留。"
+  },
+  "only_mentions": {
+    "enabled": true,
+    "mention_regex": "[@＠][^\\s@＠]+",
+    "strip_chars_not_substance": " \t\n，。,.!！?？…~～·、:：（）()[]【】「」《》",
+    "notes": "去掉 @ 后若只剩空白与标点，视为「仅艾特」；正文里带 @ 但仍有实质文字则保留。"
+  },
+  "repeated_fragment": {
+    "enabled": true,
+    "max_period_chars": 6,
+    "min_repeat_count": 3,
+    "min_total_chars": 4,
+    "notes": "整句由同一短片段重复构成则排除（如 哈哈哈哈、666666、哈哈哈哈哈）；周期长度不超过 max_period_chars，重复次数 >= min_repeat_count，总长 >= min_total_chars。"
+  }
+}

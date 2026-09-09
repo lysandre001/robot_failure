@@ -1,5 +1,7 @@
 # Phase 1 RUNBOOK：探索性主题建模 + 关键词筛选
 
+> **先读**：[CURRENT.md](../CURRENT.md)（当前数据/run）· [docs/functions.md](../docs/functions.md)（每条命令的输入/输出契约）
+
 面向接手者：当前阶段以 **全量可分析评论（shared corpus）** 上的探索性主题建模为主，**不依赖 lexicon**、**不训练 judge 模型**、**不把关键词命中当类别标签**。
 
 ---
@@ -17,20 +19,22 @@
 
 | 路径 | 角色 |
 |------|------|
-| `output/phase1/data/clean_comments_unified.csv` | 清洗后**主评论表**，唯一原始输入 |
-| `config/topic_modeling/comment_content_filter.json` | 正文噪声/无意义评论规则（构造 shared corpus 用） |
+| `data/clean/clean_comments_unified.csv` | 清洗后**主评论表**（canonical） |
+| `data/clean/shared_analyzable_corpus.csv` | 主题建模输入（shared） |
+| `config/topic_modeling/comment_content_filter.json` | 正文噪声/无意义评论规则 |
 | `config/post_category_by_post.csv` | 帖子 → `状态\|角色`，**`robot_status` / `human_role` 的唯一来源** |
-| `output/phase1/` | 清洗流水线（[`pipeline.py`](pipeline.py)）的中间产物 |
-| `output/experiments/<run_id>/` | **正式实验**目录：含 `comparison.md`、`config.json`、`run.log`、`review_round1.md`、`review_round2.md` 等 |
-| `output/explore/<timestamp>_<name>/` | **关键词筛选**临时探索产物（不是正式分析） |
+| `output/phase1/` | legacy 报告/图（`--legacy-lexicon-features` 或 `--run-topics`） |
+| `output/experiments/<run_id>/` | **正式实验**目录 |
+| `output/experiments/_archived/` | 历史 run（非当前结论） |
+| `output/explore/<timestamp>_<name>/` | **关键词筛选**临时探索产物 |
 
-`output/experiments/registry.csv` 维护活跃实验列表，列含 `status` / `decision`。
+`output/experiments/registry.csv`：`status=current` 仅一行；其余 `archived`。
 
 ---
 
 ## 2b. 第二批 CSV 合并进语料（anchor 帖）
 
-第二批宽表为根目录 `2-小红书帖子数据.csv`（**不能**直接 `run_phase1.py`）。流程：
+第二批宽表为根目录 `2-小红书帖子数据.csv`（须先 ingest/merge，不能直接当 batch1 xlsx 清洗）。流程：
 
 ```bash
 # 1) 容错清洗 CSV → data/rawdata/xhs_batch2_wide_sanitized.csv + xhs_merge_qc.md
@@ -39,14 +43,13 @@ python -m tools.ingest_xhs_batch2_csv
 # 2) 与 1-小红书帖子数据.xlsx 合并 → merged xlsx + posts.csv
 python -m tools.merge_xhs_batches_xlsx
 
-# 3) 清洗（合并 xlsx）
+# 3) 清洗（合并 xlsx，直接写入 data/clean/）
 python run_preprocess.py --xlsx data/rawdata/小红书帖子数据_merged.xlsx
-cp output/phase1/clean_comments_unified.csv data/clean/
 python -m tools.export_comments_per_post
 
-# 4) 全量主题建模（合并语料，新 run_id）
+# 4) 全量主题建模（新 run_id，勿覆盖 current）
 PYTHONUNBUFFERED=1 ./.venv/bin/python -m phase1.topic_modeling \
-  --run-id 2026-05-19_topic_full_corpus_merged_bge_base \
+  --run-id YYYY-MM-DD_<描述> \
   --input-csv data/clean/clean_comments_unified.csv \
   --device cpu
 ```
@@ -76,15 +79,9 @@ PYTHONUNBUFFERED=1 ./.venv/bin/python -m phase1.topic_modeling --device cpu
 # 可选：关闭 KeyBERTInspired+MMR 重排，回到默认 c-TF-IDF
 ./.venv/bin/python -m phase1.topic_modeling --device cpu --no-keybert
 
-# 2b) 按机器人状态分层（4 档：失败 / 弱势 / 中性 / 强势成功；「强势」「成功」合并）
-# 默认 run_id 若仍为全量默认值，会自动改为当日 topic_stratified_robot_status
-./.venv/bin/python -m phase1.topic_modeling --stratify-robot-status --device cpu \
-    --run-id 2026-05-11_topic_stratified_robot_status
-# 产物：<run_id>/shared_analyzable_corpus_full.csv、strata/<层>/{shared,corpus,comparison.md,...}、comparison_stratified_overview.md
-
 # 3) BERTopic 可视化（reload 已存模型，不再 fit）
 ./.venv/bin/python -m phase1.topic_visualize \
-    --run-id 2026-05-09_topic_full_corpus_bge_base \
+    --run-id 2026-05-27_topic_merged_bge_hdbscan_sensitivity \
     --variant bert_kmeans_k7 \
     --class-col robot_status post_category
 # 输出：<run_dir>/<variant>/figs/{topics_barchart, topics_heatmap, topics_hierarchy,
@@ -246,20 +243,9 @@ PYTHONUNBUFFERED=1 ./.venv/bin/python -m phase1.topic_modeling --device cpu
 
 ---
 
-## 8. 当前结论（**每次跑完更新这一段**）
+## 8. 当前结论
 
-- **当前 run_id**：`2026-05-09_topic_full_corpus_bge_base`（见 `output/experiments/2026-05-09_topic_full_corpus_bge_base/`）。
-- shared corpus：`n_raw=31,245 → n_shared=18,832`，覆盖率 0.6027。
-- 嵌入模型：`BAAI/bge-base-zh-v1.5`（CPU）。
-- BERTopic 流程升级（2026-05-10 第二轮 review）：UMAP 只跑一次（`umap_reduced.npy`）共享给所有 BERTopic 实例；代表词加 `KeyBERTInspired + MMR(0.3)` 重排（原始 c-TF-IDF 保存在 `topics_ctfidf.csv`）；每个 variant 都 `bt.save(serialization="safetensors")` 留档；新增 `a_bertopic_quality.csv`（silhouette / DBCV / mean_ari / largest_share）。
-- HDBSCAN 灵敏度（`mcs / 主题数 / outlier / silhouette / DBCV / mean_ari / largest_share`）：
-  - `30  / 97 / 40.4% / 0.620 / 0.312 / 1.000 / 6.2%`
-  - `50  / 58 / 47.5% / **0.650** / 0.281 / 1.000 / 7.6%`
-  - `80  / 29 / 44.6% / 0.583 / 0.254 / 1.000 / 16.3%`
-  - `100 / 20 / 31.3% / 0.354 / 0.105 / 1.000 / 44.2%`
-  - `200 / 2  / 3.6%  / 0.438 / 0.291 / 1.000 / 90.6%（坍塌）`
-- KMeans（`k / silhouette / mean_ari / largest_share`）：`5/0.339/0.995/28.1%`、`7/0.377/0.995/22.5%`、`10/0.370/0.758/21.4%`。
-- 主报告解释建议（详见 `comparison.md` §解释优先级）：**KMeans K=7 主推**（稳、可对接 `robot_status × post_category` 横切）；HDBSCAN `mcs=50` 用作 codebook 候选维度近读；`mcs=200` 已坍塌不进主报告。
+**维护在仓库根 [CURRENT.md](../CURRENT.md)**（run_id、N、discovery 进度）。跑完新实验后更新 CURRENT + `registry.csv`，勿在本文件重复写结论以免漂移。
 
 ---
 

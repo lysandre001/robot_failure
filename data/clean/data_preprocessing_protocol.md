@@ -81,7 +81,7 @@
 
 ### 附录 A.1 第二批 CSV 容错导入
 
-**脚本**：`tools/ingest_xhs_batch2_csv`（或 `phase1/ingest_xhs_csv.py`）
+**脚本**：`python -m tools.ingest_xhs_batch2_csv`
 
 | 指标 | 数值 |
 |------|------|
@@ -201,9 +201,8 @@ Phase 1 与 shared 均为同一函数、同一 JSON/阈值；batch2 额外损失
 ## 六、复现命令（当前仓库）
 
 ```bash
-# 若已有 merged xlsx：全量 Phase 1 清洗
+# 若已有 merged xlsx：全量 Phase 1 清洗（直接写入 data/clean/）
 python run_preprocess.py --xlsx data/rawdata/小红书帖子数据_merged.xlsx
-cp output/phase1/clean_comments_unified.csv data/clean/
 
 # 仅刷新帖子标签（config 变更后）
 .venv/bin/python -m tools.refresh_clean_post_labels

@@ -12,7 +12,7 @@ from phase1.analysis import (
     role_aggregate,
     topic_clusters,
 )
-from phase1.config import OUT, configure_matplotlib
+from phase1.config import CLEAN_DIR, OUT, configure_matplotlib
 from phase1.features import apply_lexicons
 from phase1.topic_lda import export_lda_result, run_lda
 from phase1.comment_content_filter import COMMENT_CONTENT_FILTER_JSON
@@ -38,7 +38,7 @@ def run_phase1_pipeline(
     xlsx: Path | str | None = None,
     post_category_overrides: dict[str | int, str] | None = None,
     write_csv: bool = True,
-    run_topics: bool = True,
+    run_topics: bool = False,
     run_lda_topics: bool = False,
     lda_topics_k: int = 10,
     lda_tokenizer: str = "jieba",
@@ -83,7 +83,7 @@ def run_phase1_pipeline(
         rules_path = content_rules_path or (
             COMMENT_CONTENT_FILTER_JSON if COMMENT_CONTENT_FILTER_JSON.is_file() else None
         )
-    report_path = (OUT / "comment_content_filter_report.json") if rules_path else None
+    report_path = (CLEAN_DIR / "comment_content_filter_report.json") if rules_path else None
     unified = filter_valid_comments(
         unified_before_filter,
         min_chars=min_chars,
@@ -96,20 +96,14 @@ def run_phase1_pipeline(
     l2_filtered = unified[unified["comment_level"] == 2].copy()
 
     if write_csv:
-        # 输出契约（最小可用）：
-        # 1) clean_l1_comments.csv / clean_l2_comments.csv：去重后未过滤
-        # 2) clean_comments_unified_before_filter.csv：统一表过滤前
-        # 3) clean_comments_unified.csv：统一表过滤后
-        # 4) clean_l1_comments_filtered.csv / clean_l2_comments_filtered.csv：过滤后按层级拆分
-        # 兼容既有文件名：保留去重后的原始一级/二级表（未过滤）
-        l1.to_csv(OUT / "clean_l1_comments.csv", index=False)
-        l2.to_csv(OUT / "clean_l2_comments.csv", index=False)
-        # 过滤前后统一表
-        unified_before_filter.to_csv(OUT / "clean_comments_unified_before_filter.csv", index=False)
-        unified.to_csv(OUT / "clean_comments_unified.csv", index=False)
-        # 过滤后按层级拆分，避免误把未过滤 l1/l2 当成最终清洗结果
-        l1_filtered.to_csv(OUT / "clean_l1_comments_filtered.csv", index=False)
-        l2_filtered.to_csv(OUT / "clean_l2_comments_filtered.csv", index=False)
+        # Canonical 输出：data/clean/（见 CURRENT.md）
+        CLEAN_DIR.mkdir(parents=True, exist_ok=True)
+        l1.to_csv(CLEAN_DIR / "clean_l1_comments.csv", index=False)
+        l2.to_csv(CLEAN_DIR / "clean_l2_comments.csv", index=False)
+        unified_before_filter.to_csv(CLEAN_DIR / "clean_comments_unified_before_filter.csv", index=False)
+        unified.to_csv(CLEAN_DIR / "clean_comments_unified.csv", index=False)
+        l1_filtered.to_csv(CLEAN_DIR / "clean_l1_comments_filtered.csv", index=False)
+        l2_filtered.to_csv(CLEAN_DIR / "clean_l2_comments_filtered.csv", index=False)
 
     if verbose:
         print("3/8 数据质量…", flush=True)
@@ -163,7 +157,7 @@ def run_phase1_pipeline(
     write_codebook_suggestions(report_df, l1)
 
     if verbose:
-        print("完成。输出目录:", OUT, flush=True)
+        print("完成。清洗表:", CLEAN_DIR / "clean_comments_unified.csv", flush=True)
 
     return {
         "main_df": main_df,
@@ -233,9 +227,15 @@ def main() -> None:
         action="store_true",
         help="启用旧版 lexicon 特征与 role_aggregate 等输出（默认关闭）",
     )
+    parser.add_argument(
+        "--run-topics",
+        action="store_true",
+        help="额外运行旧版 sklearn topic_clusters（默认关；正式主题建模用 phase1.topic_modeling）",
+    )
     args = parser.parse_args()
     run_phase1_pipeline(
         xlsx=args.xlsx,
+        run_topics=args.run_topics,
         run_lda_topics=args.run_lda_topics,
         lda_topics_k=args.lda_topics_k,
         lda_tokenizer=args.lda_tokenizer,
