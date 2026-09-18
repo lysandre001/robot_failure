@@ -2,21 +2,26 @@
 
 每条命令固定字段：**做什么 · 输入 · 假设 · 产物 · 怎么跑 · 怎么读 · 不要做什么**。
 
-全局约定见 [CURRENT.md](../CURRENT.md)。
+全局约定见 [CURRENT.md](../CURRENT.md)。**同事操作步骤**见 [OPERATING.md](OPERATING.md)；**列含义**见 [data/canonical_comment_schema.md](../data/canonical_comment_schema.md)。
+
+每条命令标注：**主线** = 导入/清洗真源；**探索** = 点名才跑，不写回 clean/gold/current。
 
 ---
 
-## 1. Phase 1 清洗
+## 1. Phase 1 清洗（主线）
 
 **命令**：`python run_preprocess.py`（等价 `python -m phase1.pipeline`）
 
-**做什么**：读小红书宽表 Excel，去重、合并帖子标签、应用噪音规则，写出 canonical 清洗表。
+**做什么**：**统一 Phase1 管线**——宽表去重、评论过滤、shared corpus、阶段统计。平台差异仅在入库适配层（`wide_io` / `douyin_io`）。
 
 **输入**
 
-- Excel：`--xlsx` 或环境变量 `ROBOTIC_FAILURE_XLSX`，默认项目根 `小红书帖子数据.xlsx`
-- [config/post_category_by_post.csv](../config/post_category_by_post.csv)
-- [config/topic_modeling/comment_content_filter.json](../config/topic_modeling/comment_content_filter.json)
+- `--platform`：`xhs` | `tiktok` | `douyin`（`youtube` 待 raw 列映射与适配落地后同上）
+- `--input` / `--xlsx`：宽表路径；须符合 [canonical_comment_schema.md](../data/canonical_comment_schema.md)（抖音 43 列自动映射）
+- `--batch`：事件批次名，如 `merged` / `2604-marathon` / `2608-olympic` → `data/clean/{platform}/{batch}/`
+- XHS 专用：[config/post_category_by_post.csv](../config/post_category_by_post.csv)
+- [config/topic_modeling/comment_content_filter.json](../config/topic_modeling/comment_content_filter.json)（含 `english_boilerplate`；保留 `contains_mention`）
+- TikTok shared：[config/topic_modeling/general_stopwords_en.txt](../config/topic_modeling/general_stopwords_en.txt)（sklearn ENGLISH_STOP_WORDS）
 
 **假设**
 
@@ -25,21 +30,26 @@
 - 默认**不**跑 lexicon 特征（`--legacy-lexicon-features` 才启用）
 - 默认**不**跑旧 sklearn `topic_clusters`（`--run-topics` 才启用）
 
-**产物**（`data/clean/`）
+**产物**（`data/clean/{platform}/{batch}/`）
 
-- `clean_comments_unified.csv` — **主表**
-- `clean_comments_unified_before_filter.csv`
-- `clean_l1_comments.csv` / `clean_l2_comments.csv`（未过滤）
-- `clean_l1_comments_filtered.csv` / `clean_l2_comments_filtered.csv`
+- `clean_comments_unified.csv` — **主表**（含 `platform`、`source_batch` 列）
+- `shared_analyzable_corpus.csv` / `excluded_meaningless.csv` / `shared_corpus_summary.json`
+- `phase1_preprocess_stage_summary.csv` / `comments_per_post_L1_L2.csv`
 - `comment_content_filter_report.json`
 
 **怎么跑**
 
 ```bash
-python run_preprocess.py --xlsx data/rawdata/小红书帖子数据_merged.xlsx
+python run_preprocess.py --platform xhs --batch merged --input data/rawdata/小红书帖子数据_merged.xlsx
+python run_preprocess.py --platform tiktok --batch 2604-marathon --input data/rawdata/tiktok/2604-marathon/<file>.csv
+python run_preprocess.py --platform tiktok --batch 2608-olympic --input data/rawdata/tiktok/2608-olympic/<file>.csv
+python run_preprocess.py --platform douyin --batch 2608-olympic --input data/rawdata/douyin/2608-olympic/<file>.csv
+python -m tools.build_corpus_inventory   # → data/corpus_inventory.csv
 ```
 
-**怎么读**：阶段计数见 [data/clean/phase1_preprocess_stage_summary.csv](../data/clean/phase1_preprocess_stage_summary.csv)；全文说明见 [data/clean/data_preprocessing_protocol.md](../data/clean/data_preprocessing_protocol.md)。
+**怎么读**：跨平台对比 [data/corpus_inventory.csv](../data/corpus_inventory.csv)；单源阶段计数见各目录下 `phase1_preprocess_stage_summary.csv`。
+
+**不会自动触发**：英译、video clip、demo 导出、主题建模、LLM 打标。
 
 **不要**：把 `output/phase1/` 里的报告图当成清洗主表；不要手工 `cp` 到 `data/clean/`（pipeline 已直接写入）。
 
@@ -75,7 +85,9 @@ python run_preprocess.py --xlsx data/rawdata/小红书帖子数据_merged.xlsx
 
 **假设**
 
-- jieba 有效词数仅用于**纳入判定**；BGE 仍用原文（在 topic_modeling 中 encode）
+- 评论纳入门控见 [data/clean/comment_quality_gate_rules.md](../data/clean/comment_quality_gate_rules.md) 与 `config/topic_modeling/comment_quality_gate.json`
+- 中英分路：中文 jieba≥2 或汉字且 ≥8 字；英文字母词≥4 或去套话后≥2。**不用** sklearn 功能词表
+- BGE 编码仍用评论原文；sklearn 英文停用词仅用于 LDA/NMF 主题词提取
 - 与 `phase1.topic_modeling` 内 `build_shared_analyzable_corpus` 同一函数
 
 **产物**
@@ -86,11 +98,22 @@ python run_preprocess.py --xlsx data/rawdata/小红书帖子数据_merged.xlsx
 
 ---
 
-## 5. 刷新帖子标签（不重跑 Excel）
+## 5. 刷新帖子标签（不重跑 Excel）（主线·局部）
 
 **命令**：`python -m tools.refresh_clean_post_labels`
 
 **做什么**：config 变更后，在已有 clean 表上刷新 `post_category` / `robot_status` / `human_role`。
+
+**怎么跑**
+
+```bash
+# 单源（推荐）
+python -m tools.refresh_clean_post_labels --platform youtube --batch 2604-marathon
+# 读 config/post_category/youtube_2604-marathon.csv（存在时）
+
+#  legacy 根目录 symlink（XHS）
+python -m tools.refresh_clean_post_labels
+```
 
 **不要**：以为刷新标签后 shared / embeddings 自动更新——需重导 shared 并重跑 topic_modeling。
 
@@ -104,11 +127,31 @@ python run_preprocess.py --xlsx data/rawdata/小红书帖子数据_merged.xlsx
 
 ---
 
-## 7. 全量主题建模（LDA + NMF + BERTopic 网格）
+## 6b. Demo：每帖 Top10 高 L2 一级评论
+
+**命令**：`python -m tools.export_demo_top_l2_by_post`
+
+**做什么**：从各平台 `clean_comments_unified.csv` 按帖抽取 **实际 L2 子数最多** 的 Top 10 一级评论（按 `parent_comment_id` 计数，非 raw `reply_count`）。
+
+**输入**：默认读 [data/corpus_inventory.csv](../data/corpus_inventory.csv) 中的 4 份 clean；或 `--input` 单源。
+
+**产物**（[data/demo/](../data/demo/)）
+
+- `top10_l2_by_post_all.csv` — 合并总表
+- `summary_by_source.csv` — 每源统计
+- `{platform}_{batch}/top10_l2_by_post.csv` — 单源
+
+**怎么读**：见 [data/demo/README.md](../data/demo/README.md)。
+
+---
+
+## 7. 全量主题建模（LDA + NMF + BERTopic 网格）（探索）
 
 **命令**：`python -m phase1.topic_modeling`
 
 **做什么**：构造 shared corpus，encode BGE，并行跑 LDA / NMF / BERTopic（KMeans + HDBSCAN 灵敏度），写实验目录。
+
+**新数据（YouTube / 新批次）**：必须用 **该源** `--input-csv`；新 `--run-id`；登记 [registry.csv](../output/experiments/registry.csv)；勿覆盖 `2026-05-27_topic_merged_bge_hdbscan_sensitivity`。英文语料勿默认 `bge-base-zh-v1.5`。步骤见 [OPERATING.md](OPERATING.md) §G。
 
 **输入**
 
@@ -144,7 +187,19 @@ PYTHONUNBUFFERED=1 ./.venv/bin/python -m phase1.topic_modeling \
 
 **怎么读**：`config.json` → `run.log` → `comparison.md` → 各 variant 下 `topics.csv` / `*_samples.csv`。
 
-**不要**：用 lexicon 预过滤输入；不要混用不同 N 的 shared 与 embeddings。
+**不会自动触发**：discovery coder 表更新、current 实验切换。
+
+**不要**：用 lexicon 预过滤输入；不要混用不同 N 的 shared 与 embeddings；不要用 demo/gold 作 input。
+
+---
+
+## 7b. 人工金标与 LLM 比对（探索）
+
+**协议**：[human_label_llm/label_data/GOLD_PROTOCOL.md](../human_label_llm/label_data/GOLD_PROTOCOL.md)
+
+**命令**：`python human_label_llm/run_experiment.py infer|compare`（yaml 指向 `label_data/gold/` 中新文件 + 新 `run_id`）
+
+**不会自动触发**：清洗、主题建模；**不要**改 `experiment/_defaults.yaml` 或写回 gold/clean。
 
 ---
 
@@ -241,11 +296,38 @@ PYTHONUNBUFFERED=1 ./.venv/bin/python -m phase1.topic_modeling \
 
 ---
 
-## 15. 视频 dense caption / 跨平台匹配（可选旁路）
+## 15. 帖子视听元数据（caption + ASR，可选旁路）
 
-**命令**：`tools/video_match/*`
+**命令**：`python -m tools.video_match.run_post_media`
 
-**说明**：与评论主题管线独立；见 [tools/video_match/README.md](../tools/video_match/README.md)、[writing/video_caption_protocol.md](../writing/video_caption_protocol.md)
+**做什么**：对已下载 30s clip 跑 dense VLM caption + SenseVoice ASR，组装帖子级 CSV。
+
+**输入**
+
+- clips：`data/rawdata/{platform}/{batch}/clips/*.mp4`（由 `python -m tools.download_all_clips` 下载）
+- 帖子元数据：各平台 raw 宽表（见 `tools/video_match/post_media_jobs.py` 的 `JOBS`）
+- 环境：`SILICONFLOW_API_KEY`（项目根 `.env` 或 export）
+
+**产物**
+
+- `output/video_match/{platform}_{batch}_captions.jsonl`
+- `output/video_match/{platform}_{batch}_asr.jsonl`
+- `data/clean/{platform}/{batch}/post_media.csv`
+- `data/clean/post_media.csv`（跨平台总表）
+
+**怎么跑**
+
+```bash
+python -m tools.download_all_clips          # 若 clips 尚未下载
+python -m tools.video_match.run_post_media  # 全平台
+python -m tools.video_match.run_post_media --platform xhs --batch merged
+python -m tools.video_match.run_post_media --assemble-only
+python -m tools.video_match.run_post_media --skip-caption   # 只补 ASR
+```
+
+**不要**：把 `post_media.csv` 当作评论清洗主表；不要与 `shared_analyzable_corpus.csv` 混用。
+
+**跨平台匹配（早期 pilot）**：`tools/video_match/match.py` 等；见 [tools/video_match/README.md](../tools/video_match/README.md)、[writing/video_caption_protocol.md](../writing/video_caption_protocol.md)
 
 ---
 
