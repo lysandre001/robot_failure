@@ -1,0 +1,80 @@
+\begin{table}[t]
+  \centering
+  \caption{Distribution of robot state across events (post counts with within-event percentages).}
+  \label{tab:app-state-dist}
+  \begin{tabular}{lrrr}
+    \toprule
+    Category & Marathon & Games & Merged \\
+    \midrule
+    Failure & 47 (7.3\%) & 20 (6.3\%) & 67 (7.0\%) \\
+    Weak & 15 (2.3\%) & 14 (4.4\%) & 29 (3.0\%) \\
+    Normal & 74 (11.4\%) & 21 (6.7\%) & 95 (9.9\%) \\
+    Strong & 186 (28.7\%) & 219 (69.5\%) & 405 (42.1\%) \\
+    Mixed & 326 (50.3\%) & 41 (13.0\%) & 367 (38.1\%) \\
+    \midrule
+    Total & 648 (100.0\%) & 315 (100.0\%) & 963 (100.0\%) \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{table}[t]
+  \centering
+  \caption{Distribution of human image across events (post counts; service roles merged).}
+  \label{tab:app-image-dist}
+  \begin{tabular}{lrrr}
+    \toprule
+    Category & Marathon & Games & Merged \\
+    \midrule
+    Service and care & 243 (37.5\%) & 156 (49.5\%) & 399 (41.4\%) \\
+    The surpassed & 0 (0.0\%) & 76 (24.1\%) & 76 (7.9\%) \\
+    Spectator & 405 (62.5\%) & 83 (26.3\%) & 488 (50.7\%) \\
+    \midrule
+    Total & 648 (100.0\%) & 315 (100.0\%) & 963 (100.0\%) \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{table}[t]
+  \centering
+  \caption{Cross-tabulation of robot state \times human image (analysis groups), by event and merged.}
+  \label{tab:app-cross}
+  \begin{tabular}{lrrrr}
+    \toprule
+  \multicolumn{4}{c}{ \textit{Marathon} (n=315) } \\
+  \midrule
+  & Service and care & The surpassed & Spectator & Total \\
+  \midrule
+  Failure & 18 & 0 & 2 & 20 \\
+  Weak & 8 & 0 & 6 & 14 \\
+  Normal & 18 & 1 & 2 & 21 \\
+  Strong & 91 & 74 & 54 & 219 \\
+  Mixed & 21 & 1 & 19 & 41 \\
+  \midrule
+  Total & 156 & 76 & 83 & 315 \\
+    \midrule
+  \multicolumn{4}{c}{ \textit{Games} (n=648) } \\
+  \midrule
+  & Service and care & The surpassed & Spectator & Total \\
+  \midrule
+  Failure & 27 & 0 & 20 & 47 \\
+  Weak & 10 & 0 & 5 & 15 \\
+  Normal & 61 & 0 & 13 & 74 \\
+  Strong & 32 & 0 & 154 & 186 \\
+  Mixed & 113 & 0 & 213 & 326 \\
+  \midrule
+  Total & 243 & 0 & 405 & 648 \\
+    \midrule
+  \multicolumn{4}{c}{ \textit{Merged} (n=963) } \\
+  \midrule
+  & Service and care & The surpassed & Spectator & Total \\
+  \midrule
+  Failure & 45 & 0 & 22 & 67 \\
+  Weak & 18 & 0 & 11 & 29 \\
+  Normal & 79 & 1 & 15 & 95 \\
+  Strong & 123 & 74 & 208 & 405 \\
+  Mixed & 134 & 1 & 232 & 367 \\
+  \midrule
+  Total & 399 & 76 & 488 & 963 \\
+    \bottomrule
+  \end{tabular}
+\end{table}

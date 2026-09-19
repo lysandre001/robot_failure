@@ -16,7 +16,7 @@
 
 **输入**
 
-- `--platform`：`xhs` | `tiktok` | `douyin`（`youtube` 待 raw 列映射与适配落地后同上）
+- `--platform`：`xhs` | `tiktok` | `douyin` | `youtube`
 - `--input` / `--xlsx`：宽表路径；须符合 [canonical_comment_schema.md](../data/canonical_comment_schema.md)（抖音 43 列自动映射）
 - `--batch`：事件批次名，如 `merged` / `2604-marathon` / `2608-olympic` → `data/clean/{platform}/{batch}/`
 - XHS 专用：[config/post_category_by_post.csv](../config/post_category_by_post.csv)
@@ -44,6 +44,8 @@ python run_preprocess.py --platform xhs --batch merged --input data/rawdata/小�
 python run_preprocess.py --platform tiktok --batch 2604-marathon --input data/rawdata/tiktok/2604-marathon/<file>.csv
 python run_preprocess.py --platform tiktok --batch 2608-olympic --input data/rawdata/tiktok/2608-olympic/<file>.csv
 python run_preprocess.py --platform douyin --batch 2608-olympic --input data/rawdata/douyin/2608-olympic/<file>.csv
+python run_preprocess.py --platform youtube --batch 2604-marathon --input data/rawdata/youtube/2604-marathon/canonical.csv
+python run_preprocess.py --platform youtube --batch 2608-olympic --input data/rawdata/youtube/2608-olympic/canonical.csv
 python -m tools.build_corpus_inventory   # → data/corpus_inventory.csv
 ```
 
@@ -116,6 +118,56 @@ python -m tools.refresh_clean_post_labels
 ```
 
 **不要**：以为刷新标签后 shared / embeddings 自动更新——需重导 shared 并重跑 topic_modeling。
+
+**人的形象**：全局 schema 三档（服务照护 / 被超越者 / 观众）；`normalize_human_role` 兼容 legacy 五档读入。
+
+---
+
+## 5a. YouTube 帖子分类附录（探索）
+
+**命令**：`python -m tools.post_category_appendix`
+
+**做什么**：读 `config/post_category/youtube_*.csv`，生成论文附录用帖子分布与叉乘（人的形象用分析三档）。
+
+**产物**：`output/experiments/appendix_postdist_0919/` — `table_a/b/c_*.csv`、`post_category_distribution.tex`；notebook `notebooks/post_category_distribution.ipynb` 同源逻辑，§6 另写 clean 评论 `table_d/e/f_*`。
+
+**怎么跑**
+
+```bash
+python -m tools.post_category_appendix
+python -m tools.post_category_appendix --out-dir output/experiments/appendix_postdist_0919
+```
+
+---
+
+## 5b. 评论语言检测 + 英译（主线·局部）
+
+**命令**：`python -m tools.comment_lang.run`
+
+**做什么**：对评论文本做 lingua 语言检测；非纯英文经 SiliconFlow 译为英文。写回 **`language` / `is_mixed` / `content_en`**。
+
+**输入**
+
+- `--platform` / `--batch`（或 `--all`）
+- XHS/TikTok/抖音：对应 **raw 宽表**（增列 `一级评论语言` 等）
+- YouTube：`data/clean/youtube/{batch}/clean_comments_unified.csv`（`kind=clean`，同步 filtered / shared）
+- 环境：`SILICONFLOW_API_KEY`（项目根 `.env`）；配置 [config/comment_lang.json](../config/comment_lang.json)
+
+**假设**
+
+- 断点：`output/comment_lang/{platform}_{batch}.jsonl`
+- 纯 `en` 且 `is_mixed=0` 复制原文，不调翻译 API
+- **主题建模 / BGE 仍用原文 `content`**
+
+**怎么跑**
+
+```bash
+python -m tools.comment_lang.run --platform youtube --batch 2604-marathon --detect-only --limit 50  # 冒烟
+python -m tools.comment_lang.run --platform youtube --batch 2604-marathon --detect-only
+python -m tools.comment_lang.run --platform youtube --batch 2604-marathon
+```
+
+**不要**：把英译当主题建模输入；重跑 Phase 1 会冲掉 clean 语言列（需再跑 comment_lang）。
 
 ---
 

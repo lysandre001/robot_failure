@@ -1,0 +1,13 @@
+{
+  "n_raw": 23350,
+  "n_shared": 20874,
+  "coverage": 0.8939614561027838,
+  "n_missing_robot_status_group": 2072,
+  "excluded_empty_or_too_short": 278,
+  "excluded_pure_emoji": 0,
+  "excluded_only_at_mentions": 0,
+  "excluded_repeated_fragment": 0,
+  "excluded_pure_noise_row": 14,
+  "excluded_effective_tokens_lt_min": 1810,
+  "excluded_duplicate_text": 374
+}

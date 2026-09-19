@@ -22,6 +22,8 @@
 | TikTok 2604-marathon | [data/clean/tiktok/2604-marathon/clean_comments_unified.csv](data/clean/tiktok/2604-marathon/clean_comments_unified.csv) |
 | TikTok 2608-olympic | [data/clean/tiktok/2608-olympic/clean_comments_unified.csv](data/clean/tiktok/2608-olympic/clean_comments_unified.csv) |
 | 抖音 2608-olympic | [data/clean/douyin/2608-olympic/clean_comments_unified.csv](data/clean/douyin/2608-olympic/clean_comments_unified.csv) |
+| YouTube 2604-marathon | [data/clean/youtube/2604-marathon/clean_comments_unified.csv](data/clean/youtube/2604-marathon/clean_comments_unified.csv) |
+| YouTube 2608-olympic | [data/clean/youtube/2608-olympic/clean_comments_unified.csv](data/clean/youtube/2608-olympic/clean_comments_unified.csv) |
 | Raw 布局 | `data/rawdata/{xhs,tiktok,douyin,youtube}/` |
 | 操作说明（同事） | [docs/OPERATING.md](docs/OPERATING.md) |
 | Schema（全平台） | [data/canonical_comment_schema.md](data/canonical_comment_schema.md) |
@@ -65,6 +67,16 @@ python run_preprocess.py --platform tiktok --batch 2608-olympic \
   --input data/rawdata/tiktok/2608-olympic/<export>.csv
 python run_preprocess.py --platform douyin --batch 2608-olympic \
   --input data/rawdata/douyin/2608-olympic/<export>.csv
+
+# YouTube（canonical 宽表；帖子分类 config/post_category/youtube_{batch}.csv）
+python run_preprocess.py --platform youtube --batch 2604-marathon \
+  --input data/rawdata/youtube/2604-marathon/canonical.csv
+python run_preprocess.py --platform youtube --batch 2608-olympic \
+  --input data/rawdata/youtube/2608-olympic/canonical.csv
+
+# 评论语言 + 英译（写回 clean 长表；BGE/主题仍用原文 content）
+python -m tools.comment_lang.run --platform youtube --batch 2604-marathon --detect-only
+python -m tools.comment_lang.run --platform youtube --batch 2604-marathon
 
 # 跨平台 inventory
 python -m tools.build_corpus_inventory

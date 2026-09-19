@@ -14,6 +14,8 @@ python -m tools.<模块名> --help
 | `merge_xhs_batches_xlsx` | 两批合并 xlsx |
 | `export_shared_analyzable_corpus` | 导出 shared corpus |
 | `refresh_clean_post_labels` | 仅刷新帖子标签 |
+| `post_category_appendix` | YouTube 帖子分类附录 CSV/LaTeX |
+| `export_demo_top20_l1_l2_raw` | Top20 L1+1 L2 demo（含 YouTube clean+lang） |
 | `export_comments_per_post` | 每帖 L1/L2 计数 |
 | `export_demo_top_l2_by_post` | Demo：每帖 Top10 高 L2 一级评论 → `data/demo/` |
 | `build_corpus_inventory` | 跨平台 clean 对比总表 |

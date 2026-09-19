@@ -74,7 +74,21 @@ JOBS = [
         "path": ROOT / "data" / "rawdata" / "douyin" / "2608-olympic" / "抖音_世界人形机器人运动会.csv",
         "kind": "douyin",
     },
+    {
+        "platform": "youtube",
+        "batch": "2604-marathon",
+        "path": ROOT / "data" / "clean" / "youtube" / "2604-marathon" / "clean_comments_unified.csv",
+        "kind": "clean",
+    },
+    {
+        "platform": "youtube",
+        "batch": "2608-olympic",
+        "path": ROOT / "data" / "clean" / "youtube" / "2608-olympic" / "clean_comments_unified.csv",
+        "kind": "clean",
+    },
 ]
+
+CLEAN_LANG_COLS = ("language", "is_mixed", "content_en")
 
 
 def _ensure_lang_cols(df: pd.DataFrame) -> pd.DataFrame:
@@ -82,6 +96,17 @@ def _ensure_lang_cols(df: pd.DataFrame) -> pd.DataFrame:
         if c not in df.columns:
             df[c] = pd.NA
     return df
+
+
+def _ensure_clean_lang_cols(df: pd.DataFrame) -> pd.DataFrame:
+    for c in CLEAN_LANG_COLS:
+        if c not in df.columns:
+            df[c] = pd.NA
+    return df
+
+
+def _job_kind(job: dict) -> str:
+    return str(job.get("kind") or "csv")
 
 
 def _douyin_l1_id(row: pd.Series) -> str | None:
@@ -109,11 +134,27 @@ def _douyin_l2_id(row: pd.Series) -> str | None:
     )
 
 
-def extract_unique_comments(df: pd.DataFrame, *, platform: str) -> list[dict[str, Any]]:
+def extract_unique_comments(
+    df: pd.DataFrame, *, platform: str, kind: str = "csv"
+) -> list[dict[str, Any]]:
     """Return deduped comments: comment_id, content, level (1|2)."""
     plat = platform.lower()
     seen: set[str] = set()
     out: list[dict[str, Any]] = []
+
+    if kind == "clean":
+        for _, row in df.iterrows():
+            cid = normalize_comment_id(row.get("comment_id"))
+            content = row.get("content")
+            if not cid or cid in seen or pd.isna(content) or not str(content).strip():
+                continue
+            seen.add(cid)
+            try:
+                level = int(row.get("comment_level", 1))
+            except (TypeError, ValueError):
+                level = 1
+            out.append({"comment_id": cid, "content": normalize_text(content), "level": level})
+        return out
 
     if plat == "douyin":
         for _, row in df.iterrows():
@@ -161,10 +202,24 @@ def _row_for_rec(df: pd.DataFrame, rec: dict[str, Any], *, platform: str) -> pd.
     return df.loc[mask].iloc[0]
 
 
-def _lang_index(df: pd.DataFrame, *, platform: str) -> dict[str, tuple[str, int]]:
+def _lang_index(df: pd.DataFrame, *, platform: str, kind: str = "csv") -> dict[str, tuple[str, int]]:
     """comment_id -> (language, is_mixed) from raw columns."""
     plat = platform.lower()
     out: dict[str, tuple[str, int]] = {}
+    if kind == "clean":
+        sub = df[list({"comment_id", "language", "is_mixed"} & set(df.columns))].drop_duplicates("comment_id")
+        for _, row in sub.iterrows():
+            cid = normalize_comment_id(row.get("comment_id"))
+            lang = row.get("language")
+            if not cid or pd.isna(lang) or not str(lang).strip():
+                continue
+            mixed = row.get("is_mixed")
+            try:
+                mixed_i = int(mixed) if pd.notna(mixed) else 0
+            except (TypeError, ValueError):
+                mixed_i = 0
+            out[cid] = (str(lang).strip().lower(), mixed_i)
+        return out
     if plat == "douyin":
         for _, row in df.iterrows():
             for level, cid_fn in ((1, _douyin_l1_id), (2, _douyin_l2_id)):
@@ -248,7 +303,20 @@ def apply_annotations(
     annotations: dict[str, dict[str, Any]],
     *,
     platform: str,
+    kind: str = "csv",
 ) -> pd.DataFrame:
+    if kind == "clean":
+        df = _ensure_clean_lang_cols(df.copy())
+        for idx, row in df.iterrows():
+            cid = normalize_comment_id(row.get("comment_id"))
+            if not cid or cid not in annotations:
+                continue
+            a = annotations[cid]
+            df.at[idx, "language"] = a.get("language", "")
+            df.at[idx, "is_mixed"] = int(a.get("is_mixed", 0))
+            df.at[idx, "content_en"] = a.get("content_en", "")
+        return df
+
     df = _ensure_lang_cols(df.copy())
     plat = platform.lower()
 
@@ -290,16 +358,45 @@ def apply_annotations(
 
 def load_raw(job: dict) -> tuple[pd.DataFrame, dict[str, pd.DataFrame] | None]:
     path = Path(job["path"])
-    if job["kind"] == "xlsx":
+    kind = _job_kind(job)
+    if kind == "clean":
+        return _ensure_clean_lang_cols(pd.read_csv(path, dtype=str, low_memory=False)), None
+    if kind == "xlsx":
         return read_raw_xlsx(path)
-    if job["kind"] == "douyin":
+    if kind == "douyin":
         return pd.read_csv(path, encoding="utf-8-sig", low_memory=False), None
     return read_raw_csv(path), None
 
 
+def _merge_lang_into_sibling_csvs(clean_dir: Path, merge_map: pd.DataFrame) -> None:
+    lang_cols = list(CLEAN_LANG_COLS)
+    for fname in (
+        "clean_l1_comments_filtered.csv",
+        "clean_l2_comments_filtered.csv",
+        "clean_comments_unified_before_filter.csv",
+        "clean_l1_comments.csv",
+        "clean_l2_comments.csv",
+        "shared_analyzable_corpus.csv",
+    ):
+        p = clean_dir / fname
+        if not p.is_file():
+            continue
+        sub = pd.read_csv(p, dtype=str, low_memory=False)
+        sub = sub.drop(columns=[c for c in lang_cols if c in sub.columns], errors="ignore")
+        sub = sub.merge(merge_map, on="comment_id", how="left")
+        sub.to_csv(p, index=False, encoding="utf-8-sig")
+
+
 def save_raw(job: dict, main: pd.DataFrame, extra: dict[str, pd.DataFrame] | None) -> None:
     path = Path(job["path"])
-    if job["kind"] == "xlsx":
+    kind = _job_kind(job)
+    if kind == "clean":
+        main = _ensure_clean_lang_cols(main)
+        main.to_csv(path, index=False, encoding="utf-8-sig")
+        merge_map = main[["comment_id", *CLEAN_LANG_COLS]].drop_duplicates(subset=["comment_id"])
+        _merge_lang_into_sibling_csvs(path.parent, merge_map)
+        return
+    if kind == "xlsx":
         with pd.ExcelWriter(path, engine="openpyxl") as w:
             main.to_excel(w, sheet_name="小红书帖子数据", index=False)
             if extra and "导出计数_帖子id" in extra:
@@ -329,10 +426,32 @@ def repair_raw_ids(job: dict) -> dict[str, Any] | None:
     return stats
 
 
-def _existing_en_index(df: pd.DataFrame, *, platform: str) -> dict[str, dict[str, Any]]:
+def _existing_en_index(
+    df: pd.DataFrame, *, platform: str, kind: str = "csv"
+) -> dict[str, dict[str, Any]]:
     """comment_id -> annotation dict for rows that already have 英文."""
     plat = platform.lower()
     out: dict[str, dict[str, Any]] = {}
+    if kind == "clean":
+        cols = [c for c in ("comment_id", "language", "is_mixed", "content_en") if c in df.columns]
+        sub = df[cols].drop_duplicates(subset=["comment_id"])
+        for _, row in sub.iterrows():
+            cid = normalize_comment_id(row.get("comment_id"))
+            en = row.get("content_en")
+            if not cid or not valid_en(en):
+                continue
+            mixed = row.get("is_mixed")
+            try:
+                mixed_i = int(mixed) if pd.notna(mixed) else 0
+            except (TypeError, ValueError):
+                mixed_i = 0
+            out[cid] = {
+                "language": row.get("language", ""),
+                "is_mixed": mixed_i,
+                "content_en": en,
+                "status": "ok",
+            }
+        return out
     if plat == "douyin":
         for _, row in df.iterrows():
             for level, cid_fn in ((1, _douyin_l1_id), (2, _douyin_l2_id)):
@@ -408,8 +527,14 @@ def _done_en_ids(df: pd.DataFrame, *, platform: str) -> set[str]:
     return done
 
 
-def scrub_placeholder_en(main: pd.DataFrame) -> pd.DataFrame:
+def scrub_placeholder_en(main: pd.DataFrame, *, kind: str = "csv") -> pd.DataFrame:
     """Turn bogus placeholder 英文 (e.g. literal '<NA>') into empty."""
+    if kind == "clean":
+        main = _ensure_clean_lang_cols(main.copy())
+        for idx, val in main["content_en"].items():
+            if not valid_en(val):
+                main.at[idx, "content_en"] = pd.NA
+        return main
     main = _ensure_lang_cols(main.copy())
     for en_col in (L1_EN, L2_EN):
         if en_col not in main.columns:
@@ -420,8 +545,21 @@ def scrub_placeholder_en(main: pd.DataFrame) -> pd.DataFrame:
     return main
 
 
-def clear_retranslations(main: pd.DataFrame) -> pd.DataFrame:
+def clear_retranslations(main: pd.DataFrame, *, kind: str = "csv") -> pd.DataFrame:
     """Clear 英文 for rows that need LLM translation; keep copy for pure en."""
+    if kind == "clean":
+        main = _ensure_clean_lang_cols(main.copy())
+        for idx, row in main.iterrows():
+            lang = row.get("language")
+            if pd.isna(lang) or not str(lang).strip():
+                continue
+            try:
+                mixed = int(row.get("is_mixed", 0) or 0)
+            except (TypeError, ValueError):
+                mixed = 0
+            if needs_translation(str(lang).strip().lower(), mixed):
+                main.at[idx, "content_en"] = pd.NA
+        return main
     main = _ensure_lang_cols(main.copy())
     for lang_col, mix_col, en_col in (
         (L1_LANG, L1_MIXED, L1_EN),
@@ -453,28 +591,32 @@ def run_job(
     checkpoint_dir: Path,
 ) -> dict[str, Any]:
     platform, batch = job["platform"], job["batch"]
+    kind = _job_kind(job)
     print(f"[comment_lang] {platform}/{batch} <- {job['path']}")
 
-    if job.get("clean_lookup") and job.get("kind") == "csv":
+    if job.get("clean_lookup") and kind == "csv":
         repair_raw_ids(job)
 
     main, extra = load_raw(job)
-    main = scrub_placeholder_en(_ensure_lang_cols(main))
+    if kind == "clean":
+        main = scrub_placeholder_en(_ensure_clean_lang_cols(main), kind=kind)
+    else:
+        main = scrub_placeholder_en(_ensure_lang_cols(main), kind=kind)
     ckpt = checkpoint_dir / f"{platform}_{batch}.jsonl"
     if force_retranslate and not detect_only:
-        main = clear_retranslations(main)
+        main = clear_retranslations(main, kind=kind)
         if ckpt.is_file():
             ckpt.unlink()
         print("  force-retranslate: cleared prior LLM 英文 + checkpoint")
-    comments = extract_unique_comments(main, platform=platform)
+    comments = extract_unique_comments(main, platform=platform, kind=kind)
     print(f"  unique comments: {len(comments)}")
 
-    existing_en = _existing_en_index(main, platform=platform)
+    existing_en = _existing_en_index(main, platform=platform, kind=kind)
     done_en = set(existing_en.keys())
     to_process = [c for c in comments if c["comment_id"] not in done_en]
     print(f"  pending translate: {len(to_process)} (already have EN: {len(comments) - len(to_process)})")
 
-    lang_idx = _lang_index(main, platform=platform)
+    lang_idx = _lang_index(main, platform=platform, kind=kind)
     records: list[dict[str, Any]] = []
     for rec in to_process:
         existing = lang_idx.get(rec["comment_id"])
@@ -510,7 +652,7 @@ def run_job(
         )
         annotations.update(translated)
 
-    main = apply_annotations(main, annotations, platform=platform)
+    main = apply_annotations(main, annotations, platform=platform, kind=kind)
     save_raw(job, main, extra)
 
     n_ok = sum(1 for a in annotations.values() if a.get("status") == "ok" or a.get("status") == "detect_only")
@@ -537,7 +679,7 @@ def main() -> None:
     load_env()
     ap = argparse.ArgumentParser(description="Raw 宽表评论语言标签 + 英译")
     ap.add_argument("--all", action="store_true")
-    ap.add_argument("--platform", choices=["xhs", "tiktok", "douyin"])
+    ap.add_argument("--platform", choices=["xhs", "tiktok", "douyin", "youtube"])
     ap.add_argument("--batch")
     ap.add_argument("--detect-only", action="store_true")
     ap.add_argument(

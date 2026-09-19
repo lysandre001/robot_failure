@@ -21,6 +21,8 @@ EVENT_NAMES = {
     ("tiktok", "2604-marathon"): "beijing_robot_marathon",
     ("tiktok", "2608-olympic"): "world_humanoid_robot_games",
     ("douyin", "2608-olympic"): "world_humanoid_robot_games",
+    ("youtube", "2604-marathon"): "beijing_robot_marathon",
+    ("youtube", "2608-olympic"): "world_humanoid_robot_games",
 }
 
 JOBS: list[dict[str, Any]] = [
@@ -47,6 +49,22 @@ JOBS: list[dict[str, Any]] = [
         "kind": "clean",
         "source": "clean",
         "include_lang": False,
+    },
+    {
+        "platform": "youtube",
+        "batch": "2604-marathon",
+        "path": ROOT / "data/clean/youtube/2604-marathon/clean_comments_unified.csv",
+        "kind": "clean",
+        "source": "clean",
+        "include_lang": True,
+    },
+    {
+        "platform": "youtube",
+        "batch": "2608-olympic",
+        "path": ROOT / "data/clean/youtube/2608-olympic/clean_comments_unified.csv",
+        "kind": "clean",
+        "source": "clean",
+        "include_lang": True,
     },
 ]
 
@@ -217,6 +235,7 @@ def _export_from_clean_long(
     batch: str,
     event: str,
     top_n: int,
+    include_lang: bool = False,
 ) -> tuple[list[dict[str, Any]], int]:
     df["comment_level"] = pd.to_numeric(df["comment_level"], errors="coerce")
     df = df[df["comment_level"].isin([1, 2])].copy()
@@ -243,7 +262,7 @@ def _export_from_clean_long(
         l1_id = str(l1_row["comment_id"])
         l1_content = _clean_text(l1_row.get("content"))
         post_cat = _clean_text(l1_row.get("post_category")) or "unknown"
-        rows.append({
+        l1_rec = {
             "event": event,
             "platform": platform,
             "source_batch": batch,
@@ -262,13 +281,18 @@ def _export_from_clean_long(
             "location": _clean_text(l1_row.get("location")),
             "n_l2_children": int(l1_row["n_l2_children"]),
             "char_len": len(normalize_text(l1_content) or l1_content),
-        })
+        }
+        if include_lang:
+            l1_rec["language"] = _clean_text(l1_row.get("language"))
+            l1_rec["is_mixed"] = _clean_text(l1_row.get("is_mixed"))
+            l1_rec["content_en"] = _clean_text(l1_row.get("content_en"))
+        rows.append(l1_rec)
 
         sub = l2[l2["parent_comment_id"].astype(str) == l1_id]
         if not sub.empty:
             l2_row = sub.sort_values("like_count", ascending=False, kind="mergesort").iloc[0]
             l2_content = _clean_text(l2_row.get("content"))
-            rows.append({
+            l2_rec = {
                 "event": event,
                 "platform": platform,
                 "source_batch": batch,
@@ -287,7 +311,12 @@ def _export_from_clean_long(
                 "location": _clean_text(l2_row.get("location")),
                 "n_l2_children": "",
                 "char_len": len(normalize_text(l2_content) or l2_content),
-            })
+            }
+            if include_lang:
+                l2_rec["language"] = _clean_text(l2_row.get("language"))
+                l2_rec["is_mixed"] = _clean_text(l2_row.get("is_mixed"))
+                l2_rec["content_en"] = _clean_text(l2_row.get("content_en"))
+            rows.append(l2_rec)
     return rows, int(top_l1["帖子id"].nunique())
 
 
@@ -303,7 +332,12 @@ def export_top20_l1_l2(
 
     if job.get("source") == "clean" or job["kind"] == "clean":
         rows, n_posts = _export_from_clean_long(
-            df, platform=platform, batch=batch, event=event, top_n=top_n,
+            df,
+            platform=platform,
+            batch=batch,
+            event=event,
+            top_n=top_n,
+            include_lang=include_lang,
         )
     else:
         rows, n_posts = _export_from_raw_wide(
@@ -373,7 +407,15 @@ def run_export(
         )
 
     summary_df = pd.DataFrame(summaries)
-    summary_df.to_csv(out_dir / "top20_l1_l2_raw_summary.csv", index=False, encoding="utf-8-sig")
+    summary_path = out_dir / "top20_l1_l2_raw_summary.csv"
+    if summary_path.is_file() and len(jobs) < len(JOBS):
+        prev = pd.read_csv(summary_path)
+        key = ["platform", "source_batch"]
+        prev = prev[
+            ~prev.set_index(key).index.isin(summary_df.set_index(key).index)
+        ]
+        summary_df = pd.concat([prev, summary_df], ignore_index=True)
+    summary_df.to_csv(summary_path, index=False, encoding="utf-8-sig")
     return summary_df
 
 
@@ -381,7 +423,7 @@ def main() -> None:
     ap = argparse.ArgumentParser(description="Raw 宽表：每帖 Top20 L1 + 1 L2（demo / Drive）")
     ap.add_argument("--top-n", type=int, default=DEFAULT_TOP_N)
     ap.add_argument("--out-dir", type=Path, default=DEFAULT_OUT_DIR)
-    ap.add_argument("--platform", choices=["tiktok", "douyin"])
+    ap.add_argument("--platform", choices=["tiktok", "douyin", "youtube"])
     ap.add_argument("--batch")
     args = ap.parse_args()
 

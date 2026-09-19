@@ -1,0 +1,10 @@
+{
+  "content_rules_path": "/Users/yilin/Desktop/project/robot_failure/config/topic_modeling/comment_content_filter.json",
+  "n_after_basic_filters": 63208,
+  "n_dropped_by_content_rules": 9956,
+  "by_reason": {
+    "contains_mention": 8881,
+    "pure_emoji": 1051,
+    "repeated_fragment": 24
+  }
+}

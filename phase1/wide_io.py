@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import csv
 import io
+import re
 from collections import Counter
 from datetime import datetime
 from pathlib import Path
@@ -12,12 +13,17 @@ import pandas as pd
 from phase1.preprocess import normalize_post_id
 
 EXPECTED_WIDE_COLS = 31
+ALLOWED_WIDE_COL_COUNTS = (31, 37)
+_YOUTUBE_POST_ID_RE = re.compile(r"^[A-Za-z0-9_-]{11}$")
 
 
-def is_valid_wide_post_id(pid) -> bool:
+def is_valid_wide_post_id(pid, *, platform: str = "tiktok") -> bool:
     key = normalize_post_id(pid)
     if not key:
         return False
+    plat = platform.lower().strip()
+    if plat == "youtube":
+        return bool(_YOUTUBE_POST_ID_RE.fullmatch(key))
     digits = key.replace("-", "")
     return digits.isdigit() and len(digits) >= 8
 
@@ -46,10 +52,12 @@ def sanitize_wide_csv(
         raise ValueError(f"空文件: {input_csv}")
 
     header = [h.strip().lstrip("\ufeff") for h in header]
-    if len(header) != expected_cols:
+    n_cols = len(header)
+    if n_cols not in ALLOWED_WIDE_COL_COUNTS:
         raise ValueError(
-            f"[{platform}] 表头列数 {len(header)} != 预期 {expected_cols}: {header[:8]}..."
+            f"[{platform}] 表头列数 {n_cols} 不在允许 {ALLOWED_WIDE_COL_COUNTS}: {header[:8]}..."
         )
+    expected_cols = n_cols
 
     pid_idx = header.index("帖子id") if "帖子id" in header else 0
     good_rows: list[list[str]] = []
@@ -59,7 +67,7 @@ def sanitize_wide_csv(
         if len(row) != expected_cols:
             bad_rows.append((line_no, len(row), "wrong_field_count"))
             continue
-        if validate_post_id and not is_valid_wide_post_id(row[pid_idx]):
+        if validate_post_id and not is_valid_wide_post_id(row[pid_idx], platform=platform):
             bad_rows.append((line_no, len(row), "invalid_post_id"))
             continue
         good_rows.append(row)

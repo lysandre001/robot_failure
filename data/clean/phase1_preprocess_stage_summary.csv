@@ -1,6 +1,1 @@
-stage,description,rows,unique_posts,unique_comment_id,notes
-A4_unified_before_filter,一二级合并长表（Phase1过滤前）,56704,33,56704,L1=30170; L2=26534
-A5_unified_after_filter,Phase1过滤后（clean_comments_unified）,41251,33,41251,L1=22386; L2=18865
-A5_batch1_subset,A5_batch1_subset,26047,16,26047,L1=14259; L2=11788
-A5_batch2_anchor,A5_batch2_anchor,15204,17,15204,L1=8127; L2=7077
-A6_shared_corpus,主题建模shared analyzable corpus,26811,33,26811,batch1=18349; batch2=8462
+xhs/merged/phase1_preprocess_stage_summary.csv

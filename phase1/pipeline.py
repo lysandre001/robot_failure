@@ -14,7 +14,7 @@ from phase1.analysis import (
     role_aggregate,
     topic_clusters,
 )
-from phase1.config import CLEAN_DIR, OUT, ROOT, configure_matplotlib
+from phase1.config import CLEAN_DIR, OUT, POST_CATEGORY_BY_POST_CSV, ROOT, configure_matplotlib
 from phase1.features import apply_lexicons
 from phase1.topic_lda import export_lda_result, load_corpus_gate_stopwords, run_lda
 from phase1.comment_content_filter import COMMENT_CONTENT_FILTER_JSON
@@ -36,6 +36,11 @@ from phase1.reports import (
     write_codebook_suggestions,
     write_data_quality,
 )
+
+
+def _post_category_csv_for(platform: str, source_batch: str) -> Path | None:
+    p = ROOT / "config" / "post_category" / f"{platform}_{source_batch}.csv"
+    return p if p.is_file() else None
 
 
 def _export_comments_per_post(unified: pd.DataFrame, out_csv: Path) -> None:
@@ -111,8 +116,13 @@ def run_phase1_pipeline(
     counts["帖子id"] = counts["帖子id"].map(normalize_post_id)
     merged = merge_post_category(main_df, counts)
     merged["帖子id"] = merged["帖子id"].map(normalize_post_id)
+    cat_csv = _post_category_csv_for(plat, source_batch)
     if plat == "xhs":
         merged = apply_post_category_by_post(merged, overrides=post_category_overrides)
+    elif cat_csv is not None:
+        merged = apply_post_category_by_post(
+            merged, csv_path=cat_csv, overrides=post_category_overrides
+        )
     else:
         if "post_category" not in merged.columns:
             merged["post_category"] = "unknown"
@@ -161,10 +171,14 @@ def run_phase1_pipeline(
 
     if export_shared and write_csv:
         gate_sw = load_corpus_gate_stopwords()
+        pc_csv: Path = POST_CATEGORY_BY_POST_CSV
+        if plat != "xhs" and cat_csv is not None:
+            pc_csv = cat_csv
         cfg = TopicModelingConfig(
             run_id=f"export_shared_{plat}_{source_batch}",
             input_csv=out_clean / "clean_comments_unified.csv",
             platform=plat,
+            post_category_by_post_csv=pc_csv,
         )
         shared, excluded, shared_summary = build_shared_analyzable_corpus(cfg, stopwords=gate_sw)
         shared.to_csv(out_clean / "shared_analyzable_corpus.csv", index=False)
@@ -277,7 +291,7 @@ def main() -> None:
         "--platform",
         type=str,
         default="xhs",
-        choices=["xhs", "tiktok", "douyin"],
+        choices=["xhs", "tiktok", "douyin", "youtube"],
         help="数据来源平台",
     )
     parser.add_argument(
