@@ -147,6 +147,9 @@ def douyin_rows_to_canonical(df: pd.DataFrame) -> pd.DataFrame:
 
     has_l1 = out["一级评论id"].notna()
     out = out.loc[has_l1].reset_index(drop=True)
+    for col in CANONICAL_COLS:
+        if col not in out.columns:
+            out[col] = pd.NA
     return out[CANONICAL_COLS]
 
 
