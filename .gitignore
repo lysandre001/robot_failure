@@ -5,8 +5,34 @@ __pycache__/
 .DS_Store
 .ipynb_checkpoints/
 
-# 原始平台数据不入库（见 STRUCTURE.md）
+# 密钥
+.env
+
+# 原始平台数据不入库（目录见 STRUCTURE.md；只保留 .gitkeep）
 小红书帖子数据.xlsx
+data/rawdata/**/*.csv
+data/rawdata/**/*.xlsx
+data/rawdata/**/*.xls
+data/rawdata/**/*.mp4
+data/rawdata/**/*.part
+
+# 清洗大表与 demo 抽样（由管线生成，不入库）
+data/clean/**/*.csv
+data/demo/**/*.csv
+data/demo/**/*.xlsx
+data/corpus_inventory.csv
+
+# 实验产物与缓存（保留目录占位）
+output/**/*.npy
+output/**/*.jsonl
+output/comment_lang/*
+!output/comment_lang/.gitkeep
+output/logs/
+output/video_match/
+
+# Notebook 诊断，不是管线入口
+notebooks/**/*.ipynb
+human_label_llm/notebooks/**/*.ipynb
 
 # LLM 打标产物（含评论原文，默认不入库）
 **/label_checkpoint.jsonl
