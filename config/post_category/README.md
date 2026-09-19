@@ -2,7 +2,7 @@
 
 文件名：`{platform}_{batch}.csv`（例 `youtube_2604-marathon.csv`）。
 
-列与允许值见 [data/canonical_comment_schema.md](../../data/canonical_comment_schema.md) 第三节（**config 仍填五档**）。
+列与允许值见 [Schema §3](../../data/canonical_comment_schema.md)（码本索引 [docs/registry.md](../../docs/registry.md) → `post_category`）。
 
 **人的形象**：schema 三档 **服务照护 / 被超越者 / 观众**（见 `data/canonical_comment_schema.md` §3）。再生附录表：
 

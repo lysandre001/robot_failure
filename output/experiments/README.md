@@ -1,6 +1,6 @@
 # 实验输出
 
-**当前结论**：先看仓库根目录 [CURRENT.md](../../CURRENT.md)，再打开 `registry.csv` 中 `status=current` 的行。
+**当前结论**：先看 [README.md](../../README.md) § Current snapshot，再打开 `registry.csv` 中 `status=current` 的行。
 
 ## 目录约定
 
@@ -16,4 +16,4 @@
 3. `comparison.md` — LDA / NMF / BERTopic 横切概览
 4. Topic discovery（若已跑）：`topic_discovery_l1/`、`topic_discovery_l2/`
 
-功能契约与命令说明见 [docs/functions.md](../../docs/functions.md)。
+数据契约见 [data/canonical_comment_schema.md](../../data/canonical_comment_schema.md) §7；命令见 [README.md](../../README.md)。

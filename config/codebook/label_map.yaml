@@ -1,0 +1,40 @@
+# 列名别名（gold 入库规范化）与三层字段列表
+
+layers:
+  subject:
+    canonical_column: 主体
+    aliases: [评估对象, human_eval_object, subject]
+    closed_labels:
+      - 机器人本身
+      - 自身经验
+      - 符号
+      - 事件
+      - 其他人
+      - 无主体
+      - 其他
+  ideology:
+    stance_column: stance
+    stance_aliases: [llm_stance, 立场]
+    stance_closed: [支持, 反对, 中立]
+    dimension_columns: [d1, d2, d3, d4]
+    dimension_aliases:
+      d1: [llm_d1]
+      d2: [llm_d2]
+      d3: [llm_d3]
+      d4: [llm_d4]
+    dimension_polarity: [Pos, Neg, N/A]
+    optional_figure_column: figure_code
+  emotion:
+    canonical_column: 情感
+    aliases: [情感(p/neg/n/m), emotion, human_emotion]
+    closed_labels: [Positive, Negative, Neutral, Mixed]
+
+platform_text:
+  zh:
+    platforms: [xhs, douyin]
+    text_column: content
+    prompt_lang: zh
+  en:
+    platforms: [tiktok, youtube]
+    text_column: content_en
+    prompt_lang: en

@@ -35,7 +35,13 @@
 
 ### 2.2 研究问题
 
-当前研究问题可组织为三层：
+与 [config/codebook/codebook.md](../config/codebook/codebook.md) 对齐的研究问题：
+
+1. **情感 / 立场（RQ1）**：`情感` 四类 + `stance` 支持/反对/中立。
+2. **观念理由域（RQ2）**：`d1`–`d4` 极性；可选 `figure_code` 附录。
+3. **情境横切（RQ3）**：帖子 `robot_status` × `human_role`（非评论码本字段）× 上述码本 → `tools/codebook_analysis` → `output/analysis/`。
+
+历史表述（仍可用作引言）：
 
 1. **立场层面**：公众对人形机器人总体上是支持、反对还是中立？
 2. **理由层面**：公众为什么支持或反对？这些理由来自技术评价、社会进步叙事、拟人化情感、安全治理，还是人类身份与劳动焦虑？

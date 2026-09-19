@@ -1,8 +1,8 @@
 # Phase 1 RUNBOOK：探索性主题建模 + 关键词筛选
 
-> **先读**：[CURRENT.md](../CURRENT.md)（当前数据/run）· [docs/functions.md](../docs/functions.md)（每条命令的输入/输出契约）
+> **先读**：[README.md](../README.md) · [data/canonical_comment_schema.md](../data/canonical_comment_schema.md) · [docs/registry.md](../docs/registry.md)
 
-面向接手者：当前阶段以 **全量可分析评论（shared corpus）** 上的探索性主题建模为主，**不依赖 lexicon**、**不训练 judge 模型**、**不把关键词命中当类别标签**。
+面向接手者：仓库已 **多平台 clean**（XHS / TikTok / 抖音 / YouTube）；**XHS shared** 主题结论见 `output/experiments/` 的 `current`（冻结 26,811，勿与现 30,762 混用）。下一阶段主线为 **三层码本打标**（见 [config/codebook/codebook.md](../config/codebook/codebook.md)）。本 RUNBOOK 仍侧重 XHS 探索性主题建模，**不依赖 lexicon**、**不训练 judge**。
 
 ---
 
@@ -245,7 +245,7 @@ PYTHONUNBUFFERED=1 ./.venv/bin/python -m phase1.topic_modeling --device cpu
 
 ## 8. 当前结论
 
-**维护在仓库根 [CURRENT.md](../CURRENT.md)**（run_id、N、discovery 进度）。跑完新实验后更新 CURRENT + `registry.csv`，勿在本文件重复写结论以免漂移。
+**维护在 [README.md](../README.md) § Current snapshot** 与 `output/experiments/registry.csv`。勿在本文件重复写 current 结论以免漂移。
 
 ---
 

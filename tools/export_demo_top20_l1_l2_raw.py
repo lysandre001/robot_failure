@@ -84,7 +84,6 @@ BASE_COLS = [
     "like_count",
     "reply_count",
     "comment_time",
-    "location",
     "n_l2_children",
     "char_len",
 ]
@@ -187,7 +186,6 @@ def _export_from_raw_wide(
             "like_count": int(l1_row["一级评论点赞数"]),
             "reply_count": int(l1_row["一级评论回复数"]),
             "comment_time": _clean_text(l1_row.get("一级评论时间")),
-            "location": _clean_text(l1_row.get("一级评论地址")),
             "n_l2_children": int(l1_row["n_l2_children"]),
             "char_len": len(normalize_text(l1_content) or l1_content),
         }
@@ -216,7 +214,6 @@ def _export_from_raw_wide(
                 "like_count": int(l2_row["二级评论点赞数"]),
                 "reply_count": 0,
                 "comment_time": _clean_text(l2_row.get("二级评论时间")),
-                "location": _clean_text(l2_row.get("二级评论地址")),
                 "n_l2_children": "",
                 "char_len": len(normalize_text(l2_content) or l2_content),
             }
@@ -278,7 +275,6 @@ def _export_from_clean_long(
             "like_count": int(l1_row["like_count"]),
             "reply_count": int(l1_row["reply_count"]),
             "comment_time": _clean_text(l1_row.get("comment_time")),
-            "location": _clean_text(l1_row.get("location")),
             "n_l2_children": int(l1_row["n_l2_children"]),
             "char_len": len(normalize_text(l1_content) or l1_content),
         }
@@ -308,7 +304,6 @@ def _export_from_clean_long(
                 "like_count": int(l2_row["like_count"]),
                 "reply_count": 0,
                 "comment_time": _clean_text(l2_row.get("comment_time")),
-                "location": _clean_text(l2_row.get("location")),
                 "n_l2_children": "",
                 "char_len": len(normalize_text(l2_content) or l2_content),
             }

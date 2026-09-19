@@ -1,7 +1,9 @@
 # 数据预处理流程说明（论文正文与附录）
 
 > **版本**：2026-05-29；帖子编码改为 `机器人状态` + `人的形象` 两列（config），clean 表输出 `post_category`（`状态|角色`）及独立列 `robot_status` / `human_role`。Phase 1 已启用 `contains_mention`（v2）。  
-> **canonical 产物**：`data/clean/clean_comments_unified.csv`（Phase 1，*N* = 41,251）；`data/clean/shared_analyzable_corpus.csv`（主题建模输入，*N* = 26,811）。  
+> **canonical 产物**：各平台 `data/clean/{platform}/{batch}/clean_comments_unified.csv`；XHS merged 根 symlink 同 `xhs/merged/`。  
+> **shared**：`data/clean/xhs/merged/shared_analyzable_corpus.csv`（门控 v1 当前 *N* ≈ **30,762**）。**05-27** 冻结主题实验仍对齐旧 *N* = **26,811** embeddings，禁止与现表混用。  
+> 下文 § 数字以 **2026-05 前后 XHS 两批合并** 快照为主；读当前真源以 [README.md](../../README.md) § Current snapshot 为准。  
 > **复现入口**：`phase1/RUNBOOK.md` §2b–§3；实现 `phase1/preprocess.py`、`phase1/pipeline.py`、`tools/refresh_clean_post_labels.py`、`tools/export_shared_analyzable_corpus.py`。
 
 ---
@@ -29,7 +31,7 @@
 
 在合并宽表上运行 `run_preprocess.py` → `phase1/pipeline.py`，**两批适用完全相同规则**。
 
-1. **帖子级元数据**：宽表左连接计数表；再用 `config/post_category_by_post.csv` 覆盖 **`post_category` / `robot_status` / `human_role`**（`load_post_category_table`）。
+1. **帖子级元数据**：宽表左连接计数表；再用 config 覆盖 **`post_category` / `robot_status` / `human_role`**（`phase1.post_category_labels.load_post_category_table`，与 `load_post_category_by_post` 同源）。
 2. **评论展开与去重**：一级按 `一级评论id`、二级按 `二级评论id` 去重；纵向合并为统一长表。
 3. **文本规范化**：`content` 首尾空白剔除；`char_len`。
 4. **有效性过滤**：空内容 + `config/topic_modeling/comment_content_filter.json`（v2：含 `@` 提及等）。

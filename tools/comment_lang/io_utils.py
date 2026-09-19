@@ -105,8 +105,24 @@ def _repair_key(post_id, content, comment_time) -> tuple[str, str, str]:
     )
 
 
+def _user_id_by_comment(clean_path: Path) -> dict[str, str]:
+    """Public clean may omit user_id; read sidecar when present (local QC only)."""
+    sidecar = clean_path.parent / "comment_pii_sidecar.csv"
+    if not sidecar.is_file():
+        return {}
+    pii = pd.read_csv(sidecar, dtype=str)
+    if "comment_id" not in pii.columns or "user_id" not in pii.columns:
+        return {}
+    return {
+        _cell_str(r["comment_id"]): _cell_str(r["user_id"])
+        for _, r in pii.iterrows()
+        if _cell_str(r["comment_id"])
+    }
+
+
 def _build_clean_lookup(clean_path: Path) -> tuple[dict[tuple[str, str, str], list[dict[str, str]]], dict]:
     clean = pd.read_csv(clean_path, dtype=str)
+    uid_map = _user_id_by_comment(clean_path)
     lookups: dict[int, dict[tuple[str, str, str], list[dict[str, str]]]] = {1: {}, 2: {}}
     stats: dict[str, Any] = {"l1_keys": 0, "l2_keys": 0, "l1_dup_keys": 0, "l2_dup_keys": 0}
     for level in (1, 2):
@@ -114,7 +130,9 @@ def _build_clean_lookup(clean_path: Path) -> tuple[dict[tuple[str, str, str], li
         lk = lookups[level]
         for _, row in sub.iterrows():
             key = _repair_key(row["帖子id"], row["content"], row.get("comment_time", ""))
-            entry = {"comment_id": _cell_str(row["comment_id"]), "user_id": _cell_str(row.get("user_id", ""))}
+            cid = _cell_str(row["comment_id"])
+            uid = _cell_str(row.get("user_id", "")) or uid_map.get(cid, "")
+            entry = {"comment_id": cid, "user_id": uid}
             if key in lk:
                 lk[key].append(entry)
                 stats[f"l{level}_dup_keys"] += 1

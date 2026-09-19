@@ -5,6 +5,8 @@
 """步骤 C：汇总统计、制图、主题聚类。"""
 from __future__ import annotations
 
+from pathlib import Path
+
 import json
 from collections import defaultdict
 
@@ -28,7 +30,13 @@ def ensure_dirs() -> None:
     FIG.mkdir(parents=True, exist_ok=True)
 
 
-def interaction_map(l1: pd.DataFrame) -> None:
+def interaction_map(l1: pd.DataFrame, *, out_dir: Path | None = None) -> None:
+    from pathlib import Path as _Path
+
+    base = _Path(out_dir) if out_dir is not None else OUT
+    fig_dir = base / "figures" if out_dir is not None else FIG
+    base.mkdir(parents=True, exist_ok=True)
+    fig_dir.mkdir(parents=True, exist_ok=True)
     g = (
         l1.groupby("post_category")
         .agg(
@@ -42,7 +50,7 @@ def interaction_map(l1: pd.DataFrame) -> None:
         )
         .reset_index()
     )
-    g.to_csv(OUT / "interaction_by_category.csv", index=False)
+    g.to_csv(base / "interaction_by_category.csv", index=False)
 
     fig, ax = plt.subplots(figsize=(8, 4))
     cats = g["post_category"].tolist()
@@ -57,12 +65,12 @@ def interaction_map(l1: pd.DataFrame) -> None:
     ax.legend(loc="upper left")
     ax2.legend(loc="upper right")
     fig.tight_layout()
-    fig.savefig(FIG / "interaction_l1_by_category.png", dpi=150)
+    fig.savefig(fig_dir / "interaction_l1_by_category.png", dpi=150)
     plt.close(fig)
 
     l1.nlargest(30, "reply_count")[
         ["帖子id", "post_category", "comment_id", "reply_count", "like_count", "content"]
-    ].to_csv(OUT / "top_high_reply_l1.csv", index=False)
+    ].to_csv(base / "top_high_reply_l1.csv", index=False)
 
 
 def role_aggregate(enriched: pd.DataFrame) -> None:

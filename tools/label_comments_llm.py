@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""[辅助] LLM 四维评论打标（DeepSeek）；只读 relic3 .env。"""
+"""[archived] Legacy LLM figure/stance/D 单文件 CLI。新跑请用 human_label_llm/run_experiment.py + config/codebook/。"""
 from __future__ import annotations
 
 import argparse

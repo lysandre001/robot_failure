@@ -121,56 +121,10 @@ def _split_post_category_label(s: Any) -> tuple[str, str]:
 
 
 def load_post_category_table(path: Path | str | None = None) -> pd.DataFrame:
-    """
-    读取帖子编码表，返回 ``帖子id, post_category, robot_status, human_role``。
+    """读取帖子编码表（实现见 phase1.post_category_labels.load_post_category_table）。"""
+    from phase1.post_category_labels import load_post_category_table as _load
 
-    支持三种 config 格式：
-    - ``机器人状态`` + ``人的形象``（当前 canonical）
-    - ``post_category`` 或 ``类别``（``状态|角色`` 合并字符串）
-    """
-    p = Path(path) if path is not None else POST_CATEGORY_BY_POST_CSV
-    tab = pd.read_csv(p, encoding="utf-8-sig")
-    if tab.empty:
-        return pd.DataFrame(columns=["帖子id", "post_category", "robot_status", "human_role"])
-
-    id_col = "帖子id" if "帖子id" in tab.columns else tab.columns[0]
-    out = tab[[id_col]].copy().rename(columns={id_col: "帖子id"})
-    out["帖子id"] = out["帖子id"].map(normalize_post_id)
-
-    if {"机器人状态", "人的形象"}.issubset(tab.columns):
-        out["robot_status"] = tab["机器人状态"].map(lambda x: "" if pd.isna(x) else str(x).strip())
-        out["human_role"] = tab["人的形象"].map(lambda x: "" if pd.isna(x) else str(x).strip())
-        both = (out["robot_status"].str.len() > 0) & (out["human_role"].str.len() > 0)
-        out = out[both].copy()
-        out["post_category"] = out["robot_status"] + "|" + out["human_role"]
-    elif "post_category" in tab.columns:
-        out["post_category"] = tab["post_category"].map(lambda x: "" if pd.isna(x) else str(x).strip())
-        split = out["post_category"].map(_split_post_category_label)
-        out["robot_status"] = split.map(lambda x: x[0])
-        out["human_role"] = split.map(lambda x: x[1])
-    elif "类别" in tab.columns:
-        out["post_category"] = tab["类别"].map(lambda x: "" if pd.isna(x) else str(x).strip())
-        split = out["post_category"].map(_split_post_category_label)
-        out["robot_status"] = split.map(lambda x: x[0])
-        out["human_role"] = split.map(lambda x: x[1])
-    else:
-        cat_col = tab.columns[1]
-        out["post_category"] = tab[cat_col].map(lambda x: "" if pd.isna(x) else str(x).strip())
-        split = out["post_category"].map(_split_post_category_label)
-        out["robot_status"] = split.map(lambda x: x[0])
-        out["human_role"] = split.map(lambda x: x[1])
-
-    from phase1.post_category_labels import normalize_human_role
-
-    out = out.dropna(subset=["帖子id"])
-    out = out[out["post_category"].str.len() > 0]
-    out["human_role"] = out["human_role"].map(
-        lambda x: normalize_human_role(x) if str(x).strip() else ""
-    )
-    out["post_category"] = out["robot_status"].astype(str) + "|" + out["human_role"].astype(str)
-    return out.drop_duplicates(subset=["帖子id"], keep="first")[
-        ["帖子id", "post_category", "robot_status", "human_role"]
-    ]
+    return _load(path)
 
 
 def _read_post_id_category_csv(path: Path) -> dict[str, str]:

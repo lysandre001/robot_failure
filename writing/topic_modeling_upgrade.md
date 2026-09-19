@@ -233,7 +233,7 @@ flowchart TD
 | `phase1/topic_modeling.py` | `--text-column`；`load_topic_stopwords(platform=...)`；encoder 可配置 |
 | `phase1/topic_discovery.py` | min_samples 网格；层次树导出；审计链 CSV |
 | `phase1/run_topic_discovery.py` | 新参数暴露 |
-| `docs/functions.md` / `CURRENT.md` | 新 run 真源与英译契约 |
+| [README.md](../README.md) / Schema | 新 run 真源与英译契约 |
 | `output/experiments/registry.csv` | 登记 TikTok run |
 | `tools/compute_layer_cluster_metrics.py` | 覆盖率、语言纯度指标 |
 | `writing/method&data.md` | Methods 段落同步 |
@@ -248,4 +248,4 @@ flowchart TD
 | [topic_discovery_intern_runbook.md](topic_discovery_intern_runbook.md) | 标注流程 |
 | [method&data.md](method&data.md) | 论文 Methods 草稿 |
 | [codebook_llm_labeling.md](codebook_llm_labeling.md) | 立场/形象编码管线 |
-| [CURRENT.md](../CURRENT.md) | 当前真源入口 |
+| [README.md](../README.md) | 当前真源入口 |

@@ -18,6 +18,7 @@ from phase1.config import CLEAN_DIR, OUT, POST_CATEGORY_BY_POST_CSV, ROOT, confi
 from phase1.features import apply_lexicons
 from phase1.topic_lda import export_lda_result, load_corpus_gate_stopwords, run_lda
 from phase1.comment_content_filter import COMMENT_CONTENT_FILTER_JSON
+from phase1.deidentify import deidentify_for_public, write_pii_sidecar
 from phase1.preprocess import (
     apply_post_category_by_post,
     build_level1,
@@ -153,14 +154,22 @@ def run_phase1_pipeline(
     l1_filtered = unified[unified["comment_level"] == 1].copy()
     l2_filtered = unified[unified["comment_level"] == 2].copy()
 
-    for frame in (unified_before_filter, unified, l1, l2):
+    for frame in (unified_before_filter, unified, l1, l2, l1_filtered, l2_filtered):
         frame["platform"] = plat
         frame["source_batch"] = source_batch
+
+    unified_before_filter, pii_sidecar = deidentify_for_public(unified_before_filter)
+    unified, _ = deidentify_for_public(unified)
+    l1, _ = deidentify_for_public(l1)
+    l2, _ = deidentify_for_public(l2)
+    l1_filtered, _ = deidentify_for_public(l1_filtered)
+    l2_filtered, _ = deidentify_for_public(l2_filtered)
 
     shared_n: int | None = None
     shared_summary: dict | None = None
 
     if write_csv:
+        write_pii_sidecar(pii_sidecar, out_clean)
         l1.to_csv(out_clean / "clean_l1_comments.csv", index=False)
         l2.to_csv(out_clean / "clean_l2_comments.csv", index=False)
         unified_before_filter.to_csv(out_clean / "clean_comments_unified_before_filter.csv", index=False)
@@ -211,11 +220,11 @@ def run_phase1_pipeline(
 
     if verbose:
         print("3/8 数据质量…", flush=True)
-    write_data_quality(merged, l1, l2, unified)
+    write_data_quality(merged, l1, l2, unified, out_dir=out_clean)
 
     if verbose:
         print("4/8 互动结构…", flush=True)
-    interaction_map(l1)
+    interaction_map(l1, out_dir=out_clean)
 
     enriched = unified
     if legacy_lexicon_features:

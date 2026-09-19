@@ -131,6 +131,19 @@ def load_post_category_by_post(csv_path: Path | str | None = None) -> pd.DataFra
     pc["robot_status"] = pc["post_cate_robot"].map(normalize_robot_status_label)
     pc["human_role"] = pc["post_cate_human"].map(normalize_human_role)
     pc.loc[pc["human_role"].isna(), "human_role"] = pd.NA
+    from phase1.preprocess import normalize_post_id
+
+    pc["帖子id"] = pc["帖子id"].map(normalize_post_id)
 
     keep = ["帖子id", "post_cate_robot", "post_cate_human", "post_category", "robot_status", "human_role"]
     return pc[keep].drop_duplicates(subset=["帖子id"])
+
+
+def load_post_category_table(csv_path: Path | str | None = None) -> pd.DataFrame:
+    """Pipeline 用：与 load_post_category_by_post 同源，仅返回 merge 所需四列；双标签齐全的帖才保留。"""
+    pc = load_post_category_by_post(csv_path)
+    out = pc[["帖子id", "post_category", "robot_status", "human_role"]].copy()
+    rs = out["robot_status"].astype(str).str.strip()
+    hr = out["human_role"].astype(str).str.strip()
+    both = rs.str.len().gt(0) & hr.str.len().gt(0) & ~hr.eq("nan")
+    return out[both].drop_duplicates(subset=["帖子id"], keep="first")

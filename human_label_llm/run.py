@@ -95,11 +95,13 @@ DEFAULT_POSTS_JOIN: dict[str, str] = {
 
 
 def resolve_columns(cfg: dict[str, Any]) -> dict[str, str]:
+    from human_label_llm.labeling_paths import apply_labeling_columns
+
     cols = dict(DEFAULT_COLUMNS)
     user = cfg.get("columns")
     if isinstance(user, dict):
         cols.update({k: str(v) for k, v in user.items() if v is not None and str(v).strip()})
-    return cols
+    return apply_labeling_columns(cols, cfg)
 
 
 def resolve_gold_column(cfg: dict[str, Any], override: str | None = None) -> str:
@@ -233,12 +235,16 @@ def load_config(path: Path) -> dict[str, Any]:
 
 
 def run_dir(cfg: dict[str, Any]) -> Path:
+    from human_label_llm.labeling_paths import resolve_output_root
+
     run_id = cfg.get("run_id") or datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
-    return LABEL_DIR / "output" / str(run_id)
+    return resolve_output_root(cfg) / str(run_id)
 
 
 def resolve_prompt_id(cfg: dict[str, Any]) -> str:
-    return str(cfg.get("prompt") or "eval_object_v1_comment_only")
+    from human_label_llm.labeling_paths import resolve_default_prompt_id
+
+    return resolve_default_prompt_id(cfg)
 
 
 def _merge_video_captions(cfg: dict[str, Any], df: pd.DataFrame, cols: dict[str, str]) -> pd.DataFrame:

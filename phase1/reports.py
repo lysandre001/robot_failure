@@ -1,12 +1,25 @@
 """步骤 D：数据质量说明与 Markdown 报告。"""
 from __future__ import annotations
 
+from pathlib import Path
+
 import pandas as pd
 
 from phase1.config import OUT
 
 
-def write_data_quality(main: pd.DataFrame, l1: pd.DataFrame, l2: pd.DataFrame, u: pd.DataFrame) -> None:
+def write_data_quality(
+    main: pd.DataFrame,
+    l1: pd.DataFrame,
+    l2: pd.DataFrame,
+    u: pd.DataFrame,
+    *,
+    out_dir: Path | None = None,
+) -> None:
+    from pathlib import Path as _Path
+
+    dest = _Path(out_dir) if out_dir is not None else OUT
+    dest.mkdir(parents=True, exist_ok=True)
     cat_posts = l1.groupby("post_category")["帖子id"].nunique()
     lines = [
         "# 数据质量摘要",
@@ -23,7 +36,7 @@ def write_data_quality(main: pd.DataFrame, l1: pd.DataFrame, l2: pd.DataFrame, u
         cat_posts.to_string(),
         "",
     ]
-    (OUT / "data_quality.md").write_text("\n".join(lines), encoding="utf-8")
+    (dest / "data_quality.md").write_text("\n".join(lines), encoding="utf-8")
 
 
 def write_codebook_suggestions(enriched: pd.DataFrame, l1: pd.DataFrame) -> None:

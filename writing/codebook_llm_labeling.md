@@ -426,9 +426,9 @@ human_eval:
 | 扩展 `human_label_llm/run.py` 或新建 `codebook_label/run_experiment.py` | dryrun/infer/extract/compare；输出改 `output/experiments/` |
 | [data/clean/label_codebook_llm.md](../data/clean/label_codebook_llm.md) | 每类正/反例 |
 | [tools/label_comments_llm.py](../tools/label_comments_llm.py) | DEPRECATED 或 thin wrapper |
-| [docs/functions.md](../docs/functions.md) | 新 CLI 契约 |
+| [data/canonical_comment_schema.md](../data/canonical_comment_schema.md) | 新 CLI / 阶段 I/O 契约 |
 | [output/experiments/registry.csv](../output/experiments/registry.csv) | 登记 codebook run |
-| [CURRENT.md](../CURRENT.md) | 若某 run 成为 current 标注真源 |
+| [README.md](../README.md) | 当前 snapshot；[label registry](../human_label_llm/experiment/registry.csv) |
 
 ---
 

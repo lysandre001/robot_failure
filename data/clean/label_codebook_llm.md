@@ -1,6 +1,8 @@
-# LLM 打标受控码本
+# LLM 打标受控码本（观念层 · figure / stance / D）
 
-与 `phase1/label_manual_comments.py` 中 system prompt 一致，供论文附录与人工改码对照。
+**论文三层码本真源**已迁至 [config/codebook/codebook.md](../config/codebook/codebook.md)。本文件保留 **figure_code** 与 **stance/D** 字段细节，供 `tools/label_comments_llm.py` 与观念层 gold 对照。
+
+与 legacy `phase1/label_manual_comments.py` wrapper 一致。
 
 ## `llm_figure_code`
 

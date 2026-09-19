@@ -13,7 +13,7 @@
 
 | 层 | 产物 | 做什么 |
 |----|------|--------|
-| Phase 1 | `clean_comments_unified.csv` | 空内容、`@` 提及、纯 emoji、重复片段、英文套话整句 |
+| Phase 1 | `clean_comments_unified.csv` | 空内容、`@` 提及、纯 emoji、重复片段、英文套话整句；写出前剥离 `user_id`/`location` → `comment_pii_sidecar.csv` |
 | Shared | `shared_analyzable_corpus.csv` | 在 clean 上再判「有没有可分析命题」 |
 | 主题词 | LDA / NMF 词表 | 才使用 sklearn 英文功能词表 |
 

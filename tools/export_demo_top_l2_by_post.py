@@ -45,7 +45,6 @@ OUTPUT_COLS = [
     "reply_count",
     "content",
     "comment_time",
-    "location",
     "sample_l2_contents",
 ]
 

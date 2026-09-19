@@ -1,5 +1,7 @@
 # LLM Stance Annotation Pipeline (OpenRouter)
 
+> **archived**：历史三模型 stance 宽表；新任务走 `human_label_llm/run_experiment.py` 与 `config/codebook/`。
+
 最小可跑的三模型 stance 标注流水线。输入是双人标注 Excel，输出是
 每个模型一份 JSONL（断点续跑），最后合并成宽 CSV 供论文统计使用。
 

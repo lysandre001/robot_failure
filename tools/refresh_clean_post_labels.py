@@ -45,7 +45,12 @@ def main() -> None:
         type=Path,
         default=None,
     )
-    ap.add_argument("--sync-output-phase1", action=argparse.BooleanOptionalAction, default=True)
+    ap.add_argument(
+        "--sync-output-phase1",
+        action=argparse.BooleanOptionalAction,
+        default=False,
+        help="legacy：拷贝到 output/phase1/（默认关；真源在 data/clean/）",
+    )
     args = ap.parse_args()
 
     if args.platform and args.batch:

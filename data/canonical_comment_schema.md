@@ -1,6 +1,6 @@
-# 评论数据 canonical schema（XHS / TikTok / 抖音 / YouTube 共用）
+# Data schema & contracts（XHS / TikTok / 抖音 / YouTube）
 
-> 改 raw、跑清洗、填帖子分类、交人工金标前读本文。操作步骤见 [docs/OPERATING.md](../docs/OPERATING.md)。
+> **字段与阶段 I/O 契约**。操作命令见 [README.md](../README.md)；协议与码本索引见 [docs/registry.md](../docs/registry.md)。
 
 ## 宽表一行是什么
 
@@ -89,10 +89,8 @@ YouTube 导出通常已有帖子、一级、二级；作者、点赞、时间、
 | `comment_level` | `1` 或 `2` |
 | `comment_id` | 对应宽表 `一级评论id` 或 `二级评论id` |
 | `parent_comment_id` | 二级指向一级 `comment_id`；一级为空 |
-| `user_id` | 评论用户 id |
 | `content` | 评论正文 |
 | `comment_time` | |
-| `location` | |
 | `like_count` / `reply_count` | |
 | `char_len` | 规范化后长度 |
 | `platform` | 如 `xhs` / `tiktok` / `douyin` / `youtube` |
@@ -100,6 +98,10 @@ YouTube 导出通常已有帖子、一级、二级；作者、点赞、时间、
 | `language` / `is_mixed` / `content_en` | 若宽表有语言列则保留 |
 
 同目录还有 `shared_analyzable_corpus.csv`（主题/嵌入用的更严子集，规则见 [comment_quality_gate_rules.md](clean/comment_quality_gate_rules.md)）。
+
+**不含于 public clean**（IRB 8a）：`user_id`、评论 `location`（IP/地址）、一切用户昵称。技术用字段写入 **`comment_pii_sidecar.csv`**（与 public 表同目录，仅本地、不入库发表；见 [public_observation_deidentify.md](../docs/protocols/public_observation_deidentify.md)）。
+
+宽表 raw 仍可含 `一级评论用户id` / `一级评论地址` 等，管线在写出 clean 前剥离。
 
 ---
 
@@ -122,6 +124,79 @@ YouTube 导出通常已有帖子、一级、二级；作者、点赞、时间、
 
 ---
 
-## 4. 人工金标列（与 clean 对齐）
+## 4. 人工金标（gold CSV）
 
-Gold 真源见 [human_label_llm/label_data/GOLD_PROTOCOL.md](../human_label_llm/label_data/GOLD_PROTOCOL.md)。与 clean 对齐键：**`comment_id`**。禁止改 gold 中的 `comment_id`、`content`、`帖子id`。
+| 项 | 约定 |
+|----|------|
+| **Path** | `human_label_llm/label_data/gold/{platform}_{batch}_YYYYMMDD.csv` |
+| **Primary key** | `comment_id`（与 clean 一致） |
+| **Must not edit** | `comment_id`, `content`, `帖子id`（及已有 `content_en`） |
+| **Label columns** | 见 registry → `comment_three_layer` + [GOLD_PROTOCOL](../human_label_llm/label_data/GOLD_PROTOCOL.md)（`主体`, `stance`, `d1`–`d4`, `情感`；列 alias 见 [label_map.yaml](../config/codebook/label_map.yaml)） |
+| **Written by** | 人工标注交回 |
+| **Read by** | `run_experiment.py`, `tools.codebook_analysis` |
+| **Must not** | 合并进 `clean_comments_unified.csv` |
+
+---
+
+## 5. Pipeline artifacts
+
+| 文件 | Path pattern | 含义 |
+|------|----------------|------|
+| PII sidecar | `data/clean/{platform}/{batch}/comment_pii_sidecar.csv` | `comment_id` + `user_id` + `location`；**非**发表/demo/gold 输入 |
+| Stage summary | `data/clean/{platform}/{batch}/phase1_preprocess_stage_summary.csv` | 各过滤阶段行数 |
+| QC markdown | 同目录 `phase1_*.md`（若生成） | 人类可读 QC |
+| Filter report | `comment_content_filter_report.json` | 噪音规则命中统计 |
+| Shared 规则 | [comment_quality_gate_rules.md](clean/comment_quality_gate_rules.md) | 门控版本 |
+| Inventory | `data/corpus_inventory.csv` | 跨平台 clean 索引（`tools.build_corpus_inventory`） |
+
+---
+
+## 6. Gold & label runs
+
+| 项 | 约定 |
+|----|------|
+| **Experiment 真源** | `human_label_llm/experiment/*.yaml` + `prompt/*.md`（见 [experiment/README.md](../human_label_llm/experiment/README.md)） |
+| **Registry** | `human_label_llm/experiment/registry.csv` |
+| **Output path** | `{output_root}/{run_id}/`；默认新任务 `output/label_runs/`；legacy `human_label_llm/output/` |
+| **Input CSV** | gold 或抽样；须含 yaml `columns` 映射的列 |
+| **Text for model** | xhs/douyin → `content`；tiktok/youtube → `content_en`（`labeling_paths.py`） |
+| **Checkpoint** | jsonl by `comment_id`；`parse_ok=false` 不填默认类 |
+| **Must not** | 预测写回 clean / gold |
+
+---
+
+## 7. Topic experiments
+
+| 项 | 约定 |
+|----|------|
+| **Path** | `output/experiments/<run_id>/` |
+| **Registry** | `output/experiments/registry.csv`（`status=current` 仅一行） |
+| **Config** | `config.json` 含 input SHA、`n_shared` 等 |
+| **Embeddings** | `embeddings.npy` 行序与当次 `shared_analyzable_corpus.csv` **严格对齐** |
+| **Current frozen** | `2026-05-27_topic_merged_bge_hdbscan_sensitivity` @ N=26,811 — **不可**与现 XHS 30,762 混用 |
+| **Written by** | `phase1.topic_modeling`, `run_topic_discovery` 等 |
+| **Must not** | 覆盖 current 目录；用 demo/gold 作 encode 输入 |
+
+---
+
+## 8. Analysis outputs
+
+| 项 | 约定 |
+|----|------|
+| **Path** | `output/analysis/<analysis_id>/` |
+| **Input** | labels CSV + `data/clean/{platform}/{batch}/clean_comments_unified.csv` |
+| **Join key** | `comment_id` |
+| **Post strata** | `robot_status`, `human_role` from clean |
+| **Tool** | `python -m tools.codebook_analysis` |
+
+---
+
+## 9. Cross-cutting rules
+
+| 规则 | 说明 |
+|------|------|
+| Clean 真源 | 仅 `data/clean/{platform}/{batch}/`；根目录 symlink 指向 xhs/merged |
+| Derived | `output/phase1/` 为 legacy/拷贝 QC，**非** canonical |
+| Demo | `data/demo/` 仅供浏览/抽样，非 topic/label 主输入 |
+| Post media | `data/clean/post_media.csv` 旁路视听元数据，非评论主表 |
+| 帖子分类 loader | `phase1.post_category_labels.load_post_category_table` |

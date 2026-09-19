@@ -1,0 +1,28 @@
+# 复制本文件为新 run_id；不要改 _defaults.yaml（冻结旧 sample10）。
+extends: _defaults.yaml
+
+run_id: YYYY-MM-DD_platform_batch_layer_v1
+platform: youtube          # xhs | douyin | tiktok | youtube
+prompt_lang: en            # 可省略，由 platform 推断
+output_root: output/label_runs
+legacy_output_dir: false   # true → 写 human_label_llm/output/（旧实验）
+
+data:
+  input_csv: human_label_llm/label_data/gold/youtube_2604-marathon_YYYYMMDD.csv
+  # text_column: content_en  # 通常省略，由 platform 推断
+
+columns:
+  comment_id: comment_id
+  comment: content_en      # 会被 platform 规则覆盖
+  title: 帖子标题
+  gold: 主体               # 或 情感；emotion 实验改 gold_column
+
+gold_column: 主体
+layer: subject              # subject | emotion | stance → subject_zh / subject_en 等
+# prompt: subject_en        # 可显式覆盖；省略则按 layer + platform 推断
+scopes:
+  - scope_comment_only
+
+model_keys:
+  - deepseek_v4_pro
+limit: 50                  # 冒烟；全量设为 null
