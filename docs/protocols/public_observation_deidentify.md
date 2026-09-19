@@ -18,14 +18,27 @@
 | `only_mentions` | 去掉 @ 后无实质内容 → 排除 |
 | 其它 | 纯 emoji、重复片段、英文套话等（见 gate 文档） |
 
+## 用户级去重（进入 analysis clean 前）
+
+在 Phase 1 内容过滤 **之后**、写出 `clean_comments_unified.csv` **之前**（`phase1/deidentify.py` → `dedupe_user_identical_content`）：
+
+| 规则 | 行为 |
+|------|------|
+| 刷屏 | 同一 **非空** `user_id` + **规范化后相同** `content` → 只保留 `comment_id` 最早一条，其余删除 |
+| 无 `user_id` | 不参与此去重（评论仍可在 clean 中） |
+
+**分析用 clean 不含**「同用户重复粘贴」的多条副本。去重条数与 **独立用户数** 写入 `comment_deidentify_report.json`（字段 `removed_user_identical_content`、`n_distinct_user_id`），供论文 aggregate 表述；**不**在发表表导出 `user_id`。
+
+独立用户数定义：final clean 中 **非空平台 user_id** 的 `nunique`（侧车与报告一致，仅本地）。
+
 ## 脱敏（raw → clean 写出前）
 
 | 项 | 做法 |
 |----|------|
 | `user_id` | 从所有 **public** clean/shared/demo 表移除 |
 | `location`（评论 IP/地址） | 同上 |
-| 侧车文件 | `data/clean/{platform}/{batch}/comment_pii_sidecar.csv`：`comment_id` + `user_id` + `location` + `platform` + `source_batch`，**仅本地质控/去重**，不出现在发表、demo、gold 交回模板、分析产物 |
-| 发表引用 | 英译 + 必要时轻度改写；汇总报告（主题、情感、分布） |
+| 侧车文件 | `comment_pii_sidecar.csv`：与 **去重后** final clean 行一一对应；仅本地质控 |
+| 发表引用 | 英译 + 必要时轻度改写；汇总报告（主题、情感、分布、独立用户数） |
 
 ## 重跑
 

@@ -80,8 +80,8 @@ python run_preprocess.py --platform youtube --batch 2604-marathon \
   --input data/rawdata/youtube/2604-marathon/canonical.csv
 ```
 
-验收：`clean_comments_unified.csv`（**无** `user_id` / `location`）、`phase1_preprocess_stage_summary.csv`、L1/L2 合理。  
-PII 侧车：`comment_pii_sidecar.csv`（仅本地质控，见 [docs/protocols/public_observation_deidentify.md](docs/protocols/public_observation_deidentify.md)）。含 `@` 评论在过滤阶段整句排除（`comment_content_filter.json`）。
+验收：`clean_comments_unified.csv`（**无** `user_id` / `location`；**无** 同用户+同正文刷屏重复）、`comment_deidentify_report.json`（独立用户数、去重条数）、`phase1_preprocess_stage_summary.csv`。  
+PII 侧车与 8a 规则：[docs/protocols/public_observation_deidentify.md](docs/protocols/public_observation_deidentify.md)。
 
 ### Language + post labels + inventory
 

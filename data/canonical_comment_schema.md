@@ -99,9 +99,9 @@ YouTube 导出通常已有帖子、一级、二级；作者、点赞、时间、
 
 同目录还有 `shared_analyzable_corpus.csv`（主题/嵌入用的更严子集，规则见 [comment_quality_gate_rules.md](clean/comment_quality_gate_rules.md)）。
 
-**不含于 public clean**（IRB 8a）：`user_id`、评论 `location`（IP/地址）、一切用户昵称。技术用字段写入 **`comment_pii_sidecar.csv`**（与 public 表同目录，仅本地、不入库发表；见 [public_observation_deidentify.md](../docs/protocols/public_observation_deidentify.md)）。
+**不含于 public clean**（IRB 8a）：`user_id`、评论 `location`、用户昵称；且 **不含** 同 `user_id`+相同正文的刷屏重复行（见协议「用户级去重」）。
 
-宽表 raw 仍可含 `一级评论用户id` / `一级评论地址` 等，管线在写出 clean 前剥离。
+宽表 raw 仍可含 `一级评论用户id` / `一级评论地址`；管线在过滤后去重、再剥离 PII 写出 clean。
 
 ---
 
@@ -142,7 +142,8 @@ YouTube 导出通常已有帖子、一级、二级；作者、点赞、时间、
 
 | 文件 | Path pattern | 含义 |
 |------|----------------|------|
-| PII sidecar | `data/clean/{platform}/{batch}/comment_pii_sidecar.csv` | `comment_id` + `user_id` + `location`；**非**发表/demo/gold 输入 |
+| PII sidecar | `comment_pii_sidecar.csv` | 去重后 clean 的 `comment_id` + `user_id` + `location`；**非**发表输入 |
+| De-identify report | `comment_deidentify_report.json` | `n_distinct_user_id`、`removed_user_identical_content` 等 aggregate 统计 |
 | Stage summary | `data/clean/{platform}/{batch}/phase1_preprocess_stage_summary.csv` | 各过滤阶段行数 |
 | QC markdown | 同目录 `phase1_*.md`（若生成） | 人类可读 QC |
 | Filter report | `comment_content_filter_report.json` | 噪音规则命中统计 |
