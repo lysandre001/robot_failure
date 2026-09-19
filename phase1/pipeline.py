@@ -3,6 +3,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
+import pandas as pd
+
 from phase1.analysis import (
     boundary_outputs,
     ensure_dirs,
@@ -12,9 +14,9 @@ from phase1.analysis import (
     role_aggregate,
     topic_clusters,
 )
-from phase1.config import CLEAN_DIR, OUT, configure_matplotlib
+from phase1.config import CLEAN_DIR, OUT, ROOT, configure_matplotlib
 from phase1.features import apply_lexicons
-from phase1.topic_lda import export_lda_result, run_lda
+from phase1.topic_lda import export_lda_result, load_corpus_gate_stopwords, run_lda
 from phase1.comment_content_filter import COMMENT_CONTENT_FILTER_JSON
 from phase1.preprocess import (
     apply_post_category_by_post,
@@ -22,10 +24,13 @@ from phase1.preprocess import (
     build_level2,
     coerce_engagement,
     filter_valid_comments,
-    load_raw_frames,
+    load_raw_wide_table,
     merge_post_category,
+    normalize_post_id,
     unified_comments,
 )
+from phase1.stage_summary import build_stage_summary_rows, write_stage_summary
+from phase1.topic_modeling import TopicModelingConfig, build_shared_analyzable_corpus
 from phase1.reports import (
     build_phase1_summary,
     write_codebook_suggestions,
@@ -33,9 +38,24 @@ from phase1.reports import (
 )
 
 
+def _export_comments_per_post(unified: pd.DataFrame, out_csv: Path) -> None:
+    g = unified.groupby(["帖子id", "comment_level"]).size().unstack(fill_value=0)
+    g = g.rename(columns={1: "L1", 2: "L2"})
+    for c in ("L1", "L2"):
+        if c not in g.columns:
+            g[c] = 0
+    g = g[["L1", "L2"]].astype(int)
+    g["合计"] = g["L1"] + g["L2"]
+    g.reset_index().to_csv(out_csv, index=False, encoding="utf-8-sig")
+
+
 def run_phase1_pipeline(
     *,
     xlsx: Path | str | None = None,
+    input_path: Path | str | None = None,
+    platform: str = "xhs",
+    source_batch: str = "batch1",
+    clean_dir: Path | str | None = None,
     post_category_overrides: dict[str | int, str] | None = None,
     write_csv: bool = True,
     run_topics: bool = False,
@@ -46,6 +66,7 @@ def run_phase1_pipeline(
     drop_repeated_single_char: bool = False,
     apply_comment_content_rules: bool = True,
     content_rules_path: Path | str | None = None,
+    export_shared: bool = True,
     verbose: bool = True,
     legacy_lexicon_features: bool = False,
 ) -> dict:
@@ -67,11 +88,38 @@ def run_phase1_pipeline(
     """
     configure_matplotlib()
     ensure_dirs()
+    plat = platform.lower().strip()
+    out_clean = (
+        Path(clean_dir)
+        if clean_dir is not None
+        else ROOT / "data" / "clean" / plat / source_batch
+    )
+    out_clean.mkdir(parents=True, exist_ok=True)
+
+    data_path = input_path or xlsx
+    if data_path is None and plat == "xhs":
+        from phase1.preprocess import resolve_data_xlsx
+
+        data_path = resolve_data_xlsx(None)
+    if data_path is None:
+        raise ValueError("需指定 --input 或 --xlsx")
+
     if verbose:
-        print("1/8 读取 Excel…", flush=True)
-    main_df, counts = load_raw_frames(xlsx)
+        print(f"1/8 读取数据 ({plat}/{source_batch})…", flush=True)
+    main_df, counts = load_raw_wide_table(data_path, platform=plat)
+    main_df["帖子id"] = main_df["帖子id"].map(normalize_post_id)
+    counts["帖子id"] = counts["帖子id"].map(normalize_post_id)
     merged = merge_post_category(main_df, counts)
-    merged = apply_post_category_by_post(merged, overrides=post_category_overrides)
+    merged["帖子id"] = merged["帖子id"].map(normalize_post_id)
+    if plat == "xhs":
+        merged = apply_post_category_by_post(merged, overrides=post_category_overrides)
+    else:
+        if "post_category" not in merged.columns:
+            merged["post_category"] = "unknown"
+        else:
+            merged["post_category"] = merged["post_category"].fillna("unknown")
+        merged["robot_status"] = ""
+        merged["human_role"] = ""
 
     if verbose:
         print("2/8 构建一级/二级/统一表…", flush=True)
@@ -83,7 +131,7 @@ def run_phase1_pipeline(
         rules_path = content_rules_path or (
             COMMENT_CONTENT_FILTER_JSON if COMMENT_CONTENT_FILTER_JSON.is_file() else None
         )
-    report_path = (CLEAN_DIR / "comment_content_filter_report.json") if rules_path else None
+    report_path = (out_clean / "comment_content_filter_report.json") if rules_path else None
     unified = filter_valid_comments(
         unified_before_filter,
         min_chars=min_chars,
@@ -95,15 +143,57 @@ def run_phase1_pipeline(
     l1_filtered = unified[unified["comment_level"] == 1].copy()
     l2_filtered = unified[unified["comment_level"] == 2].copy()
 
+    for frame in (unified_before_filter, unified, l1, l2):
+        frame["platform"] = plat
+        frame["source_batch"] = source_batch
+
+    shared_n: int | None = None
+    shared_summary: dict | None = None
+
     if write_csv:
-        # Canonical 输出：data/clean/（见 CURRENT.md）
-        CLEAN_DIR.mkdir(parents=True, exist_ok=True)
-        l1.to_csv(CLEAN_DIR / "clean_l1_comments.csv", index=False)
-        l2.to_csv(CLEAN_DIR / "clean_l2_comments.csv", index=False)
-        unified_before_filter.to_csv(CLEAN_DIR / "clean_comments_unified_before_filter.csv", index=False)
-        unified.to_csv(CLEAN_DIR / "clean_comments_unified.csv", index=False)
-        l1_filtered.to_csv(CLEAN_DIR / "clean_l1_comments_filtered.csv", index=False)
-        l2_filtered.to_csv(CLEAN_DIR / "clean_l2_comments_filtered.csv", index=False)
+        l1.to_csv(out_clean / "clean_l1_comments.csv", index=False)
+        l2.to_csv(out_clean / "clean_l2_comments.csv", index=False)
+        unified_before_filter.to_csv(out_clean / "clean_comments_unified_before_filter.csv", index=False)
+        unified.to_csv(out_clean / "clean_comments_unified.csv", index=False)
+        l1_filtered.to_csv(out_clean / "clean_l1_comments_filtered.csv", index=False)
+        l2_filtered.to_csv(out_clean / "clean_l2_comments_filtered.csv", index=False)
+        _export_comments_per_post(unified, out_clean / "comments_per_post_L1_L2.csv")
+
+    if export_shared and write_csv:
+        gate_sw = load_corpus_gate_stopwords()
+        cfg = TopicModelingConfig(
+            run_id=f"export_shared_{plat}_{source_batch}",
+            input_csv=out_clean / "clean_comments_unified.csv",
+            platform=plat,
+        )
+        shared, excluded, shared_summary = build_shared_analyzable_corpus(cfg, stopwords=gate_sw)
+        shared.to_csv(out_clean / "shared_analyzable_corpus.csv", index=False)
+        excluded.to_csv(out_clean / "excluded_meaningless.csv", index=False)
+        (out_clean / "shared_corpus_summary.json").write_text(
+            __import__("json").dumps(shared_summary, ensure_ascii=False, indent=2),
+            encoding="utf-8",
+        )
+        shared_n = int(shared_summary.get("n_shared", len(shared)))
+
+    if write_csv:
+        rows = build_stage_summary_rows(
+            platform=plat,
+            source_batch=source_batch,
+            n_posts=int(main_df["帖子id"].nunique()),
+            unified_before=unified_before_filter,
+            unified_after=unified,
+            shared_n=shared_n,
+        )
+        write_stage_summary(
+            out_clean,
+            rows,
+            meta={
+                "platform": plat,
+                "source_batch": source_batch,
+                "raw_input": str(Path(data_path).resolve()),
+                "clean_dir": str(out_clean.resolve()),
+            },
+        )
 
     if verbose:
         print("3/8 数据质量…", flush=True)
@@ -152,14 +242,21 @@ def run_phase1_pipeline(
 
     if verbose:
         print("9/9 报告…", flush=True)
-    report_df = enriched if legacy_lexicon_features else unified
-    build_phase1_summary(report_df, l1)
-    write_codebook_suggestions(report_df, l1)
+    if legacy_lexicon_features:
+        report_df = enriched
+        build_phase1_summary(report_df, l1)
+        write_codebook_suggestions(report_df, l1)
 
     if verbose:
-        print("完成。清洗表:", CLEAN_DIR / "clean_comments_unified.csv", flush=True)
+        print("完成。清洗表:", out_clean / "clean_comments_unified.csv", flush=True)
+        if shared_n is not None:
+            print(f"  shared corpus: {shared_n:,}", flush=True)
 
     return {
+        "platform": plat,
+        "source_batch": source_batch,
+        "clean_dir": out_clean,
+        "shared_summary": shared_summary,
         "main_df": main_df,
         "merged": merged,
         "l1": l1,
@@ -177,10 +274,41 @@ def main() -> None:
 
     parser = argparse.ArgumentParser(description="运行 Phase 1 流水线")
     parser.add_argument(
+        "--platform",
+        type=str,
+        default="xhs",
+        choices=["xhs", "tiktok", "douyin"],
+        help="数据来源平台",
+    )
+    parser.add_argument(
+        "--input",
+        type=str,
+        default=None,
+        help="原始数据路径（CSV 或 XHS xlsx）",
+    )
+    parser.add_argument(
+        "--batch",
+        type=str,
+        default="batch1",
+        dest="source_batch",
+        help="批次标识，如 batch1 / batch2 / merged",
+    )
+    parser.add_argument(
+        "--clean-dir",
+        type=str,
+        default=None,
+        help="清洗产物目录（默认 data/clean/{platform}/{batch}）",
+    )
+    parser.add_argument(
         "--xlsx",
         type=str,
         default=None,
-        help="小红书 Excel 路径；默认同环境变量 ROBOTIC_FAILURE_XLSX，否则项目根/小红书帖子数据.xlsx",
+        help="（兼容）同 --input；小红书 Excel 路径",
+    )
+    parser.add_argument(
+        "--no-export-shared",
+        action="store_true",
+        help="不导出 shared_analyzable_corpus",
     )
     parser.add_argument(
         "--run-lda-topics",
@@ -235,6 +363,11 @@ def main() -> None:
     args = parser.parse_args()
     run_phase1_pipeline(
         xlsx=args.xlsx,
+        input_path=args.input or args.xlsx,
+        platform=args.platform,
+        source_batch=args.source_batch,
+        clean_dir=args.clean_dir,
+        export_shared=not args.no_export_shared,
         run_topics=args.run_topics,
         run_lda_topics=args.run_lda_topics,
         lda_topics_k=args.lda_topics_k,

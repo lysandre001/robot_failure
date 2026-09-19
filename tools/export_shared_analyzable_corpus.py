@@ -7,7 +7,8 @@ import json
 from pathlib import Path
 
 from phase1.config import ROOT
-from phase1.topic_modeling import TopicModelingConfig, build_shared_analyzable_corpus, load_topic_stopwords
+from phase1.topic_lda import load_corpus_gate_stopwords
+from phase1.topic_modeling import TopicModelingConfig, build_shared_analyzable_corpus
 
 
 def export_shared_corpus(
@@ -16,13 +17,15 @@ def export_shared_corpus(
     out_shared: Path,
     out_excluded: Path | None = None,
     out_summary: Path | None = None,
+    platform: str = "xhs",
 ) -> dict:
     cfg = TopicModelingConfig(
         run_id="export_shared",
         input_csv=input_csv,
+        platform=platform,
     )
-    stopwords = load_topic_stopwords()
-    shared, excluded, summary = build_shared_analyzable_corpus(cfg, stopwords=stopwords)
+    gate_sw = load_corpus_gate_stopwords()
+    shared, excluded, summary = build_shared_analyzable_corpus(cfg, stopwords=gate_sw)
 
     out_shared.parent.mkdir(parents=True, exist_ok=True)
     shared.to_csv(out_shared, index=False, encoding="utf-8-sig")
@@ -56,12 +59,14 @@ def main() -> None:
         type=Path,
         default=ROOT / "data" / "clean" / "shared_corpus_summary.json",
     )
+    ap.add_argument("--platform", type=str, default="xhs")
     args = ap.parse_args()
     summary = export_shared_corpus(
         input_csv=args.input_csv,
         out_shared=args.out_shared,
         out_excluded=args.out_excluded,
         out_summary=args.out_summary,
+        platform=args.platform,
     )
     print(f"Wrote {args.out_shared} (n_shared={summary['n_shared']:,}, n_raw={summary['n_raw']:,})")
     print(f"Wrote {args.out_excluded}")

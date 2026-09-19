@@ -15,6 +15,8 @@ python -m tools.<模块名> --help
 | `export_shared_analyzable_corpus` | 导出 shared corpus |
 | `refresh_clean_post_labels` | 仅刷新帖子标签 |
 | `export_comments_per_post` | 每帖 L1/L2 计数 |
+| `export_demo_top_l2_by_post` | Demo：每帖 Top10 高 L2 一级评论 → `data/demo/` |
+| `build_corpus_inventory` | 跨平台 clean 对比总表 |
 | `sample_manual_label` | 人工标注抽样 |
 | `label_comments_llm` | LLM 批量打标 |
 | `audit_comment_content_filter` | 审计噪音规则 |
@@ -22,6 +24,8 @@ python -m tools.<模块名> --help
 | `topic_like_concentration` | 主题内高赞集中度 |
 | `compute_layer_cluster_metrics` | L1/L2/pooled 聚类指标 |
 | `plot_topic_diagnostics` / `plot_topic_embeddings` | 实验可视化 |
+| `video_match/run_post_media` | 帖子视听元数据：dense caption + ASR → `data/clean/post_media.csv` |
+| `download_all_clips` | 按平台下载 30s clip 到 `data/rawdata/.../clips/` |
 | `video_match/*` | 跨平台视频匹配（旁路） |
 | `weibo_build_post_comment_tree` | 微博数据（与小红书主流程无关） |
 

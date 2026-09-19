@@ -103,6 +103,17 @@ def _minimal_repeating_unit(text: str, max_period: int) -> tuple[int, int] | Non
     return None
 
 
+def is_english_boilerplate(text: str, rules: dict[str, Any]) -> bool:
+    eb = rules.get("english_boilerplate") or {}
+    if not eb.get("enabled", False):
+        return False
+    t = normalize_text(text).casefold()
+    if not t:
+        return False
+    exact = {str(x).casefold() for x in (eb.get("exact_match_lower") or [])}
+    return t in exact
+
+
 def is_repeated_fragment_noise(text: str, rules: dict[str, Any]) -> bool:
     rf = rules
     if not rf.get("enabled", True):
@@ -144,6 +155,10 @@ def classify_comment_noise(text: str, rules: dict[str, Any]) -> str | None:
     rf = rules.get("repeated_fragment") or {}
     if rf.get("enabled", True) and is_repeated_fragment_noise(t, rf):
         return "repeated_fragment"
+
+    eb = rules.get("english_boilerplate") or {}
+    if eb.get("enabled", False) and is_english_boilerplate(t, eb):
+        return "english_boilerplate"
 
     return None
 

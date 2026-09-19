@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "description": "shared analyzable corpus 的评论纳入门控：判断「有没有可分析命题」，不是主题词提取。sklearn 英文功能词表不得用于本门控。",
+  "min_clean_chars": 4,
+  "zh": {
+    "min_content_tokens": 2,
+    "min_chars_alternative": 8,
+    "notes": "jieba 去中文停用词与平台噪音后 ≥2 词，或含汉字且规范化长度 ≥8。"
+  },
+  "en": {
+    "min_letter_tokens": 4,
+    "min_content_tokens": 2,
+    "notes": "去 URL/@/emoji 后 [a-z]{2,} 词数 ≥4，或去掉平台套话词后 ≥2。不扣除 have/might/still 等功能词。"
+  }
+}

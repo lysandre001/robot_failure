@@ -58,7 +58,7 @@
 - jieba 分词去停用词后有效词数 &lt; 2（**仅纳入判定**；BGE 编码仍用原文）；
 - **全库**正文归一化去重（`duplicate_text`）。
 
-最终 *N* = **26,811**（占 Phase 1 **65.0%**）。batch1 **18,349** 条（70.4%）；batch2 **8,462** 条（55.7%）。
+最终 *N* 随评论纳入门控版本变化；**当前规则**见 [comment_quality_gate_rules.md](comment_quality_gate_rules.md)（2026-09-09 v1）。05-27 discovery 冻结实验仍对应当时 *N* = 26,811。
 
 **导出（不跑 LDA/NMF/BERTopic）**：
 

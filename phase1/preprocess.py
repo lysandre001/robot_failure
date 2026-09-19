@@ -26,6 +26,39 @@ def resolve_data_xlsx(xlsx: Path | str | None = None) -> Path:
     return Path(XLSX).expanduser().resolve()
 
 
+def counts_from_main(main: pd.DataFrame, *, default_category: str = "unknown") -> pd.DataFrame:
+    posts = main["帖子id"].drop_duplicates()
+    return pd.DataFrame({"帖子id": posts, "post_category": default_category})
+
+
+def load_raw_wide_table(
+    input_path: Path | str,
+    *,
+    platform: str = "xhs",
+) -> tuple[pd.DataFrame, pd.DataFrame]:
+    """
+    统一宽表读取：XHS Excel、TikTok/XHS CSV、抖音 43 列 CSV。
+    返回 (main 宽表, post_category 计数表)。
+    """
+    path = Path(input_path).expanduser().resolve()
+    if not path.is_file():
+        raise FileNotFoundError(f"找不到数据文件: {path}")
+
+    plat = platform.lower().strip()
+    if plat == "douyin":
+        from phase1.douyin_io import load_douyin_csv
+
+        return load_douyin_csv(path)
+
+    if path.suffix.lower() in (".xlsx", ".xls"):
+        return load_raw_frames(path)
+
+    from phase1.wide_io import read_wide_csv
+
+    main = read_wide_csv(path, platform=plat)
+    return main, counts_from_main(main)
+
+
 def load_raw_frames(xlsx: Path | str | None = None) -> tuple[pd.DataFrame, pd.DataFrame]:
     """读取两个 sheet，返回 (主表, 计数/类别表)。xlsx 缺省则从环境变量或 config.XLSX 推断。"""
     path = resolve_data_xlsx(xlsx)
@@ -232,6 +265,9 @@ def build_level1(df: pd.DataFrame) -> pd.DataFrame:
         "一级评论地址",
         "一级评论点赞数",
         "一级评论回复数",
+        "一级评论语言",
+        "一级评论混合",
+        "一级评论英文",
     ]
     use = [c for c in cols if c in df.columns]
     l1 = df[use].dropna(subset=["一级评论id"])
@@ -245,6 +281,9 @@ def build_level1(df: pd.DataFrame) -> pd.DataFrame:
             "一级评论地址": "location",
             "一级评论点赞数": "like_count",
             "一级评论回复数": "reply_count",
+            "一级评论语言": "language",
+            "一级评论混合": "is_mixed",
+            "一级评论英文": "content_en",
         }
     )
     l1["comment_level"] = 1
@@ -269,6 +308,9 @@ def build_level2(df: pd.DataFrame) -> pd.DataFrame:
         "二级评论时间",
         "二级评论地址",
         "二级评论点赞数",
+        "二级评论语言",
+        "二级评论混合",
+        "二级评论英文",
     ]
     use = [c for c in cols if c in df.columns]
     l2 = df[use].dropna(subset=["二级评论id"])
@@ -282,6 +324,9 @@ def build_level2(df: pd.DataFrame) -> pd.DataFrame:
             "二级评论时间": "comment_time",
             "二级评论地址": "location",
             "二级评论点赞数": "like_count",
+            "二级评论语言": "language",
+            "二级评论混合": "is_mixed",
+            "二级评论英文": "content_en",
         }
     )
     l2["comment_level"] = 2
@@ -310,6 +355,9 @@ def unified_comments(l1: pd.DataFrame, l2: pd.DataFrame) -> pd.DataFrame:
         "location",
         "like_count",
         "reply_count",
+        "language",
+        "is_mixed",
+        "content_en",
     ]
     for t in (l1, l2):
         for c in common:

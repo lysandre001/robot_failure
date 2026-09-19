@@ -1,7 +1,7 @@
 # 视频 Dense Caption 流程说明（论文正文与附录）
 
-> **版本**：2026-05-31  
-> **代码入口**：`tools/video_match/`（M1–M4 四模块；M3 为唯一 VLM 调用点，可单独下线）  
+> **版本**：2026-09-09  
+> **代码入口**：`tools/video_match/`（M3 VLM caption + M3a ASR + M5 组装；总入口 `run_post_media.py`）  
 > **复现说明**：`tools/video_match/README.md`
 
 ---
@@ -28,17 +28,24 @@
 ```
 帖子 CSV (id + url)
     │
-    ▼  M2  download_clip.py   yt-dlp + ffmpeg
-clips/{id}.mp4  (前 30s)
+    ▼  M2  download_clip.py / download_all_clips.py
+data/rawdata/{platform}/clips/{id}.mp4  (前 30s)
     │
-    ▼  M3  caption_video.py   SiliconFlow VLM (Qwen3-VL-30B)
-*_captions.jsonl  (dense JSONL)
+    ├─► M3  caption_video.py   SiliconFlow VLM (Qwen3-VL-30B)
+    │       output/video_match/{platform}_{batch}_captions.jsonl
     │
+    └─► M3a asr_audio.py       SiliconFlow SenseVoiceSmall
+            output/video_match/{platform}_{batch}_asr.jsonl
+    │
+    ▼  M5  assemble_post_media.py
+data/clean/post_media.csv  (帖子级：视觉描述 + ASR 全文)
+
+（可选旁路）
     ▼  M4  match.py            BAAI/bge-m3 embedding + cosine
 match_pairs.csv  (+ 回写 matched_xhs_id)
 ```
 
-**M1**（`aggregate_tiktok.py`）仅整理 TikTok 侧帖子元数据，不参与 caption 本身；完整跨平台流程见 README。
+**M1**（`aggregate_tiktok.py`）仅整理 TikTok 侧帖子元数据；**推荐总入口** `python -m tools.video_match.run_post_media`。
 
 ---
 
@@ -125,7 +132,38 @@ match_pairs.csv  (+ 回写 matched_xhs_id)
 
 ---
 
-## 五、M4：跨平台匹配（使用 caption 的方式）
+## 五、M3a：音频 ASR
+
+**脚本**：`tools/video_match/asr_audio.py`
+
+**模型**：SiliconFlow `FunAudioLLM/SenseVoiceSmall`（`--model` 可换）
+
+**流程**：
+- ffmpeg 从 30s clip 抽 16 kHz mono wav，缓存 `output/video_match/_audio/{id}.wav`
+- `POST /v1/audio/transcriptions`；SenseVoice 返回 `{"text": "..."}`（无 word 级 timestamp）
+- 无有效语音：`asr_has_speech=0`，`asr_status=empty_speech`
+
+**输出 jsonl 字段**：`id, asr_text, segments, language, asr_has_speech, duration_sec, model, error`
+
+**断点续跑**：jsonl 已有 `id` 跳过。
+
+---
+
+## 六、M5：帖子视听元数据表
+
+**脚本**：`tools/video_match/assemble_post_media.py`（由 `run_post_media.py` 调用）
+
+**产物**：
+- 分源：`data/clean/{platform}/{batch}/post_media.csv`
+- 总表：`data/clean/post_media.csv`
+
+**主要列**：`post_id, url, post_title, post_text, video_overview, video_caption, asr_text, caption_status, asr_status, clip_status, ...`
+
+小红书会先 seed `config_captions.jsonl` → `xhs_merged_captions.jsonl`，避免重复 VLM。
+
+---
+
+## 七、M4：跨平台匹配（使用 caption 的方式）
 
 **脚本**：`tools/video_match/match.py`
 
@@ -143,7 +181,7 @@ Caption 模块可整体删除，M4 仍可仅用文本签名运行（准确率下
 
 ---
 
-## 六、已落盘产物（理论抽样帖）
+## 八、已落盘产物（理论抽样帖）
 
 | 路径 | 说明 |
 |------|------|
@@ -163,7 +201,7 @@ Caption 模块可整体删除，M4 仍可仅用文本签名运行（准确率下
 
 ---
 
-## 七、输出 JSON 结构示例（dense）
+## 九、输出 JSON 结构示例（dense）
 
 ```json
 {
@@ -197,7 +235,9 @@ Caption 模块可整体删除，M4 仍可仅用文本签名运行（准确率下
 
 ---
 
-## 八、复现命令（理论抽样帖）
+## 十、复现命令
+
+### 理论抽样帖（仅 caption）
 
 ```bash
 cd /Users/yilin/project/2604-robotic_failure_research
@@ -214,11 +254,18 @@ export SILICONFLOW_API_KEY=sk-...
   --out      output/video_match/config_captions.jsonl
 ```
 
-全量跨平台流程见 `tools/video_match/README.md`。
+### 全平台 caption + ASR + CSV
+
+```bash
+python -m tools.video_match.run_post_media
+python -m tools.video_match.run_post_media --assemble-only   # 仅重跑 CSV
+```
+
+全量跨平台匹配流程见 `tools/video_match/README.md`。
 
 ---
 
-## 九、已知限制与后续
+## 十一、已知限制与后续
 
 1. **图文帖**：yt-dlp 无法拉取无视频流帖子；当前 3 条未进入 caption。若需覆盖，可手动放入 `{id}.jpg` 并扩展 M3（单图一次标注，schema 对齐）——caption 侧易实现，拉图需 cookie 或原始爬虫图 URL。
 2. **VLM 幻觉**：只要求「描述所见」；应用层仍建议 spot-check `segments` 与 `overview` 一致性。
@@ -227,6 +274,6 @@ export SILICONFLOW_API_KEY=sk-...
 
 ---
 
-## 十、正文可用稿（Methods 段落，草稿）
+## 十二、正文可用稿（Methods 段落，草稿）
 
 > 对于需读取帖子视频内容的任务，我们对每帖下载前 30 秒片段，并使用视觉语言模型（Qwen3-VL-30B，经 SiliconFlow API）进行 **dense video captioning**。视频按 5 秒分段；每段抽取两帧截图，模型在同一次结构化输出中完成全局描述、五维场景标注（场景、人物、动作、互动、时序）及异常检测，再经一次文本合并得到帖子级时序概述（`overview`）与分段摘要（`timeline`）。理论抽样帖（*N* = 34）中 31 帖成功获得视频 caption；3 帖因平台侧无视频流未能下载。该视觉描述与帖子级「机器人状态 × 人类角色」编码相互独立，可按帖子 ID 合并用于后续分析。

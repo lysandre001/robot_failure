@@ -1,0 +1,52 @@
+{
+  "detector": "lingua",
+  "mixed_min_han": 1,
+  "mixed_min_letter_tokens": 1,
+  "lingua_languages": [
+    "Chinese",
+    "English",
+    "Indonesian",
+    "Malay",
+    "Japanese",
+    "Korean",
+    "Thai",
+    "Vietnamese",
+    "Arabic",
+    "Spanish",
+    "Portuguese",
+    "French",
+    "German",
+    "Russian",
+    "Hindi",
+    "Tagalog"
+  ],
+  "lingua_to_iso": {
+    "Chinese": "zh",
+    "English": "en",
+    "Indonesian": "id",
+    "Malay": "ms",
+    "Japanese": "ja",
+    "Korean": "ko",
+    "Thai": "th",
+    "Vietnamese": "vi",
+    "Arabic": "ar",
+    "Spanish": "es",
+    "Portuguese": "pt",
+    "French": "fr",
+    "German": "de",
+    "Russian": "ru",
+    "Hindi": "hi",
+    "Tagalog": "tl"
+  },
+  "translation": {
+    "provider": "siliconflow",
+    "model": "Qwen/Qwen2.5-7B-Instruct",
+    "batch_size": 10,
+    "max_workers": 8,
+    "max_retries": 4,
+    "sleep_seconds": 0.5,
+    "request_timeout_seconds": 180,
+    "max_text_chars": 1500,
+    "system_prompt": null
+  }
+}

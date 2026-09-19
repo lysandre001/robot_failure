@@ -21,6 +21,16 @@
     "max_period_chars": 6,
     "min_repeat_count": 3,
     "min_total_chars": 4,
-    "notes": "整句由同一短片段重复构成则排除（如 哈哈哈哈、666666、哈哈哈哈哈）；周期长度不超过 max_period_chars，重复次数 >= min_repeat_count，总长 >= min_total_chars。"
+    "notes": "整句由同一短片段重复构成则排除（如 哈哈哈哈、666666、hahaha、lollol）；周期长度不超过 max_period_chars，重复次数 >= min_repeat_count，总长 >= min_total_chars。"
+  },
+  "english_boilerplate": {
+    "enabled": true,
+    "exact_match_lower": [
+      "lol", "lmao", "rofl", "omg", "wow", "nice", "cool", "same", "yes", "no",
+      "ok", "okay", "thanks", "thank you", "ty", "hi", "hello", "hey", "true",
+      "false", "yep", "nope", "yeah", "nah", "gg", "rip", "bruh", "bro", "first",
+      "second", "third", "following", "subscribed", "subscribe", "like", "share"
+    ],
+    "notes": "英文社交媒体常见无信息短评（sklearn EN stopwords 子集 + 平台套话）；保留 contains_mention 对 @ 的排除。"
   }
 }

@@ -21,8 +21,13 @@ from sklearn.decomposition import LatentDirichletAllocation, NMF
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 
 from phase1.comment_content_filter import classify_comment_noise, load_comment_filter_rules
+from phase1.comment_quality_gate import (
+    load_quality_gate_rules,
+    passes_comment_quality_gate,
+    _boilerplate_token_set,
+)
 from phase1.config import CLEAN_COMMENTS_UNIFIED, ROOT
-from phase1.preprocess import normalize_text
+from phase1.preprocess import normalize_post_id, normalize_text
 from phase1.topic_lda import (
     clean_text,
     load_topic_stopwords,
@@ -100,6 +105,7 @@ class TopicModelingConfig:
     nmf_max_df: float = 0.95
     max_features: int = 8000
     experiments_root: Path = ROOT / "output" / "experiments"
+    platform: str = "xhs"
 
 
 def _sha256_file(path: Path) -> str:
@@ -140,12 +146,6 @@ def _split_post_category(s: Any) -> tuple[str, str]:
     return split_post_category(s)
 
 
-def _effective_token_count(text: str, stopwords: set[str]) -> int:
-    _setup_tokenizer("jieba")
-    toks = tokenize_text(text, tokenizer="jieba", stopwords=stopwords)
-    return len(toks)
-
-
 def _is_pure_noise_row(nt: str) -> str | None:
     if not nt.strip():
         return "empty_after_normalize"
@@ -166,18 +166,25 @@ def build_shared_analyzable_corpus(
     raw = pd.read_csv(cfg.input_csv)
     n_raw = len(raw)
     rules = load_comment_filter_rules(cfg.comment_content_filter_json)
+    gate_rules = load_quality_gate_rules()
+    boilerplate = _boilerplate_token_set(rules)
 
     from phase1.post_category_labels import load_post_category_by_post
 
     pc = load_post_category_by_post(cfg.post_category_by_post_csv)
     if "帖子id" not in raw.columns:
         raise ValueError("input_csv 需含列 帖子id")
+    raw["帖子id"] = raw["帖子id"].map(normalize_post_id)
+    pc["帖子id"] = pc["帖子id"].map(normalize_post_id)
     raw = raw.drop(columns=["post_category", "robot_status", "human_role"], errors="ignore")
     raw = raw.merge(
         pc[["帖子id", "post_category", "robot_status", "human_role"]],
         on="帖子id",
         how="left",
     )
+    raw["post_category"] = raw["post_category"].fillna("unknown")
+    raw["robot_status"] = raw["robot_status"].fillna("")
+    raw["human_role"] = raw["human_role"].fillna("")
 
     stats: dict[str, int] = {
         "excluded_empty_or_too_short": 0,
@@ -203,17 +210,10 @@ def build_shared_analyzable_corpus(
             continue
 
         noise_key = classify_comment_noise(str(content), rules)
-        if noise_key == "pure_emoji":
-            stats["excluded_pure_emoji"] += 1
-            excluded_rows.append({"comment_id": rid, "exclude_reason": "pure_emoji", "content": content})
-            continue
-        if noise_key == "only_at_mentions":
-            stats["excluded_only_at_mentions"] += 1
-            excluded_rows.append({"comment_id": rid, "exclude_reason": "only_at_mentions", "content": content})
-            continue
-        if noise_key == "repeated_fragment":
-            stats["excluded_repeated_fragment"] += 1
-            excluded_rows.append({"comment_id": rid, "exclude_reason": "repeated_fragment", "content": content})
+        if noise_key:
+            stat_key = f"excluded_{noise_key}"
+            stats[stat_key] = stats.get(stat_key, 0) + 1
+            excluded_rows.append({"comment_id": rid, "exclude_reason": noise_key, "content": content})
             continue
 
         pn = _is_pure_noise_row(nt)
@@ -222,8 +222,14 @@ def build_shared_analyzable_corpus(
             excluded_rows.append({"comment_id": rid, "exclude_reason": pn, "content": content})
             continue
 
-        etc = _effective_token_count(str(content), stopwords)
-        if etc < cfg.min_effective_tokens:
+        ok, qmetrics = passes_comment_quality_gate(
+            str(content),
+            stopwords,
+            rules=gate_rules,
+            boilerplate=boilerplate,
+        )
+        etc = int(qmetrics["effective_token_count"])
+        if not ok:
             stats["excluded_effective_tokens_lt_min"] += 1
             excluded_rows.append(
                 {"comment_id": rid, "exclude_reason": "effective_tokens_lt_min", "content": content}

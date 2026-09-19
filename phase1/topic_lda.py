@@ -25,6 +25,7 @@ _DIGIT_ID_RE = re.compile(r"\b\d{5,}\b")
 _PURE_PUNCT_RE = re.compile(r"^[\W_]+$")
 
 _ZH_STOPWORDS = ROOT / "config" / "topic_modeling" / "general_stopwords.txt"
+_EN_STOPWORDS = ROOT / "config" / "topic_modeling" / "general_stopwords_en.txt"
 _PLATFORM_NOISE = ROOT / "config" / "topic_modeling" / "platform_noise_tokens.csv"
 _CORPUS_NOISE = ROOT / "config" / "topic_modeling" / "corpus_noise_tokens.csv"
 _USER_DICT = ROOT / "config" / "topic_modeling" / "domain_user_dict.txt"
@@ -60,16 +61,39 @@ def _load_noise_tokens(path: Path) -> set[str]:
     return set(df["token"].dropna().astype(str).str.strip().tolist())
 
 
-def load_topic_stopwords(
+def load_corpus_gate_stopwords(
     stopwords_path: Path = _ZH_STOPWORDS,
     platform_noise_path: Path = _PLATFORM_NOISE,
     corpus_noise_path: Path = _CORPUS_NOISE,
 ) -> set[str]:
+    """
+    shared corpus **纳入判定**用停用词：中文通用表 + 平台/语料噪音。
+    不含 sklearn 英文功能词表——后者仅用于 LDA/NMF 主题词提取，不能用于英文评论是否「过短」的门槛。
+    """
     return (
         _load_lines(stopwords_path)
         | _load_noise_tokens(platform_noise_path)
         | _load_noise_tokens(corpus_noise_path)
     )
+
+
+def load_topic_stopwords(
+    stopwords_path: Path = _ZH_STOPWORDS,
+    platform_noise_path: Path = _PLATFORM_NOISE,
+    corpus_noise_path: Path = _CORPUS_NOISE,
+    *,
+    platform: str | None = None,
+    en_stopwords_path: Path = _EN_STOPWORDS,
+) -> set[str]:
+    sw = load_corpus_gate_stopwords(
+        stopwords_path=stopwords_path,
+        platform_noise_path=platform_noise_path,
+        corpus_noise_path=corpus_noise_path,
+    )
+    plat = (platform or "").lower().strip()
+    if plat == "tiktok" and en_stopwords_path.is_file():
+        sw |= _load_lines(en_stopwords_path)
+    return sw
 
 
 def _setup_tokenizer(tokenizer: str, user_dict_path: Path = _USER_DICT) -> str:

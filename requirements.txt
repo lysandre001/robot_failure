@@ -16,3 +16,5 @@ gensim>=4.3.0
 torch>=2.0.0
 # LLM labeling
 openai>=1.0.0
+# Comment language detection
+lingua-language-detector>=2.0.2
