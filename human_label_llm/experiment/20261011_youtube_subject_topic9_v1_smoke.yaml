@@ -1,0 +1,34 @@
+# YouTube 九类主题冒烟。通过后再复制为全量 yaml（limit: null，run_id 去掉 _smoke）。
+# 不改 _defaults.yaml。
+extends: _defaults.yaml
+
+run_id: 20261011_youtube_subject_topic9_v1_smoke
+platform: youtube
+prompt_lang: en
+prompt: 20261011_subject_topic9_v1
+output_root: output/label_runs
+metric: any_hit
+gold_column: 对象
+
+data:
+  input_csv: human_label_llm/label_data/gold/youtube_2604-marathon_subject_topic9_20261011.csv
+
+columns:
+  comment_id: comment_id
+  comment: content_en
+  gold: 对象
+
+scopes:
+  - scope_comment_only
+
+model_catalog:
+  deepseek_v4_1_flash:
+    provider: siliconflow
+    model: deepseek-ai/DeepSeek-V4.1-Flash
+    reasoning: off
+
+model_keys:
+  - deepseek_v4_1_flash
+
+limit: 2
+temperature: 0.0

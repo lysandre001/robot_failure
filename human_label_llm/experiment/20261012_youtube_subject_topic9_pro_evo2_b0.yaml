@@ -1,0 +1,34 @@
+# Pro evolution round 2, scored on the same frozen Pro v1 bad-case set.
+extends: _defaults.yaml
+
+run_id: 20261012_youtube_subject_topic9_pro_evo2_b0
+platform: youtube
+prompt_lang: en
+prompt: 20261012_subject_topic9_pro_evo2
+output_root: output/label_runs
+metric: any_hit
+gold_column: 对象
+
+data:
+  input_csv: human_label_llm/label_data/gold/youtube_2604-marathon_subject_topic9_20261012_b0_from_pro_v1.csv
+
+columns:
+  comment_id: comment_id
+  comment: content_en
+  gold: 对象
+
+scopes:
+  - scope_comment_only
+
+model_catalog:
+  deepseek_v4_pro_sf:
+    provider: siliconflow
+    model: deepseek-ai/DeepSeek-V4-Pro
+    reasoning: off
+
+model_keys:
+  - deepseek_v4_pro_sf
+
+limit: null
+temperature: 0.0
+concurrency: 2

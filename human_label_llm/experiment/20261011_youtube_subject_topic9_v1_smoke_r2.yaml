@@ -1,0 +1,34 @@
+# 第一次 smoke 的两条请求因环境里的 SiliconFlow token 无效而记成 api_error。
+# jsonl 不改已有行，所以这次用新的 run_id，读取项目 .env 里的密钥。
+extends: _defaults.yaml
+
+run_id: 20261011_youtube_subject_topic9_v1_smoke_r2
+platform: youtube
+prompt_lang: en
+prompt: 20261011_subject_topic9_v1
+output_root: output/label_runs
+metric: any_hit
+gold_column: 对象
+
+data:
+  input_csv: human_label_llm/label_data/gold/youtube_2604-marathon_subject_topic9_20261011.csv
+
+columns:
+  comment_id: comment_id
+  comment: content_en
+  gold: 对象
+
+scopes:
+  - scope_comment_only
+
+model_catalog:
+  deepseek_v4_1_flash:
+    provider: siliconflow
+    model: deepseek-ai/DeepSeek-V4.1-Flash
+    reasoning: off
+
+model_keys:
+  - deepseek_v4_1_flash
+
+limit: 2
+temperature: 0.0

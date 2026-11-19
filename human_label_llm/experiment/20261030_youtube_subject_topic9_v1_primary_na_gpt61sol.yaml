@@ -1,0 +1,38 @@
+# Same na prompt and gold as 20261030_youtube_subject_topic9_v1_primary_na_or.
+# Model: openai/gpt-6.1-sol via OpenRouter.
+extends: _defaults.yaml
+
+run_id: 20261030_youtube_subject_topic9_v1_primary_na_gpt61sol
+platform: youtube
+prompt_lang: en
+prompt: 20261030_subject_topic9_v1_primary_na
+output_root: output/label_runs
+metric: any_hit
+gold_column: 261029_yilin
+
+data:
+  input_csv: human_label_llm/label_data/gold/youtube_sample500_2events_subject_topic9_20261030.csv
+
+columns:
+  comment_id: comment_id
+  comment: content_en
+  gold: 261029_yilin
+
+scopes:
+  - scope_comment_only
+
+model_catalog:
+  gpt_61_sol_or:
+    provider: openrouter
+    model: openai/gpt-6.1-sol
+    # This endpoint rejects reasoning off.
+    reasoning: on
+    reasoning_effort: minimal
+
+model_keys:
+  - gpt_61_sol_or
+
+limit: null
+temperature: 0.0
+concurrency: 4
+timeout: 180

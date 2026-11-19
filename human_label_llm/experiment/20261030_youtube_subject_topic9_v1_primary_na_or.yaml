@@ -1,0 +1,43 @@
+# na prompt + dual OpenRouter models. GT cols: 261026_xiaoyu, 261029_yilin.
+# Compare is order-free set match. Human multi-labels split on English comma.
+# Default gold=261029_yilin; `python -m human_label_llm.run compare -c … --gold 261026_xiaoyu` for the other.
+extends: _defaults.yaml
+
+run_id: 20261030_youtube_subject_topic9_v1_primary_na_or
+platform: youtube
+prompt_lang: en
+prompt: 20261030_subject_topic9_v1_primary_na
+output_root: output/label_runs
+metric: any_hit
+gold_column: 261029_yilin
+
+data:
+  input_csv: human_label_llm/label_data/gold/youtube_sample500_2events_subject_topic9_20261030.csv
+
+columns:
+  comment_id: comment_id
+  comment: content_en
+  gold: 261029_yilin
+
+scopes:
+  - scope_comment_only
+
+model_catalog:
+  deepseek_v41_flash_1017_or:
+    provider: openrouter
+    model: deepseek/deepseek-v4.1-flash-1017
+    reasoning: off
+
+  gpt_6_luna_or:
+    provider: openrouter
+    model: openai/gpt-6-luna
+    reasoning: off
+
+model_keys:
+  - deepseek_v41_flash_1017_or
+  - gpt_6_luna_or
+
+limit: null
+temperature: 0.0
+concurrency: 4
+timeout: 180
