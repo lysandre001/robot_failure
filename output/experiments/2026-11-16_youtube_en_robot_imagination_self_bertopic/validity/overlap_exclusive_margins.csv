@@ -1,0 +1,4 @@
+perspective_a,perspective_b,n_a,n_b,n_both_dropped,js_base2,tv,one_minus_tv
+Robot_only,Imagination_only,13649,11902,618,0.456752,0.672974,0.327026
+Robot_only,Self_only,12454,4078,1813,0.351879,0.535954,0.464046
+Imagination_only,Self_only,10369,3740,2151,0.455736,0.643185,0.356815

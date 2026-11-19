@@ -1,0 +1,13 @@
+{
+  "n": 28096,
+  "by_batch": {
+    "2608-olympic": 21302,
+    "2604-marathon": 6794
+  },
+  "n_robot": 14267,
+  "n_imagination": 12520,
+  "n_self": 5891,
+  "comment_levels": {
+    "1": 28096
+  }
+}

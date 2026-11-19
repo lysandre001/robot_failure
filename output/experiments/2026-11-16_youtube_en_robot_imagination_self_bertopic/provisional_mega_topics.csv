@@ -1,0 +1,61 @@
+topic,n,top_terms,mega_topic,grouping_basis
+0,1450,"china robots, chinese robot, china, chinese",War_Military_Weapon,analyst_heuristic_from_terms_and_examples
+1,1003,"usain bolt, beat record, faster bolt, bolt",War_Military_Weapon,analyst_heuristic_from_terms_and_examples
+2,953,"guns, rifles, weapons, machine guns",War_Military_Weapon,analyst_heuristic_from_terms_and_examples
+3,895,"terminator, terminators, james cameron, connor",War_Military_Weapon,analyst_heuristic_from_terms_and_examples
+4,686,"cars faster, faster human, faster humans, faster people",Performance_Race_Ability,analyst_heuristic_from_terms_and_examples
+5,660,"running like, run like, runs like, ran like",Performance_Race_Ability,analyst_heuristic_from_terms_and_examples
+6,637,"end humanity, end humans, end human, end world",War_Military_Weapon,analyst_heuristic_from_terms_and_examples
+7,587,"olympics, olympic, robots compete, watch robots",Performance_Race_Ability,analyst_heuristic_from_terms_and_examples
+8,553,"remote controlled, remote controls, remote control, control robots",Control_Program_Surveillance,analyst_heuristic_from_terms_and_examples
+9,545,"skynet, sky, net, eye",Performance_Race_Ability,analyst_heuristic_from_terms_and_examples
+10,446,"scary, scary stuff, frightening, scariest",Creepy_Uncanny,analyst_heuristic_from_terms_and_examples
+11,433,"robots make, work robots, need robots, robots need",Jobs_Labor_Displacement,analyst_heuristic_from_terms_and_examples
+12,415,"robots faster, running robot, robot run, running robots",Control_Program_Surveillance,analyst_heuristic_from_terms_and_examples
+13,375,"ai, ai just, ai robot, humans ai",Jobs_Labor_Displacement,analyst_heuristic_from_terms_and_examples
+14,331,"make laugh, stop laughing, laugh years, don laugh",Self_Personal_Stance,analyst_heuristic_from_terms_and_examples
+15,285,"robot army, army robots, robot soldiers, military robots",War_Military_Weapon,analyst_heuristic_from_terms_and_examples
+16,264,"laundry, washing, fold, folding",Jobs_Labor_Displacement,analyst_heuristic_from_terms_and_examples
+17,251,"drunk, drunken, drinks, drink",Performance_Race_Ability,analyst_heuristic_from_terms_and_examples
+18,232,"switch, button, controls, turn",Control_Program_Surveillance,analyst_heuristic_from_terms_and_examples
+19,226,"bro, bro just, ass, guy",War_Military_Weapon,analyst_heuristic_from_terms_and_examples
+20,204,"impressive, isn impressive, pretty impressive, impressive thing",Awe_Reaction,analyst_heuristic_from_terms_and_examples
+21,201,"robot, robot robots, does robot, robot need",Robot_General_Other,analyst_heuristic_from_terms_and_examples
+22,192,"irobot, like irobot, isn far, robot",Future_Imagination,analyst_heuristic_from_terms_and_examples
+23,181,"clankers, clanker, club, bro",Performance_Race_Ability,analyst_heuristic_from_terms_and_examples
+24,177,"technology, technologically, tech, high tech",Future_Imagination,analyst_heuristic_from_terms_and_examples
+25,175,"ice, cooling, cooler, cold",Jobs_Labor_Displacement,analyst_heuristic_from_terms_and_examples
+26,166,"robot movie, movie robot, robot real, watch robot",Self_Personal_Stance,analyst_heuristic_from_terms_and_examples
+27,163,"wheels, machine wheels, legs wheels, wheels faster",Jobs_Labor_Displacement,analyst_heuristic_from_terms_and_examples
+28,160,"10 years, 100 years, 20 years, 30 years",Gender_Body_Identity,analyst_heuristic_from_terms_and_examples
+29,154,"t1000, t800, 800, 1000",Performance_Race_Ability,analyst_heuristic_from_terms_and_examples
+30,152,"dancing, dance, robot better, robot doing",Performance_Race_Ability,analyst_heuristic_from_terms_and_examples
+31,148,"john connor, connor, sarah connor, john",War_Military_Weapon,analyst_heuristic_from_terms_and_examples
+32,148,"titan, attack, ran like, runs like",Performance_Race_Ability,analyst_heuristic_from_terms_and_examples
+33,142,"cooked, humans cooked, cooking, cook",Future_Imagination,analyst_heuristic_from_terms_and_examples
+34,140,"humanoids, making humanoid, humanoid, humanoid robots",War_Military_Weapon,analyst_heuristic_from_terms_and_examples
+35,136,"beginning end, ending, ends, begins",Robot_General_Other,analyst_heuristic_from_terms_and_examples
+36,134,"taking jobs, jobs, workforce, job soon",Jobs_Labor_Displacement,analyst_heuristic_from_terms_and_examples
+37,134,"screwed, fucked, yall, worry",Self_Personal_Stance,analyst_heuristic_from_terms_and_examples
+38,134,"laugh robots, robots funny, years robots, robots gonna",Future_Imagination,analyst_heuristic_from_terms_and_examples
+39,133,"cute, adorable, beautiful, looks",Robot_General_Other,analyst_heuristic_from_terms_and_examples
+40,128,"anime, girl run, run like, runs like",Gender_Body_Identity,analyst_heuristic_from_terms_and_examples
+41,126,"sports robots, robots compete, robots, robots human",Gender_Body_Identity,analyst_heuristic_from_terms_and_examples
+42,118,"robot fell, robots fall, robot didn, robot",Performance_Race_Ability,analyst_heuristic_from_terms_and_examples
+43,112,"star wars, droids, wars, droid",War_Military_Weapon,analyst_heuristic_from_terms_and_examples
+44,110,"chasing, getting chased, chased, imagine running",Performance_Race_Ability,analyst_heuristic_from_terms_and_examples
+45,109,"robot, robot robot, robot right, robot actually",Self_Personal_Stance,analyst_heuristic_from_terms_and_examples
+46,105,"robot running, anime, ninja, wait robots",Performance_Race_Ability,analyst_heuristic_from_terms_and_examples
+47,104,"drones, robots drones, like drones, drone",War_Military_Weapon,analyst_heuristic_from_terms_and_examples
+48,104,"emp, equip, electrical, equipment",Self_Personal_Stance,analyst_heuristic_from_terms_and_examples
+49,103,"machines, machines just, machine machine, machine",Religion_God,analyst_heuristic_from_terms_and_examples
+50,102,"future, future world, time future, distant future",Creepy_Uncanny,analyst_heuristic_from_terms_and_examples
+51,99,"robocop, robo, patrolling, chasing",Self_Personal_Stance,analyst_heuristic_from_terms_and_examples
+52,95,"sci fi, fi movies, science fiction, fi movie",War_Military_Weapon,analyst_heuristic_from_terms_and_examples
+53,94,"stretcher, robot, people robot, robot robot",Robot_General_Other,analyst_heuristic_from_terms_and_examples
+54,92,"arms like, arms, arm, swinging",Performance_Race_Ability,analyst_heuristic_from_terms_and_examples
+55,91,"chasing like, chasing, getting chased, things chasing",War_Military_Weapon,analyst_heuristic_from_terms_and_examples
+56,89,"real steel, steel, metal, iron",Robot_General_Other,analyst_heuristic_from_terms_and_examples
+57,89,"fun games, fun, games, looks fun",War_Military_Weapon,analyst_heuristic_from_terms_and_examples
+58,84,"programmed, robot, decisions, ai",Control_Program_Surveillance,analyst_heuristic_from_terms_and_examples
+59,83,"seizure, having seizure, robot, robotic",Robot_General_Other,analyst_heuristic_from_terms_and_examples

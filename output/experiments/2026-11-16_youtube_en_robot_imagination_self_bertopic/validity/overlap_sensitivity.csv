@@ -1,0 +1,7 @@
+perspective_a,perspective_b,slice,n_a,n_b,js_base2,tv,one_minus_tv,mcs
+Robot,Imagination,inclusive_mcs50,14267,12520,0.43056,0.669221,0.330779,50
+Robot,Self,inclusive_mcs50,14267,5891,0.267947,0.452991,0.547009,50
+Imagination,Self,inclusive_mcs50,12520,5891,0.229432,0.454224,0.545776,50
+Robot,Imagination,inclusive_mcs100,14267,12520,0.423058,0.657602,0.342398,100
+Robot,Self,inclusive_mcs100,14267,5891,0.228738,0.400871,0.599129,100
+Imagination,Self,inclusive_mcs100,12520,5891,0.227848,0.456863,0.543137,100

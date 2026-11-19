@@ -1,0 +1,25 @@
+object,attribute,high_group,low_group,high_%,low_%,gap_pp
+Robot,robot_status,失败,混合,58.6,45.6,13.1
+Imagination about Robots,robot_status,混合,失败,48.1,38.5,9.6
+Self,robot_status,混合,失败,22.5,18.0,4.5
+Event or Competition,robot_status,混合,失败,5.0,2.0,3.0
+Affiliated Organization or Country,robot_status,混合,失败,7.5,5.5,2.1
+Other People in Videos,robot_status,常态,强势,2.9,1.0,1.9
+Other People in Comments,robot_status,强势,常态,2.3,1.7,0.7
+Video or Media,robot_status,失败,混合,0.9,0.7,0.2
+Robot,human_role,观众,被超越者,53.0,46.5,6.5
+Imagination about Robots,human_role,被超越者,观众,47.5,43.2,4.3
+Affiliated Organization or Country,human_role,被超越者,观众,8.4,5.8,2.7
+Event or Competition,human_role,被超越者,服务照护,6.5,3.9,2.6
+Self,human_role,被超越者,观众,22.1,20.5,1.6
+Other People in Comments,human_role,观众,被超越者,2.3,1.7,0.7
+Other People in Videos,human_role,服务照护,被超越者,1.6,1.1,0.5
+Video or Media,human_role,观众,被超越者,0.9,0.4,0.5
+Imagination about Robots,source_batch,2608-olympic,2604-marathon,45.6,41.4,4.2
+Robot,source_batch,2604-marathon,2608-olympic,53.8,49.8,3.9
+Self,source_batch,2608-olympic,2604-marathon,21.4,19.6,1.9
+Event or Competition,source_batch,2604-marathon,2608-olympic,4.9,3.8,1.1
+Other People in Videos,source_batch,2604-marathon,2608-olympic,1.9,1.2,0.7
+Affiliated Organization or Country,source_batch,2604-marathon,2608-olympic,6.8,6.4,0.4
+Other People in Comments,source_batch,2608-olympic,2604-marathon,2.0,1.8,0.3
+Video or Media,source_batch,2608-olympic,2604-marathon,0.9,0.7,0.2

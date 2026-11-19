@@ -1,0 +1,565 @@
+
+Call:
+estimateEffect(formula = 1:k_pick ~ perspective + event, stmobj = model, 
+    metadata = meta_out, uncertainty = "Global")
+
+
+Topic 1:
+
+Coefficients:
+                              Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                  0.0475513  0.0014579  32.615   <2e-16 ***
+perspectiveImagination_only -0.0184906  0.0013846 -13.354   <2e-16 ***
+perspectiveRobot_mixed      -0.0267054  0.0017771 -15.027   <2e-16 ***
+perspectiveRobot_only       -0.0258180  0.0014408 -17.920   <2e-16 ***
+perspectiveSelf_only        -0.0177780  0.0017875  -9.946   <2e-16 ***
+event2608-olympic            0.0085234  0.0007695  11.076   <2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+Topic 2:
+
+Coefficients:
+                              Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                  0.0193858  0.0010291  18.838  < 2e-16 ***
+perspectiveImagination_only  0.0058308  0.0010728   5.435 5.52e-08 ***
+perspectiveRobot_mixed       0.0060029  0.0013579   4.421 9.88e-06 ***
+perspectiveRobot_only        0.0002269  0.0009784   0.232 0.816623    
+perspectiveSelf_only         0.0022196  0.0014247   1.558 0.119251    
+event2608-olympic           -0.0024308  0.0006931  -3.507 0.000454 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+Topic 3:
+
+Coefficients:
+                              Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                  0.0295512  0.0016377  18.044  < 2e-16 ***
+perspectiveImagination_only -0.0058714  0.0015141  -3.878 0.000106 ***
+perspectiveRobot_mixed       0.0033906  0.0017585   1.928 0.053850 .  
+perspectiveRobot_only       -0.0217828  0.0015347 -14.194  < 2e-16 ***
+perspectiveSelf_only         0.0033281  0.0020412   1.630 0.103021    
+event2608-olympic           -0.0024942  0.0007402  -3.370 0.000753 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+Topic 4:
+
+Coefficients:
+                              Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                  0.0085781  0.0009190   9.335  < 2e-16 ***
+perspectiveImagination_only  0.0083974  0.0008872   9.465  < 2e-16 ***
+perspectiveRobot_mixed       0.0045534  0.0012020   3.788 0.000152 ***
+perspectiveRobot_only        0.0039298  0.0008776   4.478 7.56e-06 ***
+perspectiveSelf_only        -0.0012239  0.0011793  -1.038 0.299334    
+event2608-olympic            0.0011823  0.0005457   2.167 0.030262 *  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+Topic 5:
+
+Coefficients:
+                             Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                  0.050195   0.002017  24.891  < 2e-16 ***
+perspectiveImagination_only  0.013477   0.002023   6.661 2.78e-11 ***
+perspectiveRobot_mixed      -0.020348   0.002330  -8.733  < 2e-16 ***
+perspectiveRobot_only       -0.029717   0.001989 -14.942  < 2e-16 ***
+perspectiveSelf_only        -0.007504   0.002367  -3.170  0.00153 ** 
+event2608-olympic            0.006838   0.001014   6.743 1.58e-11 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+Topic 6:
+
+Coefficients:
+                              Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                  0.0149016  0.0008960  16.631  < 2e-16 ***
+perspectiveImagination_only -0.0062591  0.0008259  -7.578 3.62e-14 ***
+perspectiveRobot_mixed       0.0056779  0.0011160   5.088 3.65e-07 ***
+perspectiveRobot_only        0.0079442  0.0009315   8.528  < 2e-16 ***
+perspectiveSelf_only        -0.0077582  0.0010703  -7.249 4.31e-13 ***
+event2608-olympic            0.0005267  0.0005761   0.914    0.361    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+Topic 7:
+
+Coefficients:
+                              Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                  0.0312128  0.0012450  25.070   <2e-16 ***
+perspectiveImagination_only -0.0218750  0.0011997 -18.234   <2e-16 ***
+perspectiveRobot_mixed      -0.0198431  0.0014135 -14.038   <2e-16 ***
+perspectiveRobot_only       -0.0187829  0.0012153 -15.455   <2e-16 ***
+perspectiveSelf_only        -0.0184410  0.0015259 -12.086   <2e-16 ***
+event2608-olympic           -0.0015871  0.0005452  -2.911   0.0036 ** 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+Topic 8:
+
+Coefficients:
+                              Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                  0.0144764  0.0009522  15.203  < 2e-16 ***
+perspectiveImagination_only  0.0048949  0.0008693   5.631 1.81e-08 ***
+perspectiveRobot_mixed       0.0026620  0.0012177   2.186   0.0288 *  
+perspectiveRobot_only        0.0046430  0.0008695   5.340 9.36e-08 ***
+perspectiveSelf_only         0.0055784  0.0012102   4.609 4.06e-06 ***
+event2608-olympic           -0.0053182  0.0005851  -9.090  < 2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+Topic 9:
+
+Coefficients:
+                              Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                  0.0420085  0.0013355  31.456  < 2e-16 ***
+perspectiveImagination_only -0.0012857  0.0011893  -1.081     0.28    
+perspectiveRobot_mixed       0.0081486  0.0017607   4.628 3.71e-06 ***
+perspectiveRobot_only       -0.0071783  0.0011683  -6.144 8.16e-10 ***
+perspectiveSelf_only        -0.0085038  0.0014962  -5.683 1.33e-08 ***
+event2608-olympic           -0.0065669  0.0007566  -8.679  < 2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+Topic 10:
+
+Coefficients:
+                              Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                  0.0267087  0.0011263  23.713  < 2e-16 ***
+perspectiveImagination_only  0.0185549  0.0011100  16.716  < 2e-16 ***
+perspectiveRobot_mixed       0.0126204  0.0015949   7.913 2.61e-15 ***
+perspectiveRobot_only        0.0273741  0.0011593  23.612  < 2e-16 ***
+perspectiveSelf_only        -0.0002534  0.0013805  -0.184    0.854    
+event2608-olympic           -0.0040974  0.0007952  -5.152 2.59e-07 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+Topic 11:
+
+Coefficients:
+                              Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                  0.0190547  0.0010635  17.917  < 2e-16 ***
+perspectiveImagination_only  0.0086649  0.0010585   8.186 2.81e-16 ***
+perspectiveRobot_mixed       0.0094037  0.0013533   6.949 3.77e-12 ***
+perspectiveRobot_only       -0.0059963  0.0009793  -6.123 9.29e-10 ***
+perspectiveSelf_only        -0.0059619  0.0012640  -4.717 2.41e-06 ***
+event2608-olympic           -0.0028261  0.0006466  -4.370 1.24e-05 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+Topic 12:
+
+Coefficients:
+                              Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                  0.0099896  0.0009817  10.176  < 2e-16 ***
+perspectiveImagination_only  0.0019996  0.0010182   1.964  0.04957 *  
+perspectiveRobot_mixed       0.0037946  0.0012931   2.934  0.00334 ** 
+perspectiveRobot_only        0.0038863  0.0009700   4.007 6.18e-05 ***
+perspectiveSelf_only        -0.0025273  0.0013311  -1.899  0.05761 .  
+event2608-olympic            0.0034058  0.0005527   6.162 7.28e-10 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+Topic 13:
+
+Coefficients:
+                             Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                  0.020469   0.001434  14.270  < 2e-16 ***
+perspectiveImagination_only -0.004047   0.001443  -2.805 0.005037 ** 
+perspectiveRobot_mixed       0.009930   0.001808   5.492 4.01e-08 ***
+perspectiveRobot_only        0.013889   0.001381  10.054  < 2e-16 ***
+perspectiveSelf_only        -0.006340   0.001741  -3.642 0.000272 ***
+event2608-olympic            0.006233   0.000869   7.173 7.51e-13 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+Topic 14:
+
+Coefficients:
+                              Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                  0.0238642  0.0013881  17.191  < 2e-16 ***
+perspectiveImagination_only -0.0004995  0.0013203  -0.378 0.705189    
+perspectiveRobot_mixed      -0.0064594  0.0015303  -4.221 2.44e-05 ***
+perspectiveRobot_only        0.0045229  0.0013096   3.454 0.000554 ***
+perspectiveSelf_only        -0.0064906  0.0015801  -4.108 4.01e-05 ***
+event2608-olympic           -0.0023950  0.0007833  -3.058 0.002234 ** 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+Topic 15:
+
+Coefficients:
+                              Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                  0.0589256  0.0014735  39.989  < 2e-16 ***
+perspectiveImagination_only -0.0133462  0.0014176  -9.415  < 2e-16 ***
+perspectiveRobot_mixed      -0.0250389  0.0017613 -14.216  < 2e-16 ***
+perspectiveRobot_only       -0.0309217  0.0013627 -22.692  < 2e-16 ***
+perspectiveSelf_only        -0.0189502  0.0019501  -9.718  < 2e-16 ***
+event2608-olympic           -0.0040442  0.0007382  -5.478 4.33e-08 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+Topic 16:
+
+Coefficients:
+                              Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                  0.0183801  0.0012413  14.807  < 2e-16 ***
+perspectiveImagination_only -0.0055982  0.0013185  -4.246 2.18e-05 ***
+perspectiveRobot_mixed       0.0004506  0.0015723   0.287 0.774444    
+perspectiveRobot_only       -0.0054632  0.0012536  -4.358 1.32e-05 ***
+perspectiveSelf_only         0.0343625  0.0020257  16.963  < 2e-16 ***
+event2608-olympic            0.0024411  0.0006805   3.587 0.000335 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+Topic 17:
+
+Coefficients:
+                              Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                  0.0178665  0.0009586  18.639  < 2e-16 ***
+perspectiveImagination_only -0.0011033  0.0009776  -1.129    0.259    
+perspectiveRobot_mixed       0.0070465  0.0012125   5.811 6.26e-09 ***
+perspectiveRobot_only        0.0109884  0.0010015  10.972  < 2e-16 ***
+perspectiveSelf_only         0.0054811  0.0013521   4.054 5.06e-05 ***
+event2608-olympic            0.0002296  0.0006642   0.346    0.730    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+Topic 18:
+
+Coefficients:
+                             Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                  0.026953   0.002014  13.379  < 2e-16 ***
+perspectiveImagination_only  0.001338   0.001786   0.749   0.4538    
+perspectiveRobot_mixed       0.011700   0.002218   5.276 1.33e-07 ***
+perspectiveRobot_only        0.032321   0.001870  17.284  < 2e-16 ***
+perspectiveSelf_only         0.005456   0.002563   2.129   0.0332 *  
+event2608-olympic           -0.007260   0.001473  -4.929 8.29e-07 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+Topic 19:
+
+Coefficients:
+                              Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                  0.0245337  0.0012944  18.954  < 2e-16 ***
+perspectiveImagination_only -0.0047608  0.0011368  -4.188 2.82e-05 ***
+perspectiveRobot_mixed      -0.0097599  0.0014640  -6.667 2.66e-11 ***
+perspectiveRobot_only       -0.0073804  0.0011537  -6.397 1.61e-10 ***
+perspectiveSelf_only         0.0261272  0.0020462  12.769  < 2e-16 ***
+event2608-olympic            0.0007132  0.0006903   1.033    0.302    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+Topic 20:
+
+Coefficients:
+                              Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                  2.518e-02  1.041e-03  24.182  < 2e-16 ***
+perspectiveImagination_only -4.052e-03  1.008e-03  -4.018 5.88e-05 ***
+perspectiveRobot_mixed       5.369e-03  1.426e-03   3.766 0.000166 ***
+perspectiveRobot_only        4.899e-03  9.911e-04   4.943 7.75e-07 ***
+perspectiveSelf_only         4.025e-03  1.438e-03   2.798 0.005139 ** 
+event2608-olympic           -2.229e-05  6.889e-04  -0.032 0.974187    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+Topic 21:
+
+Coefficients:
+                              Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                  0.0142784  0.0009759  14.631  < 2e-16 ***
+perspectiveImagination_only -0.0076016  0.0009532  -7.975 1.59e-15 ***
+perspectiveRobot_mixed       0.0038091  0.0012297   3.098  0.00195 ** 
+perspectiveRobot_only       -0.0014264  0.0009411  -1.516  0.12961    
+perspectiveSelf_only         0.0005559  0.0012630   0.440  0.65987    
+event2608-olympic            0.0007971  0.0005328   1.496  0.13463    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+Topic 22:
+
+Coefficients:
+                              Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                  0.0166225  0.0012594  13.198  < 2e-16 ***
+perspectiveImagination_only  0.0176403  0.0013677  12.898  < 2e-16 ***
+perspectiveRobot_mixed      -0.0015199  0.0015072  -1.008 0.313248    
+perspectiveRobot_only       -0.0021635  0.0012659  -1.709 0.087455 .  
+perspectiveSelf_only         0.0187258  0.0019263   9.721  < 2e-16 ***
+event2608-olympic            0.0026624  0.0007884   3.377 0.000734 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+Topic 23:
+
+Coefficients:
+                             Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                 0.0207597  0.0014355  14.461  < 2e-16 ***
+perspectiveImagination_only 0.0050401  0.0013952   3.613 0.000304 ***
+perspectiveRobot_mixed      0.0350058  0.0021138  16.560  < 2e-16 ***
+perspectiveRobot_only       0.0430225  0.0014154  30.396  < 2e-16 ***
+perspectiveSelf_only        0.0091126  0.0018502   4.925 8.47e-07 ***
+event2608-olympic           0.0061017  0.0009945   6.135 8.61e-10 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+Topic 24:
+
+Coefficients:
+                              Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                  0.0174017  0.0011916  14.604  < 2e-16 ***
+perspectiveImagination_only  0.0007896  0.0011742   0.672  0.50134    
+perspectiveRobot_mixed      -0.0041298  0.0014428  -2.862  0.00421 ** 
+perspectiveRobot_only       -0.0047392  0.0011812  -4.012 6.03e-05 ***
+perspectiveSelf_only        -0.0041533  0.0014190  -2.927  0.00343 ** 
+event2608-olympic            0.0001967  0.0005677   0.346  0.72906    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+Topic 25:
+
+Coefficients:
+                              Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                  0.0474046  0.0016180  29.299  < 2e-16 ***
+perspectiveImagination_only -0.0144149  0.0017305  -8.330  < 2e-16 ***
+perspectiveRobot_mixed      -0.0280629  0.0019463 -14.419  < 2e-16 ***
+perspectiveRobot_only       -0.0254295  0.0016407 -15.499  < 2e-16 ***
+perspectiveSelf_only        -0.0256748  0.0019497 -13.169  < 2e-16 ***
+event2608-olympic            0.0021344  0.0007066   3.021  0.00252 ** 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+Topic 26:
+
+Coefficients:
+                              Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                  0.0178155  0.0009753  18.267  < 2e-16 ***
+perspectiveImagination_only -0.0015352  0.0009821  -1.563 0.118030    
+perspectiveRobot_mixed       0.0001425  0.0012158   0.117 0.906681    
+perspectiveRobot_only        0.0036863  0.0010530   3.501 0.000465 ***
+perspectiveSelf_only         0.0021786  0.0013730   1.587 0.112582    
+event2608-olympic           -0.0023390  0.0005129  -4.560 5.13e-06 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+Topic 27:
+
+Coefficients:
+                              Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                  0.0267588  0.0012214  21.908  < 2e-16 ***
+perspectiveImagination_only  0.0018613  0.0012502   1.489    0.137    
+perspectiveRobot_mixed      -0.0145394  0.0014912  -9.750  < 2e-16 ***
+perspectiveRobot_only       -0.0165180  0.0012343 -13.382  < 2e-16 ***
+perspectiveSelf_only        -0.0129364  0.0014776  -8.755  < 2e-16 ***
+event2608-olympic            0.0032545  0.0005809   5.603 2.13e-08 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+Topic 28:
+
+Coefficients:
+                              Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                  0.0200580  0.0009714  20.648  < 2e-16 ***
+perspectiveImagination_only -0.0005692  0.0009869  -0.577  0.56414    
+perspectiveRobot_mixed      -0.0006811  0.0011594  -0.587  0.55691    
+perspectiveRobot_only        0.0087583  0.0008951   9.784  < 2e-16 ***
+perspectiveSelf_only         0.0034258  0.0012189   2.811  0.00495 ** 
+event2608-olympic            0.0008457  0.0006404   1.321  0.18662    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+Topic 29:
+
+Coefficients:
+                              Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                  0.0118891  0.0008534  13.932  < 2e-16 ***
+perspectiveImagination_only -0.0003848  0.0008260  -0.466 0.641298    
+perspectiveRobot_mixed      -0.0037223  0.0010541  -3.531 0.000414 ***
+perspectiveRobot_only        0.0011920  0.0008979   1.327 0.184358    
+perspectiveSelf_only        -0.0009038  0.0011437  -0.790 0.429414    
+event2608-olympic           -0.0008080  0.0004990  -1.619 0.105379    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+Topic 30:
+
+Coefficients:
+                             Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                  0.008242   0.001179   6.991 2.80e-12 ***
+perspectiveImagination_only  0.003195   0.001156   2.764  0.00572 ** 
+perspectiveRobot_mixed      -0.002116   0.001373  -1.540  0.12351    
+perspectiveRobot_only        0.003322   0.001036   3.208  0.00134 ** 
+perspectiveSelf_only        -0.003231   0.001389  -2.326  0.02001 *  
+event2608-olympic            0.003380   0.000740   4.568 4.96e-06 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+Topic 31:
+
+Coefficients:
+                            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                 0.008866   0.002046   4.333 1.48e-05 ***
+perspectiveImagination_only 0.001814   0.001931   0.939    0.348    
+perspectiveRobot_mixed      0.042677   0.002764  15.438  < 2e-16 ***
+perspectiveRobot_only       0.027078   0.002014  13.442  < 2e-16 ***
+perspectiveSelf_only        0.049231   0.002984  16.496  < 2e-16 ***
+event2608-olympic           0.011383   0.001268   8.976  < 2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+Topic 32:
+
+Coefficients:
+                             Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                  0.030362   0.001881  16.144  < 2e-16 ***
+perspectiveImagination_only  0.002728   0.001673   1.631    0.103    
+perspectiveRobot_mixed       0.059331   0.002797  21.211  < 2e-16 ***
+perspectiveRobot_only        0.027906   0.001699  16.426  < 2e-16 ***
+perspectiveSelf_only         0.040117   0.002570  15.607  < 2e-16 ***
+event2608-olympic           -0.009360   0.001350  -6.933 4.22e-12 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+Topic 33:
+
+Coefficients:
+                             Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                  0.059988   0.001399  42.882  < 2e-16 ***
+perspectiveImagination_only -0.010319   0.001416  -7.290 3.19e-13 ***
+perspectiveRobot_mixed      -0.019979   0.001580 -12.642  < 2e-16 ***
+perspectiveRobot_only       -0.022996   0.001356 -16.956  < 2e-16 ***
+perspectiveSelf_only        -0.040949   0.001525 -26.848  < 2e-16 ***
+event2608-olympic           -0.003106   0.000676  -4.594 4.36e-06 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+Topic 34:
+
+Coefficients:
+                             Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                  0.021767   0.001882  11.563  < 2e-16 ***
+perspectiveImagination_only -0.005191   0.001782  -2.914  0.00357 ** 
+perspectiveRobot_mixed      -0.002049   0.002200  -0.932  0.35151    
+perspectiveRobot_only        0.033984   0.001821  18.662  < 2e-16 ***
+perspectiveSelf_only         0.002612   0.002499   1.045  0.29594    
+event2608-olympic           -0.004067   0.001220  -3.333  0.00086 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+Topic 35:
+
+Coefficients:
+                              Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                  0.0343587  0.0013498  25.455  < 2e-16 ***
+perspectiveImagination_only -0.0087673  0.0013198  -6.643 3.13e-11 ***
+perspectiveRobot_mixed      -0.0080974  0.0014917  -5.428 5.74e-08 ***
+perspectiveRobot_only       -0.0111534  0.0013505  -8.259  < 2e-16 ***
+perspectiveSelf_only        -0.0060870  0.0015658  -3.888 0.000101 ***
+event2608-olympic           -0.0054406  0.0007242  -7.513 5.95e-14 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+Topic 36:
+
+Coefficients:
+                              Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                  0.0231224  0.0012063  19.167  < 2e-16 ***
+perspectiveImagination_only  0.0135127  0.0012827  10.535  < 2e-16 ***
+perspectiveRobot_mixed      -0.0108249  0.0014125  -7.664 1.86e-14 ***
+perspectiveRobot_only       -0.0116723  0.0012013  -9.716  < 2e-16 ***
+perspectiveSelf_only         0.0023693  0.0016637   1.424   0.1544    
+event2608-olympic            0.0012996  0.0007295   1.781   0.0749 .  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+Topic 37:
+
+Coefficients:
+                              Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                  0.0277347  0.0014954  18.547  < 2e-16 ***
+perspectiveImagination_only  0.0306179  0.0014180  21.593  < 2e-16 ***
+perspectiveRobot_mixed      -0.0143409  0.0016759  -8.557  < 2e-16 ***
+perspectiveRobot_only       -0.0095527  0.0014179  -6.737 1.64e-11 ***
+perspectiveSelf_only        -0.0096497  0.0018286  -5.277 1.32e-07 ***
+event2608-olympic            0.0031079  0.0008814   3.526 0.000422 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+Topic 38:
+
+Coefficients:
+                             Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                 0.0162040  0.0011925  13.589  < 2e-16 ***
+perspectiveImagination_only 0.0091776  0.0011554   7.943 2.04e-15 ***
+perspectiveRobot_mixed      0.0025955  0.0015080   1.721 0.085225 .  
+perspectiveRobot_only       0.0074013  0.0011658   6.349 2.20e-10 ***
+perspectiveSelf_only        0.0059464  0.0015381   3.866 0.000111 ***
+event2608-olympic           0.0013960  0.0006907   2.021 0.043270 *  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+Topic 39:
+
+Coefficients:
+                              Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                  0.0338463  0.0013212  25.618  < 2e-16 ***
+perspectiveImagination_only -0.0117539  0.0012730  -9.233  < 2e-16 ***
+perspectiveRobot_mixed      -0.0153133  0.0015573  -9.833  < 2e-16 ***
+perspectiveRobot_only       -0.0121417  0.0013144  -9.237  < 2e-16 ***
+perspectiveSelf_only        -0.0147718  0.0014941  -9.886  < 2e-16 ***
+event2608-olympic           -0.0023442  0.0006022  -3.893 9.93e-05 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+Topic 40:
+
+Coefficients:
+                              Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                  0.0127096  0.0003420  37.165   <2e-16 ***
+perspectiveImagination_only -0.0018339  0.0003057  -6.000    2e-09 ***
+perspectiveRobot_mixed      -0.0008483  0.0003964  -2.140   0.0324 *  
+perspectiveRobot_only       -0.0001202  0.0003408  -0.353   0.7243    
+perspectiveSelf_only        -0.0007316  0.0004414  -1.657   0.0975 .  
+event2608-olympic           -0.0001251  0.0001807  -0.692   0.4887    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+

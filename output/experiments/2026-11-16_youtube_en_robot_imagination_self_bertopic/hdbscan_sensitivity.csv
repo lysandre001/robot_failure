@@ -1,0 +1,5 @@
+mcs,n_topics,outlier_rate,n_docs,n_outliers,reused
+30,136,0.3851,28096,10820,True
+50,90,0.3827,28096,10751,True
+80,60,0.4149,28096,11658,True
+100,48,0.4513,28096,12679,True

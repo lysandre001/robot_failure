@@ -1,0 +1,1626 @@
+topic_id,pair,rank,term,z,log_odds,count_a,count_b,favors,n_a,n_b
+0,Robot-Imagination,1,remote,5.8694,4.1763,114,2,Robot,581,672
+0,Robot-Imagination,2,army,-5.5532,-2.8426,4,79,Imagination,581,672
+0,Robot-Imagination,3,controlled,5.458,3.8945,86,2,Robot,581,672
+0,Robot-Imagination,4,boston,5.27,2.1228,51,7,Robot,581,672
+0,Robot-Imagination,5,future,-5.253,-1.6389,12,71,Imagination,581,672
+0,Robot-Imagination,6,dynamics,4.905,2.5562,45,4,Robot,581,672
+0,Robot-Imagination,7,boston dynamics,4.8087,2.5108,43,4,Robot,581,672
+0,Robot-Imagination,8,war,-4.615,-2.1626,5,50,Imagination,581,672
+0,Robot-Imagination,9,autonomous,4.4708,1.5725,42,10,Robot,581,672
+0,Robot-Imagination,10,running,4.4626,1.4013,46,13,Robot,581,672
+0,Robot-Imagination,11,imagine,-4.3743,-1.8973,6,46,Imagination,581,672
+0,Robot-Imagination,12,military,-4.3181,-1.8753,6,45,Imagination,581,672
+0,Robot-Imagination,13,tesla,4.3167,1.2798,47,15,Robot,581,672
+0,Robot-Imagination,14,optimus,4.2996,1.3568,44,13,Robot,581,672
+0,Robot-Imagination,15,look,4.1116,1.4032,39,11,Robot,581,672
+0,Robot-Imagination,16,remote controlled,4.0804,4.0987,53,1,Robot,581,672
+0,Robot-Imagination,17,control,4.0072,1.2363,42,14,Robot,581,672
+0,Robot-Imagination,18,soon,-4.0044,-2.3978,3,38,Imagination,581,672
+0,Robot-Imagination,19,chinese robots,3.9286,1.0646,48,19,Robot,581,672
+0,Robot-Imagination,20,soldiers,-3.855,-2.3156,3,35,Imagination,581,672
+0,Robot-Imagination,21,like,3.8461,0.6081,104,65,Robot,581,672
+0,Robot-Imagination,22,propaganda,3.8383,2.3324,27,3,Robot,581,672
+0,Robot-Imagination,23,guy,3.5661,2.6185,24,2,Robot,581,672
+0,Robot-Imagination,24,robot army,-3.3086,-2.4222,2,26,Imagination,581,672
+0,Robot-Imagination,25,million,-3.2441,-1.9792,3,25,Imagination,581,672
+0,Robot-Self,1,robots,6.6563,1.086,297,43,Robot,581,237
+0,Robot-Self,2,robot,5.7362,1.1181,214,30,Robot,581,237
+0,Robot-Self,3,remote,4.7743,2.788,114,3,Robot,581,237
+0,Robot-Self,4,ahead,-4.5196,-1.3802,17,29,Self,581,237
+0,Robot-Self,5,controlled,4.2739,2.5062,86,3,Robot,581,237
+0,Robot-Self,6,american,-4.204,-1.4966,12,23,Self,581,237
+0,Robot-Self,7,usa,-4.1264,-1.9439,6,18,Self,581,237
+0,Robot-Self,8,india,-4.1231,-2.5782,3,17,Self,581,237
+0,Robot-Self,9,country,-4.0838,-1.4166,13,23,Self,581,237
+0,Robot-Self,10,china,-3.5531,-0.3291,312,186,Self,581,237
+0,Robot-Self,11,america,-3.4556,-1.3766,10,17,Self,581,237
+0,Robot-Self,12,americans,-3.4487,-3.5451,1,15,Self,581,237
+0,Robot-Self,13,boston,3.2718,1.6969,51,4,Robot,581,237
+0,Robot-Self,14,countries,-3.2353,-1.7207,5,12,Self,581,237
+0,Robot-Self,15,tesla,3.1991,1.9021,47,3,Robot,581,237
+0,Robot-Self,16,indian,-3.1827,-1.8564,4,11,Self,581,237
+0,Robot-Self,17,global,-3.1721,-2.4518,2,10,Self,581,237
+0,Robot-Self,18,living,-3.1721,-2.4518,2,10,Self,581,237
+0,Robot-Self,19,government,-3.1721,-2.4518,2,10,Self,581,237
+0,Robot-Self,20,chinese robots,3.1478,1.6362,48,4,Robot,581,237
+0,Robot-Self,21,states,-3.1155,-2.048,3,10,Self,581,237
+0,Robot-Self,22,remote controlled,3.1003,3.1142,53,1,Robot,581,237
+0,Robot-Self,23,run,3.041,1.8131,43,3,Robot,581,237
+0,Robot-Self,24,dynamics,3.0159,1.5717,45,4,Robot,581,237
+0,Robot-Self,25,boston dynamics,2.9231,1.5263,43,4,Robot,581,237
+0,Imagination-Self,1,robots,6.6828,1.0826,334,43,Imagination,672,237
+0,Imagination-Self,2,ahead,-5.2099,-1.695,14,29,Self,672,237
+0,Imagination-Self,3,american,-4.8466,-1.9047,9,23,Self,672,237
+0,Imagination-Self,4,robot,4.4719,0.8784,190,30,Imagination,672,237
+0,Imagination-Self,5,army,3.5645,1.3218,79,8,Imagination,672,237
+0,Imagination-Self,6,mandarin,-3.3898,-1.9771,4,11,Self,672,237
+0,Imagination-Self,7,americans,-3.3628,-1.3723,10,15,Self,672,237
+0,Imagination-Self,8,states,-3.1843,-1.8819,4,10,Self,672,237
+0,Imagination-Self,9,india,-3.0842,-1.0922,15,17,Self,672,237
+0,Imagination-Self,10,did,-3.0319,-1.6593,5,10,Self,672,237
+0,Imagination-Self,11,learn,-3.0319,-1.6593,5,10,Self,672,237
+0,Imagination-Self,12,called,-3.0319,-1.6593,5,10,Self,672,237
+0,Imagination-Self,13,imagine,3.0025,2.1636,46,2,Imagination,672,237
+0,Imagination-Self,14,look,-2.9996,-1.2081,11,14,Self,672,237
+0,Imagination-Self,15,way ahead,-2.9784,-2.3497,2,8,Self,672,237
+0,Imagination-Self,16,humanoid,2.9707,2.1416,45,2,Imagination,672,237
+0,Imagination-Self,17,united states,-2.9596,-1.7767,4,9,Self,672,237
+0,Imagination-Self,18,love,-2.9596,-1.7767,4,9,Self,672,237
+0,Imagination-Self,19,america,-2.8205,-0.9671,17,17,Self,672,237
+0,Imagination-Self,20,united,-2.7885,-1.554,5,9,Self,672,237
+0,Imagination-Self,21,indian,-2.7675,-1.2852,8,11,Self,672,237
+0,Imagination-Self,22,tech,-2.7363,-0.9671,16,16,Self,672,237
+0,Imagination-Self,23,advanced,-2.7363,-0.9671,16,16,Self,672,237
+0,Imagination-Self,24,soon,2.7255,1.9726,38,2,Imagination,672,237
+0,Imagination-Self,25,bad,-2.712,-1.659,4,8,Self,672,237
+1,Robot-Imagination,1,ll,-5.2326,-2.4806,8,10,Imagination,827,73
+1,Robot-Imagination,2,olympics,-3.7945,-2.7672,3,5,Imagination,827,73
+1,Robot-Imagination,3,imagine,-3.7844,-2.1038,7,6,Imagination,827,73
+1,Robot-Imagination,4,records,-3.7458,-0.8948,86,22,Imagination,827,73
+1,Robot-Imagination,5,people,-3.7245,-1.6297,15,8,Imagination,827,73
+1,Robot-Imagination,6,breaking,-3.6421,-1.0744,49,15,Imagination,827,73
+1,Robot-Imagination,7,jump,-3.4116,-2.9484,2,4,Imagination,827,73
+1,Robot-Imagination,8,high,-3.4116,-2.9484,2,4,Imagination,827,73
+1,Robot-Imagination,9,achievement,-3.3366,-2.5446,3,4,Imagination,827,73
+1,Robot-Imagination,10,laundry,-3.2664,-3.6366,1,4,Imagination,827,73
+1,Robot-Imagination,11,soon,-3.1969,-2.2577,4,4,Imagination,827,73
+1,Robot-Imagination,12,broken,-2.952,-1.3141,18,7,Imagination,827,73
+1,Robot-Imagination,13,seriously,-2.9219,-2.6615,2,3,Imagination,827,73
+1,Robot-Imagination,14,looking,-2.913,-3.3497,1,3,Imagination,827,73
+1,Robot-Imagination,15,tomorrow,-2.913,-3.3497,1,3,Imagination,827,73
+1,Robot-Imagination,16,10,-2.8739,-1.8531,6,4,Imagination,827,73
+1,Robot-Imagination,17,things,-2.8739,-1.8531,6,4,Imagination,827,73
+1,Robot-Imagination,18,human world,-2.8739,-1.8531,6,4,Imagination,827,73
+1,Robot-Imagination,19,robotic,-2.7697,-2.2577,3,3,Imagination,827,73
+1,Robot-Imagination,20,ability,-2.7697,-2.2577,3,3,Imagination,827,73
+1,Robot-Imagination,21,robots breaking,-2.7138,-1.6992,7,4,Imagination,827,73
+1,Robot-Imagination,22,better,-2.6012,-1.3834,12,5,Imagination,827,73
+1,Robot-Imagination,23,robot smashes,-2.5843,-1.9709,4,3,Imagination,827,73
+1,Robot-Imagination,24,use,-2.5843,-1.9709,4,3,Imagination,827,73
+1,Robot-Imagination,25,bolt,2.5658,0.4755,477,31,Robot,827,73
+1,Robot-Self,1,human,-6.0511,-0.6117,227,172,Self,827,325
+1,Robot-Self,2,humans,-5.1526,-1.0024,50,56,Self,827,325
+1,Robot-Self,3,car,-3.3143,-0.4506,138,89,Self,827,325
+1,Robot-Self,4,records,-3.1462,-0.5292,86,60,Self,827,325
+1,Robot-Self,5,comparing,-3.0034,-1.4275,7,12,Self,827,325
+1,Robot-Self,6,bolt human,-2.8991,-1.2565,9,13,Self,827,325
+1,Robot-Self,7,human records,-2.6975,-0.673,36,29,Self,827,325
+1,Robot-Self,8,achievement,-2.517,-1.7345,3,7,Self,827,325
+1,Robot-Self,9,news,-2.4929,-0.7891,21,19,Self,827,325
+1,Robot-Self,10,nuts,2.4388,2.4686,29,1,Robot,827,325
+1,Robot-Self,11,beat usain,-2.4361,-0.4919,61,41,Self,827,325
+1,Robot-Self,12,machines,-2.3127,-0.5528,42,30,Self,827,325
+1,Robot-Self,13,makes,-2.1799,-1.1764,6,8,Self,827,325
+1,Robot-Self,14,don,-2.1281,-0.5708,33,24,Self,827,325
+1,Robot-Self,15,work,-2.094,-1.225,5,7,Self,827,325
+1,Robot-Self,16,nonsense,-2.0371,-2.268,1,4,Self,827,325
+1,Robot-Self,17,care,-2.0371,-2.268,1,4,Self,827,325
+1,Robot-Self,18,set,-1.9865,-0.6661,20,16,Self,827,325
+1,Robot-Self,19,day,-1.9226,-0.8022,12,11,Self,827,325
+1,Robot-Self,20,record car,-1.9226,-0.8022,12,11,Self,827,325
+1,Robot-Self,21,set human,-1.9179,-1.3986,3,5,Self,827,325
+1,Robot-Self,22,stands,-1.9179,-1.3986,3,5,Self,827,325
+1,Robot-Self,23,saying,-1.8584,-0.5146,32,22,Self,827,325
+1,Robot-Self,24,cars,1.836,0.8143,33,6,Robot,827,325
+1,Robot-Self,25,robot,1.8307,0.2513,219,70,Robot,827,325
+1,Imagination-Self,1,ll,3.6987,1.9086,10,6,Imagination,73,325
+1,Imagination-Self,2,breaking,3.0342,1.0157,15,22,Imagination,73,325
+1,Imagination-Self,3,imagine,2.9597,2.09,6,3,Imagination,73,325
+1,Imagination-Self,4,car,-2.9135,-1.1429,7,89,Self,73,325
+1,Imagination-Self,5,world,2.787,1.0504,12,17,Imagination,73,325
+1,Imagination-Self,6,olympics,2.7688,2.3118,5,2,Imagination,73,325
+1,Imagination-Self,7,broken,2.6182,1.3985,7,7,Imagination,73,325
+1,Imagination-Self,8,robot,2.527,0.5514,30,70,Imagination,73,325
+1,Imagination-Self,9,jump,2.4946,2.7773,4,1,Imagination,73,325
+1,Imagination-Self,10,soon,2.4946,2.7773,4,1,Imagination,73,325
+1,Imagination-Self,11,high,2.4946,2.7773,4,1,Imagination,73,325
+1,Imagination-Self,12,human world,2.4946,2.7773,4,1,Imagination,73,325
+1,Imagination-Self,13,beat,-2.4852,-0.6804,15,120,Self,73,325
+1,Imagination-Self,14,record,-2.4391,-0.4706,31,201,Self,73,325
+1,Imagination-Self,15,10,2.4173,2.0891,4,2,Imagination,73,325
+1,Imagination-Self,16,smashes,2.4173,2.0891,4,2,Imagination,73,325
+1,Imagination-Self,17,human,-2.332,-0.4906,26,172,Self,73,325
+1,Imagination-Self,18,people,2.3263,1.0804,8,11,Imagination,73,325
+1,Imagination-Self,19,speed,2.2134,1.3985,5,5,Imagination,73,325
+1,Imagination-Self,20,better,2.2134,1.3985,5,5,Imagination,73,325
+1,Imagination-Self,21,thing,2.2134,1.3985,5,5,Imagination,73,325
+1,Imagination-Self,22,future,2.1658,2.4905,3,1,Imagination,73,325
+1,Imagination-Self,23,end,2.1658,2.4905,3,1,Imagination,73,325
+1,Imagination-Self,24,world records,2.1658,2.4905,3,1,Imagination,73,325
+1,Imagination-Self,25,machine,-2.0856,-1.0841,4,48,Self,73,325
+2,Robot-Imagination,1,looks,5.0938,2.6345,8,7,Robot,63,893
+2,Robot-Imagination,2,looks like,3.9586,2.5012,5,5,Robot,63,893
+2,Robot-Imagination,3,like,3.3105,1.1155,11,44,Robot,63,893
+2,Robot-Imagination,4,round,3.1247,3.5931,3,1,Robot,63,893
+2,Robot-Imagination,5,pretty,2.8179,1.6916,4,9,Robot,63,893
+2,Robot-Imagination,6,idk,2.6149,3.1893,2,1,Robot,63,893
+2,Robot-Imagination,7,pistol,2.6149,3.1893,2,1,Robot,63,893
+2,Robot-Imagination,8,308,2.6149,3.1893,2,1,Robot,63,893
+2,Robot-Imagination,9,obstacle,2.6149,3.1893,2,1,Robot,63,893
+2,Robot-Imagination,10,scrap,2.6149,3.1893,2,1,Robot,63,893
+2,Robot-Imagination,11,actually,2.5628,1.8097,3,6,Robot,63,893
+2,Robot-Imagination,12,water,2.5074,2.5012,2,2,Robot,63,893
+2,Robot-Imagination,13,course,2.5074,2.5012,2,2,Robot,63,893
+2,Robot-Imagination,14,bad,2.5074,2.5012,2,2,Robot,63,893
+2,Robot-Imagination,15,holding rifle,2.5074,2.5012,2,2,Robot,63,893
+2,Robot-Imagination,16,watching,2.5074,2.5012,2,2,Robot,63,893
+2,Robot-Imagination,17,mag,2.5074,2.5012,2,2,Robot,63,893
+2,Robot-Imagination,18,moving,2.5074,2.5012,2,2,Robot,63,893
+2,Robot-Imagination,19,version,2.4027,1.6558,3,7,Robot,63,893
+2,Robot-Imagination,20,running like,2.3025,2.0973,2,3,Robot,63,893
+2,Robot-Imagination,21,runs,2.3025,2.0973,2,3,Robot,63,893
+2,Robot-Imagination,22,bet,2.3025,2.0973,2,3,Robot,63,893
+2,Robot-Imagination,23,run,2.2346,1.1164,5,20,Robot,63,893
+2,Robot-Imagination,24,rifle,2.2346,1.1164,5,20,Robot,63,893
+2,Robot-Imagination,25,shotgun,2.1101,1.4048,3,9,Robot,63,893
+2,Robot-Self,1,looks,2.3892,1.8848,8,2,Robot,63,106
+2,Robot-Self,2,like,1.9738,0.9538,11,7,Robot,63,106
+2,Robot-Self,3,just,-1.8015,-1.3653,2,13,Self,63,106
+2,Robot-Self,4,looks like,1.6955,1.4156,5,2,Robot,63,106
+2,Robot-Self,5,things,-1.63,-1.0355,3,14,Self,63,106
+2,Robot-Self,6,guns,-1.63,-1.0355,3,14,Self,63,106
+2,Robot-Self,7,going,-1.6068,-1.6861,1,9,Self,63,106
+2,Robot-Self,8,hope,-1.4854,-1.5684,1,8,Self,63,106
+2,Robot-Self,9,run,1.3874,1.0118,5,3,Robot,63,106
+2,Robot-Self,10,round,1.3864,1.5943,3,1,Robot,63,106
+2,Robot-Self,11,good,1.3804,1.1929,4,2,Robot,63,106
+2,Robot-Self,12,war,-1.3484,-1.4351,1,7,Self,63,106
+2,Robot-Self,13,ll,-1.2793,-0.9979,2,9,Self,63,106
+2,Robot-Self,14,fucked,-1.1914,-1.2812,1,6,Self,63,106
+2,Robot-Self,15,long,-1.1914,-1.2812,1,6,Self,63,106
+2,Robot-Self,16,getting,-1.1914,-1.2812,1,6,Self,63,106
+2,Robot-Self,17,need,-1.0639,-0.6994,3,10,Self,63,106
+2,Robot-Self,18,great,-1.0078,-1.0992,1,5,Self,63,106
+2,Robot-Self,19,army,-1.0078,-1.0992,1,5,Self,63,106
+2,Robot-Self,20,ready,-1.0078,-1.0992,1,5,Self,63,106
+2,Robot-Self,21,battlefield,-1.0078,-1.0992,1,5,Self,63,106
+2,Robot-Self,22,version,0.9947,0.9061,3,2,Robot,63,106
+2,Robot-Self,23,shotgun,0.9947,0.9061,3,2,Robot,63,106
+2,Robot-Self,24,look,0.9761,1.1905,2,1,Robot,63,106
+2,Robot-Self,25,holding,0.9761,1.1905,2,1,Robot,63,106
+2,Imagination-Self,1,hope,-3.7309,-1.7687,10,8,Self,893,106
+2,Imagination-Self,2,humans,-3.63,-1.5502,14,9,Self,893,106
+2,Imagination-Self,3,fucked,-3.5929,-2.1736,5,6,Self,893,106
+2,Imagination-Self,4,shot,-3.1522,-1.9916,5,5,Self,893,106
+2,Imagination-Self,5,ammo,-2.8709,-1.4815,10,6,Self,893,106
+2,Imagination-Self,6,getting,-2.8709,-1.4815,10,6,Self,893,106
+2,Imagination-Self,7,live,-2.6816,-3.0836,1,3,Self,893,106
+2,Imagination-Self,8,screwed,-2.64,-1.769,5,4,Self,893,106
+2,Imagination-Self,9,life,-2.6297,-2.3954,2,3,Self,893,106
+2,Imagination-Self,10,defense,-2.4612,-1.587,6,4,Self,893,106
+2,Imagination-Self,11,great,-2.3745,-1.2995,10,5,Self,893,106
+2,Imagination-Self,12,military,2.302,1.1736,95,4,Imagination,893,106
+2,Imagination-Self,13,cooked,-2.2888,-1.4331,7,4,Self,893,106
+2,Imagination-Self,14,soldiers,2.2584,1.6144,74,2,Imagination,893,106
+2,Imagination-Self,15,self,-2.2354,-1.7048,4,3,Self,893,106
+2,Imagination-Self,16,im,-2.2354,-1.7048,4,3,Self,893,106
+2,Imagination-Self,17,care,-2.2354,-1.7048,4,3,Self,893,106
+2,Imagination-Self,18,carrying assault,-2.1971,-2.6798,1,2,Self,893,106
+2,Imagination-Self,19,self defense,-2.1971,-2.6798,1,2,Self,893,106
+2,Imagination-Self,20,glad,-2.1971,-2.6798,1,2,Self,893,106
+2,Imagination-Self,21,attack,-2.1971,-2.6798,1,2,Self,893,106
+2,Imagination-Self,22,sprint,-2.1971,-2.6798,1,2,Self,893,106
+2,Imagination-Self,23,308,-2.1971,-2.6798,1,2,Self,893,106
+2,Imagination-Self,24,ability,-2.1971,-2.6798,1,2,Self,893,106
+2,Imagination-Self,25,humanity,-2.1246,-1.2997,8,4,Self,893,106
+3,Robot-Imagination,1,early,2.9865,3.3249,4,1,Robot,105,813
+3,Robot-Imagination,2,run,2.9328,1.0487,11,27,Robot,105,813
+3,Robot-Imagination,3,self,2.916,1.7641,5,6,Robot,105,813
+3,Robot-Imagination,4,outrun,2.7556,1.9461,4,4,Robot,105,813
+3,Robot-Imagination,5,look,2.6435,1.3407,6,11,Robot,105,813
+3,Robot-Imagination,6,prototype,2.642,3.038,3,1,Robot,105,813
+3,Robot-Imagination,7,faster,2.5927,1.4768,5,8,Robot,105,813
+3,Robot-Imagination,8,faster terminator,2.5797,2.3499,3,2,Robot,105,813
+3,Robot-Imagination,9,great,2.3874,1.9461,3,3,Robot,105,813
+3,Robot-Imagination,10,movie,-2.2222,-1.5901,2,69,Imagination,105,813
+3,Robot-Imagination,11,version,2.1598,2.6342,2,1,Robot,105,813
+3,Robot-Imagination,12,knows,2.1598,2.6342,2,1,Robot,105,813
+3,Robot-Imagination,13,generation,2.1598,2.6342,2,1,Robot,105,813
+3,Robot-Imagination,14,generation terminators,2.1598,2.6342,2,1,Robot,105,813
+3,Robot-Imagination,15,terminator scary,2.1598,2.6342,2,1,Robot,105,813
+3,Robot-Imagination,16,chance,2.1598,2.6342,2,1,Robot,105,813
+3,Robot-Imagination,17,creepy,2.1598,2.6342,2,1,Robot,105,813
+3,Robot-Imagination,18,ran,2.1598,2.6342,2,1,Robot,105,813
+3,Robot-Imagination,19,coming,-2.0431,-2.0515,1,55,Imagination,105,813
+3,Robot-Imagination,20,cooked,1.9509,1.9461,2,2,Robot,105,813
+3,Robot-Imagination,21,2nd,1.9509,1.9461,2,2,Robot,105,813
+3,Robot-Imagination,22,arrived,1.9509,1.9461,2,2,Robot,105,813
+3,Robot-Imagination,23,terminator run,1.9509,1.9461,2,2,Robot,105,813
+3,Robot-Imagination,24,getting terminators,1.9509,1.9461,2,2,Robot,105,813
+3,Robot-Imagination,25,floor,1.9509,1.9461,2,2,Robot,105,813
+3,Robot-Self,1,ai,-2.6061,-1.9437,2,17,Self,105,128
+3,Robot-Self,2,humans,-2.211,-1.6757,2,13,Self,105,128
+3,Robot-Self,3,future,-2.0131,-2.1017,1,10,Self,105,128
+3,Robot-Self,4,human,-1.967,-1.5088,2,11,Self,105,128
+3,Robot-Self,5,just,-1.7547,-0.9054,5,15,Self,105,128
+3,Robot-Self,6,terrifying,1.6442,1.7934,5,1,Robot,105,128
+3,Robot-Self,7,time,-1.64,-1.7455,1,7,Self,105,128
+3,Robot-Self,8,remember,-1.64,-1.7455,1,7,Self,105,128
+3,Robot-Self,9,real,-1.6068,-0.8364,5,14,Self,105,128
+3,Robot-Self,10,look,1.5798,1.2872,6,2,Robot,105,128
+3,Robot-Self,11,worry,-1.48,-1.5916,1,6,Self,105,128
+3,Robot-Self,12,watch,-1.48,-1.5916,1,6,Self,105,128
+3,Robot-Self,13,humanity,-1.48,-1.5916,1,6,Self,105,128
+3,Robot-Self,14,gonna,-1.48,-1.5916,1,6,Self,105,128
+3,Robot-Self,15,early,1.4109,1.5708,4,1,Robot,105,128
+3,Robot-Self,16,way,1.4109,1.5708,4,1,Robot,105,128
+3,Robot-Self,17,years,-1.3586,-0.9045,3,9,Self,105,128
+3,Robot-Self,18,self,1.3237,1.1052,5,2,Robot,105,128
+3,Robot-Self,19,think,-1.3214,-1.0573,2,7,Self,105,128
+3,Robot-Self,20,really,-1.2923,-1.4096,1,5,Self,105,128
+3,Robot-Self,21,coming,-1.2923,-1.4096,1,5,Self,105,128
+3,Robot-Self,22,thought,-1.2923,-1.4096,1,5,Self,105,128
+3,Robot-Self,23,like terminator,1.1165,1.2839,3,1,Robot,105,128
+3,Robot-Self,24,far,1.1165,1.2839,3,1,Robot,105,128
+3,Robot-Self,25,straight,1.1165,1.2839,3,1,Robot,105,128
+3,Imagination-Self,1,outrun,-2.8922,-1.9379,4,5,Self,813,128
+3,Imagination-Self,2,human,-2.7702,-1.0226,22,11,Self,813,128
+3,Imagination-Self,3,glad,-2.7148,-1.7153,5,5,Self,813,128
+3,Imagination-Self,4,doomed,-2.6253,-2.0021,3,4,Self,813,128
+3,Imagination-Self,5,knows,-2.4413,-2.8073,1,3,Self,813,128
+3,Imagination-Self,6,happy,-2.4288,-1.7153,4,4,Self,813,128
+3,Imagination-Self,7,ai,-2.4016,-0.6777,48,17,Self,813,128
+3,Imagination-Self,8,crazy,-2.3578,-1.3794,7,5,Self,813,128
+3,Imagination-Self,9,cooked,-2.3264,-2.1191,2,3,Self,813,128
+3,Imagination-Self,10,humans,-2.314,-0.7543,34,13,Self,813,128
+3,Imagination-Self,11,movie,2.2002,1.1302,69,4,Imagination,813,128
+3,Imagination-Self,12,worry,-2.1884,-1.1099,11,6,Self,813,128
+3,Imagination-Self,13,humanity,-2.1884,-1.1099,11,6,Self,813,128
+3,Imagination-Self,14,laughed,-2.1043,-1.7153,3,3,Self,813,128
+3,Imagination-Self,15,nope,-2.1043,-1.7153,3,3,Self,813,128
+3,Imagination-Self,16,terminator ai,-2.1043,-1.7153,3,3,Self,813,128
+3,Imagination-Self,17,species,-2.1043,-1.7153,3,3,Self,813,128
+3,Imagination-Self,18,actual,-2.1043,-1.7153,3,3,Self,813,128
+3,Imagination-Self,19,mean,-2.0326,-1.3106,6,4,Self,813,128
+3,Imagination-Self,20,outrun terminator,-1.9706,-2.4035,1,2,Self,813,128
+3,Imagination-Self,21,run,-1.9529,-0.7226,27,10,Self,813,128
+3,Imagination-Self,22,catch,-1.873,-1.4284,4,3,Self,813,128
+3,Imagination-Self,23,building,-1.873,-1.4284,4,3,Self,813,128
+3,Imagination-Self,24,ago,-1.873,-1.4284,4,3,Self,813,128
+3,Imagination-Self,25,person,-1.873,-1.4284,4,3,Self,813,128
+4,Robot-Imagination,1,people,-5.0688,-2.0757,11,13,Imagination,523,71
+4,Robot-Imagination,2,self driving,-3.456,-2.0908,5,6,Imagination,523,71
+4,Robot-Imagination,3,driving,-3.4327,-1.7754,8,7,Imagination,523,71
+4,Robot-Imagination,4,self,-3.3088,-1.9088,6,6,Imagination,523,71
+4,Robot-Imagination,5,replace,-3.2183,-3.5103,1,5,Imagination,523,71
+4,Robot-Imagination,6,used,-3.0078,-2.5994,2,4,Imagination,523,71
+4,Robot-Imagination,7,ai,-3.0078,-2.5994,2,4,Imagination,523,71
+4,Robot-Imagination,8,horses,-2.7028,-1.9088,4,4,Imagination,523,71
+4,Robot-Imagination,9,machine,2.6786,0.6736,225,17,Robot,523,71
+4,Robot-Imagination,10,say,-2.6095,-3.0008,1,3,Imagination,523,71
+4,Robot-Imagination,11,won,-2.5388,-2.3126,2,3,Imagination,523,71
+4,Robot-Imagination,12,invent,-2.5388,-2.3126,2,3,Imagination,523,71
+4,Robot-Imagination,13,world,-2.5164,-1.6861,5,4,Imagination,523,71
+4,Robot-Imagination,14,time,-2.3719,-1.3219,9,5,Imagination,523,71
+4,Robot-Imagination,15,vs,-2.3416,-1.9088,3,3,Imagination,523,71
+4,Robot-Imagination,16,doing,-2.3416,-1.9088,3,3,Imagination,523,71
+4,Robot-Imagination,17,faster,2.2215,0.5059,235,21,Robot,523,71
+4,Robot-Imagination,18,point,-2.1565,-1.3502,7,4,Imagination,523,71
+4,Robot-Imagination,19,make,-2.1565,-1.3502,7,4,Imagination,523,71
+4,Robot-Imagination,20,replace human,-2.1292,-2.597,1,2,Imagination,523,71
+4,Robot-Imagination,21,hard,-2.1292,-2.597,1,2,Imagination,523,71
+4,Robot-Imagination,22,making machines,-2.1292,-2.597,1,2,Imagination,523,71
+4,Robot-Imagination,23,think car,-2.1292,-2.597,1,2,Imagination,523,71
+4,Robot-Imagination,24,building,-2.1292,-2.597,1,2,Imagination,523,71
+4,Robot-Imagination,25,travel,-2.1292,-2.597,1,2,Imagination,523,71
+4,Robot-Self,1,comparing,-2.9084,-2.2308,2,11,Self,523,301
+4,Robot-Self,2,machines,-2.6427,-0.4951,58,56,Self,523,301
+4,Robot-Self,3,fast,2.3348,1.2595,24,4,Robot,523,301
+4,Robot-Self,4,machine human,-2.2319,-1.5089,3,8,Self,523,301
+4,Robot-Self,5,comparing machine,-2.1514,-2.3136,1,6,Self,523,301
+4,Robot-Self,6,point,-2.0315,-0.9816,7,11,Self,523,301
+4,Robot-Self,7,don,-1.9762,-0.7376,13,16,Self,523,301
+4,Robot-Self,8,people,-1.9146,-0.7711,11,14,Self,523,301
+4,Robot-Self,9,drive,-1.8844,-0.7923,10,13,Self,523,301
+4,Robot-Self,10,vehicle,1.878,1.9457,12,1,Robot,523,301
+4,Robot-Self,11,human,-1.8225,-0.2117,176,128,Self,523,301
+4,Robot-Self,12,bicycle,-1.7388,-1.0887,4,7,Self,523,301
+4,Robot-Self,13,better human,-1.73,-1.2216,3,6,Self,523,301
+4,Robot-Self,14,marathon,-1.73,-1.2216,3,6,Self,523,301
+4,Robot-Self,15,ai,-1.7288,-1.4434,2,5,Self,523,301
+4,Robot-Self,16,endurance,-1.7147,-1.909,1,4,Self,523,301
+4,Robot-Self,17,humans,-1.7066,-0.3002,73,58,Self,523,301
+4,Robot-Self,18,train,1.6891,1.7635,10,1,Robot,523,301
+4,Robot-Self,19,wow,1.6027,0.6477,26,8,Robot,523,301
+4,Robot-Self,20,compare,-1.551,-0.7811,7,9,Self,523,301
+4,Robot-Self,21,better,-1.5461,-0.5301,17,17,Self,523,301
+4,Robot-Self,22,tesla,1.459,1.5406,8,1,Robot,523,301
+4,Robot-Self,23,fastest,1.459,1.5406,8,1,Robot,523,301
+4,Robot-Self,24,machine course,1.459,1.5406,8,1,Robot,523,301
+4,Robot-Self,25,just machine,1.459,1.5406,8,1,Robot,523,301
+4,Imagination-Self,1,people,3.3545,1.2915,13,14,Imagination,71,301
+4,Imagination-Self,2,self driving,3.0202,2.4609,6,2,Imagination,71,301
+4,Imagination-Self,3,self,3.0202,2.4609,6,2,Imagination,71,301
+4,Imagination-Self,4,driving,2.9084,1.7015,7,5,Imagination,71,301
+4,Imagination-Self,5,human,-2.8509,-0.7778,15,128,Self,71,301
+4,Imagination-Self,6,replace,2.7203,2.9671,5,1,Imagination,71,301
+4,Imagination-Self,7,horses,2.3793,2.0562,4,2,Imagination,71,301
+4,Imagination-Self,8,used,2.3793,2.0562,4,2,Imagination,71,301
+4,Imagination-Self,9,let,2.1668,1.6524,4,3,Imagination,71,301
+4,Imagination-Self,10,horse,2.1613,1.3656,5,5,Imagination,71,301
+4,Imagination-Self,11,hear,2.1372,2.4576,3,1,Imagination,71,301
+4,Imagination-Self,12,people used,2.1372,2.4576,3,1,Imagination,71,301
+4,Imagination-Self,13,idea,2.1372,2.4576,3,1,Imagination,71,301
+4,Imagination-Self,14,beat,-2.0686,-2.0905,1,32,Self,71,301
+4,Imagination-Self,15,machine,-2.0656,-0.5369,17,114,Self,71,301
+4,Imagination-Self,16,faster,-2.0107,-0.4723,21,132,Self,71,301
+4,Imagination-Self,17,machine faster,-1.8951,-1.9207,1,27,Self,71,301
+4,Imagination-Self,18,cars,1.774,0.5711,14,31,Imagination,71,301
+4,Imagination-Self,19,world,1.7057,1.1429,4,5,Imagination,71,301
+4,Imagination-Self,20,good,1.7057,1.1429,4,5,Imagination,71,301
+4,Imagination-Self,21,ai,1.7057,1.1429,4,5,Imagination,71,301
+4,Imagination-Self,22,train,1.6839,2.0538,2,1,Imagination,71,301
+4,Imagination-Self,23,problem,1.6839,2.0538,2,1,Imagination,71,301
+4,Imagination-Self,24,replace human,1.6839,2.0538,2,1,Imagination,71,301
+4,Imagination-Self,25,faster don,1.6839,2.0538,2,1,Imagination,71,301
+5,Robot-Imagination,1,like,3.7046,1.19,305,10,Robot,566,55
+5,Robot-Imagination,2,wait,-3.5244,-2.2268,5,5,Imagination,566,55
+5,Robot-Imagination,3,race,-3.3758,-2.9174,2,4,Imagination,566,55
+5,Robot-Imagination,4,time,-3.3354,-1.4165,18,8,Imagination,566,55
+5,Robot-Imagination,5,just,-2.9343,-1.1289,27,9,Imagination,566,55
+5,Robot-Imagination,6,ll,-2.8879,-2.6306,2,3,Imagination,566,55
+5,Robot-Imagination,7,need run,-2.8879,-2.6306,2,3,Imagination,566,55
+5,Robot-Imagination,8,gun,-2.8861,-3.3188,1,3,Imagination,566,55
+5,Robot-Imagination,9,real,-2.8861,-3.3188,1,3,Imagination,566,55
+5,Robot-Imagination,10,athlete,-2.8259,-1.8221,6,4,Imagination,566,55
+5,Robot-Imagination,11,probably,-2.7318,-2.2268,3,3,Imagination,566,55
+5,Robot-Imagination,12,away,-2.7318,-2.2268,3,3,Imagination,566,55
+5,Robot-Imagination,13,make,-2.6644,-1.6682,7,4,Imagination,566,55
+5,Robot-Imagination,14,going,-2.5437,-1.9399,4,3,Imagination,566,55
+5,Robot-Imagination,15,runs,2.4009,1.7099,103,2,Robot,566,55
+5,Robot-Imagination,16,field,-2.3899,-2.915,1,2,Imagination,566,55
+5,Robot-Imagination,17,track,-2.3548,-1.7173,5,3,Imagination,566,55
+5,Robot-Imagination,18,runs like,2.2505,2.252,89,1,Robot,566,55
+5,Robot-Imagination,19,advancing,-2.2323,-2.2268,2,2,Imagination,566,55
+5,Robot-Imagination,20,running just,-2.2323,-2.2268,2,2,Imagination,566,55
+5,Robot-Imagination,21,help,-2.2323,-2.2268,2,2,Imagination,566,55
+5,Robot-Imagination,22,figure,-2.2323,-2.2268,2,2,Imagination,566,55
+5,Robot-Imagination,23,effort,-2.2323,-2.2268,2,2,Imagination,566,55
+5,Robot-Imagination,24,end,-2.2323,-2.2268,2,2,Imagination,566,55
+5,Robot-Imagination,25,hand,-2.2323,-2.2268,2,2,Imagination,566,55
+5,Robot-Self,1,runs like,3.8731,1.1906,89,12,Robot,566,242
+5,Robot-Self,2,humans,-3.7167,-0.9882,26,31,Self,566,242
+5,Robot-Self,3,runs,3.6472,0.9315,103,18,Robot,566,242
+5,Robot-Self,4,try,-3.1662,-0.9459,21,24,Self,566,242
+5,Robot-Self,5,girl,2.7656,1.2011,45,6,Robot,566,242
+5,Robot-Self,6,like girl,2.7325,1.6413,35,3,Robot,566,242
+5,Robot-Self,7,ll,-2.3413,-1.9077,2,6,Self,566,242
+5,Robot-Self,8,going,-2.1896,-1.3709,4,7,Self,566,242
+5,Robot-Self,9,start running,-2.1554,-0.8993,11,12,Self,566,242
+5,Robot-Self,10,ran,-2.101,-0.7012,19,17,Self,566,242
+5,Robot-Self,11,women,2.0787,2.1226,19,1,Robot,566,242
+5,Robot-Self,12,race,-2.0669,-1.7257,2,5,Self,566,242
+5,Robot-Self,13,start,-2.0013,-0.7434,15,14,Self,566,242
+5,Robot-Self,14,run marathon,-1.9682,-2.1912,1,4,Self,566,242
+5,Robot-Self,15,im,-1.9682,-2.1912,1,4,Self,566,242
+5,Robot-Self,16,try run,-1.9628,-1.1483,5,7,Self,566,242
+5,Robot-Self,17,marathon,-1.9628,-1.1483,5,7,Self,566,242
+5,Robot-Self,18,girls,1.935,0.8602,32,6,Robot,566,242
+5,Robot-Self,19,ran like,-1.9061,-0.8124,11,11,Self,566,242
+5,Robot-Self,20,probably,-1.8126,-1.3219,3,5,Self,566,242
+5,Robot-Self,21,help,-1.7392,-1.503,2,4,Self,566,242
+5,Robot-Self,22,tried,-1.7382,-0.9663,6,7,Self,566,242
+5,Robot-Self,23,seen,1.7274,0.9347,23,4,Robot,566,242
+5,Robot-Self,24,like girls,1.6878,1.7434,13,1,Robot,566,242
+5,Robot-Self,25,gay,1.6878,1.7434,13,1,Robot,566,242
+5,Imagination-Self,1,like,-3.1081,-1.0242,10,115,Self,55,242
+5,Imagination-Self,2,athlete,2.5114,2.796,4,1,Imagination,55,242
+5,Imagination-Self,3,time,2.2187,1.0121,8,12,Imagination,55,242
+5,Imagination-Self,4,gun,2.182,2.5092,3,1,Imagination,55,242
+5,Imagination-Self,5,run like,-2.0909,-1.086,4,49,Self,55,242
+5,Imagination-Self,6,wait,2.0418,1.2352,5,6,Imagination,55,242
+5,Imagination-Self,7,need run,1.9991,1.821,3,2,Imagination,55,242
+5,Imagination-Self,8,make,1.7828,1.1945,4,5,Imagination,55,242
+5,Imagination-Self,9,race,1.7828,1.1945,4,5,Imagination,55,242
+5,Imagination-Self,10,just,1.7757,0.7246,9,18,Imagination,55,242
+5,Imagination-Self,11,track,1.7386,1.4172,3,3,Imagination,55,242
+5,Imagination-Self,12,buy,1.7386,1.4172,3,3,Imagination,55,242
+5,Imagination-Self,13,good,1.7386,1.4172,3,3,Imagination,55,242
+5,Imagination-Self,14,away,1.7386,1.4172,3,3,Imagination,55,242
+5,Imagination-Self,15,efficient,1.7386,1.4172,3,3,Imagination,55,242
+5,Imagination-Self,16,real,1.7386,1.4172,3,3,Imagination,55,242
+5,Imagination-Self,17,doesn,1.7262,2.1054,2,1,Imagination,55,242
+5,Imagination-Self,18,jump,1.7262,2.1054,2,1,Imagination,55,242
+5,Imagination-Self,19,wait human,1.7262,2.1054,2,1,Imagination,55,242
+5,Imagination-Self,20,world,1.7262,2.1054,2,1,Imagination,55,242
+5,Imagination-Self,21,carry,1.7262,2.1054,2,1,Imagination,55,242
+5,Imagination-Self,22,work,1.7262,2.1054,2,1,Imagination,55,242
+5,Imagination-Self,23,deep,1.7262,2.1054,2,1,Imagination,55,242
+5,Imagination-Self,24,humans,-1.5159,-0.9152,3,31,Self,55,242
+5,Imagination-Self,25,want,1.4822,1.1303,3,4,Imagination,55,242
+6,Robot-Imagination,1,stupid,2.523,1.9241,4,3,Robot,56,305
+6,Robot-Imagination,2,human,2.4012,0.7348,15,37,Robot,56,305
+6,Robot-Imagination,3,life,2.3399,1.2323,6,9,Robot,56,305
+6,Robot-Imagination,4,like humans,2.2407,2.0411,3,2,Robot,56,305
+6,Robot-Imagination,5,like,2.0632,0.8841,8,17,Robot,56,305
+6,Robot-Imagination,6,world,-2.0267,-2.0419,1,40,Imagination,56,305
+6,Robot-Imagination,7,waste,1.9066,2.3254,2,1,Robot,56,305
+6,Robot-Imagination,8,straight,1.9066,2.3254,2,1,Robot,56,305
+6,Robot-Imagination,9,guys,1.9066,2.3254,2,1,Robot,56,305
+6,Robot-Imagination,10,better,1.8847,1.0504,5,9,Robot,56,305
+6,Robot-Imagination,11,stand,1.6413,1.6373,2,2,Robot,56,305
+6,Robot-Imagination,12,things replace,1.6413,1.6373,2,2,Robot,56,305
+6,Robot-Imagination,13,better humans,1.6413,1.6373,2,2,Robot,56,305
+6,Robot-Imagination,14,doing,1.6413,1.6373,2,2,Robot,56,305
+6,Robot-Imagination,15,need,-1.3722,-1.3978,1,21,Imagination,56,305
+6,Robot-Imagination,16,useless,1.3541,1.2334,2,3,Robot,56,305
+6,Robot-Imagination,17,does,1.3541,1.2334,2,3,Robot,56,305
+6,Robot-Imagination,18,destroying,1.3541,1.2334,2,3,Robot,56,305
+6,Robot-Imagination,19,common sense,1.1635,1.6373,1,1,Robot,56,305
+6,Robot-Imagination,20,meant helping,1.1635,1.6373,1,1,Robot,56,305
+6,Robot-Imagination,21,human elimination,1.1635,1.6373,1,1,Robot,56,305
+6,Robot-Imagination,22,stand straight,1.1635,1.6373,1,1,Robot,56,305
+6,Robot-Imagination,23,tool human,1.1635,1.6373,1,1,Robot,56,305
+6,Robot-Imagination,24,isn,1.1635,1.6373,1,1,Robot,56,305
+6,Robot-Imagination,25,type things,1.1635,1.6373,1,1,Robot,56,305
+6,Robot-Self,1,life,3.4401,1.9845,6,6,Robot,56,443
+6,Robot-Self,2,better,2.3614,1.2923,5,10,Robot,56,443
+6,Robot-Self,3,waste,2.1913,2.6727,2,1,Robot,56,443
+6,Robot-Self,4,straight,2.1913,2.6727,2,1,Robot,56,443
+6,Robot-Self,5,like,2.1731,0.8867,8,24,Robot,56,443
+6,Robot-Self,6,useless,1.9894,1.9845,2,2,Robot,56,443
+6,Robot-Self,7,stand,1.9894,1.9845,2,2,Robot,56,443
+6,Robot-Self,8,parts,1.9894,1.9845,2,2,Robot,56,443
+6,Robot-Self,9,lol,1.9894,1.9845,2,2,Robot,56,443
+6,Robot-Self,10,things,1.8829,0.887,6,18,Robot,56,443
+6,Robot-Self,11,like humans,1.8311,1.293,3,6,Robot,56,443
+6,Robot-Self,12,things replace,1.7353,1.5807,2,3,Robot,56,443
+6,Robot-Self,13,guys,1.7353,1.5807,2,3,Robot,56,443
+6,Robot-Self,14,human,1.6115,0.459,15,69,Robot,56,443
+6,Robot-Self,15,years,1.6071,0.8227,5,16,Robot,56,443
+6,Robot-Self,16,does,1.4971,1.2938,2,4,Robot,56,443
+6,Robot-Self,17,better humans,1.4971,1.2938,2,4,Robot,56,443
+6,Robot-Self,18,necessary humans,1.4102,1.9845,1,1,Robot,56,443
+6,Robot-Self,19,money fuck,1.4102,1.9845,1,1,Robot,56,443
+6,Robot-Self,20,lazy,1.4102,1.9845,1,1,Robot,56,443
+6,Robot-Self,21,burn,1.4102,1.9845,1,1,Robot,56,443
+6,Robot-Self,22,humans lmao,1.4102,1.9845,1,1,Robot,56,443
+6,Robot-Self,23,wall,1.4102,1.9845,1,1,Robot,56,443
+6,Robot-Self,24,past kill,1.4102,1.9845,1,1,Robot,56,443
+6,Robot-Self,25,dumbest species,1.4102,1.9845,1,1,Robot,56,443
+6,Imagination-Self,1,end,5.2207,1.0631,73,36,Imagination,305,443
+6,Imagination-Self,2,world,4.4162,1.3367,40,15,Imagination,305,443
+6,Imagination-Self,3,end humanity,2.8582,1.0977,21,10,Imagination,305,443
+6,Imagination-Self,4,end world,2.8132,2.1439,12,2,Imagination,305,443
+6,Imagination-Self,5,beginning,2.5704,1.0489,18,9,Imagination,305,443
+6,Imagination-Self,6,stupid,-2.4878,-1.538,3,20,Self,305,443
+6,Imagination-Self,7,beginning end,2.2495,0.9843,15,8,Imagination,305,443
+6,Imagination-Self,8,coming,2.2042,1.7389,8,2,Imagination,305,443
+6,Imagination-Self,9,doing,-2.2025,-1.6543,2,15,Self,305,443
+6,Imagination-Self,10,start,2.1821,1.4527,9,3,Imagination,305,443
+6,Imagination-Self,11,future,2.0987,1.0486,12,6,Imagination,305,443
+6,Imagination-Self,12,things,2.0654,0.6438,24,18,Imagination,305,443
+6,Imagination-Self,13,god,-1.98,-1.2505,3,15,Self,305,443
+6,Imagination-Self,14,new,1.9747,1.3351,8,3,Imagination,305,443
+6,Imagination-Self,15,need,1.8933,0.6281,21,16,Imagination,305,443
+6,Imagination-Self,16,soon,1.8681,0.7977,14,9,Imagination,305,443
+6,Imagination-Self,17,closer,1.7949,1.9578,5,1,Imagination,305,443
+6,Imagination-Self,18,end mankind,1.7949,1.9578,5,1,Imagination,305,443
+6,Imagination-Self,19,wait,1.7815,1.4516,6,2,Imagination,305,443
+6,Imagination-Self,20,humans,-1.6414,-0.2047,101,177,Self,305,443
+6,Imagination-Self,21,creating,1.5893,0.5104,21,18,Imagination,305,443
+6,Imagination-Self,22,worry,1.5585,1.7351,4,1,Imagination,305,443
+6,Imagination-Self,23,kind,1.5585,1.7351,4,1,Imagination,305,443
+6,Imagination-Self,24,evil,1.5585,1.7351,4,1,Imagination,305,443
+6,Imagination-Self,25,step,1.5585,1.7351,4,1,Imagination,305,443
+7,Robot-Imagination,1,soccer,3.8792,1.2264,30,15,Robot,197,344
+7,Robot-Imagination,2,olympics,-3.7525,-0.9102,21,89,Imagination,197,344
+7,Robot-Imagination,3,world,-3.5222,-1.8391,4,43,Imagination,197,344
+7,Robot-Imagination,4,just,3.1601,0.8637,32,23,Robot,197,344
+7,Robot-Imagination,5,sports,-3.1338,-0.9613,13,58,Imagination,197,344
+7,Robot-Imagination,6,future,-2.877,-2.1009,2,28,Imagination,197,344
+7,Robot-Imagination,7,like,2.806,0.6362,41,37,Robot,197,344
+7,Robot-Imagination,8,ai,-2.7901,-2.8241,1,29,Imagination,197,344
+7,Robot-Imagination,9,robot olympics,-2.782,-1.4792,4,30,Imagination,197,344
+7,Robot-Imagination,10,ronaldo,2.708,2.8272,10,1,Robot,197,344
+7,Robot-Imagination,11,robots,-2.6421,-0.4024,60,153,Imagination,197,344
+7,Robot-Imagination,12,soon,-2.456,-1.8133,2,21,Imagination,197,344
+7,Robot-Imagination,13,real,2.4535,1.2259,12,6,Robot,197,344
+7,Robot-Imagination,14,looks,2.4483,1.63,9,3,Robot,197,344
+7,Robot-Imagination,15,did,2.3217,2.471,7,1,Robot,197,344
+7,Robot-Imagination,16,medal,2.3217,2.471,7,1,Robot,197,344
+7,Robot-Imagination,17,want,-2.3099,-1.7133,2,19,Imagination,197,344
+7,Robot-Imagination,18,years,-2.1948,-1.0743,5,25,Imagination,197,344
+7,Robot-Imagination,19,motion,2.1546,2.317,6,1,Robot,197,344
+7,Robot-Imagination,20,ll,-2.148,-1.6021,2,17,Imagination,197,344
+7,Robot-Imagination,21,people,-2.0161,-1.2554,3,18,Imagination,197,344
+7,Robot-Imagination,22,games,-2.0161,-1.2554,3,18,Imagination,197,344
+7,Robot-Imagination,23,impressive,2.0105,1.1205,9,5,Robot,197,344
+7,Robot-Imagination,24,looks like,1.9991,1.6289,6,2,Robot,197,344
+7,Robot-Imagination,25,right,1.9991,1.6289,6,2,Robot,197,344
+7,Robot-Self,1,olympics,-3.7786,-1.0373,21,36,Self,197,117
+7,Robot-Self,2,sports,-3.7715,-1.2654,13,28,Self,197,117
+7,Robot-Self,3,watch,-3.6576,-1.7013,6,20,Self,197,117
+7,Robot-Self,4,humans,-3.508,-1.155,14,27,Self,197,117
+7,Robot-Self,5,robot olympics,-3.0891,-1.7495,4,14,Self,197,117
+7,Robot-Self,6,ai,-2.7772,-2.8874,1,11,Self,197,117
+7,Robot-Self,7,games,-2.7603,-1.7954,3,11,Self,197,117
+7,Robot-Self,8,sport,-2.5743,-1.191,7,14,Self,197,117
+7,Robot-Self,9,human,-2.4708,-0.6952,23,28,Self,197,117
+7,Robot-Self,10,football,2.4386,1.1862,27,5,Robot,197,117
+7,Robot-Self,11,like,2.4055,0.8165,41,11,Robot,197,117
+7,Robot-Self,12,want,-2.1844,-1.7477,2,7,Self,197,117
+7,Robot-Self,13,players,2.0686,2.1313,14,1,Robot,197,117
+7,Robot-Self,14,compete,-1.9561,-1.5938,2,6,Self,197,117
+7,Robot-Self,15,people,-1.9502,-1.3439,3,7,Self,197,117
+7,Robot-Self,16,boring,-1.691,-1.4118,2,5,Self,197,117
+7,Robot-Self,17,jobs,-1.6863,-1.8774,1,4,Self,197,117
+7,Robot-Self,18,stealing,-1.6863,-1.8774,1,4,Self,197,117
+7,Robot-Self,19,olympic games,-1.6863,-1.8774,1,4,Self,197,117
+7,Robot-Self,20,olympic,-1.6853,-1.19,3,6,Self,197,117
+7,Robot-Self,21,watching,-1.625,-0.6654,11,13,Self,197,117
+7,Robot-Self,22,ball,1.6104,1.6898,9,1,Robot,197,117
+7,Robot-Self,23,game,1.6104,1.6898,9,1,Robot,197,117
+7,Robot-Self,24,year,1.5091,0.9652,13,3,Robot,197,117
+7,Robot-Self,25,need,-1.4263,-0.8344,5,7,Self,197,117
+7,Imagination-Self,1,humans,-3.5356,-0.9454,29,27,Self,344,117
+7,Imagination-Self,2,watch,-3.2162,-1.0168,20,20,Self,344,117
+7,Imagination-Self,3,watching,-3.0419,-1.2789,10,13,Self,344,117
+7,Imagination-Self,4,world,2.5967,1.3558,43,4,Imagination,344,117
+7,Imagination-Self,5,future,2.2766,2.3058,28,1,Imagination,344,117
+7,Imagination-Self,6,stealing,-2.1518,-2.3956,1,4,Self,344,117
+7,Imagination-Self,7,medal,-2.1518,-2.3956,1,4,Self,344,117
+7,Imagination-Self,8,robot,2.0728,0.4278,123,29,Imagination,344,117
+7,Imagination-Self,9,seeing,-1.9757,-1.7075,2,4,Self,344,117
+7,Imagination-Self,10,team,1.9312,1.9695,20,1,Imagination,344,117
+7,Imagination-Self,11,boring,-1.8498,-1.2394,4,5,Self,344,117
+7,Imagination-Self,12,actually,-1.8498,-1.2394,4,5,Self,344,117
+7,Imagination-Self,13,interested,-1.8339,-2.1088,1,3,Self,344,117
+7,Imagination-Self,14,hate,-1.8339,-2.1088,1,3,Self,344,117
+7,Imagination-Self,15,limits,-1.8339,-2.1088,1,3,Self,344,117
+7,Imagination-Self,16,reason,-1.8339,-2.1088,1,3,Self,344,117
+7,Imagination-Self,17,gold,-1.8339,-2.1088,1,3,Self,344,117
+7,Imagination-Self,18,actual,-1.8339,-2.1088,1,3,Self,344,117
+7,Imagination-Self,19,football,1.8115,0.8686,33,5,Imagination,344,117
+7,Imagination-Self,20,soon,1.8015,1.3301,21,2,Imagination,344,117
+7,Imagination-Self,21,ll,1.7644,1.807,17,1,Imagination,344,117
+7,Imagination-Self,22,good,-1.7626,-1.0168,6,6,Self,344,117
+7,Imagination-Self,23,event,-1.7094,-1.3037,3,4,Self,344,117
+7,Imagination-Self,24,video,-1.6093,-1.0168,5,5,Self,344,117
+7,Imagination-Self,25,humanoid,1.5813,1.176,18,2,Imagination,344,117
+9,Imagination-Self,1,humanity,-3.8165,-1.9221,9,7,Self,534,52
+9,Imagination-Self,2,develop,-3.0771,-2.1731,4,4,Self,534,52
+9,Imagination-Self,3,run,-2.9913,-1.7038,8,5,Self,534,52
+9,Imagination-Self,4,just,-2.686,-0.8744,44,12,Self,534,52
+9,Imagination-Self,5,screwed,-2.6659,-2.1731,3,3,Self,534,52
+9,Imagination-Self,6,able,-2.4734,-1.8863,4,3,Self,534,52
+9,Imagination-Self,7,won,-2.4213,-1.4812,8,4,Self,534,52
+9,Imagination-Self,8,know,-2.318,-1.2188,13,5,Self,534,52
+9,Imagination-Self,9,year,-2.2812,-1.6636,5,3,Self,534,52
+9,Imagination-Self,10,skynet just,-2.2714,-1.3636,9,4,Self,534,52
+9,Imagination-Self,11,aware won,-2.1785,-2.1731,2,2,Self,534,52
+9,Imagination-Self,12,yay,-2.1785,-2.1731,2,2,Self,534,52
+9,Imagination-Self,13,just blink,-2.1785,-2.1731,2,2,Self,534,52
+9,Imagination-Self,14,able outrun,-2.1785,-2.1731,2,2,Self,534,52
+9,Imagination-Self,15,eye geologic,-2.1785,-2.1731,2,2,Self,534,52
+9,Imagination-Self,16,outrunning,-2.1785,-2.1731,2,2,Self,534,52
+9,Imagination-Self,17,geologic time,-2.1785,-2.1731,2,2,Self,534,52
+9,Imagination-Self,18,care,-2.1785,-2.1731,2,2,Self,534,52
+9,Imagination-Self,19,blink,-2.1785,-2.1731,2,2,Self,534,52
+9,Imagination-Self,20,geologic,-2.1785,-2.1731,2,2,Self,534,52
+9,Imagination-Self,21,running lives,-2.1785,-2.1731,2,2,Self,534,52
+9,Imagination-Self,22,blink eye,-2.1785,-2.1731,2,2,Self,534,52
+9,Imagination-Self,23,outrun,-2.1785,-2.1731,2,2,Self,534,52
+9,Imagination-Self,24,lives,-1.9424,-1.7693,3,2,Self,534,52
+9,Imagination-Self,25,eye,-1.9424,-1.7693,3,2,Self,534,52
+10,Robot-Imagination,1,afraid,-3.9186,-4.1119,1,9,Imagination,350,49
+10,Robot-Imagination,2,things,-3.3343,-1.9235,6,6,Imagination,350,49
+10,Robot-Imagination,3,scared,-3.2029,-2.1461,4,5,Imagination,350,49
+10,Robot-Imagination,4,stuff,-3.2029,-2.1461,4,5,Imagination,350,49
+10,Robot-Imagination,5,video,-2.9662,-3.3023,1,4,Imagination,350,49
+10,Robot-Imagination,6,ve,-2.5549,-2.3273,2,3,Imagination,350,49
+10,Robot-Imagination,7,want,-2.5549,-2.3273,2,3,Imagination,350,49
+10,Robot-Imagination,8,end,-2.5549,-2.3273,2,3,Imagination,350,49
+10,Robot-Imagination,9,going,-2.5549,-2.3273,2,3,Imagination,350,49
+10,Robot-Imagination,10,terrifying,2.5006,1.7852,82,2,Robot,350,49
+10,Robot-Imagination,11,getting,-2.1413,-2.6117,1,2,Imagination,350,49
+10,Robot-Imagination,12,running,-2.1413,-2.6117,1,2,Imagination,350,49
+10,Robot-Imagination,13,got,-2.1413,-2.6117,1,2,Imagination,350,49
+10,Robot-Imagination,14,looks really,-2.1413,-2.6117,1,2,Imagination,350,49
+10,Robot-Imagination,15,doing,-2.1413,-2.6117,1,2,Imagination,350,49
+10,Robot-Imagination,16,real,-2.1413,-2.6117,1,2,Imagination,350,49
+10,Robot-Imagination,17,impressed,-1.9283,-1.9235,2,2,Imagination,350,49
+10,Robot-Imagination,18,scare,-1.6683,-1.5197,3,2,Imagination,350,49
+10,Robot-Imagination,19,dont,-1.6683,-1.5197,3,2,Imagination,350,49
+10,Robot-Imagination,20,feels,-1.4265,-1.2328,4,2,Imagination,350,49
+10,Robot-Imagination,21,seen,-1.4265,-1.2328,4,2,Imagination,350,49
+10,Robot-Imagination,22,look,-1.3669,-1.9235,1,1,Imagination,350,49
+10,Robot-Imagination,23,way useful,-1.3669,-1.9235,1,1,Imagination,350,49
+10,Robot-Imagination,24,developing,-1.3669,-1.9235,1,1,Imagination,350,49
+10,Robot-Imagination,25,looooong way,-1.3669,-1.9235,1,1,Imagination,350,49
+10,Robot-Self,1,scared,-5.4638,-2.9775,4,21,Self,350,91
+10,Robot-Self,2,scary,4.0661,2.3726,121,3,Robot,350,91
+10,Robot-Self,3,terrified,-2.8505,-2.0128,3,6,Self,350,91
+10,Robot-Self,4,terrifying,2.7144,1.0048,82,8,Robot,350,91
+10,Robot-Self,5,fear,-2.5105,-1.8308,3,5,Self,350,91
+10,Robot-Self,6,want,-2.328,-2.012,2,4,Self,350,91
+10,Robot-Self,7,does,-2.2905,-1.3213,6,6,Self,350,91
+10,Robot-Self,8,scare,-2.1087,-1.6082,3,4,Self,350,91
+10,Robot-Self,9,video,-2.0987,-2.4133,1,3,Self,350,91
+10,Robot-Self,10,nope,-2.0987,-2.4133,1,3,Self,350,91
+10,Robot-Self,11,afraid,-2.0987,-2.4133,1,3,Self,350,91
+10,Robot-Self,12,creepy,1.982,1.1879,37,3,Robot,350,91
+10,Robot-Self,13,ve,-1.8939,-1.7251,2,3,Self,350,91
+10,Robot-Self,14,watching,-1.8939,-1.7251,2,3,Self,350,91
+10,Robot-Self,15,funny,1.8853,1.1324,35,3,Robot,350,91
+10,Robot-Self,16,things,-1.8833,-1.1393,6,5,Self,350,91
+10,Robot-Self,17,feel,-1.8833,-1.1393,6,5,Self,350,91
+10,Robot-Self,18,seen,-1.8709,-1.3213,4,4,Self,350,91
+10,Robot-Self,19,seeing,-1.8709,-1.3213,4,4,Self,350,91
+10,Robot-Self,20,doesn,-1.6476,-2.0095,1,2,Self,350,91
+10,Robot-Self,21,life,-1.6476,-2.0095,1,2,Self,350,91
+10,Robot-Self,22,got,-1.6476,-2.0095,1,2,Self,350,91
+10,Robot-Self,23,doesn scare,-1.6476,-2.0095,1,2,Self,350,91
+10,Robot-Self,24,creep,-1.6476,-2.0095,1,2,Self,350,91
+10,Robot-Self,25,terrify,-1.6476,-2.0095,1,2,Self,350,91
+10,Imagination-Self,1,scary,3.2261,2.0634,13,3,Imagination,49,91
+10,Imagination-Self,2,afraid,2.5476,1.696,9,3,Imagination,49,91
+10,Imagination-Self,3,scared,-1.6773,-0.8339,5,21,Self,49,91
+10,Imagination-Self,4,creepy,1.5209,1.1091,5,3,Imagination,49,91
+10,Imagination-Self,5,stuff,1.5209,1.1091,5,3,Imagination,49,91
+10,Imagination-Self,6,end,1.4711,1.6916,3,1,Imagination,49,91
+10,Imagination-Self,7,things,1.292,0.7816,6,5,Imagination,49,91
+10,Imagination-Self,8,video,1.1624,0.8865,4,3,Imagination,49,91
+10,Imagination-Self,9,going,1.1016,1.0034,3,2,Imagination,49,91
+10,Imagination-Self,10,terrified,-1.1008,-1.1838,1,6,Self,49,91
+10,Imagination-Self,11,getting,1.0559,1.2878,2,1,Imagination,49,91
+10,Imagination-Self,12,running,1.0559,1.2878,2,1,Imagination,49,91
+10,Imagination-Self,13,looks really,1.0559,1.2878,2,1,Imagination,49,91
+10,Imagination-Self,14,idea,1.0559,1.2878,2,1,Imagination,49,91
+10,Imagination-Self,15,doing,1.0559,1.2878,2,1,Imagination,49,91
+10,Imagination-Self,16,looks,1.0559,1.2878,2,1,Imagination,49,91
+10,Imagination-Self,17,soon,1.0559,1.2878,2,1,Imagination,49,91
+10,Imagination-Self,18,terrifying,-0.9924,-0.7829,2,8,Self,49,91
+10,Imagination-Self,19,don,-0.9185,-1.0019,1,5,Self,49,91
+10,Imagination-Self,20,like,0.8491,0.5996,4,4,Imagination,49,91
+10,Imagination-Self,21,ve,0.7356,0.5996,3,3,Imagination,49,91
+10,Imagination-Self,22,just,0.7356,0.5996,3,3,Imagination,49,91
+10,Imagination-Self,23,im,0.7356,0.5996,3,3,Imagination,49,91
+10,Imagination-Self,24,funny,0.7356,0.5996,3,3,Imagination,49,91
+10,Imagination-Self,25,disturbing,-0.6999,-0.7792,1,4,Self,49,91
+11,Robot-Imagination,1,2026,3.0941,2.0732,5,4,Robot,52,384
+11,Robot-Imagination,2,need humans,2.9007,3.2294,4,1,Robot,52,384
+11,Robot-Imagination,3,cool,2.6204,1.8506,4,4,Robot,52,384
+11,Robot-Imagination,4,help,2.5891,1.5147,5,7,Robot,52,384
+11,Robot-Imagination,5,robots need,2.4295,1.6279,4,5,Robot,52,384
+11,Robot-Imagination,6,people,-2.4165,-1.7281,2,72,Imagination,52,384
+11,Robot-Imagination,7,robots,-2.2124,-0.3596,42,383,Imagination,52,384
+11,Robot-Imagination,8,run,2.1863,1.0783,6,13,Robot,52,384
+11,Robot-Imagination,9,world,-2.1073,-1.5119,2,58,Imagination,52,384
+11,Robot-Imagination,10,don know,2.0815,2.5388,2,1,Robot,52,384
+11,Robot-Imagination,11,designed,2.0815,2.5388,2,1,Robot,52,384
+11,Robot-Imagination,12,perfectly,2.0815,2.5388,2,1,Robot,52,384
+11,Robot-Imagination,13,runs,2.0504,1.5637,3,4,Robot,52,384
+11,Robot-Imagination,14,say,2.0504,1.5637,3,4,Robot,52,384
+11,Robot-Imagination,15,needs,1.8941,1.1587,4,8,Robot,52,384
+11,Robot-Imagination,16,waste,1.8552,1.8506,2,2,Robot,52,384
+11,Robot-Imagination,17,functionality,1.8552,1.8506,2,2,Robot,52,384
+11,Robot-Imagination,18,robots capable,1.8552,1.8506,2,2,Robot,52,384
+11,Robot-Imagination,19,30,1.8552,1.8506,2,2,Robot,52,384
+11,Robot-Imagination,20,cost,1.8552,1.8506,2,2,Robot,52,384
+11,Robot-Imagination,21,terrifying,1.8552,1.8506,2,2,Robot,52,384
+11,Robot-Imagination,22,probably,1.839,1.3411,3,5,Robot,52,384
+11,Robot-Imagination,23,future,-1.7629,-1.7773,1,38,Imagination,52,384
+11,Robot-Imagination,24,20,1.6415,1.1591,3,6,Robot,52,384
+11,Robot-Imagination,25,society,1.5883,1.4468,2,3,Robot,52,384
+11,Robot-Self,1,humans,-3.004,-1.066,9,67,Self,52,141
+11,Robot-Self,2,people,-2.467,-1.7956,2,31,Self,52,141
+11,Robot-Self,3,help,2.2204,1.8539,5,2,Robot,52,141
+11,Robot-Self,4,2026,2.2204,1.8539,5,2,Robot,52,141
+11,Robot-Self,5,run,2.0862,1.3452,6,4,Robot,52,141
+11,Robot-Self,6,imagine,2.0833,2.3194,4,1,Robot,52,141
+11,Robot-Self,7,world,-2.0357,-1.4972,2,23,Self,52,141
+11,Robot-Self,8,years,1.8823,0.9406,8,8,Robot,52,141
+11,Robot-Self,9,work,-1.8389,-1.8833,1,17,Self,52,141
+11,Robot-Self,10,robots,-1.8237,-0.3188,42,148,Self,52,141
+11,Robot-Self,11,future,-1.7104,-1.7582,1,15,Self,52,141
+11,Robot-Self,12,need humans,1.6094,1.2274,4,3,Robot,52,141
+11,Robot-Self,13,robots need,1.6094,1.2274,4,3,Robot,52,141
+11,Robot-Self,14,cool,1.6094,1.2274,4,3,Robot,52,141
+11,Robot-Self,15,robot,1.56,0.5613,13,19,Robot,52,141
+11,Robot-Self,16,probably,1.4759,1.3444,3,2,Robot,52,141
+11,Robot-Self,17,amazing,1.4759,1.3444,3,2,Robot,52,141
+11,Robot-Self,18,say,1.4759,1.3444,3,2,Robot,52,141
+11,Robot-Self,19,humanity,-1.3625,-0.8484,3,18,Self,52,141
+11,Robot-Self,20,waste,1.3354,1.6287,2,1,Robot,52,141
+11,Robot-Self,21,useful,1.3354,1.6287,2,1,Robot,52,141
+11,Robot-Self,22,wait,1.3354,1.6287,2,1,Robot,52,141
+11,Robot-Self,23,resources,1.3354,1.6287,2,1,Robot,52,141
+11,Robot-Self,24,humanoid robots,1.3354,1.6287,2,1,Robot,52,141
+11,Robot-Self,25,companies,1.3354,1.6287,2,1,Robot,52,141
+11,Imagination-Self,1,humans,-3.4396,-0.5475,96,67,Self,384,141
+11,Imagination-Self,2,years,2.9888,1.1232,61,8,Imagination,384,141
+11,Imagination-Self,3,humanity,-2.5943,-0.8531,19,18,Self,384,141
+11,Imagination-Self,4,live,-2.1148,-0.7737,16,14,Self,384,141
+11,Imagination-Self,5,work,-2.0117,-0.6494,22,17,Self,384,141
+11,Imagination-Self,6,imagine,1.9859,2.0279,19,1,Imagination,384,141
+11,Imagination-Self,7,things,-1.9673,-0.5936,26,19,Self,384,141
+11,Imagination-Self,8,need humans,-1.7385,-1.9991,1,3,Self,384,141
+11,Imagination-Self,9,thing,-1.6861,-1.1298,4,5,Self,384,141
+11,Imagination-Self,10,yes,-1.6861,-1.1298,4,5,Self,384,141
+11,Imagination-Self,11,im,-1.6861,-1.1298,4,5,Self,384,141
+11,Imagination-Self,12,wait,1.5961,1.6486,13,1,Imagination,384,141
+11,Imagination-Self,13,point,-1.5725,-0.9071,6,6,Self,384,141
+11,Imagination-Self,14,life,-1.5341,-0.645,13,10,Self,384,141
+11,Imagination-Self,15,destroy,-1.5341,-0.645,13,10,Self,384,141
+11,Imagination-Self,16,10 years,1.5141,1.5687,12,1,Imagination,384,141
+11,Imagination-Self,17,stop,1.4691,1.1035,15,2,Imagination,384,141
+11,Imagination-Self,18,earth,-1.4433,-0.6842,10,8,Self,384,141
+11,Imagination-Self,19,decades,-1.4392,-1.3109,2,3,Self,384,141
+11,Imagination-Self,20,energy,-1.4392,-1.3109,2,3,Self,384,141
+11,Imagination-Self,21,humans work,-1.4392,-1.3109,2,3,Self,384,141
+11,Imagination-Self,22,generations,-1.4357,-0.9071,5,5,Self,384,141
+11,Imagination-Self,23,coming,1.3716,1.0345,14,2,Imagination,384,141
+11,Imagination-Self,24,making,1.328,1.3865,10,1,Imagination,384,141
+11,Imagination-Self,25,modern,-1.308,-1.5953,1,2,Self,384,141
+12,Robot-Imagination,1,need,-5.144,-1.6769,13,34,Imagination,300,139
+12,Robot-Imagination,2,future,-3.1506,-2.4166,2,11,Imagination,300,139
+12,Robot-Imagination,3,robots,-3.0528,-0.389,147,106,Imagination,300,139
+12,Robot-Imagination,4,think,-3.0175,-1.4882,6,13,Imagination,300,139
+12,Robot-Imagination,5,humanoid,-2.6486,-0.7568,24,25,Imagination,300,139
+12,Robot-Imagination,6,world,-2.3264,-0.9781,10,13,Imagination,300,139
+12,Robot-Imagination,7,work,-2.2657,-1.5613,3,7,Imagination,300,139
+12,Robot-Imagination,8,need run,-2.2229,-1.8112,2,6,Imagination,300,139
+12,Robot-Imagination,9,useful,-2.2229,-1.8112,2,6,Imagination,300,139
+12,Robot-Imagination,10,life,-2.1247,-2.3174,1,5,Imagination,300,139
+12,Robot-Imagination,11,marathons,-2.1247,-2.3174,1,5,Imagination,300,139
+12,Robot-Imagination,12,car,2.0425,0.7184,42,10,Robot,300,139
+12,Robot-Imagination,13,real,-2.0355,-1.2745,4,7,Imagination,300,139
+12,Robot-Imagination,14,right,-1.9514,-1.6293,2,5,Imagination,300,139
+12,Robot-Imagination,15,build,-1.9514,-1.6293,2,5,Imagination,300,139
+12,Robot-Imagination,16,feet,-1.9514,-1.6293,2,5,Imagination,300,139
+12,Robot-Imagination,17,going,-1.92,-0.9669,7,9,Imagination,300,139
+12,Robot-Imagination,18,things,-1.92,-0.9669,7,9,Imagination,300,139
+12,Robot-Imagination,19,able,-1.92,-0.9669,7,9,Imagination,300,139
+12,Robot-Imagination,20,question,-1.8816,-2.0948,1,4,Imagination,300,139
+12,Robot-Imagination,21,able run,-1.8816,-2.0948,1,4,Imagination,300,139
+12,Robot-Imagination,22,imagine,-1.8816,-2.0948,1,4,Imagination,300,139
+12,Robot-Imagination,23,faster,1.8347,0.3543,105,36,Robot,300,139
+12,Robot-Imagination,24,man,-1.798,-1.0519,5,7,Imagination,300,139
+12,Robot-Imagination,25,humanoid robot,-1.7882,-0.8212,9,10,Imagination,300,139
+12,Robot-Self,1,wheels,3.1582,2.2711,51,2,Robot,300,106
+12,Robot-Self,2,outrun,-2.8594,-1.0273,15,16,Self,300,106
+12,Robot-Self,3,fast,2.5625,0.9165,59,9,Robot,300,106
+12,Robot-Self,4,humans,-2.5349,-0.6029,43,30,Self,300,106
+12,Robot-Self,5,run faster,-2.3656,-0.8377,17,15,Self,300,106
+12,Robot-Self,6,beat,-2.154,-0.9628,10,10,Self,300,106
+12,Robot-Self,7,bipedal,1.8924,1.1545,25,3,Robot,300,106
+12,Robot-Self,8,make,1.8372,0.9809,28,4,Robot,300,106
+12,Robot-Self,9,able run,-1.7869,-2.0548,1,3,Self,300,106
+12,Robot-Self,10,humans run,-1.7869,-2.0548,1,3,Self,300,106
+12,Robot-Self,11,marathons,-1.7869,-2.0548,1,3,Self,300,106
+12,Robot-Self,12,comparing,-1.7869,-2.0548,1,3,Self,300,106
+12,Robot-Self,13,outrun robots,-1.7692,-1.1855,4,5,Self,300,106
+12,Robot-Self,14,legs,1.7312,1.284,19,2,Robot,300,106
+12,Robot-Self,15,beat robot,-1.5003,-1.3666,2,3,Self,300,106
+12,Robot-Self,16,run,-1.4536,-0.2592,95,47,Self,300,106
+12,Robot-Self,17,need,-1.3738,-0.5954,13,9,Self,300,106
+12,Robot-Self,18,race,1.3627,0.7399,22,4,Robot,300,106
+12,Robot-Self,19,maybe,-1.3536,-1.651,1,2,Self,300,106
+12,Robot-Self,20,electric motors,-1.3536,-1.651,1,2,Self,300,106
+12,Robot-Self,21,fucked,-1.3536,-1.651,1,2,Self,300,106
+12,Robot-Self,22,buy,-1.3536,-1.651,1,2,Self,300,106
+12,Robot-Self,23,turn,-1.3536,-1.651,1,2,Self,300,106
+12,Robot-Self,24,hot,-1.3536,-1.651,1,2,Self,300,106
+12,Robot-Self,25,running speed,-1.3536,-1.651,1,2,Self,300,106
+12,Imagination-Self,1,need,2.8689,1.0749,34,9,Imagination,139,106
+12,Imagination-Self,2,make,2.6693,1.4493,22,4,Imagination,139,106
+12,Imagination-Self,3,fast,2.5962,0.9826,31,9,Imagination,139,106
+12,Imagination-Self,4,humanoid,2.5809,1.1725,25,6,Imagination,139,106
+12,Imagination-Self,5,outrun,-2.5778,-1.2332,6,16,Self,139,106
+12,Imagination-Self,6,car,-2.4437,-0.946,10,20,Self,139,106
+12,Imagination-Self,7,wheels,2.4344,1.8217,16,2,Imagination,139,106
+12,Imagination-Self,8,beat,-2.4049,-1.8588,2,10,Self,139,106
+12,Imagination-Self,9,think,2.229,2.3024,13,1,Imagination,139,106
+12,Imagination-Self,10,world,2.1299,1.6142,13,2,Imagination,139,106
+12,Imagination-Self,11,humanoid robot,1.9542,2.0402,10,1,Imagination,139,106
+12,Imagination-Self,12,need robots,1.9542,2.0402,10,1,Imagination,139,106
+12,Imagination-Self,13,robots,1.9538,0.3156,106,60,Imagination,139,106
+12,Imagination-Self,14,faster,-1.9082,-0.431,36,43,Self,139,106
+12,Imagination-Self,15,future,1.8869,1.4473,11,2,Imagination,139,106
+12,Imagination-Self,16,things,1.844,1.935,9,1,Imagination,139,106
+12,Imagination-Self,17,trying,1.7211,1.8174,8,1,Imagination,139,106
+12,Imagination-Self,18,outrun robots,-1.7006,-1.8549,1,5,Self,139,106
+12,Imagination-Self,19,tired,-1.7006,-1.8549,1,5,Self,139,106
+12,Imagination-Self,20,going,1.5983,1.2468,9,2,Imagination,139,106
+12,Imagination-Self,21,legs,1.5983,1.2468,9,2,Imagination,139,106
+12,Imagination-Self,22,man,1.5822,1.684,7,1,Imagination,139,106
+12,Imagination-Self,23,real,1.5822,1.684,7,1,Imagination,139,106
+12,Imagination-Self,24,way,-1.5453,-0.9453,4,8,Self,139,106
+12,Imagination-Self,25,humans,-1.4798,-0.3964,26,30,Self,139,106
+13,Robot-Imagination,1,robots,-3.6332,-2.6074,2,57,Imagination,116,250
+13,Robot-Imagination,2,humans,-3.2696,-1.7024,4,46,Imagination,116,250
+13,Robot-Imagination,3,human,-2.907,-1.7442,3,36,Imagination,116,250
+13,Robot-Imagination,4,just,-2.5259,-1.2065,5,35,Imagination,116,250
+13,Robot-Imagination,5,world,-2.4897,-1.8227,2,26,Imagination,116,250
+13,Robot-Imagination,6,thought ai,2.3444,2.5211,6,1,Robot,116,250
+13,Robot-Imagination,7,like,-2.3297,-1.2412,4,29,Imagination,116,250
+13,Robot-Imagination,8,don,-2.2049,-2.2486,1,20,Imagination,116,250
+13,Robot-Imagination,9,going,-2.1897,-1.3389,3,24,Imagination,116,250
+13,Robot-Imagination,10,think,-2.037,-2.0862,1,17,Imagination,116,250
+13,Robot-Imagination,11,robot,-2.037,-2.0862,1,17,Imagination,116,250
+13,Robot-Imagination,12,thought,2.0239,1.4291,6,3,Robot,116,250
+13,Robot-Imagination,13,control,-1.8366,-1.8922,1,14,Imagination,116,250
+13,Robot-Imagination,14,need,-1.7872,-1.3374,2,16,Imagination,116,250
+13,Robot-Imagination,15,artificial,1.7101,1.2472,5,3,Robot,116,250
+13,Robot-Imagination,16,ai robots,-1.6777,-1.7381,1,12,Imagination,116,250
+13,Robot-Imagination,17,imagine,-1.6777,-1.7381,1,12,Imagination,116,250
+13,Robot-Imagination,18,say,1.6527,1.4283,4,2,Robot,116,250
+13,Robot-Imagination,19,wall,1.5911,1.8296,3,1,Robot,116,250
+13,Robot-Imagination,20,hope,1.5911,1.8296,3,1,Robot,116,250
+13,Robot-Imagination,21,shows,1.5911,1.8296,3,1,Robot,116,250
+13,Robot-Imagination,22,isn ai,1.5911,1.8296,3,1,Robot,116,250
+13,Robot-Imagination,23,hope ai,1.5911,1.8296,3,1,Robot,116,250
+13,Robot-Imagination,24,end,-1.5899,-0.9942,3,17,Imagination,116,250
+13,Robot-Imagination,25,stop,-1.5882,-1.6512,1,11,Imagination,116,250
+13,Robot-Self,1,humans,-4.3467,-2.3026,4,32,Self,116,92
+13,Robot-Self,2,robots,-3.8051,-2.7857,2,26,Self,116,92
+13,Robot-Self,3,human,-3.3342,-2.0683,3,19,Self,116,92
+13,Robot-Self,4,just,-2.7096,-1.3871,5,16,Self,116,92
+13,Robot-Self,5,need,-2.3686,-1.8308,2,10,Self,116,92
+13,Robot-Self,6,think,-2.3002,-2.4137,1,9,Self,116,92
+13,Robot-Self,7,don,-2.3002,-2.4137,1,9,Self,116,92
+13,Robot-Self,8,ai robots,-2.1745,-2.2961,1,8,Self,116,92
+13,Robot-Self,9,great,-2.032,-2.1627,1,7,Self,116,92
+13,Robot-Self,10,thing,-2.032,-2.1627,1,7,Self,116,92
+13,Robot-Self,11,time,-1.8429,-1.4745,2,7,Self,116,92
+13,Robot-Self,12,end,-1.781,-1.2041,3,8,Self,116,92
+13,Robot-Self,13,better,-1.6748,-1.8268,1,5,Self,116,92
+13,Robot-Self,14,anymore,-1.5537,-1.0707,3,7,Self,116,92
+13,Robot-Self,15,robotics,-1.4409,-1.6042,1,4,Self,116,92
+13,Robot-Self,16,control,-1.4409,-1.6042,1,4,Self,116,92
+13,Robot-Self,17,way,-1.4409,-1.6042,1,4,Self,116,92
+13,Robot-Self,18,stop,-1.4409,-1.6042,1,4,Self,116,92
+13,Robot-Self,19,believe,-1.4409,-1.6042,1,4,Self,116,92
+13,Robot-Self,20,world,-1.3637,-1.1386,2,5,Self,116,92
+13,Robot-Self,21,intelligence,-1.2983,-0.9168,3,6,Self,116,92
+13,Robot-Self,22,going,-1.2983,-0.9168,3,6,Self,116,92
+13,Robot-Self,23,like,-1.2519,-0.7839,4,7,Self,116,92
+13,Robot-Self,24,understand,-1.1456,-1.3173,1,3,Self,116,92
+13,Robot-Self,25,life,-1.1456,-1.3173,1,3,Self,116,92
+13,Imagination-Self,1,humans,-2.2524,-0.5184,46,32,Self,250,92
+13,Imagination-Self,2,anymore,-1.8621,-1.0351,6,7,Self,250,92
+13,Imagination-Self,3,video,-1.716,-1.9732,1,3,Self,250,92
+13,Imagination-Self,4,great,-1.6498,-0.8812,7,7,Self,250,92
+13,Imagination-Self,5,world,1.5696,0.7658,26,5,Imagination,250,92
+13,Imagination-Self,6,imagine,1.5391,1.5946,12,1,Imagination,250,92
+13,Imagination-Self,7,live,-1.5317,-1.1681,3,4,Self,250,92
+13,Imagination-Self,8,replace,-1.5276,-0.8812,6,6,Self,250,92
+13,Imagination-Self,9,life,-1.4107,-1.285,2,3,Self,250,92
+13,Imagination-Self,10,don need,-1.4107,-1.285,2,3,Self,250,92
+13,Imagination-Self,11,human intelligence,-1.4107,-1.285,2,3,Self,250,92
+13,Imagination-Self,12,prove,-1.4107,-1.285,2,3,Self,250,92
+13,Imagination-Self,13,dont,-1.4107,-1.285,2,3,Self,250,92
+13,Imagination-Self,14,obsolete,-1.3947,-0.8812,5,5,Self,250,92
+13,Imagination-Self,15,earth,-1.3947,-0.8812,5,5,Self,250,92
+13,Imagination-Self,16,robot,1.3603,0.8506,17,3,Imagination,250,92
+13,Imagination-Self,17,chips,-1.2867,-1.5694,1,2,Self,250,92
+13,Imagination-Self,18,just saying,-1.2867,-1.5694,1,2,Self,250,92
+13,Imagination-Self,19,real human,-1.2867,-1.5694,1,2,Self,250,92
+13,Imagination-Self,20,believe ai,-1.2867,-1.5694,1,2,Self,250,92
+13,Imagination-Self,21,ai just,-1.2867,-1.5694,1,2,Self,250,92
+13,Imagination-Self,22,smarter,-1.2867,-1.5694,1,2,Self,250,92
+13,Imagination-Self,23,1000,-1.2867,-1.5694,1,2,Self,250,92
+13,Imagination-Self,24,need ai,-1.2867,-1.5694,1,2,Self,250,92
+13,Imagination-Self,25,need anymore,-1.2867,-1.5694,1,2,Self,250,92
+14,Robot-Imagination,1,years,-2.7398,-1.4043,4,75,Imagination,53,255
+14,Robot-Imagination,2,know,2.6075,1.7472,5,4,Robot,53,255
+14,Robot-Imagination,3,year,2.3752,1.8114,4,3,Robot,53,255
+14,Robot-Imagination,4,want,2.3752,1.8114,4,3,Robot,53,255
+14,Robot-Imagination,5,lets,2.2754,2.6165,3,1,Robot,53,255
+14,Robot-Imagination,6,clumsy,2.2754,2.6165,3,1,Robot,53,255
+14,Robot-Imagination,7,way,2.2754,2.6165,3,1,Robot,53,255
+14,Robot-Imagination,8,long,2.117,1.9283,3,2,Robot,53,255
+14,Robot-Imagination,9,got,2.117,1.9283,3,2,Robot,53,255
+14,Robot-Imagination,10,stop,2.117,1.9283,3,2,Robot,53,255
+14,Robot-Imagination,11,start,1.943,1.3019,4,5,Robot,53,255
+14,Robot-Imagination,12,laugh,-1.912,-0.6094,11,93,Imagination,53,255
+14,Robot-Imagination,13,ve,1.8142,2.2127,2,1,Robot,53,255
+14,Robot-Imagination,14,stop laughing,1.8142,2.2127,2,1,Robot,53,255
+14,Robot-Imagination,15,ahead,1.8142,2.2127,2,1,Robot,53,255
+14,Robot-Imagination,16,light,1.8142,2.2127,2,1,Robot,53,255
+14,Robot-Imagination,17,probably,1.8142,2.2127,2,1,Robot,53,255
+14,Robot-Imagination,18,looks,1.8142,2.2127,2,1,Robot,53,255
+14,Robot-Imagination,19,running,1.6229,1.2377,3,4,Robot,53,255
+14,Robot-Imagination,20,thing,1.6229,1.2377,3,4,Robot,53,255
+14,Robot-Imagination,21,laugh want,1.5283,1.5245,2,2,Robot,53,255
+14,Robot-Imagination,22,ll laughing,1.2304,1.1207,2,3,Robot,53,255
+14,Robot-Imagination,23,run,1.2304,1.1207,2,3,Robot,53,255
+14,Robot-Imagination,24,laughs,1.1798,0.8331,3,6,Robot,53,255
+14,Robot-Imagination,25,humans,1.1798,0.8331,3,6,Robot,53,255
+14,Robot-Self,1,laugh,-2.3939,-0.7955,11,51,Self,53,113
+14,Robot-Self,2,funny,2.0434,0.8177,13,12,Robot,53,113
+14,Robot-Self,3,year,1.9011,2.1165,4,1,Robot,53,113
+14,Robot-Self,4,start,1.6527,1.4284,4,2,Robot,53,113
+14,Robot-Self,5,lets,1.5911,1.8297,3,1,Robot,53,113
+14,Robot-Self,6,way,1.5911,1.8297,3,1,Robot,53,113
+14,Robot-Self,7,stop,1.5911,1.8297,3,1,Robot,53,113
+14,Robot-Self,8,thing,1.5911,1.8297,3,1,Robot,53,113
+14,Robot-Self,9,want,1.3434,1.0245,4,3,Robot,53,113
+14,Robot-Self,10,laughs,1.2532,1.1415,3,2,Robot,53,113
+14,Robot-Self,11,laugh want,1.1691,1.4259,2,1,Robot,53,113
+14,Robot-Self,12,laughing run,1.1691,1.4259,2,1,Robot,53,113
+14,Robot-Self,13,funniest,1.1691,1.4259,2,1,Robot,53,113
+14,Robot-Self,14,right,1.1691,1.4259,2,1,Robot,53,113
+14,Robot-Self,15,couldn,1.1691,1.4259,2,1,Robot,53,113
+14,Robot-Self,16,probably,1.1691,1.4259,2,1,Robot,53,113
+14,Robot-Self,17,know,1.1676,0.7377,5,5,Robot,53,113
+14,Robot-Self,18,day,-1.1272,-1.1997,1,7,Self,53,113
+14,Robot-Self,19,years,-0.9063,-0.5133,4,14,Self,53,113
+14,Robot-Self,20,running,0.905,0.7377,3,3,Robot,53,113
+14,Robot-Self,21,clumsy,0.905,0.7377,3,3,Robot,53,113
+14,Robot-Self,22,don,0.905,0.7377,3,3,Robot,53,113
+14,Robot-Self,23,time,-0.7919,-0.8638,1,5,Self,53,113
+14,Robot-Self,24,ve,0.7395,0.7377,2,2,Robot,53,113
+14,Robot-Self,25,looked clumsy,0.7395,0.7377,2,2,Robot,53,113
+14,Imagination-Self,1,years,3.0651,0.8921,75,14,Imagination,255,113
+14,Imagination-Self,2,funny,2.9786,0.9333,67,12,Imagination,255,113
+14,Imagination-Self,3,won,2.2246,1.0688,32,5,Imagination,255,113
+14,Imagination-Self,4,humans,-1.9883,-1.073,6,8,Self,255,113
+14,Imagination-Self,5,clumsy,-1.6329,-1.8778,1,3,Self,255,113
+14,Imagination-Self,6,laugh laugh,-1.6329,-1.8778,1,3,Self,255,113
+14,Imagination-Self,7,10,1.5325,1.1559,14,2,Imagination,255,113
+14,Imagination-Self,8,20,1.5325,1.1559,14,2,Imagination,255,113
+14,Imagination-Self,9,know,-1.505,-1.0084,4,5,Self,255,113
+14,Imagination-Self,10,20 years,1.4274,1.0818,13,2,Imagination,255,113
+14,Imagination-Self,11,laughing,-1.3868,-0.2578,78,46,Self,255,113
+14,Imagination-Self,12,hope remember,-1.3059,-1.1896,2,3,Self,255,113
+14,Imagination-Self,13,wont,1.2169,1.285,8,1,Imagination,255,113
+14,Imagination-Self,14,right,1.2169,1.285,8,1,Imagination,255,113
+14,Imagination-Self,15,smiling watching,-1.2085,-1.4739,1,2,Self,255,113
+14,Imagination-Self,16,ve,-1.2085,-1.4739,1,2,Self,255,113
+14,Imagination-Self,17,fine,-1.2085,-1.4739,1,2,Self,255,113
+14,Imagination-Self,18,remember laughed,-1.2085,-1.4739,1,2,Self,255,113
+14,Imagination-Self,19,soon crying,-1.2085,-1.4739,1,2,Self,255,113
+14,Imagination-Self,20,don,1.1838,0.7521,14,3,Imagination,255,113
+14,Imagination-Self,21,won laughing,1.1838,0.7521,14,3,Imagination,255,113
+14,Imagination-Self,22,anymore,1.082,1.1516,7,1,Imagination,255,113
+14,Imagination-Self,23,laugh,-1.0623,-0.1851,93,51,Self,255,113
+14,Imagination-Self,24,soon,-1.0216,-0.3806,18,12,Self,255,113
+14,Imagination-Self,25,laughing soon,-0.998,-0.6038,6,5,Self,255,113
+15,Imagination-Self,1,battle,-2.4376,-1.426,7,5,Self,274,40
+15,Imagination-Self,2,killing,-2.4376,-1.426,7,5,Self,274,40
+15,Imagination-Self,3,ai,-2.4376,-1.426,7,5,Self,274,40
+15,Imagination-Self,4,stupid,-2.3776,-2.1657,2,3,Self,274,40
+15,Imagination-Self,5,remember,-2.2973,-1.5393,5,4,Self,274,40
+15,Imagination-Self,6,fighting,-2.1872,-1.0006,15,7,Self,274,40
+15,Imagination-Self,7,remember robot,-2.1615,-1.7619,3,3,Self,274,40
+15,Imagination-Self,8,like,-2.131,-0.8977,19,8,Self,274,40
+15,Imagination-Self,9,think,-1.9548,-1.0698,10,5,Self,274,40
+15,Imagination-Self,10,years,-1.922,-1.2034,7,4,Self,274,40
+15,Imagination-Self,11,crazy volunteering,-1.7663,-1.7619,2,2,Self,274,40
+15,Imagination-Self,12,battle battle,-1.7663,-1.7619,2,2,Self,274,40
+15,Imagination-Self,13,volunteering,-1.7663,-1.7619,2,2,Self,274,40
+15,Imagination-Self,14,bye,-1.7663,-1.7619,2,2,Self,274,40
+15,Imagination-Self,15,war humans,-1.7663,-1.7619,2,2,Self,274,40
+15,Imagination-Self,16,built,-1.7663,-1.7619,2,2,Self,274,40
+15,Imagination-Self,17,live,-1.7663,-1.7619,2,2,Self,274,40
+15,Imagination-Self,18,fascinating,-1.7663,-1.7619,2,2,Self,274,40
+15,Imagination-Self,19,drones,-1.7663,-1.7619,2,2,Self,274,40
+15,Imagination-Self,20,ukraine,-1.7663,-1.7619,2,2,Self,274,40
+15,Imagination-Self,21,thousands robots,-1.7663,-1.7619,2,2,Self,274,40
+15,Imagination-Self,22,robots ai,-1.7663,-1.7619,2,2,Self,274,40
+15,Imagination-Self,23,don,-1.7539,-0.8467,15,6,Self,274,40
+15,Imagination-Self,24,good,-1.7174,-1.2524,5,3,Self,274,40
+15,Imagination-Self,25,military,1.6764,1.6942,32,1,Imagination,274,40
+16,Robot-Imagination,1,washing,4.1321,1.8081,15,8,Robot,60,204
+16,Robot-Imagination,2,washing machine,4.1266,2.357,13,4,Robot,60,204
+16,Robot-Imagination,3,machine,3.8385,1.7984,13,7,Robot,60,204
+16,Robot-Imagination,4,laundry,-3.7964,-1.7412,5,93,Imagination,60,204
+16,Robot-Imagination,5,cost,3.2484,2.5626,8,2,Robot,60,204
+16,Robot-Imagination,6,fold laundry,-2.5053,-1.8109,2,40,Imagination,60,204
+16,Robot-Imagination,7,like,2.4721,0.9571,12,15,Robot,60,204
+16,Robot-Imagination,8,house,-2.2196,-2.2443,1,31,Imagination,60,204
+16,Robot-Imagination,9,folding,-2.1514,-2.1776,1,29,Imagination,60,204
+16,Robot-Imagination,10,broom,1.9758,2.2721,3,1,Robot,60,204
+16,Robot-Imagination,11,robots,-1.9576,-1.9885,1,24,Imagination,60,204
+16,Robot-Imagination,12,fold,-1.919,-0.8334,6,45,Imagination,60,204
+16,Robot-Imagination,13,want,-1.8292,-1.3411,2,25,Imagination,60,204
+16,Robot-Imagination,14,clean,-1.6634,-1.7009,1,18,Imagination,60,204
+16,Robot-Imagination,15,home,-1.605,-1.6438,1,17,Imagination,60,204
+16,Robot-Imagination,16,just,-1.5804,-1.1668,2,21,Imagination,60,204
+16,Robot-Imagination,17,tell,1.5318,1.8682,2,1,Robot,60,204
+16,Robot-Imagination,18,price,1.5318,1.8682,2,1,Robot,60,204
+16,Robot-Imagination,19,nuggets,1.5318,1.8682,2,1,Robot,60,204
+16,Robot-Imagination,20,folding laundry,-1.4774,-1.5187,1,15,Imagination,60,204
+16,Robot-Imagination,21,look,1.183,1.1801,2,2,Robot,60,204
+16,Robot-Imagination,22,load,1.183,1.1801,2,2,Robot,60,204
+16,Robot-Imagination,23,useless,1.183,1.1801,2,2,Robot,60,204
+16,Robot-Imagination,24,old,1.183,1.1801,2,2,Robot,60,204
+16,Robot-Imagination,25,thing,1.1712,0.8932,3,4,Robot,60,204
+16,Robot-Self,1,home,-2.4142,-2.5333,1,9,Self,60,42
+16,Robot-Self,2,laundry,-2.2923,-1.2192,5,12,Self,60,42
+16,Robot-Self,3,want,-2.1897,-1.7274,2,8,Self,60,42
+16,Robot-Self,4,house,-2.1444,-2.2823,1,7,Self,60,42
+16,Robot-Self,5,cost,1.6345,1.7259,8,1,Robot,60,42
+16,Robot-Self,6,clean,-1.5483,-1.7237,1,4,Self,60,42
+16,Robot-Self,7,folding,-1.5483,-1.7237,1,4,Self,60,42
+16,Robot-Self,8,make,-1.5483,-1.7237,1,4,Self,60,42
+16,Robot-Self,9,washing,1.4583,0.7524,15,5,Robot,60,42
+16,Robot-Self,10,washing machine,1.4567,0.8321,13,4,Robot,60,42
+16,Robot-Self,11,money,-1.2495,-1.4369,1,3,Self,60,42
+16,Robot-Self,12,folding laundry,-1.2495,-1.4369,1,3,Self,60,42
+16,Robot-Self,13,fold laundry,-1.1982,-1.0355,2,4,Self,60,42
+16,Robot-Self,14,wash,-1.1982,-1.0355,2,4,Self,60,42
+16,Robot-Self,15,sounds like,1.1289,0.7515,9,3,Robot,60,42
+16,Robot-Self,16,sounds,1.1289,0.7515,9,3,Robot,60,42
+16,Robot-Self,17,like,0.9955,0.5294,12,5,Robot,60,42
+16,Robot-Self,18,like washing,0.921,0.7504,6,2,Robot,60,42
+16,Robot-Self,19,machine,0.8666,0.4274,13,6,Robot,60,42
+16,Robot-Self,20,don,-0.847,-1.0331,1,2,Self,60,42
+16,Robot-Self,21,lol,-0.847,-1.0331,1,2,Self,60,42
+16,Robot-Self,22,house lol,-0.847,-1.0331,1,2,Self,60,42
+16,Robot-Self,23,thinking,-0.847,-1.0331,1,2,Self,60,42
+16,Robot-Self,24,asking,-0.847,-1.0331,1,2,Self,60,42
+16,Robot-Self,25,watch,-0.847,-1.0331,1,2,Self,60,42
+16,Imagination-Self,1,machine,-2.3651,-1.3148,7,6,Self,204,42
+16,Imagination-Self,2,washing machine,-2.0797,-1.4687,4,4,Self,204,42
+16,Imagination-Self,3,home,-2.0223,-0.8332,17,9,Self,204,42
+16,Imagination-Self,4,laundry,1.8859,0.5783,93,12,Imagination,204,42
+16,Imagination-Self,5,fold,1.8217,0.9494,45,4,Imagination,204,42
+16,Imagination-Self,6,money,-1.8018,-1.4687,3,3,Self,204,42
+16,Imagination-Self,7,tired,-1.8018,-1.4687,3,3,Self,204,42
+16,Imagination-Self,8,house lol,-1.7684,-2.1569,1,2,Self,204,42
+16,Imagination-Self,9,sleep,-1.7684,-2.1569,1,2,Self,204,42
+16,Imagination-Self,10,washing,-1.7547,-0.9995,8,5,Self,204,42
+16,Imagination-Self,11,fold laundry,1.5877,0.8316,40,4,Imagination,204,42
+16,Imagination-Self,12,maid,-1.4724,-1.4687,2,2,Self,204,42
+16,Imagination-Self,13,life,-1.4724,-1.4687,2,2,Self,204,42
+16,Imagination-Self,14,couch,-1.4724,-1.4687,2,2,Self,204,42
+16,Imagination-Self,15,need work,-1.4724,-1.4687,2,2,Self,204,42
+16,Imagination-Self,16,asking money,-1.4724,-1.4687,2,2,Self,204,42
+16,Imagination-Self,17,change diaper,-1.4724,-1.4687,2,2,Self,204,42
+16,Imagination-Self,18,diaper,-1.4724,-1.4687,2,2,Self,204,42
+16,Imagination-Self,19,busy,-1.4724,-1.4687,2,2,Self,204,42
+16,Imagination-Self,20,nursing home,-1.4724,-1.4687,2,2,Self,204,42
+16,Imagination-Self,21,british,-1.4724,-1.4687,2,2,Self,204,42
+16,Imagination-Self,22,old,-1.4724,-1.4687,2,2,Self,204,42
+16,Imagination-Self,23,enjoy,-1.4724,-1.4687,2,2,Self,204,42
+16,Imagination-Self,24,imagine,-1.4724,-1.4687,2,2,Self,204,42
+16,Imagination-Self,25,work,-1.419,-0.7766,10,5,Self,204,42
+17,Robot-Self,1,friday,-2.3121,-1.5933,3,7,Self,186,86
+17,Robot-Self,2,friday night,-2.3121,-1.5933,3,7,Self,186,86
+17,Robot-Self,3,bar,-2.2622,-1.8432,2,6,Self,186,86
+17,Robot-Self,4,night,-2.234,-0.9148,11,13,Self,186,86
+17,Robot-Self,5,drinking,-2.154,-2.3494,1,5,Self,186,86
+17,Robot-Self,6,humans,-2.154,-2.3494,1,5,Self,186,86
+17,Robot-Self,7,trying,-1.9182,-1.0352,6,8,Self,186,86
+17,Robot-Self,8,home,-1.9182,-1.0352,6,8,Self,186,86
+17,Robot-Self,9,morning,-1.8526,-1.0838,5,7,Self,186,86
+17,Robot-Self,10,bro,1.8266,1.8819,14,1,Robot,186,86
+17,Robot-Self,11,life,-1.6,-1.8399,1,3,Self,186,86
+17,Robot-Self,12,20,1.5783,1.6409,11,1,Robot,186,86
+17,Robot-Self,13,10,-1.2644,-1.1517,2,3,Self,186,86
+17,Robot-Self,14,beers,-1.2644,-1.1517,2,3,Self,186,86
+17,Robot-Self,15,bed,-1.2644,-1.1517,2,3,Self,186,86
+17,Robot-Self,16,home bar,-1.1774,-1.4361,1,2,Self,186,86
+17,Robot-Self,17,like getting,-1.1774,-1.4361,1,2,Self,186,86
+17,Robot-Self,18,coming,-1.1774,-1.4361,1,2,Self,186,86
+17,Robot-Self,19,footage,-1.1774,-1.4361,1,2,Self,186,86
+17,Robot-Self,20,going,-1.1774,-1.4361,1,2,Self,186,86
+17,Robot-Self,21,did footage,-1.1774,-1.4361,1,2,Self,186,86
+17,Robot-Self,22,chasing,-1.1774,-1.4361,1,2,Self,186,86
+17,Robot-Self,23,3am,-1.1774,-1.4361,1,2,Self,186,86
+17,Robot-Self,24,shame,-1.1774,-1.4361,1,2,Self,186,86
+17,Robot-Self,25,night drinking,-1.1774,-1.4361,1,2,Self,186,86
+18,Robot-Imagination,1,human,-2.5757,-2.226,2,4,Imagination,198,40
+18,Robot-Imagination,2,robots,-2.485,-1.3815,7,6,Imagination,198,40
+18,Robot-Imagination,3,data,-2.2848,-2.6274,1,3,Imagination,198,40
+18,Robot-Imagination,4,funny,-2.2848,-2.6274,1,3,Imagination,198,40
+18,Robot-Imagination,5,damn,-2.1289,-1.9392,2,3,Imagination,198,40
+18,Robot-Imagination,6,needs,-1.8836,-1.5354,3,3,Imagination,198,40
+18,Robot-Imagination,7,ve,-1.8231,-2.2236,1,2,Imagination,198,40
+18,Robot-Imagination,8,really,-1.8231,-2.2236,1,2,Imagination,198,40
+18,Robot-Imagination,9,star trek,-1.8231,-2.2236,1,2,Imagination,198,40
+18,Robot-Imagination,10,trek,-1.8231,-2.2236,1,2,Imagination,198,40
+18,Robot-Imagination,11,ultrakill,-1.8231,-2.2236,1,2,Imagination,198,40
+18,Robot-Imagination,12,want,-1.8231,-2.2236,1,2,Imagination,198,40
+18,Robot-Imagination,13,tell,-1.8231,-2.2236,1,2,Imagination,198,40
+18,Robot-Imagination,14,emp,-1.8231,-2.2236,1,2,Imagination,198,40
+18,Robot-Imagination,15,thinking,-1.8231,-2.2236,1,2,Imagination,198,40
+18,Robot-Imagination,16,years,-1.8231,-2.2236,1,2,Imagination,198,40
+18,Robot-Imagination,17,star,-1.8231,-2.2236,1,2,Imagination,198,40
+18,Robot-Imagination,18,making,-1.8231,-2.2236,1,2,Imagination,198,40
+18,Robot-Imagination,19,need,-1.6873,-0.8431,12,6,Imagination,198,40
+18,Robot-Imagination,20,power,-1.6371,-1.2485,4,3,Imagination,198,40
+18,Robot-Imagination,21,holy,-1.5392,-1.5354,2,2,Imagination,198,40
+18,Robot-Imagination,22,relay,-1.5392,-1.5354,2,2,Imagination,198,40
+18,Robot-Imagination,23,plug,-1.5392,-1.5354,2,2,Imagination,198,40
+18,Robot-Imagination,24,required,-1.5392,-1.5354,2,2,Imagination,198,40
+18,Robot-Imagination,25,note,-1.5392,-1.5354,2,2,Imagination,198,40
+21,Robot-Imagination,1,running,-2.5825,-2.2319,2,4,Imagination,168,34
+21,Robot-Imagination,2,robots,-2.1919,-0.8486,20,10,Imagination,168,34
+21,Robot-Imagination,3,like,-2.1823,-1.5412,4,4,Imagination,168,34
+21,Robot-Imagination,4,way,-2.1823,-1.5412,4,4,Imagination,168,34
+21,Robot-Imagination,5,don,-2.1353,-1.945,2,3,Imagination,168,34
+21,Robot-Imagination,6,ai,-2.1353,-1.945,2,3,Imagination,168,34
+21,Robot-Imagination,7,good,-1.8907,-1.5412,3,3,Imagination,168,34
+21,Robot-Imagination,8,desire,-1.8279,-2.2294,1,2,Imagination,168,34
+21,Robot-Imagination,9,terrifying,-1.8279,-2.2294,1,2,Imagination,168,34
+21,Robot-Imagination,10,sense,-1.8279,-2.2294,1,2,Imagination,168,34
+21,Robot-Imagination,11,things,-1.8279,-2.2294,1,2,Imagination,168,34
+21,Robot-Imagination,12,fell,-1.8279,-2.2294,1,2,Imagination,168,34
+21,Robot-Imagination,13,want,-1.8279,-2.2294,1,2,Imagination,168,34
+21,Robot-Imagination,14,hell,-1.8279,-2.2294,1,2,Imagination,168,34
+21,Robot-Imagination,15,need,-1.8279,-2.2294,1,2,Imagination,168,34
+21,Robot-Imagination,16,job,-1.8279,-2.2294,1,2,Imagination,168,34
+21,Robot-Imagination,17,reward robot,1.7713,0.4864,114,15,Robot,168,34
+21,Robot-Imagination,18,rewarding,-1.6448,-1.2544,4,3,Imagination,168,34
+21,Robot-Imagination,19,reward ai,-1.5451,-1.5412,2,2,Imagination,168,34
+21,Robot-Imagination,20,use,-1.5451,-1.5412,2,2,Imagination,168,34
+21,Robot-Imagination,21,just,-1.5451,-1.5412,2,2,Imagination,168,34
+21,Robot-Imagination,22,kind,-1.5451,-1.5412,2,2,Imagination,168,34
+21,Robot-Imagination,23,does reward,-1.3988,-0.7538,11,5,Imagination,168,34
+21,Robot-Imagination,24,rewarded robot,1.1912,1.2221,16,1,Robot,168,34
+21,Robot-Imagination,25,implications,-1.0952,-1.5412,1,1,Imagination,168,34
+23,Robot-Imagination,1,don,-2.1303,-2.291,1,6,Imagination,113,67
+23,Robot-Imagination,2,ll,-1.9671,-1.6028,2,6,Imagination,113,67
+23,Robot-Imagination,3,human,-1.9335,-2.109,1,5,Imagination,113,67
+23,Robot-Imagination,4,like,-1.7017,-1.4208,2,5,Imagination,113,67
+23,Robot-Imagination,5,war,-1.6943,-1.8863,1,4,Imagination,113,67
+23,Robot-Imagination,6,need,-1.6943,-1.8863,1,4,Imagination,113,67
+23,Robot-Imagination,7,scared,-1.3909,-1.5995,1,3,Imagination,113,67
+23,Robot-Imagination,8,future,-1.3909,-1.5995,1,3,Imagination,113,67
+23,Robot-Imagination,9,genuinely,-1.3909,-1.5995,1,3,Imagination,113,67
+23,Robot-Imagination,10,calling,-1.3909,-1.5995,1,3,Imagination,113,67
+23,Robot-Imagination,11,want,-1.3909,-1.5995,1,3,Imagination,113,67
+23,Robot-Imagination,12,way,-1.0416,-0.7943,3,4,Imagination,113,67
+23,Robot-Imagination,13,funny,1.003,1.094,5,1,Robot,113,67
+23,Robot-Imagination,14,going,-1.0004,-0.9113,2,3,Imagination,113,67
+23,Robot-Imagination,15,stupid,-1.0004,-0.9113,2,3,Imagination,113,67
+23,Robot-Imagination,16,long,-0.9803,-1.1957,1,2,Imagination,113,67
+23,Robot-Imagination,17,life,-0.9803,-1.1957,1,2,Imagination,113,67
+23,Robot-Imagination,18,clanker olympics,-0.9803,-1.1957,1,2,Imagination,113,67
+23,Robot-Imagination,19,terminator,-0.9803,-1.1957,1,2,Imagination,113,67
+23,Robot-Imagination,20,olympics,-0.9803,-1.1957,1,2,Imagination,113,67
+23,Robot-Imagination,21,jobs,-0.9803,-1.1957,1,2,Imagination,113,67
+23,Robot-Imagination,22,able,-0.9803,-1.1957,1,2,Imagination,113,67
+23,Robot-Imagination,23,clanckers,-0.9803,-1.1957,1,2,Imagination,113,67
+23,Robot-Imagination,24,scared clankers,-0.9803,-1.1957,1,2,Imagination,113,67
+23,Robot-Imagination,25,make,-0.9803,-1.1957,1,2,Imagination,113,67
+23,Robot-Self,1,ll,-2.7124,-2.2101,2,6,Self,113,36
+23,Robot-Self,2,want,-1.9191,-2.2068,1,3,Self,113,36
+23,Robot-Self,3,like,-1.6672,-1.5186,2,3,Self,113,36
+23,Robot-Self,4,replaced,-1.4782,-1.803,1,2,Self,113,36
+23,Robot-Self,5,away,-1.4782,-1.803,1,2,Self,113,36
+23,Robot-Self,6,total clanker,-1.4782,-1.803,1,2,Self,113,36
+23,Robot-Self,7,able,-1.4782,-1.803,1,2,Self,113,36
+23,Robot-Self,8,long,-1.4782,-1.803,1,2,Self,113,36
+23,Robot-Self,9,total,-1.4782,-1.803,1,2,Self,113,36
+23,Robot-Self,10,need,-1.4782,-1.803,1,2,Self,113,36
+23,Robot-Self,11,life,-1.4782,-1.803,1,2,Self,113,36
+23,Robot-Self,12,clanker death,-1.4782,-1.803,1,2,Self,113,36
+23,Robot-Self,13,death,-1.4782,-1.803,1,2,Self,113,36
+23,Robot-Self,14,clanker olympics,-1.4782,-1.803,1,2,Self,113,36
+23,Robot-Self,15,genuinely,-1.4782,-1.803,1,2,Self,113,36
+23,Robot-Self,16,ain,-1.4782,-1.803,1,2,Self,113,36
+23,Robot-Self,17,olympics,-1.4782,-1.803,1,2,Self,113,36
+23,Robot-Self,18,damn,1.2254,1.2741,11,1,Robot,113,36
+23,Robot-Self,19,damn clankers,1.1291,1.1788,10,1,Robot,113,36
+23,Robot-Self,20,good,-1.1176,-1.1148,2,2,Self,113,36
+23,Robot-Self,21,emp,-1.1176,-1.1148,2,2,Self,113,36
+23,Robot-Self,22,20,-1.1176,-1.1148,2,2,Self,113,36
+23,Robot-Self,23,going,-1.1176,-1.1148,2,2,Self,113,36
+23,Robot-Self,24,day,-1.1176,-1.1148,2,2,Self,113,36
+23,Robot-Self,25,run,-0.83,-0.6053,5,3,Self,113,36
+23,Imagination-Self,1,clanker,1.1114,0.3934,29,11,Imagination,67,36
+23,Imagination-Self,2,run,-1.075,-0.9792,2,3,Self,67,36
+23,Imagination-Self,3,total clanker,-1.036,-1.2636,1,2,Self,67,36
+23,Imagination-Self,4,clankers run,-1.036,-1.2636,1,2,Self,67,36
+23,Imagination-Self,5,replaced,-1.036,-1.2636,1,2,Self,67,36
+23,Imagination-Self,6,far,-1.036,-1.2636,1,2,Self,67,36
+23,Imagination-Self,7,ain,-1.036,-1.2636,1,2,Self,67,36
+23,Imagination-Self,8,total,-1.036,-1.2636,1,2,Self,67,36
+23,Imagination-Self,9,good,-1.036,-1.2636,1,2,Self,67,36
+23,Imagination-Self,10,emp,-1.036,-1.2636,1,2,Self,67,36
+23,Imagination-Self,11,clanker death,-1.036,-1.2636,1,2,Self,67,36
+23,Imagination-Self,12,death,-1.036,-1.2636,1,2,Self,67,36
+23,Imagination-Self,13,ll,-0.9975,-0.5754,6,6,Self,67,36
+23,Imagination-Self,14,world,0.9407,1.026,5,1,Imagination,67,36
+23,Imagination-Self,15,human,0.9407,1.026,5,1,Imagination,67,36
+23,Imagination-Self,16,way,0.7216,0.8034,4,1,Imagination,67,36
+23,Imagination-Self,17,want,-0.7059,-0.5754,3,3,Self,67,36
+23,Imagination-Self,18,watch,-0.6272,-6.2826,0,3,Self,67,36
+23,Imagination-Self,19,robots,0.5965,0.4033,8,3,Imagination,67,36
+23,Imagination-Self,20,away,-0.5864,-5.8787,0,2,Self,67,36
+23,Imagination-Self,21,don,0.5818,5.8232,6,0,Imagination,67,36
+23,Imagination-Self,22,strength,-0.5769,-0.5754,2,2,Self,67,36
+23,Imagination-Self,23,life,-0.5769,-0.5754,2,2,Self,67,36
+23,Imagination-Self,24,entire,-0.5769,-0.5754,2,2,Self,67,36
+23,Imagination-Self,25,ll stop,-0.5769,-0.5754,2,2,Self,67,36
+24,Robot-Imagination,1,amazing,2.532,1.9975,8,2,Robot,56,106
+24,Robot-Imagination,2,great,1.7908,1.9937,4,1,Robot,56,106
+24,Robot-Imagination,3,future,-1.6079,-1.6787,1,10,Imagination,56,106
+24,Robot-Imagination,4,impressive,1.5418,1.1244,5,3,Robot,56,106
+24,Robot-Imagination,5,working,1.5107,1.3056,4,2,Robot,56,106
+24,Robot-Imagination,6,high,1.4844,1.7069,3,1,Robot,56,106
+24,Robot-Imagination,7,impressive technology,1.4844,1.7069,3,1,Robot,56,106
+24,Robot-Imagination,8,people,-1.4155,-1.0858,2,11,Imagination,56,106
+24,Robot-Imagination,9,advanced,1.1824,0.9018,4,3,Robot,56,106
+24,Robot-Imagination,10,incredible,1.1184,1.0187,3,2,Robot,56,106
+24,Robot-Imagination,11,far,1.1184,1.0187,3,2,Robot,56,106
+24,Robot-Imagination,12,good,-1.0866,-1.1686,1,6,Imagination,56,106
+24,Robot-Imagination,13,world,-1.0866,-1.1686,1,6,Imagination,56,106
+24,Robot-Imagination,14,humanity,-1.0866,-1.1686,1,6,Imagination,56,106
+24,Robot-Imagination,15,kind,-1.0866,-1.1686,1,6,Imagination,56,106
+24,Robot-Imagination,16,understand,1.0684,1.3031,2,1,Robot,56,106
+24,Robot-Imagination,17,wow,1.0684,1.3031,2,1,Robot,56,106
+24,Robot-Imagination,18,lot,1.0684,1.3031,2,1,Robot,56,106
+24,Robot-Imagination,19,amazing technology,1.0684,1.3031,2,1,Robot,56,106
+24,Robot-Imagination,20,ll,1.0684,1.3031,2,1,Robot,56,106
+24,Robot-Imagination,21,sort,1.0684,1.3031,2,1,Robot,56,106
+24,Robot-Imagination,22,like,0.9311,0.4815,7,8,Robot,56,106
+24,Robot-Imagination,23,laugh,-0.9045,-0.9866,1,5,Imagination,56,106
+24,Robot-Imagination,24,forward,-0.9045,-0.9866,1,5,Imagination,56,106
+24,Robot-Imagination,25,going,-0.8358,-0.482,4,12,Imagination,56,106
+24,Robot-Self,1,criticize,-1.8348,-1.9731,1,6,Self,56,46
+24,Robot-Self,2,people,-1.7984,-1.4389,2,7,Self,56,46
+24,Robot-Self,3,don,-1.6422,-1.7912,1,5,Self,56,46
+24,Robot-Self,4,humanity,-1.6422,-1.7912,1,5,Self,56,46
+24,Robot-Self,5,human,-1.577,-1.285,2,6,Self,56,46
+24,Robot-Self,6,amazing,1.5121,1.1929,8,2,Robot,56,46
+24,Robot-Self,7,good,-1.4089,-1.5685,1,4,Self,56,46
+24,Robot-Self,8,humans,-1.4089,-1.5685,1,4,Self,56,46
+24,Robot-Self,9,impressive,1.2944,1.4118,5,1,Robot,56,46
+24,Robot-Self,10,looks,1.2944,1.4118,5,1,Robot,56,46
+24,Robot-Self,11,future,-1.1146,-1.2817,1,3,Self,56,46
+24,Robot-Self,12,able,-1.1146,-1.2817,1,3,Self,56,46
+24,Robot-Self,13,thing,-1.1146,-1.2817,1,3,Self,56,46
+24,Robot-Self,14,years,1.1115,0.9056,6,2,Robot,56,46
+24,Robot-Self,15,working,1.0681,1.1892,4,1,Robot,56,46
+24,Robot-Self,16,long,-1.0186,-0.8803,2,4,Self,56,46
+24,Robot-Self,17,scary,-0.9587,-0.6992,3,5,Self,56,46
+24,Robot-Self,18,far,0.7847,0.9023,3,1,Robot,56,46
+24,Robot-Self,19,ve,-0.7197,-0.8779,1,2,Self,56,46
+24,Robot-Self,20,forward,-0.7197,-0.8779,1,2,Self,56,46
+24,Robot-Self,21,won,-0.7197,-0.8779,1,2,Self,56,46
+24,Robot-Self,22,times,-0.7197,-0.8779,1,2,Self,56,46
+24,Robot-Self,23,human beings,-0.7197,-0.8779,1,2,Self,56,46
+24,Robot-Self,24,awe,-0.7197,-0.8779,1,2,Self,56,46
+24,Robot-Self,25,beings,-0.7197,-0.8779,1,2,Self,56,46
+24,Imagination-Self,1,human,-2.2819,-1.8593,2,6,Self,106,46
+24,Imagination-Self,2,don,-2.0089,-1.6773,2,5,Self,106,46
+24,Imagination-Self,3,years,1.7521,1.3111,16,2,Imagination,106,46
+24,Imagination-Self,4,cars,-1.6832,-1.4546,2,4,Self,106,46
+24,Imagination-Self,5,feel,-1.614,-1.856,1,3,Self,106,46
+24,Imagination-Self,6,able,-1.614,-1.856,1,3,Self,106,46
+24,Imagination-Self,7,humans,-1.3779,-1.0508,3,4,Self,106,46
+24,Imagination-Self,8,long,-1.3779,-1.0508,3,4,Self,106,46
+24,Imagination-Self,9,come,-1.3779,-1.0508,3,4,Self,106,46
+24,Imagination-Self,10,stop,-1.3779,-1.0508,3,4,Self,106,46
+24,Imagination-Self,11,going,1.3432,1.0236,12,2,Imagination,106,46
+24,Imagination-Self,12,island,-1.1906,-1.4522,1,2,Self,106,46
+24,Imagination-Self,13,today,-1.1906,-1.4522,1,2,Self,106,46
+24,Imagination-Self,14,times,-1.1906,-1.4522,1,2,Self,106,46
+24,Imagination-Self,15,awe,-1.1906,-1.4522,1,2,Self,106,46
+24,Imagination-Self,16,dread,-1.1906,-1.4522,1,2,Self,106,46
+24,Imagination-Self,17,buy,-1.1906,-1.4522,1,2,Self,106,46
+24,Imagination-Self,18,soon,-1.1906,-1.4522,1,2,Self,106,46
+24,Imagination-Self,19,understand,-1.1906,-1.4522,1,2,Self,106,46
+24,Imagination-Self,20,use,-1.1906,-1.4522,1,2,Self,106,46
+24,Imagination-Self,21,lol,-1.1906,-1.4522,1,2,Self,106,46
+24,Imagination-Self,22,just,1.0941,0.6998,13,3,Imagination,106,46
+24,Imagination-Self,23,phones,-1.0818,-0.764,4,4,Self,106,46
+24,Imagination-Self,24,humanity,-0.962,-0.582,6,5,Self,106,46
+24,Imagination-Self,25,world,0.948,1.0195,6,1,Imagination,106,46
+28,Robot-Imagination,1,year,5.0377,1.7047,32,12,Robot,52,109
+28,Robot-Imagination,2,years,-4.4649,-1.6494,8,86,Imagination,52,109
+28,Robot-Imagination,3,better,3.9673,2.0039,18,5,Robot,52,109
+28,Robot-Imagination,4,10,-2.9779,-1.7849,3,37,Imagination,52,109
+28,Robot-Imagination,5,imagine,-2.7953,-2.8213,1,35,Imagination,52,109
+28,Robot-Imagination,6,getting,2.7736,1.6392,10,4,Robot,52,109
+28,Robot-Imagination,7,getting better,2.7349,1.8208,9,3,Robot,52,109
+28,Robot-Imagination,8,10 years,-2.7347,-2.7625,1,33,Imagination,52,109
+28,Robot-Imagination,9,progress,2.5009,2.6618,7,1,Robot,52,109
+28,Robot-Imagination,10,amazing,1.9614,1.6377,5,2,Robot,52,109
+28,Robot-Imagination,11,like,-1.6112,-1.0075,3,17,Imagination,52,109
+28,Robot-Imagination,12,20,-1.3972,-0.8824,3,15,Imagination,52,109
+28,Robot-Imagination,13,20 years,-1.3952,-1.0632,2,12,Imagination,52,109
+28,Robot-Imagination,14,good,1.1581,1.4126,2,1,Robot,52,109
+28,Robot-Imagination,15,progress year,1.1581,1.4126,2,1,Robot,52,109
+28,Robot-Imagination,16,ve,1.1581,1.4126,2,1,Robot,52,109
+28,Robot-Imagination,17,difference,1.1581,1.4126,2,1,Robot,52,109
+28,Robot-Imagination,18,rate,1.1581,1.4126,2,1,Robot,52,109
+28,Robot-Imagination,19,better year,1.1581,1.4126,2,1,Robot,52,109
+28,Robot-Imagination,20,ll,-1.1399,-0.8811,2,10,Imagination,52,109
+28,Robot-Imagination,21,look,-0.9848,-1.0591,1,6,Imagination,52,109
+28,Robot-Imagination,22,wait,-0.9848,-1.0591,1,6,Imagination,52,109
+28,Robot-Imagination,23,couple years,-0.8042,-0.8771,1,5,Imagination,52,109
+28,Robot-Imagination,24,couple,-0.8042,-0.8771,1,5,Imagination,52,109
+28,Robot-Imagination,25,going,-0.8042,-0.8771,1,5,Imagination,52,109
+29,Robot-Imagination,1,800,-2.748,-1.4706,4,27,Imagination,62,97
+29,Robot-Imagination,2,temu,2.2307,2.3742,7,1,Robot,62,97
+29,Robot-Imagination,3,like 1000,1.617,1.3501,5,2,Robot,62,97
+29,Robot-Imagination,4,t800,-1.5454,-0.7856,5,17,Imagination,62,97
+29,Robot-Imagination,5,china,-1.4099,-1.5006,1,7,Imagination,62,97
+29,Robot-Imagination,6,like,1.3417,0.7241,8,6,Robot,62,97
+29,Robot-Imagination,7,faster,1.3295,1.5288,3,1,Robot,62,97
+29,Robot-Imagination,8,cooling,1.3295,1.5288,3,1,Robot,62,97
+29,Robot-Imagination,9,model,1.3046,1.1274,4,2,Robot,62,97
+29,Robot-Imagination,10,time,-1.0154,-0.8124,2,7,Imagination,62,97
+29,Robot-Imagination,11,just,0.9841,0.6594,5,4,Robot,62,97
+29,Robot-Imagination,12,running,0.9489,0.7236,4,3,Robot,62,97
+29,Robot-Imagination,13,t1000,0.9421,0.3627,13,14,Robot,62,97
+29,Robot-Imagination,14,100,0.9228,0.8406,3,2,Robot,62,97
+29,Robot-Imagination,15,ice,0.9224,1.125,2,1,Robot,62,97
+29,Robot-Imagination,16,fast,0.9224,1.125,2,1,Robot,62,97
+29,Robot-Imagination,17,amazing,0.9224,1.125,2,1,Robot,62,97
+29,Robot-Imagination,18,run like,0.9224,1.125,2,1,Robot,62,97
+29,Robot-Imagination,19,looking,0.9224,1.125,2,1,Robot,62,97
+29,Robot-Imagination,20,10,-0.8462,-0.9421,1,4,Imagination,62,97
+29,Robot-Imagination,21,t2,-0.8462,-0.9421,1,4,Imagination,62,97
+29,Robot-Imagination,22,run,0.6913,0.4368,5,5,Robot,62,97
+29,Robot-Imagination,23,coming,-0.6363,-6.3667,0,9,Imagination,62,97
+29,Robot-Imagination,24,wait,-0.6245,-6.2491,0,8,Imagination,62,97
+29,Robot-Imagination,25,soon,-0.6111,-6.1157,0,7,Imagination,62,97
+34,Robot-Imagination,1,robot,-1.9636,-0.5667,20,30,Imagination,87,73
+34,Robot-Imagination,2,need,-1.9474,-1.0357,5,12,Imagination,87,73
+34,Robot-Imagination,3,use,-1.8085,-1.9449,1,6,Imagination,87,73
+34,Robot-Imagination,4,tasks,-1.6163,-1.7629,1,5,Imagination,87,73
+34,Robot-Imagination,5,forms,-1.5423,-1.2567,2,6,Imagination,87,73
+34,Robot-Imagination,6,shape,-1.3949,-0.8533,4,8,Imagination,87,73
+34,Robot-Imagination,7,future,-1.3835,-1.5403,1,4,Imagination,87,73
+34,Robot-Imagination,8,humanoid shape,-1.3835,-1.5403,1,4,Imagination,87,73
+34,Robot-Imagination,9,doing,-1.3835,-1.5403,1,4,Imagination,87,73
+34,Robot-Imagination,10,real,-1.3835,-1.5403,1,4,Imagination,87,73
+34,Robot-Imagination,11,daily,-1.3835,-1.5403,1,4,Imagination,87,73
+34,Robot-Imagination,12,create,-1.2872,-1.0747,2,5,Imagination,87,73
+34,Robot-Imagination,13,robots humanoid,-1.2872,-1.0747,2,5,Imagination,87,73
+34,Robot-Imagination,14,thing,-1.2872,-1.0747,2,5,Imagination,87,73
+34,Robot-Imagination,15,reason,-1.2079,-0.8529,3,6,Imagination,87,73
+34,Robot-Imagination,16,think,-1.2079,-0.8529,3,6,Imagination,87,73
+34,Robot-Imagination,17,humans,-1.1661,-0.4295,13,17,Imagination,87,73
+34,Robot-Imagination,18,humanoid robot,-1.1072,-0.6307,5,8,Imagination,87,73
+34,Robot-Imagination,19,androids,1.0935,1.2174,4,1,Robot,87,73
+34,Robot-Imagination,20,designed,1.0935,1.2174,4,1,Robot,87,73
+34,Robot-Imagination,21,obsession,1.0935,1.2174,4,1,Robot,87,73
+34,Robot-Imagination,22,mean,1.0935,1.2174,4,1,Robot,87,73
+34,Robot-Imagination,23,won,-1.09,-1.2534,1,3,Imagination,87,73
+34,Robot-Imagination,24,terrible,-1.09,-1.2534,1,3,Imagination,87,73
+34,Robot-Imagination,25,tell,-1.09,-1.2534,1,3,Imagination,87,73
+36,Imagination-Self,1,fear,-1.555,-1.8966,1,2,Self,123,34
+36,Imagination-Self,2,let,-1.555,-1.8966,1,2,Self,123,34
+36,Imagination-Self,3,right,-1.555,-1.8966,1,2,Self,123,34
+36,Imagination-Self,4,make,-1.4825,-1.2084,3,3,Self,123,34
+36,Imagination-Self,5,rich,-1.4825,-1.2084,3,3,Self,123,34
+36,Imagination-Self,6,laugh,-1.4825,-1.2084,3,3,Self,123,34
+36,Imagination-Self,7,ll replace,-1.4825,-1.2084,3,3,Self,123,34
+36,Imagination-Self,8,job,-1.3528,-0.4749,25,12,Self,123,34
+36,Imagination-Self,9,boycott,-1.2115,-1.2084,2,2,Self,123,34
+36,Imagination-Self,10,yeah,-1.2115,-1.2084,2,2,Self,123,34
+36,Imagination-Self,11,time,-1.2115,-1.2084,2,2,Self,123,34
+36,Imagination-Self,12,celebrate,-1.2115,-1.2084,2,2,Self,123,34
+36,Imagination-Self,13,needed,-1.2115,-1.2084,2,2,Self,123,34
+36,Imagination-Self,14,working,-1.2115,-1.2084,2,2,Self,123,34
+36,Imagination-Self,15,won,-1.2084,-0.9216,4,3,Self,123,34
+36,Imagination-Self,16,better,-1.2084,-0.9216,4,3,Self,123,34
+36,Imagination-Self,17,people,1.192,0.7346,21,3,Imagination,123,34
+36,Imagination-Self,18,work,-1.1154,-0.516,14,7,Self,123,34
+36,Imagination-Self,19,don,-0.9584,-0.699,5,3,Self,123,34
+36,Imagination-Self,20,jobs,0.9246,0.295,54,12,Imagination,123,34
+36,Imagination-Self,21,start,-0.8833,-0.8046,3,2,Self,123,34
+36,Imagination-Self,22,complain,-0.8833,-0.8046,3,2,Self,123,34
+36,Imagination-Self,23,job soon,-0.8833,-0.8046,3,2,Self,123,34
+36,Imagination-Self,24,long,-0.8833,-0.8046,3,2,Self,123,34
+36,Imagination-Self,25,real,-0.8833,-0.8046,3,2,Self,123,34
+38,Imagination-Self,1,used laugh,-1.6814,-1.0172,5,6,Self,118,48
+38,Imagination-Self,2,human,1.4944,1.5537,11,1,Imagination,118,48
+38,Imagination-Self,3,used,-1.4478,-0.8352,6,6,Self,118,48
+38,Imagination-Self,4,years,1.3002,0.5907,25,6,Imagination,118,48
+38,Imagination-Self,5,ai videos,-1.249,-1.5234,1,2,Self,118,48
+38,Imagination-Self,6,high,-1.249,-1.5234,1,2,Self,118,48
+38,Imagination-Self,7,kind,-1.249,-1.5234,1,2,Self,118,48
+38,Imagination-Self,8,killing,-1.249,-1.5234,1,2,Self,118,48
+38,Imagination-Self,9,laughing robot,-1.249,-1.5234,1,2,Self,118,48
+38,Imagination-Self,10,videos,-1.1826,-0.8352,4,4,Self,118,48
+38,Imagination-Self,11,robots laughing,-1.1826,-0.8352,4,4,Self,118,48
+38,Imagination-Self,12,like,1.1701,1.2356,8,1,Imagination,118,48
+38,Imagination-Self,13,make,1.0356,1.1022,7,1,Imagination,118,48
+38,Imagination-Self,14,years robots,1.0356,1.1022,7,1,Imagination,118,48
+38,Imagination-Self,15,gonna laugh,-1.0246,-0.8352,3,3,Self,118,48
+38,Imagination-Self,16,im,-1.0246,-0.8352,3,3,Self,118,48
+38,Imagination-Self,17,come,-1.0246,-0.8352,3,3,Self,118,48
+38,Imagination-Self,18,laugh ai,-1.0246,-0.8352,3,3,Self,118,48
+38,Imagination-Self,19,2026 used,-1.0246,-0.8352,3,3,Self,118,48
+38,Imagination-Self,20,did,-1.0246,-0.8352,3,3,Self,118,48
+38,Imagination-Self,21,remember 2026,-1.0246,-0.8352,3,3,Self,118,48
+38,Imagination-Self,22,day,-1.0153,-0.5479,8,6,Self,118,48
+38,Imagination-Self,23,remember,-0.9429,-0.4301,12,8,Self,118,48
+38,Imagination-Self,24,wait,-0.9142,-0.6125,5,4,Self,118,48
+38,Imagination-Self,25,want,0.8818,0.9483,6,1,Imagination,118,48
+41,Robot-Imagination,1,sports,-3.8149,-2.2941,3,34,Imagination,56,64
+41,Robot-Imagination,2,robot,2.3585,0.7545,28,15,Robot,56,64
+41,Robot-Imagination,3,women sports,-2.2919,-1.737,2,13,Imagination,56,64
+41,Robot-Imagination,4,women,-2.2342,-0.738,13,31,Imagination,56,64
+41,Robot-Imagination,5,compete,-1.9782,-1.1204,4,14,Imagination,56,64
+41,Robot-Imagination,6,men,-1.8319,-1.0463,4,13,Imagination,56,64
+41,Robot-Imagination,7,like,1.7799,1.9141,6,1,Robot,56,64
+41,Robot-Imagination,8,allowed,-1.6976,-1.8068,1,7,Imagination,56,64
+41,Robot-Imagination,9,trans,-1.5665,-0.8237,5,13,Imagination,56,64
+41,Robot-Imagination,10,woman,1.5034,0.8228,10,5,Robot,56,64
+41,Robot-Imagination,11,human,-1.4507,-0.9658,3,9,Imagination,56,64
+41,Robot-Imagination,12,identify,-1.2545,-0.8481,3,8,Imagination,56,64
+41,Robot-Imagination,13,robots,-1.2261,-0.3335,22,35,Imagination,56,64
+41,Robot-Imagination,14,allowed compete,-1.1212,-1.2482,1,4,Imagination,56,64
+41,Robot-Imagination,15,wnba,-1.1212,-1.2482,1,4,Imagination,56,64
+41,Robot-Imagination,16,don,1.0632,1.2226,3,1,Robot,56,64
+41,Robot-Imagination,17,man,1.0632,1.2226,3,1,Robot,56,64
+41,Robot-Imagination,18,female robots,0.9503,0.8213,4,2,Robot,56,64
+41,Robot-Imagination,19,female robot,0.9503,0.8213,4,2,Robot,56,64
+41,Robot-Imagination,20,think,-0.836,-0.9614,1,3,Imagination,56,64
+41,Robot-Imagination,21,humans,-0.836,-0.9614,1,3,Imagination,56,64
+41,Robot-Imagination,22,make,-0.836,-0.9614,1,3,Imagination,56,64
+41,Robot-Imagination,23,gender,0.7974,0.4665,7,5,Robot,56,64
+41,Robot-Imagination,24,robots identify,0.6713,0.8188,2,1,Robot,56,64
+41,Robot-Imagination,25,check,0.6713,0.8188,2,1,Robot,56,64
+44,Robot-Imagination,1,thing,2.3205,0.8218,17,15,Robot,36,73
+44,Robot-Imagination,2,thing running,2.1993,1.792,6,2,Robot,36,73
+44,Robot-Imagination,3,running,2.1379,1.0529,10,7,Robot,36,73
+44,Robot-Imagination,4,night,1.9283,1.61,5,2,Robot,36,73
+44,Robot-Imagination,5,imagine chasing,-1.842,-1.3784,2,16,Imagination,36,73
+44,Robot-Imagination,6,imagine,-1.6856,-0.4556,18,57,Imagination,36,73
+44,Robot-Imagination,7,like,1.654,1.2062,5,3,Robot,36,73
+44,Robot-Imagination,8,chasing,-1.5495,-0.5554,10,35,Imagination,36,73
+44,Robot-Imagination,9,chased thing,1.1354,1.3849,2,1,Robot,36,73
+44,Robot-Imagination,10,shit,1.1354,1.3849,2,1,Robot,36,73
+44,Robot-Imagination,11,run,0.8547,0.6967,3,3,Robot,36,73
+44,Robot-Imagination,12,chase,0.7075,0.474,4,5,Robot,36,73
+44,Robot-Imagination,13,seeing,0.6393,6.4038,3,0,Robot,36,73
+44,Robot-Imagination,14,imagine running,-0.6127,-0.6822,1,4,Imagination,36,73
+44,Robot-Imagination,15,came,0.5985,6.0,2,0,Robot,36,73
+44,Robot-Imagination,16,seeing thing,0.5985,6.0,2,0,Robot,36,73
+44,Robot-Imagination,17,middle,0.5985,6.0,2,0,Robot,36,73
+44,Robot-Imagination,18,sure,0.5985,6.0,2,0,Robot,36,73
+44,Robot-Imagination,19,imagine seeing,0.5985,6.0,2,0,Robot,36,73
+44,Robot-Imagination,20,middle night,0.5985,6.0,2,0,Robot,36,73
+44,Robot-Imagination,21,fear,0.5985,6.0,2,0,Robot,36,73
+44,Robot-Imagination,22,chased,-0.5372,-0.3133,4,11,Imagination,36,73
+44,Robot-Imagination,23,imagine getting,-0.5291,-5.2973,0,4,Imagination,36,73
+44,Robot-Imagination,24,getting,-0.5291,-5.2973,0,4,Imagination,36,73
+44,Robot-Imagination,25,getting chased,-0.5291,-5.2973,0,4,Imagination,36,73
+44,Robot-Self,1,chased,-1.0469,-0.6404,4,8,Self,36,38
+44,Robot-Self,2,fear,0.6064,0.7396,2,1,Robot,36,38
+44,Robot-Self,3,lol,-0.522,-0.6367,1,2,Self,36,38
+44,Robot-Self,4,wouldn,-0.522,-0.6367,1,2,Self,36,38
+44,Robot-Self,5,road,-0.522,-0.6367,1,2,Self,36,38
+44,Robot-Self,6,chase,0.4436,0.3383,4,3,Robot,36,38
+44,Robot-Self,7,like,0.4091,0.2741,5,4,Robot,36,38
+44,Robot-Self,8,imagine chasing,-0.3868,-0.3523,2,3,Self,36,38
+44,Robot-Self,9,shit,-0.3868,-0.3523,2,3,Self,36,38
+44,Robot-Self,10,imagine chased,-0.3868,-0.3523,2,3,Self,36,38
+44,Robot-Self,11,run,-0.3087,-0.2354,3,4,Self,36,38
+44,Robot-Self,12,chasing,-0.3054,-0.1307,10,12,Self,36,38
+44,Robot-Self,13,thing,0.1501,0.0515,17,17,Robot,36,38
+44,Robot-Self,14,running,0.1151,0.0515,10,10,Robot,36,38
+44,Robot-Self,15,thing running,0.0892,0.0515,6,6,Robot,36,38
+44,Robot-Self,16,imagine thing,0.0815,0.0515,5,5,Robot,36,38
+44,Robot-Self,17,night,0.0815,0.0515,5,5,Robot,36,38
+44,Robot-Self,18,thing chasing,0.0729,0.0515,4,4,Robot,36,38
+44,Robot-Self,19,things,0.0631,0.0515,3,3,Robot,36,38
+44,Robot-Self,20,seeing,0.0631,0.0515,3,3,Robot,36,38
+44,Robot-Self,21,came,0.0516,0.0515,2,2,Robot,36,38
+44,Robot-Self,22,just,0.0516,0.0515,2,2,Robot,36,38
+44,Robot-Self,23,sure,0.0516,0.0515,2,2,Robot,36,38
+44,Robot-Self,24,street,0.0516,0.0515,2,2,Robot,36,38
+44,Robot-Self,25,trying,0.0516,0.0515,2,2,Robot,36,38
+44,Imagination-Self,1,thing,-2.1557,-0.7634,15,17,Self,73,38
+44,Imagination-Self,2,thing running,-2.1277,-1.7336,2,6,Self,73,38
+44,Imagination-Self,3,running,-2.0195,-0.9946,7,10,Self,73,38
+44,Imagination-Self,4,night,-1.8584,-1.5516,2,5,Self,73,38
+44,Imagination-Self,5,imagine,1.7366,0.4599,57,19,Imagination,73,38
+44,Imagination-Self,6,imagine chasing,1.6442,1.0329,16,3,Imagination,73,38
+44,Imagination-Self,7,shit,-1.5047,-1.7303,1,3,Self,73,38
+44,Imagination-Self,8,chasing,1.2905,0.4316,35,12,Imagination,73,38
+44,Imagination-Self,9,run,-1.2131,-0.9252,3,4,Self,73,38
+44,Imagination-Self,10,like,-1.2131,-0.9252,3,4,Self,73,38
+44,Imagination-Self,11,chased thing,-1.0876,-1.3265,1,2,Self,73,38
+44,Imagination-Self,12,wouldn,-1.0876,-1.3265,1,2,Self,73,38
+44,Imagination-Self,13,imagine chased,-0.7831,-0.6383,3,3,Self,73,38
+44,Imagination-Self,14,chased,-0.6895,-0.3202,11,8,Self,73,38
+44,Imagination-Self,15,imagine getting,0.6651,0.7405,4,1,Imagination,73,38
+44,Imagination-Self,16,getting,0.6651,0.7405,4,1,Imagination,73,38
+44,Imagination-Self,17,imagine running,0.6651,0.7405,4,1,Imagination,73,38
+44,Imagination-Self,18,getting chased,0.6651,0.7405,4,1,Imagination,73,38
+44,Imagination-Self,19,lol,-0.6399,-0.6383,2,2,Self,73,38
+44,Imagination-Self,20,seeing,-0.6335,-6.3454,0,3,Self,73,38
+44,Imagination-Self,21,seeing thing,-0.5927,-5.9416,0,2,Self,73,38
+44,Imagination-Self,22,middle,-0.5927,-5.9416,0,2,Self,73,38
+44,Imagination-Self,23,imagine seeing,-0.5927,-5.9416,0,2,Self,73,38
+44,Imagination-Self,24,came,-0.5927,-5.9416,0,2,Self,73,38
+44,Imagination-Self,25,sure,-0.5927,-5.9416,0,2,Self,73,38
+49,Imagination-Self,1,humans,-2.4836,-1.149,7,14,Self,75,46
+49,Imagination-Self,2,machine,-2.3131,-0.8617,12,18,Self,75,46
+49,Imagination-Self,3,rise,2.2951,1.2462,22,4,Imagination,75,46
+49,Imagination-Self,4,rise machines,2.2951,1.2462,22,4,Imagination,75,46
+49,Imagination-Self,5,coming,1.3914,1.4808,7,1,Imagination,75,46
+49,Imagination-Self,6,create,-1.3466,-1.5485,1,3,Self,75,46
+49,Imagination-Self,7,destroyed,-1.3466,-1.5485,1,3,Self,75,46
+49,Imagination-Self,8,stupid,-1.3466,-1.5485,1,3,Self,75,46
+49,Imagination-Self,9,thing,-1.3466,-1.5485,1,3,Self,75,46
+49,Imagination-Self,10,just,-1.0981,-0.6105,6,7,Self,75,46
+49,Imagination-Self,11,make,-1.0555,-0.6385,5,6,Self,75,46
+49,Imagination-Self,12,human,-1.0555,-0.6385,5,6,Self,75,46
+49,Imagination-Self,13,know,-0.9748,-0.7434,3,4,Self,75,46
+49,Imagination-Self,14,life,-0.9748,-0.7434,3,4,Self,75,46
+49,Imagination-Self,15,like,-0.9445,-0.8604,2,3,Self,75,46
+49,Imagination-Self,16,years,-0.9445,-0.8604,2,3,Self,75,46
+49,Imagination-Self,17,feel,-0.9445,-0.8604,2,3,Self,75,46
+49,Imagination-Self,18,logic,-0.9386,-1.1447,1,2,Self,75,46
+49,Imagination-Self,19,machines create,-0.9386,-1.1447,1,2,Self,75,46
+49,Imagination-Self,20,just saying,-0.9386,-1.1447,1,2,Self,75,46
+49,Imagination-Self,21,long,-0.9386,-1.1447,1,2,Self,75,46
+49,Imagination-Self,22,man machine,-0.9386,-1.1447,1,2,Self,75,46
+49,Imagination-Self,23,saying,-0.9386,-1.1447,1,2,Self,75,46
+49,Imagination-Self,24,man,-0.6979,-0.3389,9,8,Self,75,46
+49,Imagination-Self,25,machines,0.6695,0.1371,67,37,Imagination,75,46
+51,Robot-Imagination,1,like,2.3105,1.387,9,4,Robot,37,67
+51,Robot-Imagination,2,robocop,-1.402,-0.4898,11,32,Imagination,37,67
+51,Robot-Imagination,3,robo,1.1816,0.3544,20,25,Robot,37,67
+51,Robot-Imagination,4,real robocop,1.0377,1.2656,2,1,Robot,37,67
+51,Robot-Imagination,5,robo cop,-0.7198,-0.8014,1,4,Imagination,37,67
+51,Robot-Imagination,6,cop,-0.7198,-0.8014,1,4,Imagination,37,67
+51,Robot-Imagination,7,prototypes,0.6274,6.2845,3,0,Robot,37,67
+51,Robot-Imagination,8,stop,0.6274,6.2845,3,0,Robot,37,67
+51,Robot-Imagination,9,soon,-0.5971,-5.9751,0,7,Imagination,37,67
+51,Robot-Imagination,10,little,0.5866,5.8807,2,0,Robot,37,67
+51,Robot-Imagination,11,drunken,0.5866,5.8807,2,0,Robot,37,67
+51,Robot-Imagination,12,great,0.5866,5.8807,2,0,Robot,37,67
+51,Robot-Imagination,13,like drunken,0.5866,5.8807,2,0,Robot,37,67
+51,Robot-Imagination,14,little robo,0.5866,5.8807,2,0,Robot,37,67
+51,Robot-Imagination,15,robocops,-0.5816,-5.8212,0,6,Imagination,37,67
+51,Robot-Imagination,16,fast,0.5789,0.5774,2,2,Robot,37,67
+51,Robot-Imagination,17,evolution,0.5789,0.5774,2,2,Robot,37,67
+51,Robot-Imagination,18,coming,-0.541,-5.4165,0,4,Imagination,37,67
+51,Robot-Imagination,19,soldiers,-0.541,-5.4165,0,4,Imagination,37,67
+51,Robot-Imagination,20,life,-0.541,-5.4165,0,4,Imagination,37,67
+51,Robot-Imagination,21,reminds,-0.541,-5.4165,0,4,Imagination,37,67
+51,Robot-Imagination,22,robo soldiers,-0.5121,-5.1297,0,3,Imagination,37,67
+51,Robot-Imagination,23,apocalypse,-0.5121,-5.1297,0,3,Imagination,37,67
+51,Robot-Imagination,24,robo cops,-0.5121,-5.1297,0,3,Imagination,37,67
+51,Robot-Imagination,25,robo apocalypse,-0.5121,-5.1297,0,3,Imagination,37,67
+55,Imagination-Self,1,guys,-1.3677,-1.5727,1,3,Self,76,46
+55,Imagination-Self,2,time,1.2114,1.3027,6,1,Imagination,76,46
+55,Imagination-Self,3,hunting,1.1431,0.9018,8,2,Imagination,76,46
+55,Imagination-Self,4,knowing,-0.9584,-1.1689,1,2,Self,76,46
+55,Imagination-Self,5,beat,-0.9584,-1.1689,1,2,Self,76,46
+55,Imagination-Self,6,catch,-0.9584,-1.1689,1,2,Self,76,46
+55,Imagination-Self,7,turn,0.8067,0.8981,4,1,Imagination,76,46
+55,Imagination-Self,8,humans,0.7344,0.434,10,4,Imagination,76,46
+55,Imagination-Self,9,able run,-0.5898,-0.4807,3,3,Self,76,46
+55,Imagination-Self,10,ll running,-0.5898,-0.4807,3,3,Self,76,46
+55,Imagination-Self,11,week,0.5506,5.5132,4,0,Imagination,76,46
+55,Imagination-Self,12,things,0.5477,0.3288,9,4,Imagination,76,46
+55,Imagination-Self,13,people,0.5315,0.6112,3,1,Imagination,76,46
+55,Imagination-Self,14,chasing humans,0.5315,0.6112,3,1,Imagination,76,46
+55,Imagination-Self,15,wait,0.5292,0.3646,7,3,Imagination,76,46
+55,Imagination-Self,16,yeah,0.5218,5.2264,3,0,Imagination,76,46
+55,Imagination-Self,17,great,0.5181,0.4326,5,2,Imagination,76,46
+55,Imagination-Self,18,hunt,0.5181,0.4326,5,2,Imagination,76,46
+55,Imagination-Self,19,going,0.5181,0.4326,5,2,Imagination,76,46
+55,Imagination-Self,20,start chasing,-0.4938,-0.2988,6,5,Self,76,46
+55,Imagination-Self,21,won,-0.4819,-0.4807,2,2,Self,76,46
+55,Imagination-Self,22,til,-0.4819,-0.4807,2,2,Self,76,46
+55,Imagination-Self,23,use,-0.4819,-0.4807,2,2,Self,76,46
+55,Imagination-Self,24,hope,-0.4819,-0.4807,2,2,Self,76,46
+55,Imagination-Self,25,arena,-0.4819,-0.4807,2,2,Self,76,46

@@ -1,0 +1,9 @@
+object,attribute,high_group,low_group,high_%,low_%,gap_pp
+Robot,媒体类型,原视频,官方新闻,62.2,48.7,13.5
+Imagination about Robots,媒体类型,官方新闻,原视频,45.7,35.0,10.7
+Self,媒体类型,官方新闻,原视频,21.3,17.1,4.3
+Affiliated Organization or Country,媒体类型,官方新闻,民间解读,7.2,4.9,2.3
+Event or Competition,媒体类型,官方新闻,民间解读,4.6,3.1,1.5
+Other People in Comments,媒体类型,民间解读,原视频,2.7,1.3,1.4
+Other People in Videos,媒体类型,原视频,民间解读,2.0,1.2,0.8
+Video or Media,媒体类型,原视频,官方新闻,1.3,0.7,0.6

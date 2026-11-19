@@ -37,4 +37,23 @@ human_label_llm/notebooks/**/*.ipynb
 # LLM 打标产物（含评论原文，默认不入库）
 **/label_checkpoint.jsonl
 **/*_llm.csv
+human_label_llm/output/**/*
+!human_label_llm/output/.gitkeep
+output/label_runs/**/comparison_wide.csv
+
+# 可提交的 clean 索引（无评论正文）
+!data/clean/MANIFEST.csv
+!data/clean/README.md
+
+# EN BERTopic 等大实验：不入库权重/向量/含正文语料
+output/experiments/**/embeddings.npy
+output/experiments/**/umap_reduced.npy
+output/experiments/**/model.pkl
+output/experiments/**/model/
+output/experiments/**/model_reduced/
+output/experiments/**/analysis_corpus.csv
+output/experiments/**/validity/stm/*.rds
+output/experiments/**/validity/**/*.npy
+output/concept_extract/**/*
+!output/concept_extract/README.md
 

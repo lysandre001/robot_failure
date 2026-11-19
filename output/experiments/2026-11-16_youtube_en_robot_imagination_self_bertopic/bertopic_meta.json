@@ -1,0 +1,46 @@
+{
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "mcs_grid": [
+    30,
+    50,
+    80,
+    100,
+    200
+  ],
+  "selected_mcs": 80,
+  "sensitivity": [
+    {
+      "mcs": 30,
+      "n_topics": 136,
+      "outlier_rate": 0.3851,
+      "n_docs": 28096,
+      "n_outliers": 10820,
+      "reused": true
+    },
+    {
+      "mcs": 50,
+      "n_topics": 90,
+      "outlier_rate": 0.3827,
+      "n_docs": 28096,
+      "n_outliers": 10751,
+      "reused": true
+    },
+    {
+      "mcs": 80,
+      "n_topics": 60,
+      "outlier_rate": 0.4149,
+      "n_docs": 28096,
+      "n_outliers": 11658,
+      "reused": true
+    },
+    {
+      "mcs": 100,
+      "n_topics": 48,
+      "outlier_rate": 0.4513,
+      "n_docs": 28096,
+      "n_outliers": 12679,
+      "reused": true
+    }
+  ],
+  "selection_rule": "minimize |out_rate-0.30| + topic-count penalty; prefer 15-60 topics"
+}
