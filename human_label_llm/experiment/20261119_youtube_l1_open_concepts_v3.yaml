@@ -1,0 +1,36 @@
+# User open-coding rules (v3); same 50-row smoke as v1/v2.
+extends: _defaults.yaml
+
+run_id: 20261119_youtube_l1_open_concepts_v3
+platform: youtube
+prompt_lang: en
+prompt: 20261119_open_concepts_v3
+output_root: output/concept_extract
+
+prompt_slots:
+  DOMAIN: robot competition and humanoid robot discourse on YouTube (comments on marathon / robot games videos)
+
+data:
+  input_csv: human_label_llm/label_data/youtube_2events_l1_20261116.csv
+
+columns:
+  comment_id: comment_id
+  comment: content_en
+
+scopes:
+  - scope_comment_only
+
+model_catalog:
+  kimi_k3_or:
+    provider: openrouter
+    model: moonshotai/kimi-k3
+    reasoning: off
+
+model_keys:
+  - kimi_k3_or
+
+limit: 50
+temperature: 0.0
+concurrency: 4
+timeout: 180
+max_tokens: 512

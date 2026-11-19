@@ -24,7 +24,7 @@ ROOT = Path(__file__).resolve().parents[1]
 LABEL_DIR = Path(__file__).resolve().parent
 
 
-def _load_env_file(path: Path) -> None:
+def _load_env_file(path: Path, *, override: bool = False) -> None:
     """Parse KEY=VALUE .env (no python-dotenv required)."""
     if not path.is_file():
         return
@@ -45,30 +45,41 @@ def _load_env_file(path: Path) -> None:
         val = val.strip()
         if len(val) >= 2 and val[0] == val[-1] and val[0] in ('"', "'"):
             val = val[1:-1]
-        if key and not (os.environ.get(key) or "").strip():
+        if not key:
+            continue
+        if override or not (os.environ.get(key) or "").strip():
             os.environ[key] = val
 
 
 def _load_project_env() -> None:
-    for path in (LABEL_DIR / ".env", ROOT / ".env", ROOT / "phase1" / "llm_stance" / ".env"):
-        _load_env_file(path)
+    paths = (LABEL_DIR / ".env", ROOT / ".env", ROOT / "phase1" / "llm_stance" / ".env")
+    for path in paths:
+        _load_env_file(path, override=path in (LABEL_DIR / ".env", ROOT / ".env"))
     try:
         from dotenv import load_dotenv
 
-        for path in (LABEL_DIR / ".env", ROOT / ".env", ROOT / "phase1" / "llm_stance" / ".env"):
-            load_dotenv(path, override=False)
+        for path in paths:
+            load_dotenv(path, override=path in (LABEL_DIR / ".env", ROOT / ".env"))
     except ImportError:
         pass
+
+
+def reload_project_api_keys() -> None:
+    """Prefer repo ``.env`` API keys over ambient shell (e.g. depleted OpenRouter key)."""
+    for path in (LABEL_DIR / ".env", ROOT / ".env"):
+        _load_env_file(path, override=True)
 
 
 _load_project_env()
 
 from human_label_llm.llm_client import ChatClient, ProviderChain, resolve_models
+from human_label_llm.format import template_placeholders
 from human_label_llm.prompts import (
     build_messages,
     dryrun_slot_report,
     load_spec,
     parse_response,
+    resolve_prompt_slots,
     resolve_scope_slots,
     resolve_scopes,
 )
@@ -214,7 +225,7 @@ def resolve_config_path(
     raise FileNotFoundError(f"Experiment config not found: {raw}")
 
 
-def load_config(path: Path) -> dict[str, Any]:
+def load_config(path: Path, *, finalize: bool = True) -> dict[str, Any]:
     with path.open(encoding="utf-8") as f:
         cfg = yaml.safe_load(f)
     if not isinstance(cfg, dict):
@@ -225,8 +236,12 @@ def load_config(path: Path) -> dict[str, Any]:
         base_path = path.parent / str(extends)
         if not base_path.is_file():
             raise FileNotFoundError(f"extends base not found: {base_path} (from {path})")
-        base = load_config(base_path.resolve())
+        # Keep the base catalog so this file's model_keys can select a subset.
+        base = load_config(base_path.resolve(), finalize=False)
         cfg = _deep_merge(base, cfg)
+
+    if not finalize:
+        return cfg
 
     cfg = _finalize_models(cfg)
     for drop_key in ("extends", "model_catalog", "model_keys"):
@@ -313,6 +328,7 @@ def cmd_dryrun(cfg: dict[str, Any], *, n: int = 2) -> None:
     cols = resolve_columns(cfg)
     spec = load_spec(resolve_prompt_id(cfg))
     scope_slots = resolve_scope_slots(cfg)
+    prompt_slots = resolve_prompt_slots(cfg)
     scopes = resolve_scopes(cfg)
     prompt_id = resolve_prompt_id(cfg)
 
@@ -326,7 +342,7 @@ def cmd_dryrun(cfg: dict[str, Any], *, n: int = 2) -> None:
     ok = True
     for idx, row in df.head(n).iterrows():
         for sid in scopes:
-            rep = dryrun_slot_report(row, sid, cols, spec, scope_slots)
+            rep = dryrun_slot_report(row, sid, cols, spec, scope_slots, prompt_slots=prompt_slots)
             print("=" * 60)
             print(f"row={idx}  scope={sid}")
             print("-" * 60)
@@ -344,9 +360,15 @@ def cmd_dryrun(cfg: dict[str, Any], *, n: int = 2) -> None:
                 print(f"  ERROR missing columns keys: {rep['missing_column_keys']}")
                 ok = False
             user = rep["messages"][-1]["content"]
+            system = rep["messages"][0]["content"] if rep["messages"][0]["role"] == "system" else ""
             if "{comment}" in user or "{title}" in user:
                 print("  ERROR unreplaced placeholders in prompt")
                 ok = False
+            if system:
+                left = template_placeholders(system)
+                if left:
+                    print(f"  ERROR unreplaced system placeholders: {sorted(left)}")
+                    ok = False
             if spec.description and spec.description.splitlines()[0] in user:
                 print("  ERROR frontmatter description leaked into model prompt")
                 ok = False
@@ -418,10 +440,11 @@ def annotate_one(
     scope_slots: dict[str, list[str]],
     prompt_id: str,
     *,
+    prompt_slots: dict[str, str] | None = None,
     temperature: float,
     max_tokens: int,
 ) -> dict:
-    msgs = build_messages(row, scope_id, cols, spec, scope_slots)
+    msgs = build_messages(row, scope_id, cols, spec, scope_slots, prompt_slots=prompt_slots)
     cid = str(row[cols["comment_id"]])
     t0 = time.time()
     try:
@@ -484,12 +507,14 @@ def annotate_one(
 
 
 def cmd_infer(cfg: dict[str, Any], config_path: Path) -> Path:
+    reload_project_api_keys()
     out = run_dir(cfg)
     out.mkdir(parents=True, exist_ok=True)
     cols = resolve_columns(cfg)
     prompt_id = resolve_prompt_id(cfg)
     spec = load_spec(prompt_id)
     scope_slots = resolve_scope_slots(cfg)
+    prompt_slots = resolve_prompt_slots(cfg)
     df = load_dataframe(cfg)
     print(f"[infer] input={resolve_input_csv(cfg)}  rows={len(df)}")
 
@@ -537,6 +562,7 @@ def cmd_infer(cfg: dict[str, Any], config_path: Path) -> Path:
                 spec,
                 scope_slots,
                 prompt_id,
+                prompt_slots=prompt_slots,
                 temperature=temperature,
                 max_tokens=max_tokens,
             ): (model_key, scope_id, row[id_col])
@@ -550,6 +576,68 @@ def cmd_infer(cfg: dict[str, Any], config_path: Path) -> Path:
                 store.append(rec)
 
     return log_path
+
+
+# Gold spellings that mean a codebook label but are not a case-variant of it.
+_LABEL_ALIASES: dict[str, str] = {
+    "no clear object": "No Clear Subject",
+    "imagination about robot": "Imagination about Robots",
+}
+
+
+def _canon_token(token: str, valid: frozenset[str]) -> str:
+    s = token.strip().rstrip(":").strip()
+    if not s:
+        return ""
+    if s in valid:
+        return s
+    key = s.lower()
+    if key in _LABEL_ALIASES:
+        return _LABEL_ALIASES[key]
+    for name in valid:
+        if name.lower() == key:
+            return name
+    return s
+
+
+def per_label_set_metrics(gold_sets: list[set[str]], pred_sets: list[set[str]]) -> pd.DataFrame:
+    """Order-free per-label accuracy: gold set contains the label, pred set contains it."""
+    labels = sorted(set().union(*gold_sets, *pred_sets)) if gold_sets else []
+    n = len(gold_sets)
+    rows: list[dict] = []
+    for cat in labels:
+        yt = [cat in g for g in gold_sets]
+        yp = [cat in p for p in pred_sets]
+        n_gold = int(sum(yt))
+        tp = int(sum(a and b for a, b in zip(yt, yp)))
+        fp = int(sum((not a) and b for a, b in zip(yt, yp)))
+        tn = int(sum((not a) and (not b) for a, b in zip(yt, yp)))
+        accuracy = tp / n_gold if n_gold else float("nan")
+        precision = tp / (tp + fp) if (tp + fp) else float("nan")
+        yt_i = [int(v) for v in yt]
+        yp_i = [int(v) for v in yp]
+        if n >= 2 and len(set(yt_i) | set(yp_i)) > 1:
+            kappa_ovr = float(cohen_kappa_score(yt_i, yp_i))
+        else:
+            kappa_ovr = float("nan")
+        f1 = (
+            2 * precision * accuracy / (precision + accuracy)
+            if n_gold and precision == precision and accuracy == accuracy and (precision + accuracy)
+            else float("nan")
+        )
+        rows.append({
+            "category": cat,
+            "n": n,
+            "n_gold": n_gold,
+            "n_correct": tp,
+            "accuracy": round(accuracy, 4) if n_gold else None,
+            "binary_accuracy": round((tp + tn) / n, 4) if n else None,
+            "recall": round(accuracy, 4) if n_gold else None,
+            "precision": round(precision, 4) if (tp + fp) else None,
+            "f1": round(f1, 4) if f1 == f1 else None,
+            "kappa_ovr": round(kappa_ovr, 4) if kappa_ovr == kappa_ovr else None,
+        })
+    return pd.DataFrame(rows)
 
 
 def per_category_metrics(y_true: pd.Series, y_pred: pd.Series) -> pd.DataFrame:
@@ -607,6 +695,8 @@ def gap_summary_metrics(y_true: pd.Series, y_pred: pd.Series, by_cat: pd.DataFra
     n = len(yt)
     n_agree = int((yt == yp).sum())
     bc = by_cat[by_cat["category"].astype(str) != "All"] if "category" in by_cat.columns else by_cat
+    if "n_gold" in bc.columns:
+        bc = bc[bc["n_gold"] > 0]
     macro_recall = float(bc["recall"].mean()) if len(bc) else float("nan")
     macro_precision = float(bc["precision"].mean()) if len(bc) and bc["precision"].notna().any() else float("nan")
     macro_f1 = float(bc["f1"].mean()) if len(bc) and bc["f1"].notna().any() else float("nan")
@@ -624,7 +714,18 @@ def gap_summary_metrics(y_true: pd.Series, y_pred: pd.Series, by_cat: pd.DataFra
 
 def per_class_gap_table(by_cat: pd.DataFrame) -> pd.DataFrame:
     """Per human category: recall, miss rate, main wrong LLM label."""
+    columns = [
+        "category",
+        "n_human",
+        "n_correct",
+        "n_miss",
+        "recall",
+        "miss_rate",
+        "gap_recall",
+    ]
     rows = []
+    if by_cat is None or by_cat.empty or "category" not in by_cat.columns:
+        return pd.DataFrame(columns=columns)
     for _, r in by_cat.iterrows():
         cat = str(r["category"])
         n_gold = int(r["n_gold"])
@@ -640,6 +741,32 @@ def per_class_gap_table(by_cat: pd.DataFrame) -> pd.DataFrame:
             "gap_recall": round(1 - float(r["recall"]), 4) if n_gold and r["recall"] == r["recall"] else None,
         })
     return pd.DataFrame(rows).sort_values("gap_recall", ascending=False, na_position="last")
+
+
+def _label_parts(value: Any, *, human: bool, valid: frozenset[str]) -> list[str]:
+    """Split then canonicalize. Human gold uses English comma; LLM preds use | (also ,).
+
+    Membership is a set: label order is not part of the score.
+    """
+    text = "" if value is None else str(value).strip()
+    if not text or text.lower() == "nan":
+        return []
+    sep = r"," if human else r"[|,]"
+    out: list[str] = []
+    for part in re.split(sep, text):
+        tok = _canon_token(part, valid)
+        if tok and tok not in out:
+            out.append(tok)
+    return out
+
+
+def _label_set(value: Any, *, human: bool, valid: frozenset[str]) -> set[str]:
+    return set(_label_parts(value, human=human, valid=valid))
+
+
+def format_label_set(labels: set[str]) -> str:
+    """Stable, order-free display key."""
+    return ",".join(sorted(labels))
 
 
 def _load_jsonl(path: Path) -> pd.DataFrame:
@@ -666,6 +793,7 @@ def cmd_compare(cfg: dict[str, Any], *, gold_override: str | None = None) -> tup
             f"gold column {gold_col!r} not in {input_csv} (see columns.gold / gold_column)"
         )
     print(f"[compare] input={input_csv}  rows={len(gold)}")
+    valid = load_spec(resolve_prompt_id(cfg)).valid_labels
 
     logs = _load_jsonl(log_path)
     wide = gold.copy()
@@ -692,32 +820,50 @@ def cmd_compare(cfg: dict[str, Any], *, gold_override: str | None = None) -> tup
         ev = wide[wide[status_col] == "ok"].copy()
         n_parse_error = int((wide[status_col] == "parse_error").sum())
         n_api_error = int((wide[status_col] == "api_error").sum())
-        y_true = ev[gold_col].astype(str)
-        y_pred = ev[col].astype(str)
-        mask = (y_true.str.len() > 0) & (y_pred.str.len() > 0)
-        y_true = y_true[mask]
-        y_pred = y_pred[mask]
+        # Order-free sets. Empty gold is excluded from every denominator.
+        gold_sets = ev[gold_col].map(lambda v: _label_set(v, human=True, valid=valid))
+        pred_sets = ev[col].map(lambda v: _label_set(v, human=False, valid=valid))
+        mask = gold_sets.map(bool) & pred_sets.map(bool)
+        gold_sets = gold_sets[mask]
+        pred_sets = pred_sets[mask]
+        y_true = gold_sets.map(format_label_set)
+        y_pred = pred_sets.map(format_label_set)
         n = len(y_true)
-        if n == 0:
-            acc, kappa = float("nan"), float("nan")
-        else:
-            acc = float(accuracy_score(y_true, y_pred))
-            labels = sorted(set(y_true) | set(y_pred))
-            kappa = float(cohen_kappa_score(y_true, y_pred, labels=labels)) if len(labels) > 1 else float("nan")
+        n_exact = int((y_true == y_pred).sum()) if n else 0
+        n_any = int(sum(bool(g & p) for g, p in zip(gold_sets, pred_sets))) if n else 0
 
-        summary_rows.append({
+        summary = {
             "model_key": model_key,
             "scope_id": scope_id,
             "gold_column": gold_col,
             "pred_column": col,
+            "label_mode": "set",
             "n": n,
-            "accuracy": round(acc, 4) if n else None,
-            "kappa": round(kappa, 4) if n and kappa == kappa else None,
+            "exact_set_match": round(n_exact / n, 4) if n else None,
+            "any_hit": round(n_any / n, 4) if n else None,
             "n_parse_error": n_parse_error,
             "n_api_error": n_api_error,
-        })
+        }
+        wide[f"{col}_any_hit"] = [
+            int(bool(_label_set(h, human=True, valid=valid) & _label_set(p, human=False, valid=valid)))
+            if str(s) == "ok" and _label_set(h, human=True, valid=valid) and _label_set(p, human=False, valid=valid)
+            else 0
+            for h, p, s in zip(wide[gold_col], wide[col], wide[status_col])
+        ]
+        wide[f"{col}_exact_match"] = [
+            int(_label_set(h, human=True, valid=valid) == _label_set(p, human=False, valid=valid))
+            if str(s) == "ok" and _label_set(h, human=True, valid=valid) and _label_set(p, human=False, valid=valid)
+            else 0
+            for h, p, s in zip(wide[gold_col], wide[col], wide[status_col])
+        ]
+        summary_rows.append(summary)
 
-        cat_df = per_category_metrics(y_true, y_pred)
+        cat_df = per_label_set_metrics(list(gold_sets), list(pred_sets))
+        if not cat_df.empty and cat_df["accuracy"].notna().any():
+            scored = cat_df[cat_df["n_gold"] > 0]
+            summary_rows[-1]["macro_label_accuracy"] = round(float(scored["accuracy"].mean()), 4)
+            if scored["kappa_ovr"].notna().any():
+                summary_rows[-1]["macro_kappa"] = round(float(scored["kappa_ovr"].mean()), 4)
         cat_df.insert(0, "scope_id", scope_id)
         cat_df.insert(0, "model_key", model_key)
         by_cat_frames.append(cat_df)
@@ -757,7 +903,7 @@ def cmd_compare(cfg: dict[str, Any], *, gold_override: str | None = None) -> tup
     print(f"[compare] wrote {gap_class_path}")
     print(summary_df.to_string(index=False))
     if not by_cat.empty:
-        print("\n[compare] per-category (recall=该类人工标注下的准确率, kappa_ovr=one-vs-rest):")
+        print("\n[compare] per-label accuracy (order-free; accuracy=gold 含该类时 pred 也含该类):")
         print(by_cat.to_string(index=False))
     if not gap_pairs.empty:
         print("\n[compare] top misclassification pairs (human → llm):")

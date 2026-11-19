@@ -154,6 +154,10 @@ class ChatClient:
             "temperature": temperature,
             "max_tokens": max_tokens,
         }
+        # OpenRouter Flex: same model, lower price, lower priority.
+        # Pinning flex never falls back to the standard rate.
+        if self.provider.name == "openrouter":
+            payload["service_tier"] = "flex"
         payload.update(
             build_reasoning_extras(
                 self.provider.name,

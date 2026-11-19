@@ -1,0 +1,33 @@
+# L1 open concepts v3.0.1 (no DOMAIN slot); object filter Robot | Imagination | Self.
+extends: _defaults.yaml
+
+run_id: 20261119_youtube_l1_open_concepts_v3_robot_imagination_self
+platform: youtube
+prompt_lang: en
+prompt: 20261119_open_concepts_v3
+output_root: output/concept_extract
+
+data:
+  input_csv: human_label_llm/label_data/youtube_l1_object_robot_imagination_self_20261119.csv
+
+columns:
+  comment_id: comment_id
+  comment: content_en
+
+scopes:
+  - scope_comment_only
+
+model_catalog:
+  kimi_k3_or:
+    provider: openrouter
+    model: moonshotai/kimi-k3
+    reasoning: off
+
+model_keys:
+  - kimi_k3_or
+
+limit: null
+temperature: 0.0
+concurrency: 4
+timeout: 180
+max_tokens: 512

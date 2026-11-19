@@ -110,22 +110,33 @@ def load_spec(prompt_id: str) -> PromptSpec:
     )
 
 
+def resolve_prompt_slots(cfg: dict[str, Any]) -> dict[str, str]:
+    raw = cfg.get("prompt_slots")
+    if not isinstance(raw, dict):
+        return {}
+    return {str(k): str(v) for k, v in raw.items() if v is not None and str(v).strip()}
+
+
 def build_messages(
     row: Any,
     scope_id: str,
     columns: dict[str, str],
     spec: PromptSpec,
     scope_slots: dict[str, list[str]],
+    *,
+    prompt_slots: dict[str, str] | None = None,
 ) -> list[dict[str, str]]:
     if scope_id not in scope_slots:
         raise ValueError(f"Unknown scope_id: {scope_id!r}. Defined: {list(scope_slots)}")
 
+    static = dict(prompt_slots or {})
     active = scope_slots[scope_id]
-    values = row_slot_values(row, columns, active)
+    values = {**static, **row_slot_values(row, columns, active)}
     user = fill_prompt(spec.template, values, active_slots=active)
 
     if spec.system:
-        return [{"role": "system", "content": spec.system}, {"role": "user", "content": user}]
+        system = fill_prompt(spec.system, static, active_slots=[])
+        return [{"role": "system", "content": system}, {"role": "user", "content": user}]
     return [{"role": "user", "content": user}]
 
 
@@ -135,6 +146,8 @@ def dryrun_slot_report(
     columns: dict[str, str],
     spec: PromptSpec,
     scope_slots: dict[str, list[str]],
+    *,
+    prompt_slots: dict[str, str] | None = None,
 ) -> dict[str, Any]:
     """返回填槽绑定与渲染结果，供 dryrun 校验。"""
     active = scope_slots[scope_id]
@@ -152,8 +165,19 @@ def dryrun_slot_report(
         "missing_column_keys": missing_cols,
         "template_placeholders": sorted(needed),
         "unused_placeholders": unused_in_template,
-        "messages": build_messages(row, scope_id, columns, spec, scope_slots),
+        "messages": build_messages(
+            row, scope_id, columns, spec, scope_slots, prompt_slots=prompt_slots
+        ),
     }
+
+
+def _parse_open_concept_list(raw_val: Any, reason: str) -> tuple[str, str, str, str] | None:
+    if not isinstance(raw_val, list):
+        return None
+    items = [str(x).strip() for x in raw_val if str(x).strip()]
+    if not items:
+        return None
+    return "|".join(items), "", reason, "ok"
 
 
 def parse_response(text: str, spec: PromptSpec) -> tuple[str, str, str, str]:
@@ -180,15 +204,46 @@ def parse_response(text: str, spec: PromptSpec) -> tuple[str, str, str, str]:
         candidates[0] = re.sub(r"^```(?:json)?\s*|\s*```$", "", candidates[0], flags=re.I | re.M)
     candidates.extend(_JSON_OBJ_RE.findall(text))
 
+    saw_label_list = False
     for cand in candidates:
         try:
             obj = json.loads(cand)
-            label_en = to_en(str(obj.get(field, "")))
-            if label_en:
-                reason = str(obj.get(reason_field, "")).strip()
-                return label_en, spec.label_map.get(label_en, ""), reason, "ok"
         except json.JSONDecodeError:
             continue
+        if isinstance(obj, list):
+            if len(obj) == 1 and isinstance(obj[0], dict):
+                obj = obj[0]
+            else:
+                continue
+        if not isinstance(obj, dict) or field not in obj:
+            continue
+        reason = str(obj.get(reason_field, "")).strip()
+        raw_val = obj.get(field, "")
+        if isinstance(raw_val, list):
+            saw_label_list = True
+            if not valid:
+                if isinstance(raw_val, list) and not any(str(x).strip() for x in raw_val):
+                    return "", "", reason, "ok"
+                open_hit = _parse_open_concept_list(raw_val, reason)
+                if open_hit:
+                    return open_hit
+                continue
+            chosen: list[str] = []
+            for item in raw_val:
+                label_en = to_en(str(item))
+                if label_en and label_en not in chosen:
+                    chosen.append(label_en)
+            if chosen:
+                joined = "|".join(chosen)
+                mapped = "|".join(spec.label_map.get(label, "") for label in chosen)
+                return joined, mapped, reason, "ok"
+            continue
+        label_en = to_en(str(raw_val))
+        if label_en:
+            return label_en, spec.label_map.get(label_en, ""), reason, "ok"
+
+    if saw_label_list:
+        return "", "", text.strip()[:200], "parse_error"
 
     for k in valid:
         if k in text:
