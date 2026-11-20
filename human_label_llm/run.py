@@ -398,6 +398,9 @@ class JsonlStore:
                 for line in f:
                     try:
                         rec = json.loads(line)
+                        # Only successful rows skip on resume; api_error/parse_error are retried.
+                        if rec.get("status") != "ok":
+                            continue
                         k = _record_key(rec)
                         if k:
                             self._done.add(k)

@@ -1,0 +1,2 @@
+﻿model_key,scope_id,gold_column,pred_column,label_mode,n,exact_set_match,any_hit,n_parse_error,n_api_error,macro_label_accuracy,macro_kappa,n_agree,n_disagree,agreement_rate,disagreement_rate,macro_recall,macro_precision,macro_f1
+kimi_k3_or,scope_comment_only,261029_yilin,llm_kimi_k3_or_scope_comment_only,set,493,0.6389,0.787,0,0,0.7097,0.6097,315,178,0.6389,0.3611,0.7097,0.6161,0.6491

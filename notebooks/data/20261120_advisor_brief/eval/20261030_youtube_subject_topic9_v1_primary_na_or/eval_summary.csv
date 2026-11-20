@@ -1,0 +1,3 @@
+﻿model_key,scope_id,gold_column,pred_column,label_mode,n,exact_set_match,any_hit,n_parse_error,n_api_error,macro_label_accuracy,macro_kappa,n_agree,n_disagree,agreement_rate,disagreement_rate,macro_recall,macro_precision,macro_f1
+deepseek_v41_flash_1017_or,scope_comment_only,261029_yilin,llm_deepseek_v41_flash_1017_or_scope_comment_only,set,493,0.5842,0.7241,0,0,0.7118,0.554,288,205,0.5842,0.4158,0.7118,0.5739,0.5989
+gpt_6_luna_or,scope_comment_only,261029_yilin,llm_gpt_6_luna_or_scope_comment_only,set,493,0.6268,0.7363,0,0,0.6169,0.5717,309,184,0.6268,0.3732,0.6169,0.629,0.6155

@@ -1,0 +1,21 @@
+﻿model_key,scope_id,category,n,n_gold,n_correct,accuracy,binary_accuracy,recall,precision,f1,kappa_ovr
+deepseek_v41_flash_1017_or,scope_comment_only,Affiliated Organization or Country,493,75,68,0.9067,0.9736,0.9067,0.9189,0.9128,0.8972
+deepseek_v41_flash_1017_or,scope_comment_only,Event or Competition,493,40,25,0.625,0.9148,0.625,0.4808,0.5435,0.4974
+deepseek_v41_flash_1017_or,scope_comment_only,Imagination about Robots,493,70,54,0.7714,0.9351,0.7714,0.7714,0.7714,0.7336
+deepseek_v41_flash_1017_or,scope_comment_only,No Clear Subject,493,106,76,0.717,0.8357,0.717,0.5984,0.6524,0.5459
+deepseek_v41_flash_1017_or,scope_comment_only,Other People in Comments,493,5,5,1.0,0.9615,1.0,0.2083,0.3448,0.3336
+deepseek_v41_flash_1017_or,scope_comment_only,Other People in Videos,493,7,3,0.4286,0.9493,0.4286,0.125,0.1935,0.1754
+deepseek_v41_flash_1017_or,scope_comment_only,Robot,493,170,107,0.6294,0.8215,0.6294,0.8106,0.7086,0.5829
+deepseek_v41_flash_1017_or,scope_comment_only,Self,493,45,26,0.5778,0.9412,0.5778,0.7222,0.642,0.6104
+deepseek_v41_flash_1017_or,scope_comment_only,Video or Media,493,12,9,0.75,0.9777,0.75,0.5294,0.6207,0.6095
+deepseek_v41_flash_1017_or,scope_comment_only,na,493,0,0,,0.9696,,0.0,,0.0
+gpt_6_luna_or,scope_comment_only,Affiliated Organization or Country,493,75,65,0.8667,0.9716,0.8667,0.942,0.9028,0.8862
+gpt_6_luna_or,scope_comment_only,Event or Competition,493,40,20,0.5,0.9249,0.5,0.5405,0.5195,0.4788
+gpt_6_luna_or,scope_comment_only,Imagination about Robots,493,70,46,0.6571,0.9412,0.6571,0.902,0.7603,0.7277
+gpt_6_luna_or,scope_comment_only,No Clear Subject,493,106,89,0.8396,0.8357,0.8396,0.5817,0.6873,0.5808
+gpt_6_luna_or,scope_comment_only,Other People in Comments,493,5,2,0.4,0.9858,0.4,0.3333,0.3636,0.3565
+gpt_6_luna_or,scope_comment_only,Other People in Videos,493,7,3,0.4286,0.9777,0.4286,0.3,0.3529,0.3419
+gpt_6_luna_or,scope_comment_only,Robot,493,170,116,0.6824,0.8215,0.6824,0.7733,0.725,0.5936
+gpt_6_luna_or,scope_comment_only,Self,493,45,23,0.5111,0.927,0.5111,0.6216,0.561,0.5216
+gpt_6_luna_or,scope_comment_only,Video or Media,493,12,8,0.6667,0.9838,0.6667,0.6667,0.6667,0.6584
+gpt_6_luna_or,scope_comment_only,na,493,0,0,,0.9716,,0.0,,0.0

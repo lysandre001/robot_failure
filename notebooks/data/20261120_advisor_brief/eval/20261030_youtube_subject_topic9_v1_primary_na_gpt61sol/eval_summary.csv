@@ -1,0 +1,2 @@
+﻿model_key,scope_id,gold_column,pred_column,label_mode,n,exact_set_match,any_hit,n_parse_error,n_api_error,n_agree,n_disagree,agreement_rate,disagreement_rate,macro_recall,macro_precision,macro_f1
+gpt_61_sol_or,scope_comment_only,261029_yilin,llm_gpt_61_sol_or_scope_comment_only,set,0,,,0,500,0,0,,,,,

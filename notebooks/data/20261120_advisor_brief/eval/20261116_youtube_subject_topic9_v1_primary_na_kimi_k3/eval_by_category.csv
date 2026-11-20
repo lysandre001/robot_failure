@@ -1,0 +1,11 @@
+﻿model_key,scope_id,category,n,n_gold,n_correct,accuracy,binary_accuracy,recall,precision,f1,kappa_ovr
+kimi_k3_or,scope_comment_only,Affiliated Organization or Country,493,75,68,0.9067,0.9696,0.9067,0.8947,0.9007,0.8827
+kimi_k3_or,scope_comment_only,Event or Competition,493,40,27,0.675,0.929,0.675,0.551,0.6067,0.5682
+kimi_k3_or,scope_comment_only,Imagination about Robots,493,70,54,0.7714,0.9452,0.7714,0.8308,0.8,0.7683
+kimi_k3_or,scope_comment_only,No Clear Subject,493,106,84,0.7925,0.8661,0.7925,0.6562,0.7179,0.6312
+kimi_k3_or,scope_comment_only,Other People in Comments,493,5,3,0.6,0.9736,0.6,0.2143,0.3158,0.3054
+kimi_k3_or,scope_comment_only,Other People in Videos,493,7,4,0.5714,0.9817,0.5714,0.4,0.4706,0.4616
+kimi_k3_or,scope_comment_only,Robot,493,170,129,0.7588,0.8499,0.7588,0.7963,0.7771,0.6641
+kimi_k3_or,scope_comment_only,Self,493,45,29,0.6444,0.9331,0.6444,0.6304,0.6374,0.6005
+kimi_k3_or,scope_comment_only,Video or Media,493,12,8,0.6667,0.9797,0.6667,0.5714,0.6154,0.605
+kimi_k3_or,scope_comment_only,na,493,0,0,,0.9757,,0.0,,0.0
