@@ -41,6 +41,12 @@ PROVIDER_CONFIGS: dict[str, ProviderConfig] = {
         base_url="https://api.deepseek.com",
         api_key_env=("DEEPSEEK_API_KEY",),
     ),
+    # Moonshot China OpenAI-compatible API (kimi-k3 etc.)
+    "moonshot": ProviderConfig(
+        name="moonshot",
+        base_url="https://api.moonshot.cn/v1",
+        api_key_env=("MOONSHOT_API_KEY", "KIMI_API_KEY"),
+    ),
 }
 
 FATAL_STATUS = {401, 403}
@@ -108,6 +114,11 @@ def build_reasoning_extras(
             extras["reasoning"] = {"effort": "none", "exclude": False}
         return extras
 
+    if provider == "moonshot":
+        # kimi-k3: thinking off requires temperature 0.6; thinking on requires 1.0
+        extras["thinking"] = {"type": "enabled" if on else "disabled"}
+        return extras
+
     return extras
 
 
@@ -148,10 +159,14 @@ class ChatClient:
         max_retries: int = 4,
     ) -> dict[str, Any]:
         url = f"{self.base_url}/chat/completions"
+        # Moonshot kimi-k3 rejects arbitrary temperatures depending on thinking mode.
+        temp = temperature
+        if self.provider.name == "moonshot":
+            temp = 1.0 if reasoning_mode == "on" else 0.6
         payload: dict[str, Any] = {
             "model": model,
             "messages": messages,
-            "temperature": temperature,
+            "temperature": temp,
             "max_tokens": max_tokens,
         }
         # OpenRouter Flex: same model, lower price, lower priority.
@@ -207,8 +222,11 @@ class ChatClient:
 
     @staticmethod
     def extract_text(resp: dict[str, Any]) -> str:
-        content, _ = ChatClient.extract_message(resp)
-        return content
+        content, reasoning = ChatClient.extract_message(resp)
+        if content.strip():
+            return content
+        # Some Moonshot thinking responses leave content empty and put JSON in reasoning.
+        return reasoning
 
     @staticmethod
     def assistant_message_from_response(resp: dict[str, Any]) -> dict[str, str]:

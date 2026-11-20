@@ -1,0 +1,3 @@
+extends: 20261119_youtube_l1_open_concepts_v3_robot_imagination_self_gpt_oss_20b.yaml
+run_id: 20261119_youtube_l1_open_concepts_v3_robot_imagination_self_gpt_oss_20b_smoke
+limit: 5

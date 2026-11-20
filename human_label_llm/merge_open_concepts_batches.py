@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
-"""Split unique concepts from concepts_long.csv into merge batches (default 50).
+"""Split unique concepts from concepts_long.csv into merge batches (legacy helper).
 
-Writes under <run_dir>/merge/round<r>/batch_*.json — each file is a JSON list of
-strings for a separate LLM merge call (not executed here).
+Prefer ``python -m human_label_llm.run_concept_merge`` for seeded shuffle,
+LLM merge (batch≤200), two rounds, and concept_mapping.csv export.
+
+This script only writes batch_*.json input lists (default batch size 50).
 
 Example:
 
